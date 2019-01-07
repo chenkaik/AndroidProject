@@ -213,7 +213,7 @@ public class NetWorkRequest {
      * @param responseListener 回调接口
      * @param isShow           是否显示加载框
      */
-    public void asyncNetWork(final String TAG, final int requestCode, final Call<ResponseBody> requestCall, final CommonJsonResponse responseListener, final boolean isShow) {
+    public void asyncNetWork(final String TAG, final int requestCode, final Call<ResponseBody> requestCall, final CommonDataResponse responseListener, final boolean isShow) {
         if (responseListener == null) {
             return;
         }
@@ -251,7 +251,7 @@ public class NetWorkRequest {
                             responseListener.onDataError(requestCode, response.code(), "获取数据失败", false);
                         }
                     } else if (response.code() == HttpURLConnection.HTTP_NO_CONTENT) { // 204
-                        responseListener.onDataReady(requestCode, "");
+                        responseListener.onDataReady(requestCode, null, "");
                     } else {
                         responseListener.onDataError(requestCode, response.code(), response.message(), false);
                     }
@@ -344,7 +344,7 @@ public class NetWorkRequest {
         return true;
     }
 
-    public void release(){
+    public void release() {
         mOkHttpClient = null;
         mRetrofit = null;
     }

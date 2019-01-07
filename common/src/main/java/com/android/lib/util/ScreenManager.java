@@ -10,7 +10,6 @@ import java.util.Stack;
 /**
  * activity统一管理类
  */
-
 public class ScreenManager {
 
     private static Stack<Activity> activityStack;

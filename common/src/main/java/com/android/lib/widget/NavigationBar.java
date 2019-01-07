@@ -1,4 +1,4 @@
-package com.android.lib.view;
+package com.android.lib.widget;
 
 import android.app.Activity;
 import android.content.Context;

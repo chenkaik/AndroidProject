@@ -3,14 +3,16 @@ package commom.android.http.retrofit;
 /**
  * Created by chenKai on 2018/9/25.
  */
-public interface CommonJsonResponse {
+public interface CommonDataResponse {
 
-    /***
-     * 服务器返回成功的数据
+    /**
+     * 服务器返回成功的数据(回调时的值object与json二选一处理)
+     *
      * @param requestCode 区分请求的code
-     * @param json 网络请求返信息
+     * @param object      网络请求返回的数据(直接使用)
+     * @param json        网络请求返回的json数据
      */
-    void onDataReady(int requestCode, String json);
+    void onDataReady(int requestCode, Object object, String json);
 
     /**
      * 失败回调
