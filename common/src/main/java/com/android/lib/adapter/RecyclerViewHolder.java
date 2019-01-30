@@ -7,8 +7,9 @@ import android.view.View;
 import android.widget.TextView;
 
 /**
- * Created by chenKai on 2018/5/12.
- * recyclerView公用的ViewHolder
+ * @date: 2019/1/30
+ * @author: Kai
+ * @describe: recyclerView公用的ViewHolder
  */
 public class RecyclerViewHolder extends RecyclerView.ViewHolder {
     private SparseArray<View> mViews;

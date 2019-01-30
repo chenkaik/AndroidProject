@@ -7,8 +7,9 @@ import android.util.AttributeSet;
 import android.widget.RelativeLayout;
 
 /**
- * Created by chenKai on 2018/7/26.
- * 长方形的RelativeLayout
+ * @date: 2019/1/30
+ * @author: Kai
+ * @describe: 长方形的RelativeLayout
  */
 public class SquareRelativeLayout extends RelativeLayout {
 

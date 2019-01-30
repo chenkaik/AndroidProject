@@ -1,12 +1,12 @@
 package commom.android.http.config;
 
 /**
- * @date: 2018/4/17.
- * @author: CHEN
- * @describe: 配置地址
+ * @date: 2019/1/30
+ * @author: Kai
+ * @describe: 配置服务端地址
  */
 public class HttpConfig {
-//    public static String BASE_URL = "http://116.196.107.174:9000/";
+    //    public static String BASE_URL = "http://116.196.107.174:9000/";
 //    public static String BASE_URL = "http://192.168.96.117:8785/";
     // 测试环境
     public static String BASE_URL = "https://www.lixiaotech.com/server/";

@@ -1,12 +1,13 @@
 package com.android.lib.widget;
+
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
 
 /**
- * @date: 2017/11/17.
- * @author: CHEN
+ * @date: 2019/1/30
+ * @author: Kai
  * @describe: 底部导航
  */
 public class TabGroupLayout extends LinearLayout {

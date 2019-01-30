@@ -6,11 +6,10 @@ import com.example.android.project.CommonApplication;
 
 
 /**
- * @date: 2018/4/17.
- * @author: CHEN
+ * @date: 2019/1/30
+ * @author: Kai
  * @describe: 该SP是和用户信息相关的
  */
-
 public class UserConfig extends SharedPreferencesUtil {
 
     private static final String FILE_NAME = "user_config";

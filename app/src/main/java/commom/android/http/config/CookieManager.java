@@ -9,7 +9,9 @@ import okhttp3.CookieJar;
 import okhttp3.HttpUrl;
 
 /**
- * Created by chenKai on 2018/9/25.
+ * @date: 2019/1/30
+ * @author: Kai
+ * @describe:
  */
 public class CookieManager implements CookieJar {
 

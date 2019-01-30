@@ -10,7 +10,9 @@ import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 
 /**
- * 专为Android4.4设计的从Uri获取文件绝对路径，以前的方法已不好使
+ * @date: 2019/1/30
+ * @author: Kai
+ * @describe: 专为Android4.4设计的从Uri获取文件绝对路径，以前的方法已不好使
  */
 public class GetPathFromUri {
     private static GetPathFromUri instance;

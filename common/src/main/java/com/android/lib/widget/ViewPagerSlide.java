@@ -7,11 +7,10 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 
 /**
- * @date: 2017/11/17.
- * @author: CHEN
- * @describe: 设置是否滑动
+ * @date: 2019/1/30
+ * @author: Kai
+ * @describe: 设置ViewPager是否滑动
  */
-
 public class ViewPagerSlide extends ViewPager {
 
     /**

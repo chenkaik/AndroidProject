@@ -14,11 +14,11 @@ import android.view.ViewGroup;
 import android.widget.Scroller;
 
 /**
- * 侧滑菜单删除的RecyclerView
- * <p> https://blog.csdn.net/dapangzao/article/details/80524774
- * Created by Chen on 2018/5/29.
+ * @date: 2019/1/30
+ * @author: Kai
+ * @describe: 侧滑菜单删除的RecyclerView
+ * 参考https://blog.csdn.net/dapangzao/article/details/80524774
  */
-
 public class SlideRecyclerView extends RecyclerView {
 
     private static final String TAG = "SlideRecyclerView";

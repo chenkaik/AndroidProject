@@ -5,10 +5,9 @@ import android.view.View;
 
 import com.android.common.R;
 
-
 /**
- * @date: 2017/12/5.
- * @author: CHEN
+ * @date: 2019/1/30
+ * @author: Kai
  * @describe: 弹框辅助类
  */
 public class CommonHelp {

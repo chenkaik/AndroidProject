@@ -5,11 +5,10 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 
 /**
- * @date: 2017/11/17.
- * @author: CHEN
+ * @date: 2019/1/30.
+ * @author: Kai
  * @describe: 保存用户信息
  */
-
 public class SharedPreferencesUtil {
     private String TAG = getClass().getSimpleName();
     // 存放信息的文件名

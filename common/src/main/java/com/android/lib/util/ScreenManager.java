@@ -8,7 +8,9 @@ import android.content.Intent;
 import java.util.Stack;
 
 /**
- * activity统一管理类
+ * @date: 2019/1/30
+ * @author: Kai
+ * @describe: activity统一管理类
  */
 public class ScreenManager {
 

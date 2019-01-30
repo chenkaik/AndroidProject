@@ -29,7 +29,9 @@ import com.android.common.R;
 import java.util.List;
 
 /**
- * Created by chenKai on 2018/5/8.
+ * @date: 2019/1/30
+ * @author: Kai
+ * @describe: RecyclerView实现banner
  */
 public abstract class RecyclerViewBannerBaseView<L extends RecyclerView.LayoutManager, A extends BaseBannerAdapter> extends FrameLayout {
     protected int autoPlayDuration; // 刷新间隔时间

@@ -8,8 +8,9 @@ import java.io.File;
 import java.math.BigDecimal;
 
 /**
- * Created by chenKai on 2018/6/19.
- * 清除缓存工具类
+ * @date: 2019/1/30
+ * @author: Kai
+ * @describe: 清除缓存工具类
  */
 public class DataCleanManager {
 

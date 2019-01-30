@@ -11,7 +11,9 @@ import java.util.GregorianCalendar;
 import java.util.Locale;
 
 /**
- * 日期处理相关
+ * @date: 2019/1/30
+ * @author: Kai
+ * @describe: 日期处理相关
  */
 public class DateUtils {
     public static final String yyyyMMddHHmm = "yyyy-MM-dd HH:mm";

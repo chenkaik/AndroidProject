@@ -17,8 +17,9 @@ import java.io.FileReader;
 import java.io.IOException;
 
 /**
- * Created by chenKai on 2018/5/21.
- * 系统版本信息类
+ * @date: 2019/1/30
+ * @author: Kai
+ * @describe: 系统版本信息相关
  */
 public class SystemInfo {
     /**

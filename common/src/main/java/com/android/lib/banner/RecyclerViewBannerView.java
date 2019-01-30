@@ -9,8 +9,9 @@ import android.view.View;
 import java.util.List;
 
 /**
- * Created by chenKai on 2018/5/8.
- *  banner使用的View
+ * @date: 2019/1/30
+ * @author: Kai
+ * @describe: banner使用的View
  */
 public class RecyclerViewBannerView extends RecyclerViewBannerBaseView<LinearLayoutManager, BannerRecyclerAdapter> {
 

@@ -10,8 +10,9 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 
 /**
- * Created by CK on 2017/3/21  15:11.
- * 图片加载器
+ * @date: 2019/1/30
+ * @author: Kai
+ * @describe: 图片加载
  */
 public class ImageLoader {
 

@@ -14,11 +14,10 @@ import android.widget.TextView;
 import com.android.common.R;
 import com.android.lib.util.FragmentManagerUtil;
 
-
 /**
- * @date: 2017/11/17.
- * @author: CHEN
- * @describe: 公共头部
+ * @date: 2019/1/30
+ * @author: Kai
+ * @describe: 公用的title头部
  */
 public class NavigationBar extends FrameLayout {
 

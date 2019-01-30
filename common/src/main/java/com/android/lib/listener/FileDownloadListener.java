@@ -3,8 +3,9 @@ package com.android.lib.listener;
 import java.io.File;
 
 /**
- * Created by chenKai on 2018/6/19.
- * 文件下载的监听
+ * @date: 2019/1/30
+ * @author: Kai
+ * @describe: 文件下载的接口监听回调
  */
 public interface FileDownloadListener {
 

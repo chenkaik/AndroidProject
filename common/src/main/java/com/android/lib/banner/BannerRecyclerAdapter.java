@@ -11,8 +11,9 @@ import com.android.lib.util.ImageLoader;
 import java.util.List;
 
 /**
- * Created by chenKai on 2018/5/8.
- * banner使用的adapter
+ * @date: 2019/1/30
+ * @author: Kai
+ * @describe: banner使用的adapter
  */
 public class BannerRecyclerAdapter extends BaseBannerAdapter<BannerRecyclerAdapter.NormalHolder> {
     private static final String TAG = "BannerRecyclerAdapter";

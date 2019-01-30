@@ -7,7 +7,7 @@ import commom.android.http.ApiManager;
 import commom.android.http.config.HttpConfig;
 
 /**
- * @date: 2018/12/31 16:28
+ * @date: 2019/1/30
  * @author: Kai
  * @describe: 程序入口
  */

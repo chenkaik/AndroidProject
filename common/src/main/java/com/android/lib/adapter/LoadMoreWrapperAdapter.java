@@ -11,11 +11,11 @@ import android.widget.TextView;
 
 import com.android.common.R;
 
-
 /**
- * 上拉加载更多adapter
+ * @date: 2019/1/30
+ * @author: Kai
+ * @describe: 封装上拉加载更多adapter
  */
-
 public class LoadMoreWrapperAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private static final String TAG = "LoadMoreWrapperAdapter";
@@ -42,16 +42,16 @@ public class LoadMoreWrapperAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         this.adapter = adapter;
     }
 
-    public void addHeaderView(View headerView){
+    public void addHeaderView(View headerView) {
         this.mHeaderView = headerView;
         notifyItemInserted(0);
     }
 
     @Override
     public int getItemViewType(int position) {
-        if (mHeaderView != null && position == 0){ // 第一个item设置为HeadView
+        if (mHeaderView != null && position == 0) { // 第一个item设置为HeadView
             return TYPE_HEADER;
-        }else if (position + 1 == getItemCount()) { // 最后一个item设置为FooterView
+        } else if (position + 1 == getItemCount()) { // 最后一个item设置为FooterView
             return TYPE_FOOTER;
         } else { // 普通View
             return TYPE_ITEM;
@@ -61,9 +61,9 @@ public class LoadMoreWrapperAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // 通过判断显示类型，来创建不同的View
-        if (viewType == TYPE_HEADER && mHeaderView != null){
+        if (viewType == TYPE_HEADER && mHeaderView != null) {
             return new HeadViewHolder(mHeaderView);
-        }else if (viewType == TYPE_FOOTER) {
+        } else if (viewType == TYPE_FOOTER) {
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_refresh_footer, parent, false);
             return new FootViewHolder(view);
         } else {
@@ -74,9 +74,9 @@ public class LoadMoreWrapperAdapter extends RecyclerView.Adapter<RecyclerView.Vi
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        if(getItemViewType(position) == TYPE_HEADER){
+        if (getItemViewType(position) == TYPE_HEADER) {
             return;
-        }else if (holder instanceof FootViewHolder) {
+        } else if (holder instanceof FootViewHolder) {
             FootViewHolder footViewHolder = (FootViewHolder) holder;
             switch (loadState) {
                 case LOADING: // 正在加载
@@ -99,8 +99,8 @@ public class LoadMoreWrapperAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                     break;
             }
         } else {
-            if(mHeaderView != null && position > 0){
-                position-- ;
+            if (mHeaderView != null && position > 0) {
+                position--;
             }
             adapter.onBindViewHolder(holder, position);
         }
@@ -123,13 +123,13 @@ public class LoadMoreWrapperAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                 @Override
                 public int getSpanSize(int position) {
                     //return getItemViewType(position) == TYPE_FOOTER ? gridManager.getSpanCount() : 1;
-                    if (getItemViewType(position) == TYPE_HEADER){
+                    if (getItemViewType(position) == TYPE_HEADER) {
                         // 如果当前是HeaderView则占所有列，否则只占自己列
                         return gridManager.getSpanCount();
-                    }else if (getItemViewType(position) == TYPE_FOOTER){
+                    } else if (getItemViewType(position) == TYPE_FOOTER) {
                         // 如果当前是footer的位置，那么该item占据2个单元格，正常情况下占据1个单元格
                         return gridManager.getSpanCount();
-                    }else {
+                    } else {
                         // 正常
                         return 1;
                     }
@@ -138,7 +138,7 @@ public class LoadMoreWrapperAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         }
     }
 
-    private static class HeadViewHolder extends RecyclerView.ViewHolder{
+    private static class HeadViewHolder extends RecyclerView.ViewHolder {
 
         //private SparseArray<View> views;
 

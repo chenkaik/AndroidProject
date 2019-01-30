@@ -3,8 +3,9 @@ package com.android.lib;
 import android.util.Log;
 
 /**
- * Created by chenKai on 2018/6/10.
- * 打印日志类
+ * @date: 2019/1/30
+ * @author: Kai
+ * @describe: 统一管理打印日志
  */
 public class Logger {
 

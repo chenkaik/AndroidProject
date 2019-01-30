@@ -7,12 +7,15 @@ import android.view.Window;
 import android.view.WindowManager;
 
 /**
- * Created by Administrator on 2016/8/1.
+ * @date: 2019/1/30
+ * @author: Kai
+ * @describe: 修改状态栏颜色
  */
 public class StatusBarUtil {
-    
+
     /**
      * 修改状态栏颜色，支持4.4以上版本
+     *
      * @param activity
      * @param colorId
      */
@@ -29,13 +32,14 @@ public class StatusBarUtil {
 
     /**
      * 修改状态栏为全透明
+     *
      * @param activity
      */
     @TargetApi(19)
-    public static void transparencyBar(Activity activity){
-            Window window =activity.getWindow();
-            window.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
-                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+    public static void transparencyBar(Activity activity) {
+        Window window = activity.getWindow();
+        window.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
+                WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
     }
 
 }

@@ -7,7 +7,9 @@ import java.net.UnknownHostException;
 import java.util.concurrent.TimeoutException;
 
 /**
- * Created by chenKai on 2018/9/25.
+ * @date: 2019/1/30
+ * @author: Kai
+ * @describe: 处理接口调用失败
  */
 public class NetErrStringUtils {
 

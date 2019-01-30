@@ -11,13 +11,11 @@ import android.view.inputmethod.InputMethodManager;
 
 import com.android.common.R;
 
-
 /**
- * @date: 2017/11/17.
- * @author: CHEN
- * @describe: fragment管理
+ * @date: 2019/1/30
+ * @author: Kai
+ * @describe: 管理fragment
  */
-
 public class FragmentManagerUtil {
 
     private static final String tag = FragmentManagerUtil.class.getSimpleName();

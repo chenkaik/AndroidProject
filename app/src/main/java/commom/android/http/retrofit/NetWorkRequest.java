@@ -27,8 +27,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 /**
- * Created by chenKai on 2018/9/25.
- * 支持网络请求缓存，自动添加和删除缓存，也可以手动cancel请求
+ * @date: 2019/1/30
+ * @author: Kai
+ * @describe: retrofit调用接口，支持网络请求缓存，自动添加和删除缓存，也可以手动cancel请求
  */
 public class NetWorkRequest {
 

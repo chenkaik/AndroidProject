@@ -4,8 +4,9 @@ import android.os.Handler;
 import android.widget.TextView;
 
 /**
- * Created by chenKai on 2018/7/26.
- * 倒计时
+ * @date: 2019/1/30
+ * @author: Kai
+ * @describe: 倒计时
  */
 public class SMSCountDown {
 

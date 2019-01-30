@@ -5,7 +5,9 @@ import commom.android.http.retrofit.ApiService;
 import commom.android.http.retrofit.NetWorkRequest;
 
 /**
- * Created by chenKai on 2018/9/21.
+ * @date: 2019/1/30
+ * @author: Kai
+ * @describe: 管理接口初始化
  */
 public class ApiManager {
 

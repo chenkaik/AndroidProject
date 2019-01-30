@@ -12,10 +12,10 @@ import android.widget.TextView;
 
 import com.android.common.R;
 
-
 /**
- * Created by chenKai on 2018/4/17.
- * 公用的弹框
+ * @date: 2019/1/30
+ * @author: Kai
+ * @describe: 公用的弹框
  */
 public class CommonAlertDialog {
     public static class Builder {

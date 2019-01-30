@@ -7,8 +7,9 @@ import android.view.ViewGroup;
 import java.util.List;
 
 /**
- * Created by chenKai on 2018/5/8.
- * banner使用的baseAdapter
+ * @date: 2019/1/30
+ * @author: Kai
+ * @describe: banner使用的baseAdapter
  */
 public abstract class BaseBannerAdapter<VH extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     protected List<Integer> urlList;

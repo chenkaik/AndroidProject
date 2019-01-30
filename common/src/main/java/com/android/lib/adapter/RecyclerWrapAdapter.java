@@ -7,7 +7,9 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 /**
- * 包装adapter(RecyclerView添加头部与底部使用)
+ * @date: 2019/1/30
+ * @author: Kai
+ * @describe: 包装adapter(RecyclerView添加头部与底部使用)
  */
 public class RecyclerWrapAdapter extends RecyclerView.Adapter implements WrapperAdapter {
 
@@ -85,6 +87,7 @@ public class RecyclerWrapAdapter extends RecyclerView.Adapter implements Wrapper
      * 否则再判断 原 Adapter 的 count 与当前 position 的差值来比较，
      * 是调用原 Adapter 的 getView 方法，还是获取 footView 的 view；
      * 目的就是添加了头部和尾部 View。
+     *
      * @param position
      * @return
      */
