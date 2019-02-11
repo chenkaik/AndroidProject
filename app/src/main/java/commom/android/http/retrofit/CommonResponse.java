@@ -3,7 +3,7 @@ package commom.android.http.retrofit;
 /**
  * @date: 2019/1/30
  * @author: Kai
- * @describe: 请求数据(返回解析好的数据直接使用)的回调接口
+ * @describe: 请求数据(返回解析好的数据直接使用,适用于retrofit请求)的回调接口
  */
 public interface CommonResponse<T extends BaseResponseEntity> {
     /**

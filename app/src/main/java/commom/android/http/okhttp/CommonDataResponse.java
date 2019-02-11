@@ -1,9 +1,9 @@
-package commom.android.http.retrofit;
+package commom.android.http.okhttp;
 
 /**
  * @date: 2019/1/30
  * @author: Kai
- * @describe: 请求数据(返回json)的回调接口
+ * @describe: 请求数据的回调接口(适用于okHttp请求)
  */
 public interface CommonDataResponse {
 
