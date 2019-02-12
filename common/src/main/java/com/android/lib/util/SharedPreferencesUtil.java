@@ -6,7 +6,6 @@ import android.content.SharedPreferences.Editor;
 
 /**
  * @date: 2019/1/30.
- * @author: Kai
  * @describe: 保存用户信息
  */
 public class SharedPreferencesUtil {

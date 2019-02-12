@@ -13,7 +13,6 @@ import com.android.common.R;
 
 /**
  * @date: 2019/1/30
- * @author: Kai
  * @describe: 管理fragment
  */
 public class FragmentManagerUtil {

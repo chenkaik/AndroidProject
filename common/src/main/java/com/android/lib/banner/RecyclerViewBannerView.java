@@ -10,7 +10,6 @@ import java.util.List;
 
 /**
  * @date: 2019/1/30
- * @author: Kai
  * @describe: banner使用的View
  */
 public class RecyclerViewBannerView extends RecyclerViewBannerBaseView<LinearLayoutManager, BannerRecyclerAdapter> {

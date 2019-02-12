@@ -8,7 +8,6 @@ import java.util.concurrent.TimeoutException;
 
 /**
  * @date: 2019/1/30
- * @author: Kai
  * @describe: 处理接口调用失败
  */
 public class NetErrStringUtils {

@@ -11,7 +11,6 @@ import java.util.ArrayList;
 
 /**
  * @date: 2019/1/30
- * @author: Kai
  * @describe: 可添加头部和底部的RecyclerView(注意调用适配器刷新数据要调本类的notifyDataSetChanged方法)
  */
 public class XRecyclerView extends RecyclerView {

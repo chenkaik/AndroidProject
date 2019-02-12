@@ -2,7 +2,6 @@ package commom.android.http.config;
 
 /**
  * @date: 2019/1/30
- * @author: Kai
  * @describe: 配置服务端地址
  */
 public class HttpConfig {

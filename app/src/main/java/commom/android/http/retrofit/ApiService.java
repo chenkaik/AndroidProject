@@ -2,7 +2,6 @@ package commom.android.http.retrofit;
 
 /**
  * @date: 2019/1/30
- * @author: Kai
  * @describe: 定义接口
  */
 public interface ApiService {

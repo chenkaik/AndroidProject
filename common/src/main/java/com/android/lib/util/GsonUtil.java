@@ -14,8 +14,7 @@ import java.util.List;
 
 /**
  * @date: 2019/1/30.
- * @author: Kai
- * @describe: gson封装解析json
+ * @describe: Gson封装解析Json
  */
 public class GsonUtil {
     private static final Gson GSON;

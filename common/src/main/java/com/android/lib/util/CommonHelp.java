@@ -7,7 +7,6 @@ import com.android.common.R;
 
 /**
  * @date: 2019/1/30
- * @author: Kai
  * @describe: 弹框辅助类
  */
 public class CommonHelp {

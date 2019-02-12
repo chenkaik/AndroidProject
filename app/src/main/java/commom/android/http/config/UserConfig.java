@@ -7,7 +7,6 @@ import com.example.android.project.CommonApplication;
 
 /**
  * @date: 2019/1/30
- * @author: Kai
  * @describe: 该SP是和用户信息相关的
  */
 public class UserConfig extends SharedPreferencesUtil {

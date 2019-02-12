@@ -12,7 +12,6 @@ import java.util.List;
 
 /**
  * @date: 2019/1/30
- * @author: Kai
  * @describe: banner使用的adapter
  */
 public class BannerRecyclerAdapter extends BaseBannerAdapter<BannerRecyclerAdapter.NormalHolder> {

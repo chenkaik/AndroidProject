@@ -8,7 +8,6 @@ import android.view.WindowManager;
 
 /**
  * @date: 2019/1/30
- * @author: Kai
  * @describe: 修改状态栏颜色
  */
 public class StatusBarUtil {

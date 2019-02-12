@@ -2,7 +2,6 @@ package commom.android.http.retrofit;
 
 /**
  * @date: 2019/1/30
- * @author: Kai
  * @describe: 根据需要自由定制修改
  */
 public class BaseResponseEntity {

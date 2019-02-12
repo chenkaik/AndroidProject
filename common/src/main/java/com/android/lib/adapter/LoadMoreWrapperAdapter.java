@@ -13,7 +13,6 @@ import com.android.common.R;
 
 /**
  * @date: 2019/1/30
- * @author: Kai
  * @describe: 封装上拉加载更多adapter
  */
 public class LoadMoreWrapperAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {

@@ -8,7 +8,6 @@ import android.widget.TextView;
 
 /**
  * @date: 2019/1/30
- * @author: Kai
  * @describe: recyclerView公用的ViewHolder
  */
 public class RecyclerViewHolder extends RecyclerView.ViewHolder {

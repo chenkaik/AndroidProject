@@ -15,7 +15,6 @@ import android.widget.Scroller;
 
 /**
  * @date: 2019/1/30
- * @author: Kai
  * @describe: 侧滑菜单删除的RecyclerView
  * 参考https://blog.csdn.net/dapangzao/article/details/80524774
  */

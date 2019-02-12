@@ -11,8 +11,7 @@ import com.bumptech.glide.request.RequestOptions;
 
 /**
  * @date: 2019/1/30
- * @author: Kai
- * @describe: 图片加载
+ * @describe: Glide加载图片
  */
 public class ImageLoader {
 

@@ -16,7 +16,6 @@ import com.android.lib.util.FragmentManagerUtil;
 
 /**
  * @date: 2019/1/30
- * @author: Kai
  * @describe: 公用的title头部
  */
 public class NavigationBar extends FrameLayout {

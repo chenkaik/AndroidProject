@@ -8,7 +8,6 @@ import commom.android.http.config.HttpConfig;
 
 /**
  * @date: 2019/1/30
- * @author: Kai
  * @describe: 程序入口
  */
 public class CommonApplication extends Application {

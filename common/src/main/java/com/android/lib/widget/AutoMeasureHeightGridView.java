@@ -6,7 +6,6 @@ import android.widget.GridView;
 
 /**
  * @date: 2019/1/30
- * @author: Kai
  * @describe: 根据item多少，自适应高度的列表
  */
 public class AutoMeasureHeightGridView extends GridView {

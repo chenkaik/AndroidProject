@@ -5,7 +5,6 @@ import android.widget.TextView;
 
 /**
  * @date: 2019/1/30
- * @author: Kai
  * @describe: 倒计时
  */
 public class SMSCountDown {

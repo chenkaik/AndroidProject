@@ -13,7 +13,6 @@ import okhttp3.ResponseBody;
 
 /**
  * @date: 2019/1/30
- * @author: Kai
  * @describe: Request拦截器，添加header--token
  */
 public class OkHttpInterceptor implements Interceptor {

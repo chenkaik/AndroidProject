@@ -50,7 +50,6 @@ public class ScreenManager {
         if (activity != null) {
             activityStack.remove(activity);
             activity.finish();
-            activity = null;
         }
     }
 
@@ -200,9 +199,7 @@ public class ScreenManager {
      * @return
      */
     public int getSize() {
-        int size = 0;
-        size = activityStack.size();
-        return size;
+        return activityStack.size();
     }
 
     /**
@@ -261,15 +258,15 @@ public class ScreenManager {
      * @return 栈中是否有界面, 有, 返回true; 没有,返回false
      */
     public boolean goBlackPage() {
-        boolean re = false;
+        boolean b = false;
         int size = getSize();
         boolean isEmpty = true;
         isEmpty = activityStack.isEmpty();
         if (size > 0 && !isEmpty) {
             popActivityNoFinish();
-            re = true;
+            b = true;
         }
-        return re;
+        return b;
     }
 
 }

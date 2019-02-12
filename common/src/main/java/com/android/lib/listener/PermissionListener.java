@@ -4,7 +4,6 @@ import java.util.List;
 
 /**
  * @date: 2017/11/17.
- * @author: CHEN
  * @describe: 用于权限申请回调
  */
 

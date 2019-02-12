@@ -12,7 +12,6 @@ import java.util.Locale;
 
 /**
  * @date: 2019/1/30
- * @author: Kai
  * @describe: 日期处理相关
  */
 public class DateUtils {

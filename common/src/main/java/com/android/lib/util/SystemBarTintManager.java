@@ -39,7 +39,6 @@ import java.lang.reflect.Method;
 
 /**
  * @date: 2019/1/30
- * @author: Kai
  * @describe: 修改状态栏颜色(android4.4版本以上使用)
  */
 public class SystemBarTintManager {

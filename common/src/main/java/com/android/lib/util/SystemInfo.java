@@ -18,7 +18,6 @@ import java.io.IOException;
 
 /**
  * @date: 2019/1/30
- * @author: Kai
  * @describe: 系统版本信息相关
  */
 public class SystemInfo {

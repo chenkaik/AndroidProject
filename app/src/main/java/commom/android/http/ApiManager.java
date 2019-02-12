@@ -6,7 +6,6 @@ import commom.android.http.retrofit.NetWorkRequest;
 
 /**
  * @date: 2019/1/30
- * @author: Kai
  * @describe: 管理接口初始化
  */
 public class ApiManager {

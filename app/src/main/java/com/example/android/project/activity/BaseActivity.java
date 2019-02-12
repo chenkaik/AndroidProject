@@ -23,7 +23,6 @@ import butterknife.Unbinder;
 
 /**
  * @date: 2019/2/11
- * @author: Kai
  * @describe: 基类
  */
 public abstract class BaseActivity extends AppCompatActivity {

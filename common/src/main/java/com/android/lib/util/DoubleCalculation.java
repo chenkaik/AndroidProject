@@ -4,7 +4,6 @@ import java.math.BigDecimal;
 
 /**
  * @date: 2019/1/15
- * @author: Kai
  * @describe: double值加减乘除计算
  */
 public class DoubleCalculation {

@@ -4,7 +4,6 @@ import android.util.Log;
 
 /**
  * @date: 2019/1/30
- * @author: Kai
  * @describe: 统一管理打印日志
  */
 public class Logger {

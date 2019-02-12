@@ -14,7 +14,6 @@ import com.android.common.R;
 
 /**
  * @date: 2019/1/30
- * @author: Kai
  * @describe: 公用的弹框
  */
 public class CommonAlertDialog {

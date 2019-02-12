@@ -10,7 +10,6 @@ import com.android.common.R;
 
 /**
  * @date: 2019/1/30
- * @author: Kai
  * @describe: 请求网络加载提示框
  */
 public class CommonProgressDialog extends Dialog {

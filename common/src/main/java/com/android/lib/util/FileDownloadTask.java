@@ -18,7 +18,6 @@ import okhttp3.Response;
 
 /**
  * @date: 2019/1/30
- * @author: Kai
  * @describe: 文件下载
  */
 public class FileDownloadTask extends AsyncTask<String, Integer, Integer> {

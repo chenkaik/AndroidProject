@@ -30,7 +30,6 @@ import java.util.List;
 
 /**
  * @date: 2019/1/30
- * @author: Kai
  * @describe: RecyclerView实现banner
  */
 public abstract class RecyclerViewBannerBaseView<L extends RecyclerView.LayoutManager, A extends BaseBannerAdapter> extends FrameLayout {

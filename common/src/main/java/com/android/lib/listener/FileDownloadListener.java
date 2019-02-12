@@ -4,7 +4,6 @@ import java.io.File;
 
 /**
  * @date: 2019/1/30
- * @author: Kai
  * @describe: 文件下载的接口监听回调
  */
 public interface FileDownloadListener {

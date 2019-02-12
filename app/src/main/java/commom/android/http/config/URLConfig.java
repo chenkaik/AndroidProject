@@ -2,7 +2,6 @@ package commom.android.http.config;
 
 /**
  * @date: 2019/1/30
- * @author: Kai
  * @describe: 接口地址
  */
 public interface URLConfig {

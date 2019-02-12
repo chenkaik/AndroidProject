@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
 /**
  * @date: 2019/1/30
- * @author: Kai
  * @describe: 包装adapter(RecyclerView添加头部与底部使用)
  */
 public class RecyclerWrapAdapter extends RecyclerView.Adapter implements WrapperAdapter {
