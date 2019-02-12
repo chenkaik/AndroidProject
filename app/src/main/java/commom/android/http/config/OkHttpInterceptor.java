@@ -37,8 +37,8 @@ public class OkHttpInterceptor implements Interceptor {
         // 获取、修改请求头
         Headers headers = original.headers();
         Headers newHeader = headers.newBuilder()
-//                .add("Authorization", "Bearer " + UserConfig.getInstance().getToken())
-                .add("Authorization", "Bearer 038cc6ca9ec03a38b18370bf1b9b7b15")
+                .add("Authorization", "Bearer " + UserConfig.getInstance().getToken())
+//                .add("Authorization", "Bearer 038cc6ca9ec03a38b18370bf1b9b7b15")
                 .build();
 
         Request.Builder builder = original.newBuilder()

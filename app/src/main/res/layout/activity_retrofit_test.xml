@@ -8,8 +8,15 @@
     tools:context=".activity.RetrofitTestActivity">
 
     <Button
+        android:id="@+id/btn_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="登录请求"/>
+
+    <Button
+        android:id="@+id/btn_other"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="其它接口请求"/>
 
 </LinearLayout>

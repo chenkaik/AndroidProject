@@ -4,7 +4,7 @@ package commom.android.http.retrofit;
  * @date: 2019/1/30
  * @describe: 根据需要自由定制修改
  */
-public class BaseResponseEntity {
+public class BaseResponse {
 
     /**
      * 接口请求requestCode,用于区分多个请求同时发起的情况

@@ -97,7 +97,7 @@ public class NetWorkRequest {
      * @param isShow           是否显示加载框
      * @param <T>
      */
-    public <T extends BaseResponseEntity> void asyncNetWork(final String TAG, final int requestCode, final Call<T> requestCall, final CommonResponse<T> responseListener, final boolean isShow) {
+    public <T extends BaseResponse> void asyncNetWork(final String TAG, final int requestCode, final Call<T> requestCall, final CommonResponse<T> responseListener, final boolean isShow) {
         if (responseListener == null) {
             return;
         }
@@ -127,7 +127,7 @@ public class NetWorkRequest {
                     }
                     if (result.getSYS_HEAD() != null && result.getSYS_HEAD().getRET() != null) {
                         if (HttpConfig.SUCCESS.equals(result.getSYS_HEAD().getRET().getRET_CODE())) {
-                            result.requestCode = requestCode;
+                            result.requestCode = requestCode; // 区分接口请求
                             responseListener.onDataReady(result);
                         } else if (HttpConfig.TOKENERROR.equals(result.getSYS_HEAD().getRET().getRET_CODE())) {
                             responseListener.onDataError(requestCode, response.code(), "登录失效", true);
@@ -161,7 +161,7 @@ public class NetWorkRequest {
      * @param isShow           是否显示加载框
      * @param <T>
      */
-    public <T extends BaseResponseEntity> void syncNetWork(final String TAG, final int requestCode, final Call<T> requestCall, final CommonResponse<T> responseListener, boolean isShow) {
+    public <T extends BaseResponse> void syncNetWork(final String TAG, final int requestCode, final Call<T> requestCall, final CommonResponse<T> responseListener, boolean isShow) {
         if (responseListener == null) {
             return;
         }

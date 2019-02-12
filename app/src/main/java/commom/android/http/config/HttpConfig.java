@@ -8,10 +8,10 @@ public class HttpConfig {
     //    public static String BASE_URL = "http://116.196.107.174:9000/";
 //    public static String BASE_URL = "http://192.168.96.117:8785/";
     // 测试环境
-    public static String BASE_URL = "https://www.lixiaotech.com/server/";
+//    public static String BASE_URL = "https://www.lixiaotech.com/server/";
     public static String INDEX_URL = "https://www.lixiaotech.com/#/mobileInterface";
     // 正式环境
-//    public static String BASE_URL = "https://www.shjacf.com/server/";
+    public static String BASE_URL = "https://www.shjacf.com/server/";
 //    public static String INDEX_URL = "https://www.shjacf.com/#/mobileInterface";
 
     public static long READ_TIMEOUT = 15L;
