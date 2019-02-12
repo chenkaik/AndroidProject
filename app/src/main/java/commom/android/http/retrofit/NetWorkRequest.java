@@ -1,5 +1,8 @@
 package commom.android.http.retrofit;
 
+import android.os.Handler;
+import android.os.Looper;
+
 import com.android.lib.Logger;
 import com.android.lib.util.NetErrStringUtils;
 
@@ -29,12 +32,10 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 public class NetWorkRequest {
 
     private static final String TA = NetWorkRequest.class.getSimpleName();
-
     private Map<String, Map<Integer, Call>> mRequestMap = new ConcurrentHashMap<>();
-
     private Retrofit mRetrofit;
-
     private OkHttpClient mOkHttpClient;
+    public static Handler mHandler = new Handler(Looper.getMainLooper());
 
     private NetWorkRequest() {
     }
@@ -84,7 +85,7 @@ public class NetWorkRequest {
     }
 
     public OkHttpClient getOkHttpClient() {
-        return mOkHttpClient;
+        return mOkHttpClient == null ? new OkHttpClient() : mOkHttpClient;
     }
 
     /**
@@ -199,83 +200,6 @@ public class NetWorkRequest {
             cancelCall(TAG, requestCode);
         }
     }
-
-//    /**
-//     * 异步请求(返回Json数据)
-//     *
-//     * @param TAG              区分不同页面的请求
-//     * @param requestCode      用于区分相同页面的不同请求
-//     * @param requestCall      动态代理 泛型为返回实体
-//     * @param responseListener 回调接口
-//     * @param isShow           是否显示加载框
-//     */
-//    public void asyncNetWork(final String TAG, final int requestCode, final Call<ResponseBody> requestCall, final CommonDataResponse responseListener, final boolean isShow) {
-//        if (responseListener == null) {
-//            return;
-//        }
-//        if (isShow) {
-//            responseListener.showLoading("");
-//        }
-//        Call<ResponseBody> call;
-//        if (requestCall.isExecuted()) {
-//            call = requestCall.clone();
-//        } else {
-//            call = requestCall;
-//        }
-//        addCall(TAG, requestCode, call);
-//        call.enqueue(new Callback<ResponseBody>() {
-//            @Override
-//            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-//                Log.e(TA, "responseCode:" + response.code());
-//                if (isShow) {
-//                    responseListener.dismissLoading();
-//                }
-//                cancelCall(TAG, requestCode);
-//                if (response.isSuccessful()) { // 200--300
-//                    if (response.code() == HttpURLConnection.HTTP_OK) { // 200
-//                        ResponseBody result = response.body();
-//                        if (result == null) {
-//                            responseListener.onDataError(requestCode, response.code(), response.message(), false);
-//                            return;
-//                        }
-//                        try {
-//                            String string = new String(result.bytes());
-//                            Log.e(TAG, "json: " + string);
-////                            responseListener.onDataReady(requestCode, string);
-//                        } catch (IOException e) {
-//                            //e.printStackTrace();
-//                            responseListener.onDataError(requestCode, response.code(), "获取数据失败", false);
-//                        }
-//                    } else if (response.code() == HttpURLConnection.HTTP_NO_CONTENT) { // 204
-//                        responseListener.onDataReady(requestCode, null, "");
-//                    } else {
-//                        responseListener.onDataError(requestCode, response.code(), response.message(), false);
-//                    }
-//                } else {
-//                    if (HttpURLConnection.HTTP_UNAUTHORIZED == response.code()) { // 401认证失败
-//                        responseListener.onDataError(requestCode, response.code(), response.message(), true);
-//                    } else if (HttpURLConnection.HTTP_FORBIDDEN == response.code()) { // 403
-//                        if (TextUtils.isEmpty(response.message())) {
-//                            responseListener.onDataError(requestCode, response.code(), "无权限", false);
-//                        } else {
-//                            responseListener.onDataError(requestCode, response.code(), response.message(), false);
-//                        }
-//                    } else {
-//                        responseListener.onDataError(requestCode, response.code(), response.message(), false);
-//                    }
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<ResponseBody> call, Throwable t) {
-//                if (isShow) {
-//                    responseListener.dismissLoading();
-//                }
-//                cancelCall(TAG, requestCode);
-//                responseListener.onDataError(requestCode, 0, NetErrStringUtils.getErrString(t), false);
-//            }
-//        });
-//    }
 
     /**
      * 添加call到Map
