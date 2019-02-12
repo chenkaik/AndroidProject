@@ -25,6 +25,12 @@
         </activity>
         <activity
             android:name=".activity.RetrofitTestActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.OkHttpTestActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.TestActivity"
             android:screenOrientation="portrait"/>
     </application>
 
