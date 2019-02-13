@@ -4,7 +4,15 @@ package commom.android.http.okhttp;
  * @date: 2019/1/30
  * @describe: 请求数据的回调接口(适用于okHttp请求)
  */
-public interface CommonDataResponse {
+public interface CommonOkHttpResponse {
+
+//    /**
+//     * 接口响应
+//     *
+//     * @param requestCode 区分请求的code
+//     * @param response    响应
+//     */
+//    void onSuccess(int requestCode, Response response);
 
     /**
      * 服务器返回成功的数据(回调时的值object与json二选一处理)
@@ -25,15 +33,15 @@ public interface CommonDataResponse {
      */
     void onDataError(int requestCode, int responseCode, String message, boolean isOverdue);
 
-    /**
-     * 显示dialog
-     *
-     * @param msg
-     */
-    void showLoading(String msg);
-
-    /**
-     * 取消dialog
-     */
-    void dismissLoading();
+//    /**
+//     * 显示dialog
+//     *
+//     * @param msg
+//     */
+//    void showLoading(String msg);
+//
+//    /**
+//     * 取消dialog
+//     */
+//    void dismissLoading();
 }

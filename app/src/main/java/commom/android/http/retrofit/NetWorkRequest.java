@@ -15,6 +15,7 @@ import java.util.concurrent.TimeUnit;
 import commom.android.http.config.CookieManager;
 import commom.android.http.config.HttpConfig;
 import commom.android.http.config.OkHttpInterceptor;
+import commom.android.http.okhttp.PostBuilder;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
@@ -183,9 +184,9 @@ public class NetWorkRequest {
                     responseListener.onDataError(requestCode, response.code(), "数据加载失败", false);
                     return;
                 }
-                result.requestCode = requestCode;
-                result.serverTip = response.message();
-                result.responseCode = response.code();
+//                result.requestCode = requestCode;
+//                result.serverTip = response.message();
+//                result.responseCode = response.code();
                 responseListener.onDataReady(result);
             } else {
                 responseListener.onDataError(requestCode, response.code(), NetErrStringUtils.getErrString(response.code()), false);
@@ -275,6 +276,10 @@ public class NetWorkRequest {
      */
     public void cancelTagCall(String TAG) {
         cancelCall(TAG, null);
+    }
+
+    public PostBuilder post() {
+        return new PostBuilder(this);
     }
 
 }
