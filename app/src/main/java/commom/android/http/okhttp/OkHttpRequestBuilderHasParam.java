@@ -44,12 +44,30 @@ public abstract class OkHttpRequestBuilderHasParam<T extends OkHttpRequestBuilde
         return (T) this;
     }
 
+    /**
+     * append params to url
+     *
+     * @param url    接口路径
+     * @param params 参数
+     * @return
+     */
+    public String appendParams(String url, Map<String, String> params) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(url + "?");
+        if (params != null && !params.isEmpty()) {
+            for (String key : params.keySet()) {
+                sb.append(key).append("=").append(params.get(key)).append("&");
+            }
+        }
+        sb = sb.deleteCharAt(sb.length() - 1);
+        return sb.toString();
+    }
 
     /**
      * append params to form builder
      *
-     * @param builder
-     * @param params
+     * @param builder 构建
+     * @param params  参数
      */
     public void appendParams(FormBody.Builder builder, Map<String, String> params) {
         if (params != null && !params.isEmpty()) {

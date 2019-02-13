@@ -1,4 +1,4 @@
-package commom.android.http.okhttp;
+package commom.android.http.response;
 
 /**
  * @date: 2019/1/30

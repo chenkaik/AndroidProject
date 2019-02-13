@@ -1,6 +1,6 @@
 package com.example.android.project.entity;
 
-import commom.android.http.retrofit.BaseResponse;
+import commom.android.http.response.BaseResponse;
 
 /**
  * @date: 2019/2/12

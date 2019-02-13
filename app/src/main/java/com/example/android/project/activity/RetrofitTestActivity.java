@@ -13,8 +13,8 @@ import com.example.android.project.entity.request.LoginRequest;
 import butterknife.OnClick;
 import commom.android.http.ApiManager;
 import commom.android.http.config.UserConfig;
-import commom.android.http.retrofit.BaseResponse;
-import commom.android.http.retrofit.CommonResponse;
+import commom.android.http.response.BaseResponse;
+import commom.android.http.response.CommonResponse;
 import commom.android.http.retrofit.NetWorkRequest;
 
 public class RetrofitTestActivity extends BaseActivity implements CommonResponse{
@@ -43,10 +43,10 @@ public class RetrofitTestActivity extends BaseActivity implements CommonResponse
         switch (view.getId()) {
             case R.id.btn_login:
                 UserConfig.getInstance().clearToken();
-                NetWorkRequest.getInstance().asyncNetWork(TAG, 1, ApiManager.getInstance().getApiService().login(loginRequest), this, true);
+                NetWorkRequest.getRequestManager().asyncNetWork(TAG, 1, ApiManager.getInstance().getApiService().login(loginRequest), this, true);
                 break;
             case R.id.btn_other:
-                NetWorkRequest.getInstance().asyncNetWork(TAG, 100, ApiManager.getInstance().getApiService().homeIndex(request), this, true);
+                NetWorkRequest.getRequestManager().asyncNetWork(TAG, 100, ApiManager.getInstance().getApiService().homeIndex(request), this, true);
                 break;
             default:
                 break;

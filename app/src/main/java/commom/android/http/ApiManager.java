@@ -24,12 +24,12 @@ public class ApiManager {
     }
 
     public void init(String baseURL) {
-        NetWorkRequest.getInstance().init(baseURL);
+        NetWorkRequest.getRequestManager().init(baseURL);
     }
 
     public ApiService getApiService() {
         if (mApiService == null) {
-            mApiService = NetWorkRequest.getInstance().create(ApiService.class);
+            mApiService = NetWorkRequest.getRequestManager().create(ApiService.class);
         }
         return mApiService;
     }
@@ -39,11 +39,11 @@ public class ApiManager {
      */
     public void release() {
         mApiService = null;
-        NetWorkRequest.getInstance().release();
+        NetWorkRequest.getRequestManager().release();
     }
 
     public void cancelTagCall(String TAG) {
-        NetWorkRequest.getInstance().cancelTagCall(TAG);
+        NetWorkRequest.getRequestManager().cancelTagCall(TAG);
     }
 
 }

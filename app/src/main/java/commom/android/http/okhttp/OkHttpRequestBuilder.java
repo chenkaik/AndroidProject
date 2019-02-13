@@ -3,6 +3,7 @@ package commom.android.http.okhttp;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import commom.android.http.response.CommonOkHttpResponse;
 import commom.android.http.retrofit.NetWorkRequest;
 import okhttp3.Headers;
 import okhttp3.Request;

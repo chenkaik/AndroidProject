@@ -89,8 +89,8 @@ public abstract class BaseActivity extends AppCompatActivity {
      * @param isOverdue 当前登录用户是否失效
      */
     public void commonFail(String msg, boolean isOverdue) {
-        if (isOverdue) {
-            // 登录失效
+        if (isOverdue) { // 登录失效
+            showToastMessage("登录失效");
         } else if (NetworkUtil.isNetworkAvailable(this)) {
             if (!TextUtils.isEmpty(msg)) {
                 showToastMessage(msg);

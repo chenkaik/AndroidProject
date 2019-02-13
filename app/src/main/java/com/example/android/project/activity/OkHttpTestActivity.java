@@ -7,6 +7,7 @@ import android.view.View;
 import com.android.lib.util.GsonUtil;
 import com.example.android.project.R;
 import com.example.android.project.entity.LoginResponse;
+import com.example.android.project.entity.TradeNumberResponse;
 
 import org.json.JSONObject;
 
@@ -15,7 +16,7 @@ import java.util.Map;
 
 import butterknife.OnClick;
 import commom.android.http.config.UserConfig;
-import commom.android.http.okhttp.CommonOkHttpResponse;
+import commom.android.http.response.CommonOkHttpResponse;
 import commom.android.http.retrofit.NetWorkRequest;
 
 public class OkHttpTestActivity extends BaseActivity implements CommonOkHttpResponse {
@@ -38,19 +39,25 @@ public class OkHttpTestActivity extends BaseActivity implements CommonOkHttpResp
             case R.id.btn_login_ok:
                 showLoadingDialog("");
                 UserConfig.getInstance().clearToken();
-                String url = "https://www.shjacf.com/server/login";
                 Map<String, String> params = new HashMap<>();
                 params.put("username", "lixiangbin");
                 params.put("password", "shjacf");
-                NetWorkRequest.getInstance()
+                NetWorkRequest.getRequestManager()
                         .post()
-                        .url(url)
+                        .url("https://www.shjacf.com/server/login")
                         .jsonParams(new JSONObject(params).toString())
                         .tag(this)
                         .enqueue(1, this);
                 break;
             case R.id.btn_other_ok:
-                showToastMessage("ok_other");
+                showLoadingDialog("");
+                NetWorkRequest.getRequestManager()
+                        .get()
+                        .url("https://www.shjacf.com/server/api-user/file/reference/PW")
+//                        .addHeader("Authorization","Bearer 791a88484f833a66b67b9b60395027ec")
+//                        .addParam("name", "test")
+                        .tag(this)
+                        .enqueue(2, this);
                 break;
             default:
                 break;
@@ -74,6 +81,12 @@ public class OkHttpTestActivity extends BaseActivity implements CommonOkHttpResp
                     showToastMessage("登录成功");
                 }
                 break;
+            case 2:
+                TradeNumberResponse tradeNumberResponse = GsonUtil.fromJson(json, TradeNumberResponse.class);
+                if (tradeNumberResponse != null) {
+                    showToastMessage(tradeNumberResponse.getMSG_BODY().getResult());
+                }
+                break;
             default:
                 break;
         }
@@ -81,6 +94,7 @@ public class OkHttpTestActivity extends BaseActivity implements CommonOkHttpResp
 
     @Override
     public void onDataError(int requestCode, int responseCode, String message, boolean isOverdue) {
+        dismissLoadingDialog();
         commonFail(message, isOverdue);
     }
 

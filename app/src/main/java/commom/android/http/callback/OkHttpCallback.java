@@ -1,4 +1,4 @@
-package commom.android.http.okhttp;
+package commom.android.http.callback;
 
 import com.android.lib.Logger;
 import com.android.lib.util.GsonUtil;
@@ -6,7 +6,8 @@ import com.android.lib.util.GsonUtil;
 import java.io.IOException;
 
 import commom.android.http.config.HttpConfig;
-import commom.android.http.retrofit.BaseResponse;
+import commom.android.http.response.CommonOkHttpResponse;
+import commom.android.http.response.BaseResponse;
 import commom.android.http.retrofit.NetWorkRequest;
 import okhttp3.Call;
 import okhttp3.Callback;

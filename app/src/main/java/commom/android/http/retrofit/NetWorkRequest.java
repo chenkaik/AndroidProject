@@ -15,7 +15,10 @@ import java.util.concurrent.TimeUnit;
 import commom.android.http.config.CookieManager;
 import commom.android.http.config.HttpConfig;
 import commom.android.http.config.OkHttpInterceptor;
-import commom.android.http.okhttp.PostBuilder;
+import commom.android.http.builder.GetBuilder;
+import commom.android.http.builder.PostBuilder;
+import commom.android.http.response.BaseResponse;
+import commom.android.http.response.CommonResponse;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
@@ -40,7 +43,7 @@ public class NetWorkRequest {
     private NetWorkRequest() {
     }
 
-    public static NetWorkRequest getInstance() {
+    public static NetWorkRequest getRequestManager() {
         return NetWorkRequestHolder.sInstance;
     }
 
@@ -278,6 +281,20 @@ public class NetWorkRequest {
         cancelCall(TAG, null);
     }
 
+    /**
+     * okHttp get请求
+     *
+     * @return 构建get
+     */
+    public GetBuilder get() {
+        return new GetBuilder(this);
+    }
+
+    /**
+     * okHttp post请求
+     *
+     * @return 构建post
+     */
     public PostBuilder post() {
         return new PostBuilder(this);
     }
