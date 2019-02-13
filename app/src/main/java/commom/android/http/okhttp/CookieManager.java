@@ -1,4 +1,4 @@
-package commom.android.http.config;
+package commom.android.http.okhttp;
 
 import java.util.ArrayList;
 import java.util.HashMap;

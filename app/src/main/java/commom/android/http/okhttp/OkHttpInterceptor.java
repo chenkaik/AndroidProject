@@ -1,10 +1,11 @@
-package commom.android.http.config;
+package commom.android.http.okhttp;
 
 
 import com.android.lib.Logger;
 
 import java.io.IOException;
 
+import commom.android.http.config.UserConfig;
 import okhttp3.Headers;
 import okhttp3.Interceptor;
 import okhttp3.Request;
