@@ -22,7 +22,7 @@ public abstract class OkHttpRequestBuilderHasParam<T extends OkHttpRequestBuilde
     /**
      * set Map params
      *
-     * @param params
+     * @param params 参数
      * @return
      */
     public T params(Map<String, String> params) {
@@ -81,8 +81,8 @@ public abstract class OkHttpRequestBuilderHasParam<T extends OkHttpRequestBuilde
     /**
      * append params into MultipartBody builder
      *
-     * @param builder
-     * @param params
+     * @param builder 构建
+     * @param params  参数(form提交)
      */
     public void appendParams(MultipartBody.Builder builder, Map<String, String> params) {
         if (params != null && !params.isEmpty()) {
