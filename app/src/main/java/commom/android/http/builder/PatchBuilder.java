@@ -16,6 +16,8 @@ import okhttp3.RequestBody;
  */
 public class PatchBuilder extends OkHttpRequestBuilder<PatchBuilder> {
 
+    private static final String TAG = "PatchBuilder";
+
     public PatchBuilder(NetWorkRequest request) {
         super(request);
     }
@@ -37,7 +39,7 @@ public class PatchBuilder extends OkHttpRequestBuilder<PatchBuilder> {
                     .newCall(patchRequest)
                     .enqueue(new OkHttpCallback(requestCode, okHttpResponse));
         } catch (Exception e) {
-            Logger.e("TAG", "Patch enqueue error:" + e.getMessage());
+            Logger.e(TAG, "Patch enqueue error:" + e.getMessage());
             okHttpResponse.onDataError(requestCode, 0, e.getMessage(), false);
         }
     }

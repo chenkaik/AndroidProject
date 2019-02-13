@@ -17,6 +17,7 @@ import okhttp3.RequestBody;
  */
 public class PostBuilder extends OkHttpRequestBuilderHasParam<PostBuilder> {
 
+    private static final String TAG = "PostBuilder";
     private String mJsonParams = "";
 
     public PostBuilder(NetWorkRequest request) {
@@ -58,7 +59,7 @@ public class PostBuilder extends OkHttpRequestBuilderHasParam<PostBuilder> {
                     .newCall(postRequest)
                     .enqueue(new OkHttpCallback(requestCode, okHttpResponse));
         } catch (Exception e) {
-            Logger.e("TAG", "Post enqueue error:" + e.getMessage());
+            Logger.e(TAG, "Post enqueue error:" + e.getMessage());
             okHttpResponse.onDataError(requestCode, 0, e.getMessage(), false);
         }
     }

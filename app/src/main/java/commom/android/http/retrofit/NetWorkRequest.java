@@ -12,11 +12,15 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 
+import commom.android.http.builder.DeleteBuilder;
+import commom.android.http.builder.GetBuilder;
+import commom.android.http.builder.PatchBuilder;
+import commom.android.http.builder.PostBuilder;
+import commom.android.http.builder.PutBuilder;
+import commom.android.http.builder.UploadBuilder;
 import commom.android.http.config.CookieManager;
 import commom.android.http.config.HttpConfig;
 import commom.android.http.config.OkHttpInterceptor;
-import commom.android.http.builder.GetBuilder;
-import commom.android.http.builder.PostBuilder;
 import commom.android.http.response.BaseResponse;
 import commom.android.http.response.CommonResponse;
 import okhttp3.OkHttpClient;
@@ -297,6 +301,42 @@ public class NetWorkRequest {
      */
     public PostBuilder post() {
         return new PostBuilder(this);
+    }
+
+    /**
+     * okHttp patch请求
+     *
+     * @return 构建patch
+     */
+    public PatchBuilder patch() {
+        return new PatchBuilder(this);
+    }
+
+    /**
+     * okHttp delete请求
+     *
+     * @return 构建delete
+     */
+    public DeleteBuilder delete() {
+        return new DeleteBuilder(this);
+    }
+
+    /**
+     * okHttp put请求
+     *
+     * @return 构建put
+     */
+    public PutBuilder put() {
+        return new PutBuilder(this);
+    }
+
+    /**
+     * okHttp post上传文件
+     *
+     * @return 构建请求
+     */
+    public UploadBuilder upload() {
+        return new UploadBuilder(this);
     }
 
 }

@@ -14,6 +14,8 @@ import okhttp3.Request;
  */
 public class DeleteBuilder extends OkHttpRequestBuilderHasParam<DeleteBuilder> {
 
+    private static final String TAG = "DeleteBuilder";
+
     public DeleteBuilder(NetWorkRequest request) {
         super(request);
     }
@@ -34,7 +36,7 @@ public class DeleteBuilder extends OkHttpRequestBuilderHasParam<DeleteBuilder> {
                     .newCall(deleteRequest)
                     .enqueue(new OkHttpCallback(requestCode, okHttpResponse));
         } catch (Exception e) {
-            Logger.e("TAG", "Delete enqueue error:" + e.getMessage());
+            Logger.e(TAG, "Delete enqueue error:" + e.getMessage());
             okHttpResponse.onDataError(requestCode, 0, e.getMessage(), false);
         }
     }

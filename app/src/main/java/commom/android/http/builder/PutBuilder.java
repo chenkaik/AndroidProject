@@ -16,6 +16,8 @@ import okhttp3.RequestBody;
  */
 public class PutBuilder extends OkHttpRequestBuilder<PutBuilder> {
 
+    private static final String TAG = "PutBuilder";
+
     public PutBuilder(NetWorkRequest request) {
         super(request);
     }
@@ -37,7 +39,7 @@ public class PutBuilder extends OkHttpRequestBuilder<PutBuilder> {
                     .newCall(putRequest)
                     .enqueue(new OkHttpCallback(requestCode, okHttpResponse));
         } catch (Exception e) {
-            Logger.e("TAG", "Put enqueue error:" + e.getMessage());
+            Logger.e(TAG, "Put enqueue error:" + e.getMessage());
             okHttpResponse.onDataError(requestCode, 0, e.getMessage(), false);
         }
     }
