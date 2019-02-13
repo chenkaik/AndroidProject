@@ -41,7 +41,7 @@ public class PostBuilder extends OkHttpRequestBuilderHasParam<PostBuilder> {
                 throw new IllegalArgumentException("url can not be null !");
             }
             Request.Builder builder = new Request.Builder().url(mUrl);
-            appendHeaders(builder, mHeaders); // 添加head
+            appendHeaders(builder, mHeaders); // 根据需要添加head
             if (mTag != null) {
                 builder.tag(mTag);
             }
