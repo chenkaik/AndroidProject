@@ -36,7 +36,7 @@ public class OkHttpCallback implements Callback {
         NetWorkRequest.mHandler.post(new Runnable() {
             @Override
             public void run() {
-                okHttpResponse.onDataError(requestCode, 400, "系统异常(400),请联系管理员!", false);
+                okHttpResponse.onDataFailure(requestCode, 400, "系统异常(400),请联系管理员!", false);
             }
         });
     }
@@ -57,21 +57,21 @@ public class OkHttpCallback implements Callback {
                                 NetWorkRequest.mHandler.post(new Runnable() {
                                     @Override
                                     public void run() {
-                                        okHttpResponse.onDataReady(requestCode, null, responseBodyStr);
+                                        okHttpResponse.onDataSuccess(requestCode, null, responseBodyStr);
                                     }
                                 });
                             } else if (HttpConfig.TOKENERROR.equals(baseResponse.getSYS_HEAD().getRET().getRET_CODE())) {
                                 NetWorkRequest.mHandler.post(new Runnable() {
                                     @Override
                                     public void run() {
-                                        okHttpResponse.onDataError(requestCode, 0, "登录失效!", true);
+                                        okHttpResponse.onDataFailure(requestCode, 0, "登录失效!", true);
                                     }
                                 });
                             } else {
                                 NetWorkRequest.mHandler.post(new Runnable() {
                                     @Override
                                     public void run() {
-                                        okHttpResponse.onDataError(requestCode, 0, baseResponse.getSYS_HEAD().getRET().getRET_CODE() + " " + baseResponse.getSYS_HEAD().getRET().getRET_MSG(), false);
+                                        okHttpResponse.onDataFailure(requestCode, 0, baseResponse.getSYS_HEAD().getRET().getRET_CODE() + " " + baseResponse.getSYS_HEAD().getRET().getRET_MSG(), false);
                                     }
                                 });
                             }
@@ -80,7 +80,7 @@ public class OkHttpCallback implements Callback {
                         NetWorkRequest.mHandler.post(new Runnable() {
                             @Override
                             public void run() {
-                                okHttpResponse.onDataError(requestCode, 0, "解析数据异常!", false);
+                                okHttpResponse.onDataFailure(requestCode, 0, "解析数据异常!", false);
                             }
                         });
                     }
@@ -94,7 +94,7 @@ public class OkHttpCallback implements Callback {
                 NetWorkRequest.mHandler.post(new Runnable() {
                     @Override
                     public void run() {
-                        okHttpResponse.onDataError(requestCode, 0, "解析数据异常!", false);
+                        okHttpResponse.onDataFailure(requestCode, 0, "解析数据异常!", false);
                     }
                 });
             } finally {
@@ -107,7 +107,7 @@ public class OkHttpCallback implements Callback {
             NetWorkRequest.mHandler.post(new Runnable() {
                 @Override
                 public void run() {
-                    okHttpResponse.onDataError(requestCode, 500, "系统异常(500),请联系管理员!", false);
+                    okHttpResponse.onDataFailure(requestCode, 500, "系统异常(500),请联系管理员!", false);
                 }
             });
         }

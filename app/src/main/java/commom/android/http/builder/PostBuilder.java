@@ -46,7 +46,7 @@ public class PostBuilder extends OkHttpRequestBuilderHasParam<PostBuilder> {
             if (mTag != null) {
                 builder.tag(mTag);
             }
-            if (mJsonParams.length() > 0) { // 上传json格式参数
+            if (mJsonParams.length() > 0) { // 优先提交json格式参数
                 RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), mJsonParams);
                 builder.post(body);
             } else { // 普通kv参数
@@ -60,7 +60,7 @@ public class PostBuilder extends OkHttpRequestBuilderHasParam<PostBuilder> {
                     .enqueue(new OkHttpCallback(requestCode, okHttpResponse));
         } catch (Exception e) {
             Logger.e(TAG, "Post enqueue error:" + e.getMessage());
-            okHttpResponse.onDataError(requestCode, 0, e.getMessage(), false);
+            okHttpResponse.onDataFailure(requestCode, 0, e.getMessage(), false);
         }
     }
 

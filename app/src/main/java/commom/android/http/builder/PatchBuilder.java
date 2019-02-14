@@ -40,7 +40,7 @@ public class PatchBuilder extends OkHttpRequestBuilder<PatchBuilder> {
                     .enqueue(new OkHttpCallback(requestCode, okHttpResponse));
         } catch (Exception e) {
             Logger.e(TAG, "Patch enqueue error:" + e.getMessage());
-            okHttpResponse.onDataError(requestCode, 0, e.getMessage(), false);
+            okHttpResponse.onDataFailure(requestCode, 0, e.getMessage(), false);
         }
     }
 

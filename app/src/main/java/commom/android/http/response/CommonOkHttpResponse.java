@@ -21,7 +21,7 @@ public interface CommonOkHttpResponse {
      * @param object      网络请求返回的数据(直接使用)
      * @param json        网络请求返回的json数据
      */
-    void onDataReady(int requestCode, Object object, String json);
+    void onDataSuccess(int requestCode, Object object, String json);
 
     /**
      * 失败回调
@@ -31,7 +31,7 @@ public interface CommonOkHttpResponse {
      * @param message      响应的信息
      * @param isOverdue    当前登录是否失效
      */
-    void onDataError(int requestCode, int responseCode, String message, boolean isOverdue);
+    void onDataFailure(int requestCode, int responseCode, String message, boolean isOverdue);
 
 //    /**
 //     * 显示dialog

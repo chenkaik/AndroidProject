@@ -70,7 +70,7 @@ public class OkHttpTestActivity extends BaseActivity implements CommonOkHttpResp
 //    }
 
     @Override
-    public void onDataReady(int requestCode, Object object, String json) {
+    public void onDataSuccess(int requestCode, Object object, String json) {
         dismissLoadingDialog();
         Log.e(TAG, "onDataReady: " + json);
         switch (requestCode) {
@@ -93,7 +93,7 @@ public class OkHttpTestActivity extends BaseActivity implements CommonOkHttpResp
     }
 
     @Override
-    public void onDataError(int requestCode, int responseCode, String message, boolean isOverdue) {
+    public void onDataFailure(int requestCode, int responseCode, String message, boolean isOverdue) {
         dismissLoadingDialog();
         commonFail(message, isOverdue);
     }

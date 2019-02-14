@@ -40,7 +40,7 @@ public class GetBuilder extends OkHttpRequestBuilderHasParam<GetBuilder> {
                     .enqueue(new OkHttpCallback(requestCode, okHttpResponse));
         } catch (Exception e) {
             Logger.e(TAG, "Get enqueue error:" + e.getMessage());
-            okHttpResponse.onDataError(requestCode, 0, e.getMessage(), false);
+            okHttpResponse.onDataFailure(requestCode, 0, e.getMessage(), false);
         }
     }
 
