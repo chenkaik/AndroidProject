@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import com.android.lib.Logger;
 import com.android.lib.util.GsonUtil;
 import com.example.android.project.R;
 import com.example.android.project.entity.LoginResponse;
@@ -11,11 +12,13 @@ import com.example.android.project.entity.TradeNumberResponse;
 
 import org.json.JSONObject;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
 import butterknife.OnClick;
 import commom.android.http.config.UserConfig;
+import commom.android.http.okhttp.DownloadResponseHandler;
 import commom.android.http.response.CommonOkHttpResponse;
 import commom.android.http.retrofit.NetWorkRequest;
 
@@ -33,7 +36,7 @@ public class OkHttpTestActivity extends BaseActivity implements CommonOkHttpResp
         return R.layout.activity_ok_http_test;
     }
 
-    @OnClick({R.id.btn_login_ok, R.id.btn_other_ok})
+    @OnClick({R.id.btn_login_ok, R.id.btn_other_ok, R.id.btn_ok_download})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_login_ok:
@@ -58,6 +61,36 @@ public class OkHttpTestActivity extends BaseActivity implements CommonOkHttpResp
 //                        .addParam("name", "test")
                         .tag(this)
                         .enqueue(2, this);
+                break;
+            case R.id.btn_ok_download:
+                UserConfig.getInstance().clearToken();
+                String url = "http://download.taobaocdn.com/wireless/xiami-android-spark/latest/xiami-android-spark_701287.apk";
+                NetWorkRequest.getRequestManager()
+                        .download()
+                        .url(url)
+                        .filePath(getExternalCacheDir() + "/xiaoMi.apk")
+                        .tag(this)
+                        .enqueue(new DownloadResponseHandler() {
+                            @Override
+                            public void onStart(long totalBytes) {
+                                Logger.e(TAG, "doDownload onStart " + totalBytes);
+                            }
+
+                            @Override
+                            public void onFinish(File downloadFile) {
+                                Logger.e(TAG, "doDownload onFinish:" + downloadFile.getPath());
+                            }
+
+                            @Override
+                            public void onProgress(long currentBytes, long totalBytes) {
+                                Logger.e(TAG, "doDownload onProgress:" + currentBytes + "/" + totalBytes);
+                            }
+
+                            @Override
+                            public void onFailure(String error_msg) {
+                                Logger.e(TAG, "doDownload onFailure:" + error_msg);
+                            }
+                        });
                 break;
             default:
                 break;

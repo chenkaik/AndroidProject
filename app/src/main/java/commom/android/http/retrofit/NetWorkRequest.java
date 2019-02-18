@@ -13,16 +13,18 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 
 import commom.android.http.builder.DeleteBuilder;
+import commom.android.http.builder.DownloadBuilder;
 import commom.android.http.builder.GetBuilder;
 import commom.android.http.builder.PatchBuilder;
 import commom.android.http.builder.PostBuilder;
 import commom.android.http.builder.PutBuilder;
 import commom.android.http.builder.UploadBuilder;
-import commom.android.http.okhttp.CookieManager;
 import commom.android.http.config.HttpConfig;
+import commom.android.http.okhttp.CookieManager;
 import commom.android.http.okhttp.OkHttpInterceptor;
 import commom.android.http.response.BaseResponse;
 import commom.android.http.response.CommonResponse;
+import okhttp3.Dispatcher;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
@@ -228,6 +230,15 @@ public class NetWorkRequest {
     }
 
     /**
+     * 取消整个tag请求，关闭页面时调用
+     *
+     * @param TAG
+     */
+    public void cancelTagCall(String TAG) {
+        cancelCall(TAG, null);
+    }
+
+    /**
      * 取消某个call
      *
      * @param TAG
@@ -271,19 +282,14 @@ public class NetWorkRequest {
         return true;
     }
 
+    /**
+     * 重置
+     */
     public void release() {
         mOkHttpClient = null;
         mRetrofit = null;
     }
 
-    /**
-     * 取消整个tag请求，关闭页面时调用
-     *
-     * @param TAG
-     */
-    public void cancelTagCall(String TAG) {
-        cancelCall(TAG, null);
-    }
 
     /**
      * okHttp get请求
@@ -337,6 +343,34 @@ public class NetWorkRequest {
      */
     public UploadBuilder upload() {
         return new UploadBuilder(this);
+    }
+
+    /**
+     * okHttp 下载文件
+     *
+     * @return 构建请求
+     */
+    public DownloadBuilder download() {
+        return new DownloadBuilder(this);
+    }
+
+    /**
+     * okHttp 根据tag取消请求
+     *
+     * @param tag tag
+     */
+    public void cancel(Object tag) {
+        Dispatcher dispatcher = getOkHttpClient().dispatcher();
+        for (okhttp3.Call call : dispatcher.queuedCalls()) {
+            if (tag.equals(call.request().tag())) {
+                call.cancel();
+            }
+        }
+        for (okhttp3.Call call : dispatcher.runningCalls()) {
+            if (tag.equals(call.request().tag())) {
+                call.cancel();
+            }
+        }
     }
 
 }
