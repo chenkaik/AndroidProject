@@ -75,26 +75,36 @@ public class OkHttpCallback implements Callback {
                                     }
                                 });
                             }
+                        } else {
+                            NetWorkRequest.mHandler.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    okHttpResponse.onDataFailure(requestCode, 0, "数据解析异常!", false);
+                                }
+                            });
                         }
                     } else {
                         NetWorkRequest.mHandler.post(new Runnable() {
                             @Override
                             public void run() {
-                                okHttpResponse.onDataFailure(requestCode, 0, "解析数据异常!", false);
+                                okHttpResponse.onDataFailure(requestCode, 0, "数据解析异常!", false);
                             }
                         });
                     }
-//                    if (requestCode == 1) { // 登录
-//                        BaseOkResponse<LoginOkResponse> data = GsonUtil.fromJson(responseBodyStr, new TypeToken<BaseOkResponse<LoginOkResponse>>() {
-//                        });
-//                    }
+                } else {
+                    NetWorkRequest.mHandler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            okHttpResponse.onDataFailure(requestCode, 0, "响应异常!", false);
+                        }
+                    });
                 }
             } catch (Exception e) {
                 Logger.e("onResponse", "onResponse json fail status=" + response.code());
                 NetWorkRequest.mHandler.post(new Runnable() {
                     @Override
                     public void run() {
-                        okHttpResponse.onDataFailure(requestCode, 0, "解析数据异常!", false);
+                        okHttpResponse.onDataFailure(requestCode, 0, "数据异常!", false);
                     }
                 });
             } finally {
