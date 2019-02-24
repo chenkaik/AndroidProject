@@ -1,6 +1,7 @@
 package com.android.lib.adapter;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,32 +12,35 @@ import java.util.List;
 
 /**
  * @date: 2019/1/30
- * @describe:  RecyclerView adapter基类
+ * @describe: RecyclerView adapter基类
  * 封装了数据集合以及ItemView的点击事件回调,同时暴露 {@link #onBindData(RecyclerViewHolder, Object, int)}
  * 用于数据与view绑定
  */
 public abstract class BaseRecyclerViewAdapter<T> extends RecyclerView.Adapter<RecyclerViewHolder> implements View.OnClickListener, View.OnLongClickListener {
 
-//    private static final String TAG = "BaseRecyclerViewAdapter";
-    private Context mContext;
-    private List<T> mData;
-    private int mLayoutId;
-    private OnItemClickListener mListener;
-    private OnItemLongClickListener mLongListener;
+    //    private static final String TAG = "BaseRecyclerViewAdapter";
+    private Context context;
+    private List<T> data;
+    private int layoutId;
+    private OnItemClickListener listener;
+    private OnItemLongClickListener longListener;
 
     public BaseRecyclerViewAdapter(Context context, List<T> data, int layoutId) {
-        this.mContext = context;
-        this.mData = data;
-        this.mLayoutId = layoutId;
+        this.context = context;
+        this.data = data;
+        this.layoutId = layoutId;
     }
 
+    // @Nullable 表示定义的字段可以为空.
+    // @NonNull指明一个参数，字段或者方法的返回值不可以为null
+    @NonNull
     @Override
-    public RecyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(mContext).inflate(mLayoutId, parent, false);
-        if (mListener != null) {
+    public RecyclerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View itemView = LayoutInflater.from(context).inflate(layoutId, parent, false);
+        if (listener != null) {
             itemView.setOnClickListener(this);
         }
-        if (mLongListener != null) {
+        if (longListener != null) {
             itemView.setOnLongClickListener(this);
         }
 //        Logger.e(TAG,"onCreateViewHolder");
@@ -44,40 +48,40 @@ public abstract class BaseRecyclerViewAdapter<T> extends RecyclerView.Adapter<Re
     }
 
     @Override
-    public void onBindViewHolder(RecyclerViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RecyclerViewHolder holder, int position) {
 //        Logger.e(TAG,"onBindViewHolder " + position);
         holder.itemView.setTag(position); // 点击事件的位置
-        T bean = mData.get(position);
+        T bean = data.get(position);
         onBindData(holder, bean, position);
     }
 
     @Override
     public int getItemCount() {
-        return mData.size();
+        return data.size();
     }
 
 
     @Override
     public void onClick(View v) {
-        if (mListener != null) {
-            mListener.onItemClick(this, v, (Integer) v.getTag());
+        if (listener != null) {
+            listener.onItemClick(this, v, (Integer) v.getTag());
         }
     }
 
     @Override
     public boolean onLongClick(View v) {
-        if (mLongListener != null) {
-            mLongListener.onItemLongClick(this, v, (Integer) v.getTag());
+        if (longListener != null) {
+            longListener.onItemLongClick(this, v, (Integer) v.getTag());
         }
         return true;
     }
 
     public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
-        this.mListener = onItemClickListener;
+        this.listener = onItemClickListener;
     }
 
     public void setOnItemLongClickListener(OnItemLongClickListener onItemLongClickListener) {
-        this.mLongListener = onItemLongClickListener;
+        this.longListener = onItemLongClickListener;
     }
 
     /**

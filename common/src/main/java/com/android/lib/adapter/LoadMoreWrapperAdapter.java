@@ -29,11 +29,11 @@ public class LoadMoreWrapperAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     // 脚布局
     private final int TYPE_FOOTER = 2;
     // 正在加载
-    public final int LOADING = 1;
+    private final int LOADING = 1;
     // 加载完成
-    public final int LOADING_COMPLETE = 2;
+    private final int LOADING_COMPLETE = 2;
     // 加载到底
-    public final int LOADING_END = 3;
+    private final int LOADING_END = 3;
     // 当前加载状态，默认为加载完成
     private int loadState = 2;
 
