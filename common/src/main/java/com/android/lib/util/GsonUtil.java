@@ -17,6 +17,7 @@ import java.util.List;
  * @describe: Gson封装解析Json
  */
 public class GsonUtil {
+
     private static final Gson GSON;
 
     static {
@@ -25,10 +26,24 @@ public class GsonUtil {
         GSON = gsonBuilder.create();
     }
 
+    /**
+     * 对象转换为json字符串
+     *
+     * @param object 转换的对象
+     * @return 转换后的字符串
+     */
     public static String toJson(Object object) {
         return GSON.toJson(object);
     }
 
+    /**
+     * 解析json数据(list)
+     *
+     * @param json  待解析的数据
+     * @param token 解析的类型
+     * @param <T>   泛型
+     * @return 解析后的对象
+     */
     public static <T> T fromJson(String json, TypeToken<T> token) {
         if (TextUtils.isEmpty(json)) {
             return null;
@@ -42,24 +57,40 @@ public class GsonUtil {
 
     }
 
-    public static <T> T fromJson(String content, Class<T> clazz) {
-        if (TextUtils.isEmpty(content)) {
+    /**
+     * 解析json数据
+     *
+     * @param json  待解析的数据
+     * @param clazz 解析的类型
+     * @param <T>   泛型
+     * @return 解析后的对象
+     */
+    public static <T> T fromJson(String json, Class<T> clazz) {
+        if (TextUtils.isEmpty(json)) {
             return null;
         }
         try {
-            return GSON.fromJson(content, clazz);
+            return GSON.fromJson(json, clazz);
         } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
     }
 
-    public static <T> List<T> fromJsonArray(String content, Class<T[]> clazz) {
-        if (TextUtils.isEmpty(content)) {
+    /**
+     * 解析List json数据
+     *
+     * @param json  待解析的数据
+     * @param clazz 解析的类型
+     * @param <T>   泛型
+     * @return 返回list
+     */
+    public static <T> List<T> fromJsonArray(String json, Class<T[]> clazz) {
+        if (TextUtils.isEmpty(json)) {
             return null;
         }
         try {
-            T[] arr = GSON.fromJson(content, clazz);
+            T[] arr = GSON.fromJson(json, clazz);
             return Arrays.asList(arr);
         } catch (Exception e) {
             e.printStackTrace();
@@ -68,12 +99,12 @@ public class GsonUtil {
     }
 
     /**
-     * Google Gson
+     * 判断json数据是否可用
      *
-     * @param jsonInString
-     * @return
+     * @param jsonInString 数据
+     * @return 结果true/false
      */
-    public final static boolean isJsonValid(String jsonInString) {
+    public static boolean isJsonValid(String jsonInString) {
         if (TextUtils.isEmpty(jsonInString)) {
             return false;
         }
@@ -87,10 +118,12 @@ public class GsonUtil {
         }
     }
 
-    public static boolean isJson(String json) {
-        return isGoodJson(json);
-    }
-
+    /**
+     * 判断是否是json数据
+     *
+     * @param json 数据
+     * @return 结果true/false
+     */
     public static boolean isGoodJson(String json) {
         if (TextUtils.isEmpty(json)) {
             return false;
@@ -125,13 +158,13 @@ public class GsonUtil {
     // }.getType());
     // }
 
-    /**
-     * 转成list
-     *
-     * @param gsonString
-     * @param cls
-     * @return
-     */
+//    /**
+//     * 转成list
+//     *
+//     * @param gsonString
+//     * @param cls
+//     * @return
+//     */
     // public static <T> List<T> GsonToList(String gsonString, Class<T> cls)
     // {
     // List<T> list = GSON.fromJson(gsonString, new TypeToken<List<T>>() {
