@@ -27,7 +27,7 @@ public class PostBuilder extends OkHttpRequestBuilderHasParam<PostBuilder> {
     /**
      * json格式参数(优先)
      *
-     * @param json
+     * @param json 提交的json数据
      * @return
      */
     public PostBuilder jsonParams(String json) {
