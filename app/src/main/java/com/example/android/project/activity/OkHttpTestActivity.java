@@ -1,7 +1,6 @@
 package com.example.android.project.activity;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
 import com.android.lib.Logger;
@@ -105,7 +104,7 @@ public class OkHttpTestActivity extends BaseActivity implements CommonOkHttpResp
     @Override
     public void onDataSuccess(int requestCode, Object object, String json) {
         dismissLoadingDialog();
-        Log.e(TAG, "onDataReady: " + json);
+        Logger.e(TAG, "onDataSuccess: " + json);
         switch (requestCode) {
             case 1:
                 LoginResponse response = GsonUtil.fromJson(json, LoginResponse.class);
