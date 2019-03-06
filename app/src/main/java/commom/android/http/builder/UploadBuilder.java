@@ -90,9 +90,9 @@ public class UploadBuilder extends OkHttpRequestBuilderHasParam<UploadBuilder> {
             if (mUrl == null || mUrl.length() == 0) {
                 throw new IllegalArgumentException("url can not be null !");
             }
-            if (mParams != null && mParams.size() > 0) {
-                mUrl = appendParams(mUrl, mParams); // 拼接参数(url后面)
-            }
+//            if (mParams != null && mParams.size() > 0) {
+//                mUrl = appendParams(mUrl, mParams); // 拼接参数(url后面)
+//            }
             Request.Builder builder = new Request.Builder().url(mUrl);
             appendHeaders(builder, mHeaders); // 根据需要添加head
             if (mTag != null) {
@@ -102,7 +102,7 @@ public class UploadBuilder extends OkHttpRequestBuilderHasParam<UploadBuilder> {
             appendParams(multipartBuilder, mParams); // from参数
             // 拼装需要上传的文件参数,两种拼接上传文件的参数(二选其一)
             appendMapFiles(multipartBuilder, mFiles); // file文件
-            appendListFiles(multipartBuilder, filePath); // file文件的路径
+            appendListFiles(multipartBuilder, filePath); // 文件的路径
             builder.post(multipartBuilder.build());
             Request uploadRequest = builder.build();
             request.getOkHttpClient()
@@ -126,8 +126,10 @@ public class UploadBuilder extends OkHttpRequestBuilderHasParam<UploadBuilder> {
                 File file = files.get(key);
                 // MediaType.parse() 里面是上传的文件类型。
 //                RequestBody body = RequestBody.create(MediaType.parse("image/*"), file);
-                RequestBody body = RequestBody.create(MediaType.parse("multipart/form-data"), file);
-                builder.addFormDataPart(key, file.getName(), body);
+                if (file != null) {
+                    RequestBody body = RequestBody.create(MediaType.parse("multipart/form-data"), file);
+                    builder.addFormDataPart(key, file.getName(), body);
+                }
             }
         }
     }
