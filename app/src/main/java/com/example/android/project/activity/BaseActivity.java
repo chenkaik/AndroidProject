@@ -1,6 +1,7 @@
 package com.example.android.project.activity;
 
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -9,6 +10,8 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.android.lib.listener.PermissionListener;
@@ -35,6 +38,15 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            requestWindowFeature(Window.FEATURE_NO_TITLE);
+            getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+            WindowManager.LayoutParams lp = this.getWindow().getAttributes();
+            lp.layoutInDisplayCutoutMode = WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES;
+            this.getWindow().setAttributes(lp);
+        }
+//        DisplayCutoutDemo displayCutoutDemo = new DisplayCutoutDemo(this);
+//        displayCutoutDemo.openFullScreenModel();
         setContentView(getLayoutId());
         init();
     }
