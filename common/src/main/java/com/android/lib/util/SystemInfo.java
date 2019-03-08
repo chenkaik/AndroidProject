@@ -111,8 +111,14 @@ public class SystemInfo {
      * >=8.0 26
      */
     public static boolean hasO() {
-//        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.;
-        return false;
+        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.O;
+    }
+
+    /**
+     * >=9.0 28
+     */
+    public static boolean hasP() {
+        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.P;
     }
 
     /**
