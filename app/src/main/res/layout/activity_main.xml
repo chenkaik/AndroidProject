@@ -6,22 +6,33 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".activity.MainActivity">
+
     <Button
         android:id="@+id/btn_retrofit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="retrofit请求"/>
+        android:text="retrofit请求"
+        android:textAllCaps="false" />
 
     <Button
         android:id="@+id/btn_okhttp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="okhttp请求"/>
+        android:text="okhttp请求"
+        android:textAllCaps="false" />
 
     <Button
         android:id="@+id/btn_other"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="other"/>
+        android:text="other测试"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/btn_BottomNavigationView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="BottomNavigationView的使用"
+        android:textAllCaps="false" />
 
 </LinearLayout>

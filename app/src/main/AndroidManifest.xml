@@ -16,9 +16,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <!-- BottomNavigationView的使用 -->
+        <activity
+            android:name=".activity.MyActivity"
+            android:screenOrientation="portrait" />
         <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
@@ -31,7 +36,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.TestActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

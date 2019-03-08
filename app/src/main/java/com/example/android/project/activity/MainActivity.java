@@ -24,7 +24,7 @@ public class MainActivity extends BaseActivity {
         return R.layout.activity_main;
     }
 
-    @OnClick({R.id.btn_retrofit, R.id.btn_okhttp, R.id.btn_other})
+    @OnClick({R.id.btn_retrofit, R.id.btn_okhttp, R.id.btn_other, R.id.btn_BottomNavigationView})
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_retrofit:
@@ -41,7 +41,10 @@ public class MainActivity extends BaseActivity {
             case R.id.btn_other:
                 Intent intentOt = new Intent(this, TestActivity.class);
                 ScreenManager.getScreenManager().startPage(this, intentOt, true);
-                Logger.e(TAG, "onClick: okhttp");
+                break;
+            case R.id.btn_BottomNavigationView:
+                Intent myIntent = new Intent(this, MyActivity.class);
+                ScreenManager.getScreenManager().startPage(this, myIntent, true);
                 break;
             default:
                 break;
