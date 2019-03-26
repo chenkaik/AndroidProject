@@ -1,6 +1,5 @@
 package com.example.android.project.activity;
 
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -24,25 +23,24 @@ public class TestActivity extends BaseActivity implements BaseRecyclerViewAdapte
     private TestAdapter testAdapter;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        init();
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        testAdapter = new TestAdapter(this, list);
-        recyclerView.setAdapter(testAdapter);
-        testAdapter.setOnItemClickListener(this);
-        testAdapter.setOnItemLongClickListener(this);
+    protected int getLayoutId() {
+        return R.layout.activity_other;
     }
 
-    private void init() {
+    @Override
+    protected void initView() {
         for (int i = 0; i < 100; i++) {
             list.add(new Test("测试" + i));
         }
     }
 
     @Override
-    protected int getLayoutId() {
-        return R.layout.activity_other;
+    protected void initData() {
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        testAdapter = new TestAdapter(this, list);
+        recyclerView.setAdapter(testAdapter);
+        testAdapter.setOnItemClickListener(this);
+        testAdapter.setOnItemLongClickListener(this);
     }
 
     @OnClick(R.id.btn_test)

@@ -49,6 +49,8 @@ public abstract class BaseActivity extends AppCompatActivity {
 //        displayCutoutDemo.openFullScreenModel();
         setContentView(getLayoutId());
         init();
+        initView();
+        initData();
     }
 
     /**
@@ -60,7 +62,14 @@ public abstract class BaseActivity extends AppCompatActivity {
         toast = Toast.makeText(this, null, Toast.LENGTH_SHORT);
     }
 
+    // 引入布局
     protected abstract int getLayoutId();
+
+    // 初始化控件
+    protected abstract void initView();
+
+    // 初始化数据
+    protected abstract void initData();
 
     /**
      * 显示toast

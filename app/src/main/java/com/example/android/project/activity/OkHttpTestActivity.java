@@ -1,6 +1,5 @@
 package com.example.android.project.activity;
 
-import android.os.Bundle;
 import android.view.View;
 
 import com.android.lib.Logger;
@@ -26,13 +25,18 @@ public class OkHttpTestActivity extends BaseActivity implements CommonOkHttpResp
     private static final String TAG = "OkHttpTestActivity";
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected int getLayoutId() {
+        return R.layout.activity_ok_http_test;
     }
 
     @Override
-    protected int getLayoutId() {
-        return R.layout.activity_ok_http_test;
+    protected void initView() {
+
+    }
+
+    @Override
+    protected void initData() {
+
     }
 
     @OnClick({R.id.btn_login_ok, R.id.btn_other_ok, R.id.btn_ok_download})

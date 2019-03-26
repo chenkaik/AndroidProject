@@ -1,6 +1,5 @@
 package com.example.android.project.activity;
 
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
@@ -28,22 +27,25 @@ public class MyActivity extends BaseActivity implements ViewPager.OnPageChangeLi
     private BaseFragmentAdapter<Fragment> mPagerAdapter;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected int getLayoutId() {
+        return R.layout.activity_my;
+    }
+
+    @Override
+    protected void initView() {
         mViewPager.addOnPageChangeListener(this);
         mBottomNavigationView.setItemIconTintList(null); // 不使用图标默认变色
         mBottomNavigationView.setOnNavigationItemSelectedListener(this);
+    }
+
+    @Override
+    protected void initData() {
         mPagerAdapter = new BaseFragmentAdapter<>(this);
         mPagerAdapter.addFragment(HomeFragment.newInstance());
         mPagerAdapter.addFragment(DataFragment.newInstance());
         mPagerAdapter.addFragment(UserFragment.newInstance());
         mViewPager.setAdapter(mPagerAdapter);
         mViewPager.setOffscreenPageLimit(mPagerAdapter.getCount()); // 限制页面数量
-    }
-
-    @Override
-    protected int getLayoutId() {
-        return R.layout.activity_my;
     }
 
     @Override

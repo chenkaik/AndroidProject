@@ -1,6 +1,5 @@
 package com.example.android.project.activity;
 
-import android.os.Bundle;
 import android.view.View;
 
 import com.android.lib.Logger;
@@ -17,25 +16,29 @@ import commom.android.http.response.BaseResponse;
 import commom.android.http.response.CommonResponse;
 import commom.android.http.retrofit.NetWorkRequest;
 
-public class RetrofitTestActivity extends BaseActivity implements CommonResponse{
+public class RetrofitTestActivity extends BaseActivity implements CommonResponse {
 
     private static final String TAG = "RetrofitTestActivity";
     private LoginRequest loginRequest;
     private HomeIndexRequest request;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected int getLayoutId() {
+        return R.layout.activity_retrofit_test;
+    }
+
+    @Override
+    protected void initView() {
+
+    }
+
+    @Override
+    protected void initData() {
         loginRequest = new LoginRequest();
         loginRequest.setUserName("lixiangbin");
         loginRequest.setPassword("shjacf");
         request = new HomeIndexRequest();
         request.setMSG_BODY(new HomeIndexRequest.MSGBODYBean());
-    }
-
-    @Override
-    protected int getLayoutId() {
-        return R.layout.activity_retrofit_test;
     }
 
     @OnClick({R.id.btn_login, R.id.btn_other})
@@ -75,7 +78,7 @@ public class RetrofitTestActivity extends BaseActivity implements CommonResponse
 
     @Override
     public void onDataError(int requestCode, int responseCode, String message, boolean isOverdue) {
-        commonFail(message,isOverdue);
+        commonFail(message, isOverdue);
     }
 
     @Override
