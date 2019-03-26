@@ -1,8 +1,8 @@
 <resources>
-    <string name="app_name">工程模板</string>
+    <string name="app_name">模板</string>
 
     <!-- 主页 -->
-    <string name="home_exit_hint">再按一次退出</string>
+    <string name="home_exit_hint">再按一次退出程序</string>
     <string name="home_nav_index">首页</string>
     <string name="home_nav_data">数据</string>
     <string name="home_nav_me">个人中心</string>

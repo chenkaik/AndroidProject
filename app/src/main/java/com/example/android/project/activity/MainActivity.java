@@ -1,6 +1,7 @@
 package com.example.android.project.activity;
 
 import android.content.Intent;
+import android.view.KeyEvent;
 import android.view.View;
 
 import com.android.lib.Logger;
@@ -12,6 +13,8 @@ import butterknife.OnClick;
 public class MainActivity extends BaseActivity {
 
     private static final String TAG = "MainActivity";
+    // 记录退出按下的时间
+    private long exitTime = 0;
 
     @Override
     protected int getLayoutId() {
@@ -53,6 +56,23 @@ public class MainActivity extends BaseActivity {
             default:
                 break;
         }
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
+            if ((System.currentTimeMillis() - exitTime) > 2000) {
+                showToastMessage(getResources().getString(R.string.home_exit_hint));
+                exitTime = System.currentTimeMillis();
+            } else {
+                ScreenManager.getScreenManager().killAllActivity();
+                finish();
+//                android.os.Process.killProcess(android.os.Process.myPid());
+                //System.exit(0);
+            }
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 
 }
