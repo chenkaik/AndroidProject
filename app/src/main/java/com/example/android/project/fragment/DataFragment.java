@@ -1,12 +1,7 @@
 package com.example.android.project.fragment;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.android.lib.Logger;
 import com.example.android.project.R;
@@ -15,7 +10,7 @@ import com.example.android.project.R;
  * @date: 2019/3/8
  * @describe: 数据
  */
-public class DataFragment extends Fragment {
+public class DataFragment extends BaseFragment {
 
     private static final String TAG = "DataFragment";
 
@@ -29,12 +24,27 @@ public class DataFragment extends Fragment {
         Logger.e(TAG, "onCreate: " );
     }
 
-    @Nullable
+//    @Nullable
+//    @Override
+//    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+//        View rootView = inflater.inflate(R.layout.fragment_data, container, false);
+//        Logger.e(TAG, "onCreateView: " );
+//        return rootView;
+//    }
+
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_data, container, false);
-        Logger.e(TAG, "onCreateView: " );
-        return rootView;
+    protected int getLayoutId() {
+        return R.layout.fragment_data;
+    }
+
+    @Override
+    protected void initView() {
+
+    }
+
+    @Override
+    protected void initData() {
+
     }
 
     @Override

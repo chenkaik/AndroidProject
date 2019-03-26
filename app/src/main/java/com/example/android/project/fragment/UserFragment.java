@@ -1,12 +1,7 @@
 package com.example.android.project.fragment;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.android.lib.Logger;
 import com.example.android.project.R;
@@ -15,7 +10,7 @@ import com.example.android.project.R;
  * @date: 2019/3/8
  * @describe: 个人中心
  */
-public class UserFragment extends Fragment {
+public class UserFragment extends BaseFragment {
 
     private static final String TAG = "UserFragment";
 
@@ -26,27 +21,42 @@ public class UserFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Logger.e(TAG, "onCreate: " );
+        Logger.e(TAG, "onCreate: ");
     }
 
-    @Nullable
+//    @Nullable
+//    @Override
+//    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+//        View rootView = inflater.inflate(R.layout.fragment_user, container, false);
+//        Logger.e(TAG, "onCreateView: " );
+//        return rootView;
+//    }
+
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_user, container, false);
-        Logger.e(TAG, "onCreateView: " );
-        return rootView;
+    protected int getLayoutId() {
+        return R.layout.fragment_user;
+    }
+
+    @Override
+    protected void initView() {
+
+    }
+
+    @Override
+    protected void initData() {
+
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        Logger.e(TAG, "onResume: " );
+        Logger.e(TAG, "onResume: ");
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        Logger.e(TAG, "onDestroy: " );
+        Logger.e(TAG, "onDestroy: ");
     }
 
 }

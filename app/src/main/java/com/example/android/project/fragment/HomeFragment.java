@@ -3,12 +3,9 @@ package com.example.android.project.fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.android.lib.Logger;
 import com.android.lib.util.ScreenManager;
@@ -16,14 +13,18 @@ import com.example.android.project.R;
 import com.example.android.project.activity.MyActivity;
 import com.example.android.project.activity.TestActivity;
 
+import butterknife.BindView;
+
 /**
  * @date: 2019/3/8
  * @describe: 首页
  */
-public class HomeFragment extends Fragment {
+public class HomeFragment extends BaseFragment {
 
     private static final String TAG = "HomeFragment";
     private MyActivity activity;
+    @BindView(R.id.tv_home)
+    TextView textView;
 
     public static HomeFragment newInstance() {
         return new HomeFragment();
@@ -41,19 +42,25 @@ public class HomeFragment extends Fragment {
         Logger.e(TAG, "onCreate: ");
     }
 
-    @Nullable
     @Override
-    public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_home, container, false);
-        Logger.e(TAG, "onCreateView: ");
-        rootView.findViewById(R.id.tv_home).setOnClickListener(new View.OnClickListener() {
+    protected int getLayoutId() {
+        return R.layout.fragment_home;
+    }
+
+    @Override
+    protected void initView() {
+        textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), TestActivity.class);
-                ScreenManager.getScreenManager().startPage(getActivity(), intent, true);
+                Intent intent = new Intent(activity, TestActivity.class);
+                ScreenManager.getScreenManager().startPage(activity, intent, true);
             }
         });
-        return rootView;
+    }
+
+    @Override
+    protected void initData() {
+
     }
 
     @Override
