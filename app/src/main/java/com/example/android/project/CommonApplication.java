@@ -3,6 +3,8 @@ package com.example.android.project;
 import android.app.Application;
 import android.content.Context;
 
+import com.android.lib.util.CrashHandler;
+
 import commom.android.http.ApiManager;
 import commom.android.http.config.HttpConfig;
 
@@ -23,6 +25,8 @@ public class CommonApplication extends Application {
     private void init() {
         context = getApplicationContext();
         ApiManager.getInstance().init(HttpConfig.BASE_URL);
+        // 捕获程序出现异常的信息
+        CrashHandler.getInstance().init(context);
     }
 
     /**

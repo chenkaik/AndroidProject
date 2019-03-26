@@ -1,5 +1,6 @@
 package com.example.android.project.fragment;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -12,6 +13,7 @@ import android.view.ViewGroup;
 import com.android.lib.Logger;
 import com.android.lib.util.ScreenManager;
 import com.example.android.project.R;
+import com.example.android.project.activity.MyActivity;
 import com.example.android.project.activity.TestActivity;
 
 /**
@@ -21,9 +23,16 @@ import com.example.android.project.activity.TestActivity;
 public class HomeFragment extends Fragment {
 
     private static final String TAG = "HomeFragment";
+    private MyActivity activity;
 
     public static HomeFragment newInstance() {
         return new HomeFragment();
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        activity = (MyActivity) context;
     }
 
     @Override
@@ -57,6 +66,14 @@ public class HomeFragment extends Fragment {
     public void onDestroy() {
         super.onDestroy();
         Logger.e(TAG, "onDestroy: ");
+    }
+
+    private MyActivity getMyActivity() {
+        if (activity != null) {
+            return activity;
+        } else {
+            return (MyActivity) getActivity();
+        }
     }
 
 }
