@@ -34,14 +34,11 @@ public class DisplayCutoutDemo {
     private Activity mAc;
 
     public DisplayCutoutDemo(Activity ac) {
-
         mAc = ac;
     }
 
-//在使用LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES的时候，状态栏会显示为白色，这和主内容区域颜色冲突,
-
-    //所以我们要开启沉浸式布局模式，即真正的全屏模式,以实现状态和主体内容背景一致
-
+    // 在使用LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES的时候，状态栏会显示为白色，这和主内容区域颜色冲突,
+    // 所以我们要开启沉浸式布局模式，即真正的全屏模式,以实现状态和主体内容背景一致
     public void openFullScreenModel() {
 
         mAc.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -68,8 +65,11 @@ public class DisplayCutoutDemo {
 
     }
 
-//获取状态栏高度
-
+    /**
+     * 获取状态栏高度
+     * @param context
+     * @return
+     */
     public int getStatusBarHeight(Context context) {
 
         int result = 0;
