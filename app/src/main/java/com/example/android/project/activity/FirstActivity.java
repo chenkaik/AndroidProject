@@ -1,15 +1,13 @@
 package com.example.android.project.activity;
 
 import android.content.Intent;
-import android.os.Build;
 import android.os.Handler;
 import android.os.Message;
-import android.view.Window;
 import android.view.WindowManager;
 
 import com.android.lib.util.ScreenManager;
+import com.android.lib.util.SystemVersionUtil;
 import com.example.android.project.R;
-import com.example.android.project.util.DisplayCutoutDemo;
 
 public class FirstActivity extends BaseActivity {
 
@@ -18,14 +16,26 @@ public class FirstActivity extends BaseActivity {
         // 这是一种全屏显示
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-            requestWindowFeature(Window.FEATURE_NO_TITLE);
-            getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-            WindowManager.LayoutParams lp = this.getWindow().getAttributes();
+        // 适配刘海屏
+        if (SystemVersionUtil.hasP()) {
+//            requestWindowFeature(Window.FEATURE_NO_TITLE);
+//            getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+//            WindowManager.LayoutParams lp = this.getWindow().getAttributes();
+//            lp.layoutInDisplayCutoutMode = WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES;
+//            this.getWindow().setAttributes(lp);
+//            DisplayCutoutDemo displayCutoutDemo = new DisplayCutoutDemo(this);
+//            displayCutoutDemo.openFullScreenModel();
+            // next
+            WindowManager.LayoutParams lp = getWindow().getAttributes();
+            // 仅当缺口区域完全包含在状态栏之中时，才允许窗口延伸到刘海区域显示
+//            lp.layoutInDisplayCutoutMode = WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_DEFAULT;
+            // 永远不允许窗口延伸到刘海区域
+//            lp.layoutInDisplayCutoutMode = WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_NEVER;
+            // 始终允许窗口延伸到屏幕短边上的刘海区域
             lp.layoutInDisplayCutoutMode = WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES;
-            this.getWindow().setAttributes(lp);
-            DisplayCutoutDemo displayCutoutDemo = new DisplayCutoutDemo(this);
-            displayCutoutDemo.openFullScreenModel();
+            getWindow().setAttributes(lp);
+        } else {
+            // 9.0以下适配
         }
         return R.layout.activity_first;
     }
