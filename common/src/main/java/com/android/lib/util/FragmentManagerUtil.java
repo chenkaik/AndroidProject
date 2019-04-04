@@ -38,17 +38,19 @@ public class FragmentManagerUtil {
             transaction.addToBackStack(null);
 
             if (hidenSoftInput) {
-                hidenSoftInput(fragment1.getActivity());
+                hideSoftInput(fragment1.getActivity());
             }
         }
         transaction.commit();
     }
 
-    public static void hidenSoftInput(Activity activity) {
-        IBinder iBinder = getWindowTocken(activity);
+    public static void hideSoftInput(Activity activity) {
+        IBinder iBinder = getWindowToken(activity);
         if (null != iBinder) {
             InputMethodManager imm = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
-            imm.hideSoftInputFromWindow(iBinder, 0);
+            if (imm != null) {
+                imm.hideSoftInputFromWindow(iBinder, 0);
+            }
             //Print.i(tag, "hideSoftInputFromWindow.");
         }
     }
@@ -57,12 +59,14 @@ public class FragmentManagerUtil {
         View view = activity.getCurrentFocus();
         if (null != view) {
             InputMethodManager imm = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
-            imm.showSoftInput(view, 0);
+            if (imm != null) {
+                imm.showSoftInput(view, 0);
+            }
             //Print.i(tag, "showSoftInput.");
         }
     }
 
-    private static IBinder getWindowTocken(Activity activity) {
+    private static IBinder getWindowToken(Activity activity) {
         if (null == activity) {
             return null;
         }
@@ -93,7 +97,7 @@ public class FragmentManagerUtil {
             transaction.hide(fragment1);
             transaction.addToBackStack(null);
             if (hidenSoftInput) {
-                hidenSoftInput(fragment1.getActivity());
+                hideSoftInput(fragment1.getActivity());
             }
         }
         transaction.add(resId, fragment2, fragment2.getClass().getSimpleName());

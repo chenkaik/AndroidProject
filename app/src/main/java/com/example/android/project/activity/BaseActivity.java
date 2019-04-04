@@ -8,12 +8,15 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Toast;
 
 import com.android.lib.listener.PermissionListener;
 import com.android.lib.util.CommonHelp;
 import com.android.lib.util.NetworkUtil;
+import com.android.lib.util.ScreenManager;
+import com.example.android.project.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +34,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     private Toast toast;
     private Unbinder mButterKnife; // View注解
     private PermissionListener permissionListener;
+    private long exitTime = 0; // 记录退出按下时间
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -44,7 +48,6 @@ public abstract class BaseActivity extends AppCompatActivity {
 //        }
 //        DisplayCutoutDemo displayCutoutDemo = new DisplayCutoutDemo(this);
 //        displayCutoutDemo.openFullScreenModel();
-
         setContentView(getLayoutId());
         init();
         initView();
@@ -196,6 +199,27 @@ public abstract class BaseActivity extends AppCompatActivity {
             default:
                 break;
         }
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
+            if (ScreenManager.getScreenManager().goBlackPage()) {
+                finish();
+            } else {
+                if ((System.currentTimeMillis() - exitTime) > 2000) {
+                    showToastMessage(getResources().getString(R.string.home_exit_hint));
+                    exitTime = System.currentTimeMillis();
+                } else {
+                    ScreenManager.getScreenManager().killAllActivity();
+                    finish();
+                    System.exit(0); // 退出JVM,释放所占内存资源,0表示正常退出
+                    android.os.Process.killProcess(android.os.Process.myPid()); // 从系统中kill掉应用程序
+                }
+            }
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 
     @Override

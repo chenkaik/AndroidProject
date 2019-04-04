@@ -9,6 +9,9 @@ import java.util.Stack;
 /**
  * @date: 2019/4/2
  * @describe: 管理activity
+ * 在BaseActivity中onCreate()中addActivity
+ * 在onDestroy()中finishActivity()
+ * 其他功能在各个子Activity中根据需要添加
  * https://juejin.im/post/5ca1844151882543e31e27fa#heading-5
  */
 public class FinishActivityManager {
@@ -16,18 +19,26 @@ public class FinishActivityManager {
     private FinishActivityManager() {
     }
 
-    private static FinishActivityManager sManager;
+    //    private static FinishActivityManager sManager;
     private Stack<WeakReference<Activity>> mActivityStack;
 
+//    public static FinishActivityManager getManager() {
+//        if (sManager == null) {
+//            synchronized (FinishActivityManager.class) {
+//                if (sManager == null) {
+//                    sManager = new FinishActivityManager();
+//                }
+//            }
+//        }
+//        return sManager;
+//    }
+
     public static FinishActivityManager getManager() {
-        if (sManager == null) {
-            synchronized (FinishActivityManager.class) {
-                if (sManager == null) {
-                    sManager = new FinishActivityManager();
-                }
-            }
-        }
-        return sManager;
+        return FinishActivityManagerHolder.sInstance;
+    }
+
+    private static class FinishActivityManagerHolder {
+        private static final FinishActivityManager sInstance = new FinishActivityManager();
     }
 
     /**

@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.android.common.R;
 import com.android.lib.util.FragmentManagerUtil;
+import com.android.lib.util.ScreenManager;
 
 /**
  * @date: 2019/1/30
@@ -60,7 +61,7 @@ public class NavigationBar extends FrameLayout {
     private void backButtonOnClick(View v) {
         if (getContext() instanceof FragmentActivity) {
             FragmentActivity activity = ((FragmentActivity) getContext());
-            if (activity.getSupportFragmentManager().getBackStackEntryCount() == 0) {
+            if (ScreenManager.getScreenManager().goBlackPage() && activity.getSupportFragmentManager().getBackStackEntryCount() == 0) {
                 activity.finish();
             } else {
                 activity.getSupportFragmentManager().popBackStack();
@@ -68,7 +69,7 @@ public class NavigationBar extends FrameLayout {
         } else {
             ((Activity) getContext()).finish();
         }
-        FragmentManagerUtil.hidenSoftInput((Activity) getContext());
+        FragmentManagerUtil.hideSoftInput((Activity) getContext());
     }
 
     public void setTitle(String title) {
