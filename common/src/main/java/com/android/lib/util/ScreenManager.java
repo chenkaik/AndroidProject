@@ -83,8 +83,10 @@ public class ScreenManager {
         try {
             killAllActivity();
             ActivityManager activityMgr = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
-            activityMgr.restartPackage(context.getPackageName());
-            System.exit(0);
+            if (activityMgr != null) {
+                activityMgr.restartPackage(context.getPackageName());
+                System.exit(0);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
