@@ -20,8 +20,16 @@
         android:layout_height="wrap_content"
         android:background="@color/white"
         app:itemBackground="@null"
+        app:itemHorizontalTranslationEnabled="false"
         app:itemTextColor="@drawable/txt_home_bottom_nav_selector"
         app:labelVisibilityMode="labeled"
         app:menu="@menu/menu_home_bottom_nav" />
+    <!-- itemTextColor 标题颜色 -->
+    <!-- app:itemBackground="@null" 去掉背景点击的效果-->
+    <!-- app:labelVisibilityMode="labeled" 设置图标下面的文字显示
+         auto   当item小于等于3是，显示文字，item大于3个默认不显示，选中显示文字
+        labeled  始终显示文字
+        selected  选中时显示
+        unlabeled 选中时显示 -->
 
 </LinearLayout>
