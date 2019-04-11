@@ -15,7 +15,7 @@ public class NoScrollViewPager extends ViewPager {
     /**
      * 是否禁止左右滑动，true为禁止，false为不禁止
      */
-    private boolean noScroll = false;
+    private boolean noScroll = true;
 
     public NoScrollViewPager(Context context, AttributeSet attrs) {
         super(context, attrs);

@@ -6,7 +6,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.MenuItem;
 
-import com.android.lib.Logger;
 import com.example.android.project.R;
 import com.example.android.project.adapter.BaseFragmentAdapter;
 import com.example.android.project.fragment.DataFragment;
@@ -52,20 +51,20 @@ public class MyActivity extends BaseActivity implements ViewPager.OnPageChangeLi
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch (menuItem.getItemId()) {
             case R.id.menu_home:
-                Logger.e(TAG, "onNavigationItemSelected: 首页");
+//                Logger.e(TAG, "onNavigationItemSelected: 首页");
                 //mViewPager.setCurrentItem(0);
                 //mViewPager.setCurrentItem(0, false);
                 // 如果切换的是相邻之间的 Item 就显示切换动画，如果不是则不要动画
                 mViewPager.setCurrentItem(0, mViewPager.getCurrentItem() == 1);
                 return true;
             case R.id.home_data:
-                Logger.e(TAG, "onNavigationItemSelected: 数据");
+//                Logger.e(TAG, "onNavigationItemSelected: 数据");
                 //mViewPager.setCurrentItem(1);
                 //mViewPager.setCurrentItem(1, false);
                 mViewPager.setCurrentItem(1, mViewPager.getCurrentItem() == 0 || mViewPager.getCurrentItem() == 2);
                 return true;
             case R.id.home_me:
-                Logger.e(TAG, "onNavigationItemSelected: 个人中心");
+//                Logger.e(TAG, "onNavigationItemSelected: 个人中心");
                 //mViewPager.setCurrentItem(2);
                 //mViewPager.setCurrentItem(2, false);
 //                mViewPager.setCurrentItem(2, mViewPager.getCurrentItem() == 1 || mViewPager.getCurrentItem() == 3);
@@ -88,15 +87,15 @@ public class MyActivity extends BaseActivity implements ViewPager.OnPageChangeLi
     public void onPageSelected(int position) {
         switch (position) {
             case 0:
-                Logger.e(TAG, "onPageSelected: 首页");
+//                Logger.e(TAG, "onPageSelected: 首页");
                 mBottomNavigationView.setSelectedItemId(R.id.menu_home);
                 break;
             case 1:
-                Logger.e(TAG, "onPageSelected: 数据");
+//                Logger.e(TAG, "onPageSelected: 数据");
                 mBottomNavigationView.setSelectedItemId(R.id.home_data);
                 break;
             case 2:
-                Logger.e(TAG, "onPageSelected: 个人中心");
+//                Logger.e(TAG, "onPageSelected: 个人中心");
                 mBottomNavigationView.setSelectedItemId(R.id.home_me);
                 break;
         }
