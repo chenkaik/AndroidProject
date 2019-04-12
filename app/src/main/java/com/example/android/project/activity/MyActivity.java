@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import com.example.android.project.R;
 import com.example.android.project.adapter.BaseFragmentAdapter;
 import com.example.android.project.fragment.DataFragment;
+import com.example.android.project.fragment.FindFragment;
 import com.example.android.project.fragment.HomeFragment;
 import com.example.android.project.fragment.UserFragment;
 
@@ -42,6 +43,7 @@ public class MyActivity extends BaseActivity implements ViewPager.OnPageChangeLi
         mPagerAdapter = new BaseFragmentAdapter<>(this);
         mPagerAdapter.addFragment(HomeFragment.newInstance());
         mPagerAdapter.addFragment(DataFragment.newInstance());
+        mPagerAdapter.addFragment(FindFragment.newInstance());
         mPagerAdapter.addFragment(UserFragment.newInstance());
         mViewPager.setAdapter(mPagerAdapter);
         mViewPager.setOffscreenPageLimit(mPagerAdapter.getCount()); // 限制页面数量
@@ -59,22 +61,16 @@ public class MyActivity extends BaseActivity implements ViewPager.OnPageChangeLi
                 return true;
             case R.id.home_data:
 //                Logger.e(TAG, "onNavigationItemSelected: 数据");
-                //mViewPager.setCurrentItem(1);
-                //mViewPager.setCurrentItem(1, false);
                 mViewPager.setCurrentItem(1, mViewPager.getCurrentItem() == 0 || mViewPager.getCurrentItem() == 2);
                 return true;
-            case R.id.home_me:
+            case R.id.home_find:
 //                Logger.e(TAG, "onNavigationItemSelected: 个人中心");
-                //mViewPager.setCurrentItem(2);
-                //mViewPager.setCurrentItem(2, false);
-//                mViewPager.setCurrentItem(2, mViewPager.getCurrentItem() == 1 || mViewPager.getCurrentItem() == 3);
-                mViewPager.setCurrentItem(2, mViewPager.getCurrentItem() == 1);
+                mViewPager.setCurrentItem(2, mViewPager.getCurrentItem() == 1 || mViewPager.getCurrentItem() == 3);
+//                mViewPager.setCurrentItem(2, mViewPager.getCurrentItem() == 1);
                 return true;
-//            case R.id.home_me:
-//                //mViewPager.setCurrentItem(3);
-//                //mViewPager.setCurrentItem(3, false);
-//                mViewPager.setCurrentItem(3, mViewPager.getCurrentItem() == 2);
-//                return true;
+            case R.id.home_me:
+                mViewPager.setCurrentItem(3, mViewPager.getCurrentItem() == 2);
+                return true;
         }
         return false;
     }
@@ -96,6 +92,9 @@ public class MyActivity extends BaseActivity implements ViewPager.OnPageChangeLi
                 break;
             case 2:
 //                Logger.e(TAG, "onPageSelected: 个人中心");
+                mBottomNavigationView.setSelectedItemId(R.id.home_find);
+                break;
+            case 3:
                 mBottomNavigationView.setSelectedItemId(R.id.home_me);
                 break;
         }
