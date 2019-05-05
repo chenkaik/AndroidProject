@@ -25,8 +25,8 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 /**
- * @date: 2019/2/11
- * @describe: 基类
+ * date: 2019/2/11
+ * desc: 基类
  */
 public abstract class BaseActivity extends AppCompatActivity {
 

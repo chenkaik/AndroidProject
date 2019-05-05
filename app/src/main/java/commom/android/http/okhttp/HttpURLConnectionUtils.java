@@ -20,8 +20,8 @@ import java.util.Iterator;
 import java.util.Map;
 
 /**
- * @date: 2019/2/24
- * @describe: 一个基于HttpURLConnection 简单网络请求工具类
+ * date: 2019/2/24
+ * desc: 一个基于HttpURLConnection 简单网络请求工具类
  */
 public class HttpURLConnectionUtils {
 

@@ -15,8 +15,8 @@ import okhttp3.Response;
 import okhttp3.ResponseBody;
 
 /**
- * @date: 2019/2/13
- * @describe: okHttp 回调
+ * date: 2019/2/13
+ * desc: okHttp 回调
  */
 public class OkHttpCallback implements Callback {
 

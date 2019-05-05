@@ -7,8 +7,8 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 
 /**
- * @date: 2019/3/8
- * @describe: 是否禁止ViewPager左右滑动
+ * date: 2019/3/8
+ * desc: 是否禁止ViewPager左右滑动
  */
 public class NoScrollViewPager extends ViewPager {
 

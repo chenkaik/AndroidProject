@@ -16,8 +16,8 @@ import com.android.lib.util.FragmentManagerUtil;
 import com.android.lib.util.ScreenManager;
 
 /**
- * @date: 2019/1/30
- * @describe: 公用的title头部
+ * date: 2019/1/30
+ * desc: 公用的title头部
  */
 public class NavigationBar extends FrameLayout {
 

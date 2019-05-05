@@ -12,8 +12,8 @@ import com.example.android.project.entity.Test;
 import java.util.List;
 
 /**
- * @date: 2019/2/24
- * @describe:
+ * date: 2019/2/24
+ * desc:
  */
 public class TestAdapter extends BaseRecyclerViewAdapter<Test> {
     private static final String TAG = "TestAdapter";

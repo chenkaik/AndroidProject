@@ -11,8 +11,8 @@ import java.util.GregorianCalendar;
 import java.util.Locale;
 
 /**
- * @date: 2019/1/30
- * @describe: 日期处理相关
+ * date: 2019/1/30
+ * desc: 日期处理相关
  */
 public class DateUtils {
 

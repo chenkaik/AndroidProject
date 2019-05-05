@@ -12,8 +12,8 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 /**
- * @date: 2019/3/26
- * @describe: 基类
+ * date: 2019/3/26
+ * desc: 基类
  */
 public abstract class BaseFragment extends Fragment {
 

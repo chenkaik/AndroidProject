@@ -7,8 +7,8 @@ import android.view.View;
 import android.widget.TextView;
 
 /**
- * @date: 2019/1/30
- * @describe: recyclerView公用的ViewHolder
+ * date: 2019/1/30
+ * desc: recyclerView公用的ViewHolder
  */
 public class RecyclerViewHolder extends RecyclerView.ViewHolder {
     private SparseArray<View> mViews;

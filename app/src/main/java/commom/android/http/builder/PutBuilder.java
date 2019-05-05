@@ -11,8 +11,8 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 
 /**
- * @date: 2019/2/13
- * @describe: put请求
+ * date: 2019/2/13
+ * desc: put请求
  */
 public class PutBuilder extends OkHttpRequestBuilder<PutBuilder> {
 

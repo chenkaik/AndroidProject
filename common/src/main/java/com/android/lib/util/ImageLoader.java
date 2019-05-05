@@ -10,8 +10,8 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 
 /**
- * @date: 2019/1/30
- * @describe: Glide加载图片
+ * date: 2019/1/30
+ * desc: Glide加载图片
  */
 public class ImageLoader {
 

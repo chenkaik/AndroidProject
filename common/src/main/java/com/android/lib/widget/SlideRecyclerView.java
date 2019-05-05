@@ -14,8 +14,8 @@ import android.view.ViewGroup;
 import android.widget.Scroller;
 
 /**
- * @date: 2019/1/30
- * @describe: 侧滑菜单删除的RecyclerView
+ * date: 2019/1/30
+ * desc: 侧滑菜单删除的RecyclerView
  * 参考https://blog.csdn.net/dapangzao/article/details/80524774
  */
 public class SlideRecyclerView extends RecyclerView {

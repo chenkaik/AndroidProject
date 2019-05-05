@@ -9,8 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @date: 2019/1/30
- * @describe: 封装的基类adapter
+ * date: 2019/1/30
+ * desc: 封装的基类adapter
  */
 public class RecyclerViewBaseAdapter<T, VH extends RecyclerViewHolder> extends RecyclerView.Adapter<VH> {
     public Context context; // 上下文

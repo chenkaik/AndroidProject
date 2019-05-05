@@ -3,8 +3,8 @@ package commom.android.http.okhttp;
 import java.io.File;
 
 /**
- * @date: 2019/2/18
- * @describe: 下载文件回调
+ * date: 2019/2/18
+ * desc: 下载文件回调
  */
 public abstract class DownloadResponseHandler {
 

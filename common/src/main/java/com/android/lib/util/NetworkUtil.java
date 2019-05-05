@@ -8,8 +8,8 @@ import android.provider.Settings;
 import com.android.lib.Logger;
 
 /**
- * @date: 2019/1/30
- * @describe: 判断是否有网络
+ * date: 2019/1/30
+ * desc: 判断是否有网络
  */
 public class NetworkUtil {
 

@@ -1,8 +1,8 @@
 package commom.android.http.config;
 
 /**
- * @date: 2019/1/30
- * @describe: 配置服务端地址
+ * date: 2019/1/30
+ * desc: 配置服务端地址
  */
 public class HttpConfig {
     //    public static String BASE_URL = "http://116.196.107.174:9000/";

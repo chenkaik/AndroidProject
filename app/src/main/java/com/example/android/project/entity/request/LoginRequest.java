@@ -3,8 +3,8 @@ package com.example.android.project.entity.request;
 import java.io.Serializable;
 
 /**
- * @date: 2019/2/12
- * @describe: 登录body
+ * date: 2019/2/12
+ * desc: 登录body
  */
 public class LoginRequest implements Serializable{
 

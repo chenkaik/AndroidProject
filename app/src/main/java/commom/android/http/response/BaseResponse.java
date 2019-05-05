@@ -1,8 +1,8 @@
 package commom.android.http.response;
 
 /**
- * @date: 2019/1/30
- * @describe: 根据需要自由定制修改
+ * date: 2019/1/30
+ * desc: 根据需要自由定制修改
  */
 public class BaseResponse {
 

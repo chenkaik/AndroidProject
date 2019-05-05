@@ -9,8 +9,8 @@ import commom.android.http.retrofit.NetWorkRequest;
 import okhttp3.Request;
 
 /**
- * @date: 2019/2/13
- * @describe: get请求
+ * date: 2019/2/13
+ * desc: get请求
  */
 public class GetBuilder extends OkHttpRequestBuilderHasParam<GetBuilder> {
 

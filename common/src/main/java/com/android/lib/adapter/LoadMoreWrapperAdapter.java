@@ -12,8 +12,8 @@ import android.widget.TextView;
 import com.android.common.R;
 
 /**
- * @date: 2019/1/30
- * @describe: 封装上拉加载更多adapter
+ * date: 2019/1/30
+ * desc: 封装上拉加载更多adapter
  */
 public class LoadMoreWrapperAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 

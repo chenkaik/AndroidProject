@@ -7,8 +7,8 @@ import com.android.lib.Logger;
 import com.example.android.project.R;
 
 /**
- * @date: 2019/3/8
- * @describe: 个人中心
+ * date: 2019/3/8
+ * desc: 个人中心
  */
 public class UserFragment extends BaseFragment {
 

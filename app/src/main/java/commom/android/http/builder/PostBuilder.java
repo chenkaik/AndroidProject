@@ -12,8 +12,8 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 
 /**
- * @date: 2019/2/13
- * @describe: post请求
+ * date: 2019/2/13
+ * desc: post请求
  */
 public class PostBuilder extends OkHttpRequestBuilderHasParam<PostBuilder> {
 

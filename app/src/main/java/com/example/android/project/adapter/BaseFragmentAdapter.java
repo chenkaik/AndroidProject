@@ -11,8 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @date: 2019/3/8
- * @describe: FragmentPagerAdapter 基类
+ * date: 2019/3/8
+ * desc: FragmentPagerAdapter 基类
  */
 public class BaseFragmentAdapter<F extends Fragment> extends FragmentPagerAdapter {
 

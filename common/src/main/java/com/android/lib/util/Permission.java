@@ -1,8 +1,8 @@
 package com.android.lib.util;
 
 /**
- * @date: 2019/3/8
- * @describe: 权限请求实体类
+ * date: 2019/3/8
+ * desc: 权限请求实体类
  */
 public class Permission {
 

@@ -14,8 +14,8 @@ import java.io.FileReader;
 import java.io.IOException;
 
 /**
- * @date: 2019/3/26
- * @describe: 系统版本信息类
+ * date: 2019/3/26
+ * desc: 系统版本信息类
  */
 public class SystemVersionUtil {
 

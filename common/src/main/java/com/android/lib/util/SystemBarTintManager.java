@@ -38,8 +38,8 @@ import android.widget.FrameLayout.LayoutParams;
 import java.lang.reflect.Method;
 
 /**
- * @date: 2019/1/30
- * @describe: 修改状态栏颜色(android4.4版本以上使用)
+ * date: 2019/1/30
+ * desc: 修改状态栏颜色(android4.4版本以上使用)
  */
 public class SystemBarTintManager {
 

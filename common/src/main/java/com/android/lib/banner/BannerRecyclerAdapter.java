@@ -11,8 +11,8 @@ import com.android.lib.util.ImageLoader;
 import java.util.List;
 
 /**
- * @date: 2019/1/30
- * @describe: banner使用的adapter
+ * date: 2019/1/30
+ * desc: banner使用的adapter
  */
 public class BannerRecyclerAdapter extends BaseBannerAdapter<BannerRecyclerAdapter.NormalHolder> {
     private static final String TAG = "BannerRecyclerAdapter";

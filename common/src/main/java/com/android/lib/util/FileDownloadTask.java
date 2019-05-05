@@ -17,8 +17,8 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 /**
- * @date: 2019/1/30
- * @describe: 文件下载
+ * date: 2019/1/30
+ * desc: 文件下载
  */
 public class FileDownloadTask extends AsyncTask<String, Integer, Integer> {
 

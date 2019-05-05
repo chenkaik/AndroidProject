@@ -3,8 +3,8 @@ package com.example.android.project.entity;
 import commom.android.http.response.BaseResponse;
 
 /**
- * @date: 2019/2/13
- * @describe:
+ * date: 2019/2/13
+ * desc:
  */
 public class TradeNumberResponse extends BaseResponse {
 

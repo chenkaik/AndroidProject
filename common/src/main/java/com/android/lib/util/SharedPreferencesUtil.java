@@ -5,8 +5,8 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 
 /**
- * @date: 2019/1/30.
- * @describe: 保存用户信息
+ * date: 2019/1/30.
+ * desc: 保存用户信息
  * SharedPreference 相关修改使用 apply 方法进行提交会先写入内存，然后异步写入
  * 磁盘，commit 方法是直接写入磁盘。如果频繁操作的话 apply 的性能会优于 commit，
  * apply 会将最后修改内容写入磁盘。但是如果希望立刻获取存储操作的结果，并据此

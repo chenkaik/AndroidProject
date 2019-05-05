@@ -7,8 +7,8 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 /**
- * @date: 2019/1/30
- * @describe: 包装adapter(RecyclerView添加头部与底部使用)
+ * date: 2019/1/30
+ * desc: 包装adapter(RecyclerView添加头部与底部使用)
  */
 public class RecyclerWrapAdapter extends RecyclerView.Adapter implements WrapperAdapter {
 

@@ -13,8 +13,8 @@ import okhttp3.Response;
 import okhttp3.ResponseBody;
 
 /**
- * @date: 2019/1/30
- * @describe: Request拦截器，添加header--token
+ * date: 2019/1/30
+ * desc: Request拦截器，添加header--token
  */
 public class OkHttpInterceptor implements Interceptor {
 

@@ -12,8 +12,8 @@ import android.view.inputmethod.InputMethodManager;
 import com.android.common.R;
 
 /**
- * @date: 2019/1/30
- * @describe: 管理fragment
+ * date: 2019/1/30
+ * desc: 管理fragment
  */
 public class FragmentManagerUtil {
 

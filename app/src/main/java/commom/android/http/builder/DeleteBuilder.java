@@ -9,8 +9,8 @@ import commom.android.http.retrofit.NetWorkRequest;
 import okhttp3.Request;
 
 /**
- * @date: 2019/2/13
- * @describe: delete请求
+ * date: 2019/2/13
+ * desc: delete请求
  */
 public class DeleteBuilder extends OkHttpRequestBuilderHasParam<DeleteBuilder> {
 

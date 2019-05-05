@@ -13,8 +13,8 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * @date: 2019/1/30.
- * @describe: Gson封装解析Json
+ * date: 2019/1/30.
+ * desc: Gson封装解析Json
  */
 public class GsonUtil {
 

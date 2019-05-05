@@ -1,8 +1,8 @@
 package com.example.android.project.entity;
 
 /**
- * @date: 2019/2/24
- * @describe:
+ * date: 2019/2/24
+ * desc:
  */
 public class Test {
 

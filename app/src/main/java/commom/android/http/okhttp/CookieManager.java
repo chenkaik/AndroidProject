@@ -9,8 +9,8 @@ import okhttp3.CookieJar;
 import okhttp3.HttpUrl;
 
 /**
- * @date: 2019/1/30
- * @describe:
+ * date: 2019/1/30
+ * desc:
  */
 public class CookieManager implements CookieJar {
 

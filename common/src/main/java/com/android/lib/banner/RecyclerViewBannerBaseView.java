@@ -29,8 +29,8 @@ import com.android.common.R;
 import java.util.List;
 
 /**
- * @date: 2019/1/30
- * @describe: RecyclerView实现banner
+ * date: 2019/1/30
+ * desc: RecyclerView实现banner
  */
 public abstract class RecyclerViewBannerBaseView<L extends RecyclerView.LayoutManager, A extends BaseBannerAdapter> extends FrameLayout {
     protected int autoPlayDuration; // 刷新间隔时间

@@ -6,8 +6,8 @@ import android.view.View;
 import com.android.common.R;
 
 /**
- * @date: 2019/1/30
- * @describe: 弹框辅助类
+ * date: 2019/1/30
+ * desc: 弹框辅助类
  */
 public class CommonHelp {
 

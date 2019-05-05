@@ -20,8 +20,8 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 
 /**
- * @date: 2019/2/13
- * @describe: 上传文件
+ * date: 2019/2/13
+ * desc: 上传文件
  */
 public class UploadBuilder extends OkHttpRequestBuilderHasParam<UploadBuilder> {
 

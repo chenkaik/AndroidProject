@@ -5,8 +5,8 @@ import commom.android.http.retrofit.ApiService;
 import commom.android.http.retrofit.NetWorkRequest;
 
 /**
- * @date: 2019/1/30
- * @describe: 管理接口初始化
+ * date: 2019/1/30
+ * desc: 管理接口初始化
  */
 public class ApiManager {
 

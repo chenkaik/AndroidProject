@@ -14,8 +14,8 @@ import okio.Okio;
 import okio.Source;
 
 /**
- * @date: 2019/2/18
- * @describe: 重写responseBody 设置下载进度监听
+ * date: 2019/2/18
+ * desc: 重写responseBody 设置下载进度监听
  */
 public class ResponseProgressBody extends ResponseBody {
 

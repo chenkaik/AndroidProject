@@ -8,8 +8,8 @@ import okhttp3.FormBody;
 import okhttp3.MultipartBody;
 
 /**
- * @date: 2019/2/13
- * @describe: 带有param的base request body
+ * date: 2019/2/13
+ * desc: 带有param的base request body
  */
 public abstract class OkHttpRequestBuilderHasParam<T extends OkHttpRequestBuilderHasParam> extends OkHttpRequestBuilder<T> {
 

@@ -9,8 +9,8 @@ import android.view.View;
 import java.util.List;
 
 /**
- * @date: 2019/1/30
- * @describe: banner使用的View
+ * date: 2019/1/30
+ * desc: banner使用的View
  */
 public class RecyclerViewBannerView extends RecyclerViewBannerBaseView<LinearLayoutManager, BannerRecyclerAdapter> {
 

@@ -7,8 +7,8 @@ import android.view.ViewGroup;
 import java.util.List;
 
 /**
- * @date: 2019/1/30
- * @describe: banner使用的baseAdapter
+ * date: 2019/1/30
+ * desc: banner使用的baseAdapter
  */
 public abstract class BaseBannerAdapter<VH extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     protected List<Integer> urlList;

@@ -11,8 +11,8 @@ import java.util.List;
 
 
 /**
- * @date: 2019/1/30
- * @describe: RecyclerView adapter基类
+ * date: 2019/1/30
+ * desc: RecyclerView adapter基类
  * 封装了数据集合以及ItemView的点击事件回调,同时暴露 {@link #onBindData(RecyclerViewHolder, Object, int)}
  * 用于数据与view绑定
  */

@@ -7,8 +7,8 @@ import android.view.Window;
 import android.view.WindowManager;
 
 /**
- * @date: 2019/1/30
- * @describe: 修改状态栏颜色
+ * date: 2019/1/30
+ * desc: 修改状态栏颜色
  */
 public class StatusBarUtil {
 

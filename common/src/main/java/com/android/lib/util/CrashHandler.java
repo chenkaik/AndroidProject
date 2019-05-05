@@ -22,8 +22,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @date: 2019/3/26
- * @describe: UncaughtException处理类, 当程序发生Uncaught异常的时候, 有该类来接管程序, 并记录发送错误报告.
+ * date: 2019/3/26
+ * desc: UncaughtException处理类, 当程序发生Uncaught异常的时候, 有该类来接管程序, 并记录发送错误报告.
  * https://blog.csdn.net/RedWolfChao/article/details/66968059
  * Thread.UncaughtExceptionHandler：线程未捕获异常处理器，用来处理未捕获异常。如果程序出现了未捕获异常，
  * 默认会弹出系统中强制关闭对话框。我们需要实现此接口，并注册为程序中默认未捕获异常处理。

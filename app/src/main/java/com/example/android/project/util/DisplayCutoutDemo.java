@@ -10,8 +10,8 @@ import android.view.WindowInsets;
 import android.view.WindowManager;
 
 /**
- * @date: 2019/3/7
- * @describe: 刘海屏控制
+ * date: 2019/3/7
+ * desc: 刘海屏检测
  */
 public class DisplayCutoutDemo {
     /**

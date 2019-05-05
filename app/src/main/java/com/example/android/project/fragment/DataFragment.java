@@ -7,8 +7,8 @@ import com.android.lib.Logger;
 import com.example.android.project.R;
 
 /**
- * @date: 2019/3/8
- * @describe: 数据
+ * date: 2019/3/8
+ * desc: 数据
  */
 public class DataFragment extends BaseFragment {
 

@@ -18,8 +18,8 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 /**
- * @date: 2019/2/18
- * @describe: download builder
+ * date: 2019/2/18
+ * desc: download builder
  */
 public class DownloadBuilder {
 

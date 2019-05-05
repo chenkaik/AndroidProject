@@ -9,8 +9,8 @@ import android.widget.TextView;
 import com.android.common.R;
 
 /**
- * @date: 2019/1/30
- * @describe: 请求网络加载提示框
+ * date: 2019/1/30
+ * desc: 请求网络加载提示框
  */
 public class CommonProgressDialog extends Dialog {
 

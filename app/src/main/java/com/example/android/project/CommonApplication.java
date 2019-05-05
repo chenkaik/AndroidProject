@@ -9,8 +9,8 @@ import commom.android.http.ApiManager;
 import commom.android.http.config.HttpConfig;
 
 /**
- * @date: 2019/1/30
- * @describe: 程序入口
+ * date: 2019/1/30
+ * desc: 程序入口
  */
 public class CommonApplication extends Application {
 

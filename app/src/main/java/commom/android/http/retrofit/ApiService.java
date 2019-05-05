@@ -13,8 +13,8 @@ import retrofit2.http.DELETE;
 import retrofit2.http.POST;
 
 /**
- * @date: 2019/1/30
- * @describe: 定义接口
+ * date: 2019/1/30
+ * desc: 定义接口
  */
 public interface ApiService {
 

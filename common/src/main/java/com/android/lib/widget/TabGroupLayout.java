@@ -6,8 +6,8 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 /**
- * @date: 2019/1/30
- * @describe: 底部导航
+ * date: 2019/1/30
+ * desc: 底部导航
  */
 public class TabGroupLayout extends LinearLayout {
 

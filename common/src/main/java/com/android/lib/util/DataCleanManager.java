@@ -8,8 +8,8 @@ import java.io.File;
 import java.math.BigDecimal;
 
 /**
- * @date: 2019/1/30
- * @describe: 清除缓存工具类
+ * date: 2019/1/30
+ * desc: 清除缓存工具类
  */
 public class DataCleanManager {
 

@@ -16,8 +16,8 @@ import com.example.android.project.activity.TestActivity;
 import butterknife.BindView;
 
 /**
- * @date: 2019/3/8
- * @describe: 首页
+ * date: 2019/3/8
+ * desc: 首页
  */
 public class HomeFragment extends BaseFragment {
 

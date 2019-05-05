@@ -7,8 +7,8 @@ import android.util.AttributeSet;
 import android.widget.RelativeLayout;
 
 /**
- * @date: 2019/1/30
- * @describe: 长方形的RelativeLayout
+ * date: 2019/1/30
+ * desc: 长方形的RelativeLayout
  */
 public class SquareRelativeLayout extends RelativeLayout {
 

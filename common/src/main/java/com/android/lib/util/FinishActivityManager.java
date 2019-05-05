@@ -7,8 +7,8 @@ import java.util.Iterator;
 import java.util.Stack;
 
 /**
- * @date: 2019/4/2
- * @describe: 管理activity
+ * date: 2019/4/2
+ * desc: 管理activity
  * 在BaseActivity中onCreate()中addActivity
  * 在onDestroy()中finishActivity()
  * 其他功能在各个子Activity中根据需要添加

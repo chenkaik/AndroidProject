@@ -1,8 +1,8 @@
 package commom.android.http.response;
 
 /**
- * @date: 2019/1/30
- * @describe: 请求数据的回调接口(适用于okHttp请求)
+ * date: 2019/1/30
+ * desc: 请求数据的回调接口(适用于okHttp请求)
  */
 public interface CommonOkHttpResponse {
 

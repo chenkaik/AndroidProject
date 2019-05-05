@@ -13,8 +13,8 @@ import android.widget.TextView;
 import com.android.common.R;
 
 /**
- * @date: 2019/1/30
- * @describe: 公用的弹框
+ * date: 2019/1/30
+ * desc: 公用的弹框
  */
 public class CommonAlertDialog {
     public static class Builder {

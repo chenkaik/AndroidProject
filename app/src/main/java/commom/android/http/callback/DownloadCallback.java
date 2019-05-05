@@ -15,8 +15,8 @@ import okhttp3.Response;
 import okhttp3.ResponseBody;
 
 /**
- * @date: 2019/2/18
- * @describe: 下载进度回调
+ * date: 2019/2/18
+ * desc: 下载进度回调
  */
 public class DownloadCallback implements Callback {
 

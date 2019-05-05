@@ -11,8 +11,8 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 
 /**
- * @date: 2019/2/13
- * @describe: patch请求
+ * date: 2019/2/13
+ * desc: patch请求
  */
 public class PatchBuilder extends OkHttpRequestBuilder<PatchBuilder> {
 

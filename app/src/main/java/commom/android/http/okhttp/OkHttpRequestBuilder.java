@@ -9,8 +9,8 @@ import okhttp3.Headers;
 import okhttp3.Request;
 
 /**
- * @date: 2019/2/13
- * @describe: 不带param的base request body
+ * date: 2019/2/13
+ * desc: 不带param的base request body
  */
 public abstract class OkHttpRequestBuilder<T extends OkHttpRequestBuilder> {
 

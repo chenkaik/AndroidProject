@@ -9,8 +9,8 @@ import com.example.android.project.R;
 import com.example.android.project.activity.MyActivity;
 
 /**
- * @date: 2019/4/12
- * @describe: 发现模块
+ * date: 2019/4/12
+ * desc: 发现模块
  */
 public class FindFragment extends BaseFragment {
 
