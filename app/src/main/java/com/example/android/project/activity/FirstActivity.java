@@ -55,7 +55,7 @@ public class FirstActivity extends BaseActivity {
 
     }
 
-    class MyHandler extends Handler {
+    private class MyHandler extends Handler {
         @Override
         public void handleMessage(Message msg) {
             switch (msg.what) {

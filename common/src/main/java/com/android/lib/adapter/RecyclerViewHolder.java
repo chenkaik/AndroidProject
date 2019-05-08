@@ -11,6 +11,7 @@ import android.widget.TextView;
  * desc: recyclerView公用的ViewHolder
  */
 public class RecyclerViewHolder extends RecyclerView.ViewHolder {
+
     private SparseArray<View> mViews;
     private View mConvertView;
 
@@ -23,9 +24,9 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder {
     /**
      * 通过id获得控件
      *
-     * @param id
-     * @param <K>
-     * @return
+     * @param id id
+     * @param <K> k
+     * @return 控件
      */
     public <K extends View> K findView(int id) {
         return (K) itemView.findViewById(id);
@@ -34,9 +35,9 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder {
     /**
      * 通过id获得控件
      *
-     * @param viewId
-     * @param <T>
-     * @return
+     * @param viewId id
+     * @param <T> 控件
+     * @return 控件
      */
     public <T extends View> T getView(int viewId) {
         View view = mViews.get(viewId);
@@ -74,6 +75,10 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder {
         if (TextUtils.isEmpty(value)) {
             textView.setText(text);
         } else {
+//            StringBuilder builder = new StringBuilder();
+//            builder.append(text);
+//            builder.append(value);
+//            textView.setText(builder.toString());
             textView.setText(text + value);
         }
     }

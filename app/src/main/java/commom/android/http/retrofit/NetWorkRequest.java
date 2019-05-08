@@ -61,7 +61,7 @@ public class NetWorkRequest {
      * 初始化Retrofit
      *
      * @param baseURL 主机地址
-     * @return
+     * @return NetWorkRequest
      */
     public NetWorkRequest init(String baseURL) {
         synchronized (NetWorkRequest.this) {
@@ -105,7 +105,7 @@ public class NetWorkRequest {
      * @param requestCall      动态代理 泛型为返回实体 必须继承BaseResponseEntity
      * @param responseListener 接口回调 泛型为返回实体 必须继承BaseResponseEntity（可根据需要进行修改）
      * @param isShow           是否显示加载框
-     * @param <T>
+     * @param <T>              泛型类型
      */
     public <T extends BaseResponse> void asyncNetWork(final String TAG, final int requestCode, final Call<T> requestCall, final CommonResponse<T> responseListener, final boolean isShow) {
         if (responseListener == null) {
@@ -169,7 +169,7 @@ public class NetWorkRequest {
      * @param requestCall      动态代理 泛型为返回实体 必须继承BaseResponseEntity
      * @param responseListener 接口回调 泛型为返回实体 必须继承BaseResponseEntity（可根据需要进行修改）
      * @param isShow           是否显示加载框
-     * @param <T>
+     * @param <T>              泛型类型
      */
     public <T extends BaseResponse> void syncNetWork(final String TAG, final int requestCode, final Call<T> requestCall, final CommonResponse<T> responseListener, boolean isShow) {
         if (responseListener == null) {
@@ -213,8 +213,8 @@ public class NetWorkRequest {
     /**
      * 添加call到Map
      *
-     * @param TAG
-     * @param call
+     * @param TAG  tag
+     * @param call call
      */
     private void addCall(String TAG, Integer code, Call call) {
         if (TAG == null) {
@@ -241,8 +241,8 @@ public class NetWorkRequest {
     /**
      * 取消某个call
      *
-     * @param TAG
-     * @param code
+     * @param TAG  tag
+     * @param code code
      */
     public boolean cancelCall(String TAG, Integer code) {
         if (TAG == null) {
@@ -294,7 +294,7 @@ public class NetWorkRequest {
     /**
      * okHttp get请求
      *
-     * @return 构建get
+     * @return 构建get请求
      */
     public GetBuilder get() {
         return new GetBuilder(this);
@@ -303,7 +303,7 @@ public class NetWorkRequest {
     /**
      * okHttp post请求
      *
-     * @return 构建post
+     * @return 构建post请求
      */
     public PostBuilder post() {
         return new PostBuilder(this);
@@ -312,7 +312,7 @@ public class NetWorkRequest {
     /**
      * okHttp patch请求
      *
-     * @return 构建patch
+     * @return 构建patch请求
      */
     public PatchBuilder patch() {
         return new PatchBuilder(this);
@@ -321,7 +321,7 @@ public class NetWorkRequest {
     /**
      * okHttp delete请求
      *
-     * @return 构建delete
+     * @return 构建delete请求
      */
     public DeleteBuilder delete() {
         return new DeleteBuilder(this);
@@ -330,7 +330,7 @@ public class NetWorkRequest {
     /**
      * okHttp put请求
      *
-     * @return 构建put
+     * @return 构建put请求
      */
     public PutBuilder put() {
         return new PutBuilder(this);
@@ -339,7 +339,7 @@ public class NetWorkRequest {
     /**
      * okHttp post上传文件
      *
-     * @return 构建请求
+     * @return 构建上传文件请求
      */
     public UploadBuilder upload() {
         return new UploadBuilder(this);
@@ -348,7 +348,7 @@ public class NetWorkRequest {
     /**
      * okHttp 下载文件
      *
-     * @return 构建请求
+     * @return 构建下载文件请求
      */
     public DownloadBuilder download() {
         return new DownloadBuilder(this);
