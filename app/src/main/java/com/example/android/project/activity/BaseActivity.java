@@ -112,13 +112,13 @@ public abstract class BaseActivity extends AppCompatActivity {
      */
     public void commonFail(String msg, boolean isOverdue) {
         if (isOverdue) { // 登录失效
-            showToastMessage("登录失效");
+            showToastMessage(getResources().getString(R.string.login_Invalid_name));
         } else if (NetworkUtil.isNetworkAvailable(this)) {
             if (!TextUtils.isEmpty(msg)) {
                 showToastMessage(msg);
             }
         } else {
-            showToastMessage("当前无网络!");
+            showToastMessage(getResources().getString(R.string.no_network_name));
         }
     }
 
