@@ -5,8 +5,8 @@ import android.content.Context;
 
 import com.android.lib.util.CrashHandler;
 
-import commom.android.http.ApiManager;
-import commom.android.http.config.HttpConfig;
+import common.android.http.ApiManager;
+import common.android.http.config.HttpConfig;
 
 /**
  * date: 2019/1/30
@@ -32,7 +32,7 @@ public class CommonApplication extends Application {
     /**
      * 获取全局的上下文引用
      *
-     * @return
+     * @return 上下文
      */
     public static Context getContext() {
         return context;

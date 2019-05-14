@@ -10,11 +10,11 @@ import com.example.android.project.entity.request.HomeIndexRequest;
 import com.example.android.project.entity.request.LoginRequest;
 
 import butterknife.OnClick;
-import commom.android.http.ApiManager;
-import commom.android.http.config.UserConfig;
-import commom.android.http.response.BaseResponse;
-import commom.android.http.response.CommonResponse;
-import commom.android.http.retrofit.NetWorkRequest;
+import common.android.http.ApiManager;
+import common.android.http.config.UserConfig;
+import common.android.http.response.BaseResponse;
+import common.android.http.response.CommonResponse;
+import common.android.http.retrofit.NetWorkRequest;
 
 public class RetrofitTestActivity extends BaseActivity implements CommonResponse {
 

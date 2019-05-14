@@ -15,10 +15,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 import butterknife.OnClick;
-import commom.android.http.config.UserConfig;
-import commom.android.http.okhttp.DownloadResponseHandler;
-import commom.android.http.response.CommonOkHttpResponse;
-import commom.android.http.retrofit.NetWorkRequest;
+import common.android.http.config.UserConfig;
+import common.android.http.okhttp.DownloadResponseHandler;
+import common.android.http.response.CommonOkHttpResponse;
+import common.android.http.retrofit.NetWorkRequest;
 
 public class OkHttpTestActivity extends BaseActivity implements CommonOkHttpResponse {
 
