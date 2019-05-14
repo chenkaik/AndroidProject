@@ -116,7 +116,7 @@ public class CommonHelp {
     }
 
 
-    public void isFinish() {
+    private void isFinish() {
         if (activity == null || activity.isFinishing()) {
             return;
         }

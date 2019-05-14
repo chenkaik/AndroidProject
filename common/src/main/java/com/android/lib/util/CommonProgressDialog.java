@@ -73,8 +73,8 @@ public class CommonProgressDialog extends Dialog {
         /**
          * 设置提示信息
          *
-         * @param message
-         * @return
+         * @param message 提示信息
+         * @return builder
          */
         public Builder setMessage(String message) {
             this.message = message;
@@ -84,8 +84,8 @@ public class CommonProgressDialog extends Dialog {
         /**
          * 是否可以取消
          *
-         * @param cancelable
-         * @return
+         * @param cancelable true&false
+         * @return builder
          */
         public Builder setCancelable(boolean cancelable) {
             this.cancelable = cancelable;
@@ -96,7 +96,7 @@ public class CommonProgressDialog extends Dialog {
          * 设置点击dialog外部是否取消dialog
          *
          * @param cancelTouchOutside 点击外部是否取消dialog
-         * @return
+         * @return builder
          */
         public Builder cancelTouchOutside(boolean cancelTouchOutside) {
             this.cancelTouchOutside = cancelTouchOutside;

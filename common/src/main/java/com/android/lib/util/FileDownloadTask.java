@@ -58,7 +58,7 @@ public class FileDownloadTask extends AsyncTask<String, Integer, Integer> {
                     .url(downloadUrl)
                     .build();
             Response response = client.newCall(request).execute();
-            if (response != null) {
+            if (response.body() != null) {
                 is = response.body().byteStream();
                 saveFile = new RandomAccessFile(file, "rw");
 //                saveFile.seek(downloadLength); // 跳过已下载的字节
@@ -132,7 +132,7 @@ public class FileDownloadTask extends AsyncTask<String, Integer, Integer> {
      * 获取待下载文件的大小
      *
      * @param downloadUrl 下载地址
-     * @return
+     * @return 待下载文件的大小
      * @throws IOException
      */
     private long getFileLength(String downloadUrl) throws IOException {

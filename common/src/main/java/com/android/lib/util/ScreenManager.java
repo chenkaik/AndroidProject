@@ -115,7 +115,7 @@ public class ScreenManager {
     /**
      * 弹出直到是cls类型的，并finish
      *
-     * @param cls
+     * @param cls class
      */
     public void popAllActivityExceptOne(Class<?> cls) {
         while (true) {
@@ -135,7 +135,7 @@ public class ScreenManager {
     /**
      * 弹出直到是cls类型的,但并不finish
      *
-     * @param cls
+     * @param cls class
      */
     public void popAllNoFinishExceptOne(Class<?> cls) {
         while (true) {
@@ -180,7 +180,7 @@ public class ScreenManager {
     /**
      * 入栈
      *
-     * @param activity
+     * @param activity act
      */
     public void pushActivity(Activity activity) {
         activityStack.push(activity);
@@ -197,7 +197,7 @@ public class ScreenManager {
     /**
      * 栈的大小
      *
-     * @return
+     * @return size
      */
     public int getSize() {
         return activityStack.size();
@@ -206,8 +206,8 @@ public class ScreenManager {
     /**
      * 获得第几个元素
      *
-     * @param i
-     * @return
+     * @param i index
+     * @return act
      */
     public Activity getElement(int i) {
         Activity activity = activityStack.elementAt(i);

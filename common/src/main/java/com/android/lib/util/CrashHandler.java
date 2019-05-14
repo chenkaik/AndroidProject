@@ -36,7 +36,7 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
     // 系统默认的UncaughtException处理类
     private Thread.UncaughtExceptionHandler mDefaultHandler;
     // CrashHandler实例
-    private static CrashHandler INSTANCE = new CrashHandler();
+//    private static CrashHandler INSTANCE = new CrashHandler();
     // 程序的Context对象
     private Context mContext;
     // 用来存储设备信息和异常信息
@@ -56,13 +56,17 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
      * 获取CrashHandler实例 ,单例模式
      */
     public static CrashHandler getInstance() {
-        return INSTANCE;
+        return CrashHandlerHolder.INSTANCE;
+    }
+
+    private static class CrashHandlerHolder {
+        private static final CrashHandler INSTANCE = new CrashHandler();
     }
 
     /**
      * 初始化
      *
-     * @param context
+     * @param context 上下文
      */
     public void init(Context context) {
         mContext = context;
@@ -121,7 +125,7 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
     /**
      * 收集设备参数信息
      *
-     * @param ctx
+     * @param ctx 上下文
      */
     public void collectDeviceInfo(Context ctx) {
         try {
@@ -151,7 +155,7 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
     /**
      * 保存错误信息到文件中
      *
-     * @param ex
+     * @param ex Throwable
      * @return 返回文件名称, 便于将文件传送到服务器
      */
     private String saveCrashInfo2File(Throwable ex) {

@@ -29,7 +29,7 @@ public class FragmentManagerUtil {
         add(fm, resId, fragment1, fragment2, true);
     }
 
-    public static void add(FragmentManager fm, int resId, Fragment fragment1, Fragment fragment2, boolean hidenSoftInput) {
+    public static void add(FragmentManager fm, int resId, Fragment fragment1, Fragment fragment2, boolean hideSoftInput) {
         FragmentTransaction transaction = fm.beginTransaction();
         transaction.setCustomAnimations(R.anim.push_left_in, R.anim.push_left_out, R.anim.push_right_in, R.anim.push_right_out);
         transaction.add(resId, fragment2, fragment2.getClass().getSimpleName());
@@ -37,7 +37,7 @@ public class FragmentManagerUtil {
             transaction.hide(fragment1);
             transaction.addToBackStack(null);
 
-            if (hidenSoftInput) {
+            if (hideSoftInput) {
                 hideSoftInput(fragment1.getActivity());
             }
         }

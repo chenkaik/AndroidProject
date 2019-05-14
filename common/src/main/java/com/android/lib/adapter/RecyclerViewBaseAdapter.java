@@ -23,7 +23,7 @@ public class RecyclerViewBaseAdapter<T, VH extends RecyclerViewHolder> extends R
     /**
      * 默认构造方法
      *
-     * @param context
+     * @param context 上下文
      */
     public RecyclerViewBaseAdapter(Context context, List<T> data) {
         init(context, data);
@@ -32,8 +32,8 @@ public class RecyclerViewBaseAdapter<T, VH extends RecyclerViewHolder> extends R
     /**
      * 如果item的子View有点击事件，使用该构造方法
      *
-     * @param context
-     * @param onViewClickListener
+     * @param context 上下文
+     * @param onViewClickListener 子view的监听
      */
     public RecyclerViewBaseAdapter(Context context, List<T> data, OnViewClickListener onViewClickListener) {
         init(context, data);
@@ -43,7 +43,7 @@ public class RecyclerViewBaseAdapter<T, VH extends RecyclerViewHolder> extends R
     /**
      * 初始化
      *
-     * @param context
+     * @param context 上下文
      */
     void init(Context context, List<T> data) {
         this.context = context;
@@ -101,7 +101,7 @@ public class RecyclerViewBaseAdapter<T, VH extends RecyclerViewHolder> extends R
     /**
      * 设置item点击事件
      *
-     * @param onItemClickListener
+     * @param onItemClickListener item点击事件监听
      */
     public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
         this.onItemClickListener = onItemClickListener;
@@ -117,7 +117,7 @@ public class RecyclerViewBaseAdapter<T, VH extends RecyclerViewHolder> extends R
     /**
      * 设置item长按事件
      *
-     * @param onItemLongClickListener
+     * @param onItemLongClickListener tem长按事件监听
      */
     public void setOnItemLongClickListener(OnItemLongClickListener onItemLongClickListener) {
         this.onItemLongClickListener = onItemLongClickListener;

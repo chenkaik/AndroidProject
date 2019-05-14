@@ -6,7 +6,7 @@ import android.os.Message;
 import android.view.WindowManager;
 
 import com.android.lib.util.ScreenManager;
-import com.android.lib.util.SystemVersionUtil;
+import com.android.lib.util.SystemInfo;
 import com.example.android.project.R;
 
 public class FirstActivity extends BaseActivity {
@@ -17,7 +17,7 @@ public class FirstActivity extends BaseActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         // 适配刘海屏
-        if (SystemVersionUtil.hasP()) {
+        if (SystemInfo.hasP()) {
 //            requestWindowFeature(Window.FEATURE_NO_TITLE);
 //            getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 //            WindowManager.LayoutParams lp = this.getWindow().getAttributes();

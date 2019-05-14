@@ -18,8 +18,8 @@ public class NetworkUtil {
     /**
      * 判断网络是否可用
      *
-     * @param context
-     * @return
+     * @param context 上下文
+     * @return true & false
      */
     public static boolean isNetworkAvailable(Context context) {
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);

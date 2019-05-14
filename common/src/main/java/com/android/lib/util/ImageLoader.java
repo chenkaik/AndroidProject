@@ -103,7 +103,7 @@ public class ImageLoader {
     /**
      * 清除内存缓存
      *
-     * @param context
+     * @param context 上下文
      */
     public static void clearMemory(Context context) {
         Glide.get(context).clearMemory();

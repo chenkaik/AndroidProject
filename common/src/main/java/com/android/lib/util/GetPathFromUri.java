@@ -14,17 +14,29 @@ import android.provider.MediaStore;
  * desc: 专为Android4.4设计的从Uri获取文件绝对路径，以前的方法已不好使
  */
 public class GetPathFromUri {
-    private static GetPathFromUri instance;
+
+//    private static GetPathFromUri instance;
+//
+//    public static GetPathFromUri getInstance() {
+//        if (instance == null) {
+//            synchronized (GetPathFromUri.class) {
+//                if (instance == null) {
+//                    instance = new GetPathFromUri();
+//                }
+//            }
+//        }
+//        return instance;
+//    }
+
+    private GetPathFromUri() {
+    }
 
     public static GetPathFromUri getInstance() {
-        if (instance == null) {
-            synchronized (GetPathFromUri.class) {
-                if (instance == null) {
-                    instance = new GetPathFromUri();
-                }
-            }
-        }
-        return instance;
+        return GetPathFromUriHolder.sInstance;
+    }
+
+    private static class GetPathFromUriHolder {
+        private static final GetPathFromUri sInstance = new GetPathFromUri();
     }
 
     public String getPath(final Context context, final Uri uri) {

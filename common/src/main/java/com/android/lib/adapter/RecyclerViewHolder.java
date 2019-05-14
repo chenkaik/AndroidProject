@@ -24,7 +24,7 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder {
     /**
      * 通过id获得控件
      *
-     * @param id id
+     * @param id  id
      * @param <K> k
      * @return 控件
      */
@@ -36,7 +36,7 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder {
      * 通过id获得控件
      *
      * @param viewId id
-     * @param <T> 控件
+     * @param <T>    控件
      * @return 控件
      */
     public <T extends View> T getView(int viewId) {

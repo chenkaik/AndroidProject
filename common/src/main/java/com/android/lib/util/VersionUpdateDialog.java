@@ -76,7 +76,7 @@ public class VersionUpdateDialog extends Dialog {
     /**
      * 设置当前下载的进度
      *
-     * @param progress
+     * @param progress 进度
      */
     public void setCurrentProgress(int progress) {
         progressBar.setProgress(progress);
@@ -85,7 +85,7 @@ public class VersionUpdateDialog extends Dialog {
     /**
      * 设置下载文件的大小
      *
-     * @param progressMax
+     * @param progressMax 大小
      */
     public void setProgressMax(int progressMax) {
         progressBar.setMax(progressMax);

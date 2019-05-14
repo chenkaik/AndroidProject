@@ -10,9 +10,10 @@ public class DoubleCalculation {
 
     /**
      * 加法运算
-     * @param m1
-     * @param m2
-     * @return
+     *
+     * @param m1 值1
+     * @param m2 值2
+     * @return 计算结果
      */
     public static double addDouble(double m1, double m2) {
         BigDecimal p1 = new BigDecimal(Double.toString(m1));
@@ -22,9 +23,10 @@ public class DoubleCalculation {
 
     /**
      * 减法运算
-     * @param m1
-     * @param m2
-     * @return
+     *
+     * @param m1 值1
+     * @param m2 值2
+     * @return 计算结果
      */
     public static double subDouble(double m1, double m2) {
         BigDecimal p1 = new BigDecimal(Double.toString(m1));
@@ -34,9 +36,10 @@ public class DoubleCalculation {
 
     /**
      * 乘法运算
-     * @param m1
-     * @param m2
-     * @return
+     *
+     * @param m1 值1
+     * @param m2 值2
+     * @return 计算结果
      */
     public static double mul(double m1, double m2) {
         BigDecimal p1 = new BigDecimal(Double.toString(m1));
@@ -46,11 +49,12 @@ public class DoubleCalculation {
 
 
     /**
-     *  除法运算
-     *   @param   m1
-     *   @param   m2
-     *   @param   scale
-     *   @return
+     * 除法运算
+     *
+     * @param m1    值1
+     * @param m2    值2
+     * @param scale 四舍五入 小数点位数
+     * @return 计算结果
      */
     public static double div(double m1, double m2, int scale) {
         if (scale < 0) {

@@ -35,7 +35,7 @@ public class CommonAlertDialog {
          * 设置title
          *
          * @param title
-         * @return
+         * @return builder
          */
         public Builder setTitle(CharSequence title) {
             mViewHolder.tvTitle.setText(title);
@@ -45,7 +45,7 @@ public class CommonAlertDialog {
         /**
          * @param title 显示的文字
          * @param color 显示的文字的颜色
-         * @return
+         * @return builder
          */
         public Builder setTitle(CharSequence title, int color) {
             mViewHolder.tvTitle.setText(title);
@@ -57,7 +57,7 @@ public class CommonAlertDialog {
          * 设置title
          *
          * @param resId 显示的文字id
-         * @return
+         * @return builder
          */
         public Builder setTitle(int resId) {
             mViewHolder.tvTitle.setText(resId);
@@ -69,7 +69,7 @@ public class CommonAlertDialog {
          *
          * @param resId 显示的文字id
          * @param color 显示的文字的颜色
-         * @return
+         * @return builder
          */
         public Builder setTitle(int resId, int color) {
             mViewHolder.tvTitle.setText(resId);
@@ -81,7 +81,7 @@ public class CommonAlertDialog {
          * 设置显示内容
          *
          * @param title 显示内容
-         * @return
+         * @return builder
          */
         public Builder setMessage(CharSequence title) {
             mViewHolder.tvMessage.setText(title);
@@ -93,7 +93,7 @@ public class CommonAlertDialog {
          *
          * @param title 显示内容
          * @param color 显示内容颜色
-         * @return
+         * @return builder
          */
         public Builder setMessage(CharSequence title, int color) {
             mViewHolder.tvMessage.setText(title);
@@ -105,7 +105,7 @@ public class CommonAlertDialog {
          * 设置显示内容
          *
          * @param resId 显示内容id
-         * @return
+         * @return builder
          */
         public Builder setMessage(int resId) {
             mViewHolder.tvMessage.setText(resId);
@@ -117,7 +117,7 @@ public class CommonAlertDialog {
          *
          * @param resId 显示内容id
          * @param color 显示内容颜色
-         * @return
+         * @return builder
          */
         public Builder setMessage(int resId, int color) {
             mViewHolder.tvMessage.setText(resId);
@@ -129,7 +129,7 @@ public class CommonAlertDialog {
          * 确定按钮
          *
          * @param listener 按钮监听
-         * @return
+         * @return builder
          */
         public Builder setPositiveButton(final View.OnClickListener listener) {
             mViewHolder.tvCenterButton.setVisibility(View.GONE);
@@ -152,7 +152,7 @@ public class CommonAlertDialog {
          *
          * @param text     按钮文字
          * @param listener 按钮监听
-         * @return
+         * @return builder
          */
         public Builder setPositiveButton(CharSequence text, final View.OnClickListener listener) {
             mViewHolder.tvCenterButton.setVisibility(View.GONE);
@@ -177,7 +177,7 @@ public class CommonAlertDialog {
          * @param text     按钮文字
          * @param listener 按钮监听
          * @param color    按钮文字颜色
-         * @return
+         * @return builder
          */
         public Builder setPositiveButton(CharSequence text, final View.OnClickListener listener, int color) {
             mViewHolder.tvCenterButton.setVisibility(View.GONE);
@@ -201,7 +201,7 @@ public class CommonAlertDialog {
          * 取消按钮
          *
          * @param listener 按钮监听
-         * @return
+         * @return builder
          */
         public Builder setNegativeButton(final View.OnClickListener listener) {
             mViewHolder.tvCenterButton.setVisibility(View.GONE);
@@ -224,7 +224,7 @@ public class CommonAlertDialog {
          *
          * @param text     按钮文字
          * @param listener 按钮监听
-         * @return
+         * @return builder
          */
         public Builder setNegativeButton(CharSequence text, final View.OnClickListener listener) {
             mViewHolder.tvCenterButton.setVisibility(View.GONE);
@@ -249,7 +249,7 @@ public class CommonAlertDialog {
          * @param text     按钮文字
          * @param listener 按钮监听
          * @param color    按钮文字颜色
-         * @return
+         * @return builder
          */
         public Builder setNegativeButton(CharSequence text, final View.OnClickListener listener, int color) {
             mViewHolder.tvCenterButton.setVisibility(View.GONE);
@@ -273,7 +273,7 @@ public class CommonAlertDialog {
          * 显示一个按钮的弹窗
          *
          * @param listener 按钮监听
-         * @return
+         * @return builder
          */
         public Builder setShowOneButton(final View.OnClickListener listener) {
             mViewHolder.tvNegativeButton.setVisibility(View.GONE);
@@ -297,7 +297,7 @@ public class CommonAlertDialog {
          *
          * @param text     按钮文字
          * @param listener 按钮监听
-         * @return
+         * @return builder
          */
         public Builder setShowOneButton(CharSequence text, final View.OnClickListener listener) {
             mViewHolder.tvNegativeButton.setVisibility(View.GONE);
@@ -323,7 +323,7 @@ public class CommonAlertDialog {
          * @param text     按钮文字
          * @param listener 按钮监听
          * @param color    按钮文字颜色
-         * @return
+         * @return builder
          */
         public Builder setShowOneButton(CharSequence text, final View.OnClickListener listener, int color) {
             mViewHolder.tvNegativeButton.setVisibility(View.GONE);
@@ -348,7 +348,7 @@ public class CommonAlertDialog {
          * 返回键是否可取消
          *
          * @param flag
-         * @return
+         * @return builder
          */
         public Builder setCancelable(boolean flag) {
             mDialog.setCancelable(flag);
@@ -359,7 +359,7 @@ public class CommonAlertDialog {
          * 点击其它空白位置是否可取消
          *
          * @param flag
-         * @return
+         * @return builder
          */
         public Builder setCanceledOnTouchOutside(boolean flag) {
             mDialog.setCanceledOnTouchOutside(flag);

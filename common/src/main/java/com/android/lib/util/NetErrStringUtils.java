@@ -12,11 +12,11 @@ import java.util.concurrent.TimeoutException;
  */
 public class NetErrStringUtils {
 
-    public static final int ERR_404 = 404;
+    private static final int ERR_404 = 404;
 
-    public static final int ERR_500 = 500;
+    private static final int ERR_500 = 500;
 
-    public static final int ERR_502 = 502;
+    private static final int ERR_502 = 502;
 
     public static String getErrString(int code) {
         String result;

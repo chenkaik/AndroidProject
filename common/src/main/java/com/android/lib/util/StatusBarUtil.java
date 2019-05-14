@@ -15,8 +15,8 @@ public class StatusBarUtil {
     /**
      * 修改状态栏颜色，支持4.4以上版本
      *
-     * @param activity
-     * @param colorId
+     * @param activity act
+     * @param colorId color
      */
     public static void setStatusBarColors(Activity activity, int colorId) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
@@ -32,7 +32,7 @@ public class StatusBarUtil {
     /**
      * 修改状态栏为全透明
      *
-     * @param activity
+     * @param activity act
      */
     @TargetApi(19)
     public static void transparencyBar(Activity activity) {
