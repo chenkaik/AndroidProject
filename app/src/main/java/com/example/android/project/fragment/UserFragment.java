@@ -13,8 +13,8 @@ import com.example.android.project.R;
 public class UserFragment extends BaseFragment {
 
     private static final String TAG = "UserFragment";
-    private boolean initIsSuccess; // 初始化数据是否加载成功
-    private boolean initIsUiPrepared; // 布局控件是否初始化完成
+    private boolean initDataSuccess; // 初始化数据是否加载成功
+    private boolean initLayoutSuccess; // 布局控件是否初始化完成
 
     public static UserFragment newInstance() {
         return new UserFragment();
@@ -46,22 +46,22 @@ public class UserFragment extends BaseFragment {
 
     @Override
     protected void initData() {
-        initIsUiPrepared = true;
+        initLayoutSuccess = true;
         initLoadData();
     }
 
     private void initLoadData() {
-        if (getUserVisibleHint() && initIsUiPrepared && !initIsSuccess) {
+        if (getUserVisibleHint() && initLayoutSuccess && !initDataSuccess) {
             loadData();
         } else {
-            if (initIsSuccess) { // 主要用于点击切换回来更新某一接口的数据
+            if (initDataSuccess) { // 主要用于点击切换回来更新某一接口的数据
                 Logger.e(TAG, "initLoadData: 调用了");
             }
         }
     }
 
     private void loadData() {
-        initIsSuccess = true;
+        initDataSuccess = true;
         Logger.e(TAG, "loadData: " + "加载数据");
     }
 
