@@ -17,7 +17,7 @@ public class FindFragment extends BaseFragment {
     private static final String TAG = "FindFragment";
     private boolean mInitData; // 初始化数据是否加载成功
     private boolean mInitLayout; // 布局控件是否初始化完成
-    private MyActivity activity;
+    private MyActivity mActivity;
 
     public static FindFragment newInstance() {
         return new FindFragment();
@@ -26,7 +26,7 @@ public class FindFragment extends BaseFragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        activity = (MyActivity) context;
+        mActivity = (MyActivity) context;
     }
 
     @Override
@@ -88,11 +88,7 @@ public class FindFragment extends BaseFragment {
     }
 
     private MyActivity getMyActivity() {
-        if (activity != null) {
-            return activity;
-        } else {
-            return (MyActivity) getActivity();
-        }
+        return mActivity == null ? (MyActivity) getActivity() : mActivity;
     }
 
 }

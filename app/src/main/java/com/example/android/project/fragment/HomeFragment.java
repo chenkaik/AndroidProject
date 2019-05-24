@@ -24,7 +24,7 @@ public class HomeFragment extends BaseFragment {
     private static final String TAG = "HomeFragment";
     private boolean mInitData; // 初始化数据是否加载成功
     private boolean mInitLayout; // 布局控件是否初始化完成
-    private MyActivity activity;
+    private MyActivity mActivity;
     @BindView(R.id.tv_home)
     TextView textView;
 
@@ -35,7 +35,7 @@ public class HomeFragment extends BaseFragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        activity = (MyActivity) context;
+        mActivity = (MyActivity) context;
     }
 
     @Override
@@ -54,8 +54,8 @@ public class HomeFragment extends BaseFragment {
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(activity, TestActivity.class);
-                ScreenManager.getScreenManager().startPage(activity, intent, true);
+                Intent intent = new Intent(mActivity, TestActivity.class);
+                ScreenManager.getScreenManager().startPage(mActivity, intent, true);
             }
         });
     }
@@ -111,11 +111,7 @@ public class HomeFragment extends BaseFragment {
     }
 
     private MyActivity getMyActivity() {
-        if (activity != null) {
-            return activity;
-        } else {
-            return (MyActivity) getActivity();
-        }
+        return mActivity == null ? (MyActivity) getActivity() : mActivity;
     }
 
 }
