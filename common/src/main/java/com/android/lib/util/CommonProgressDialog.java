@@ -14,20 +14,20 @@ import com.android.common.R;
  */
 public class CommonProgressDialog extends Dialog {
 
-    private String message;
+    private String mMessage;
     private boolean cancelTouchOutside;
     private boolean cancelable;
 
     public CommonProgressDialog(Builder builder) {
-        super(builder.context);
-        message = builder.message;
+        super(builder.mContext);
+        mMessage = builder.mMessage;
         cancelTouchOutside = builder.cancelTouchOutside;
         cancelable = builder.cancelable;
     }
 
     public CommonProgressDialog(Builder builder, int theme) {
-        super(builder.context, theme);
-        message = builder.message;
+        super(builder.mContext, theme);
+        mMessage = builder.mMessage;
         cancelTouchOutside = builder.cancelTouchOutside;
         cancelable = builder.cancelable;
     }
@@ -39,8 +39,8 @@ public class CommonProgressDialog extends Dialog {
         setCancelable(cancelable);
         setCanceledOnTouchOutside(cancelTouchOutside);
         TextView textView = (TextView) findViewById(R.id.tv_load_dialog);
-        if (!TextUtils.isEmpty(message)) {
-            textView.setText(message);
+        if (!TextUtils.isEmpty(mMessage)) {
+            textView.setText(mMessage);
         }
 //        WindowManager.LayoutParams params = getWindow().getAttributes();
 //        params.width = WindowManager.LayoutParams.WRAP_CONTENT;
@@ -49,14 +49,14 @@ public class CommonProgressDialog extends Dialog {
     }
 
     public static final class Builder {
-        Context context;
-        private String message;
+        Context mContext;
+        private String mMessage;
         private int resStyle = -1;
         private boolean cancelTouchOutside;
         private boolean cancelable;
 
         public Builder(Context context) {
-            this.context = context;
+            this.mContext = context;
         }
 
         /**
@@ -77,7 +77,7 @@ public class CommonProgressDialog extends Dialog {
          * @return builder
          */
         public Builder setMessage(String message) {
-            this.message = message;
+            this.mMessage = message;
             return this;
         }
 

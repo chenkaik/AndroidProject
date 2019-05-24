@@ -36,7 +36,7 @@ public abstract class OkHttpRequestBuilder<T extends OkHttpRequestBuilder> {
      * set url
      *
      * @param url url
-     * @return
+     * @return T
      */
     public T url(String url) {
         this.mUrl = url;
@@ -47,7 +47,7 @@ public abstract class OkHttpRequestBuilder<T extends OkHttpRequestBuilder> {
      * set tag
      *
      * @param tag tag
-     * @return
+     * @return T
      */
     public T tag(Object tag) {
         this.mTag = tag;
@@ -58,7 +58,7 @@ public abstract class OkHttpRequestBuilder<T extends OkHttpRequestBuilder> {
      * set headers
      *
      * @param headers headers
-     * @return
+     * @return T
      */
     public T headers(Map<String, String> headers) {
         this.mHeaders = headers;
@@ -70,7 +70,7 @@ public abstract class OkHttpRequestBuilder<T extends OkHttpRequestBuilder> {
      *
      * @param key header key
      * @param val header val
-     * @return
+     * @return T
      */
     public T addHeader(String key, String val) {
         if (this.mHeaders == null) {
@@ -83,8 +83,8 @@ public abstract class OkHttpRequestBuilder<T extends OkHttpRequestBuilder> {
     /**
      * append headers into builder
      *
-     * @param builder
-     * @param headers
+     * @param builder Request.Builder
+     * @param headers head参数
      */
     public void appendHeaders(Request.Builder builder, Map<String, String> headers) {
         if (headers == null || headers.isEmpty()) {

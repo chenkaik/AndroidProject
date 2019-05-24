@@ -1,6 +1,7 @@
 package com.android.lib.adapter;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -13,17 +14,18 @@ import java.util.List;
  * desc: 封装的基类adapter
  */
 public class RecyclerViewBaseAdapter<T, VH extends RecyclerViewHolder> extends RecyclerView.Adapter<VH> {
-    public Context context; // 上下文
-    public List<T> data; // 数据源
-    public LayoutInflater mInflater;
-    public OnItemClickListener onItemClickListener; // item点击事件
-    public OnItemLongClickListener onItemLongClickListener; // item长按事件
-    public OnViewClickListener onViewClickListener; // item子view点击事件
+    public Context mContext; // 上下文
+    public List<T> mData; // 数据源
+    private LayoutInflater mInflater;
+    private OnItemClickListener mOnItemClickListener; // item点击事件
+    private OnItemLongClickListener mOnItemLongClickListener; // item长按事件
+    private OnViewClickListener mOnViewClickListener; // item子view点击事件
 
     /**
      * 默认构造方法
      *
      * @param context 上下文
+     * @param data    数据源
      */
     public RecyclerViewBaseAdapter(Context context, List<T> data) {
         init(context, data);
@@ -32,32 +34,35 @@ public class RecyclerViewBaseAdapter<T, VH extends RecyclerViewHolder> extends R
     /**
      * 如果item的子View有点击事件，使用该构造方法
      *
-     * @param context 上下文
+     * @param context             上下文
+     * @param data                数据源
      * @param onViewClickListener 子view的监听
      */
     public RecyclerViewBaseAdapter(Context context, List<T> data, OnViewClickListener onViewClickListener) {
         init(context, data);
-        this.onViewClickListener = onViewClickListener;
+        this.mOnViewClickListener = onViewClickListener;
     }
 
     /**
      * 初始化
      *
      * @param context 上下文
+     * @param data    数据源
      */
     void init(Context context, List<T> data) {
-        this.context = context;
-        this.data = data == null ? new ArrayList<T>() : data;
+        this.mContext = context;
+        this.mData = data == null ? new ArrayList<T>() : data;
         this.mInflater = LayoutInflater.from(context);
     }
 
+    @NonNull
     @Override
-    public VH onCreateViewHolder(ViewGroup parent, int viewType) {
+    public VH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return null;
     }
 
     @Override
-    public void onBindViewHolder(VH holder, int position) {
+    public void onBindViewHolder(@NonNull VH holder, int position) {
 //        if (onItemClickListener != null) {
 //            holder.itemView.setOnClickListener(new View.OnClickListener() { // item点击事件
 //                @Override
@@ -88,7 +93,7 @@ public class RecyclerViewBaseAdapter<T, VH extends RecyclerViewHolder> extends R
 
     @Override
     public int getItemCount() {
-        return data.size();
+        return mData.size();
     }
 
     /**
@@ -104,7 +109,7 @@ public class RecyclerViewBaseAdapter<T, VH extends RecyclerViewHolder> extends R
      * @param onItemClickListener item点击事件监听
      */
     public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
-        this.onItemClickListener = onItemClickListener;
+        this.mOnItemClickListener = onItemClickListener;
     }
 
     /**
@@ -120,7 +125,7 @@ public class RecyclerViewBaseAdapter<T, VH extends RecyclerViewHolder> extends R
      * @param onItemLongClickListener tem长按事件监听
      */
     public void setOnItemLongClickListener(OnItemLongClickListener onItemLongClickListener) {
-        this.onItemLongClickListener = onItemLongClickListener;
+        this.mOnItemLongClickListener = onItemLongClickListener;
     }
 
     /**

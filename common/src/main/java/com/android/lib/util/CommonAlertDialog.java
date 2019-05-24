@@ -34,7 +34,7 @@ public class CommonAlertDialog {
         /**
          * 设置title
          *
-         * @param title
+         * @param title 标题
          * @return builder
          */
         public Builder setTitle(CharSequence title) {
@@ -347,7 +347,7 @@ public class CommonAlertDialog {
         /**
          * 返回键是否可取消
          *
-         * @param flag
+         * @param flag true & false
          * @return builder
          */
         public Builder setCancelable(boolean flag) {
@@ -358,7 +358,7 @@ public class CommonAlertDialog {
         /**
          * 点击其它空白位置是否可取消
          *
-         * @param flag
+         * @param flag true & false
          * @return builder
          */
         public Builder setCanceledOnTouchOutside(boolean flag) {

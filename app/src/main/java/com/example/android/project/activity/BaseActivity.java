@@ -30,11 +30,11 @@ import butterknife.Unbinder;
  */
 public abstract class BaseActivity extends AppCompatActivity {
 
-    private CommonHelp commonHelp;
-    private Toast toast;
+    private CommonHelp mCommonHelp;
+    private Toast mToast;
     private Unbinder mButterKnife; // View注解
-    private PermissionListener permissionListener;
-    private long exitTime = 0; // 记录退出按下时间
+    private PermissionListener mPermissionListener;
+    private long mExitTime = 0; // 记录退出按下时间
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -59,8 +59,8 @@ public abstract class BaseActivity extends AppCompatActivity {
      */
     private void init() {
         mButterKnife = ButterKnife.bind(this);
-        commonHelp = new CommonHelp(this);
-        toast = Toast.makeText(this, null, Toast.LENGTH_SHORT);
+        mCommonHelp = new CommonHelp(this);
+        mToast = Toast.makeText(this, null, Toast.LENGTH_SHORT);
     }
 
     // 引入布局
@@ -78,9 +78,9 @@ public abstract class BaseActivity extends AppCompatActivity {
      * @param message 信息
      */
     public void showToastMessage(String message) {
-        if (toast != null) {
-            toast.setText(message);
-            toast.show();
+        if (mToast != null) {
+            mToast.setText(message);
+            mToast.show();
         }
     }
 
@@ -90,8 +90,8 @@ public abstract class BaseActivity extends AppCompatActivity {
      * @param msg 信息
      */
     public void showLoadingDialog(String msg) {
-        if (commonHelp != null) {
-            commonHelp.showProgress(msg);
+        if (mCommonHelp != null) {
+            mCommonHelp.showProgress(msg);
         }
     }
 
@@ -99,8 +99,8 @@ public abstract class BaseActivity extends AppCompatActivity {
      * 隐藏dialog
      */
     public void dismissLoadingDialog() {
-        if (commonHelp != null) {
-            commonHelp.dismissProgress();
+        if (mCommonHelp != null) {
+            mCommonHelp.dismissProgress();
         }
     }
 
@@ -131,8 +131,8 @@ public abstract class BaseActivity extends AppCompatActivity {
      * @param noListener 取消按钮的监听
      */
     public void showCommonAlertDialog(String title, String message, final View.OnClickListener okListener, final View.OnClickListener noListener) {
-        if (commonHelp != null) {
-            commonHelp.showCommonAlertDialog(title, message, okListener, noListener);
+        if (mCommonHelp != null) {
+            mCommonHelp.showCommonAlertDialog(title, message, okListener, noListener);
         }
     }
 
@@ -144,8 +144,8 @@ public abstract class BaseActivity extends AppCompatActivity {
      * @param okListener 确定按钮的监听
      */
     public void showCommonAlertDialog(String title, String message, final View.OnClickListener okListener) {
-        if (commonHelp != null) {
-            commonHelp.showCommonAlertDialog(title, message, okListener);
+        if (mCommonHelp != null) {
+            mCommonHelp.showCommonAlertDialog(title, message, okListener);
         }
     }
 
@@ -156,7 +156,7 @@ public abstract class BaseActivity extends AppCompatActivity {
      * @param listener    权限授权的回调
      */
     public void requestRuntimePermission(String[] permissions, PermissionListener listener) {
-        permissionListener = listener;
+        mPermissionListener = listener;
         List<String> permissionList = new ArrayList<>();
         for (String permission : permissions) {
             if (ContextCompat.checkSelfPermission(this, permission) != PackageManager.PERMISSION_GRANTED) {
@@ -167,7 +167,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         if (!permissionList.isEmpty()) {
             ActivityCompat.requestPermissions(this, permissionList.toArray(new String[permissionList.size()]), 1);
         } else {
-            permissionListener.onGranted(); // 全部授权
+            mPermissionListener.onGranted(); // 全部授权
         }
     }
 
@@ -186,12 +186,12 @@ public abstract class BaseActivity extends AppCompatActivity {
                         }
                     }
                     if (deniedPermissions.isEmpty()) {
-                        if (permissionListener != null) {
-                            permissionListener.onGranted();
+                        if (mPermissionListener != null) {
+                            mPermissionListener.onGranted();
                         }
                     } else {
-                        if (permissionListener != null) {
-                            permissionListener.onDenied(deniedPermissions);
+                        if (mPermissionListener != null) {
+                            mPermissionListener.onDenied(deniedPermissions);
                         }
                     }
                 }
@@ -207,9 +207,9 @@ public abstract class BaseActivity extends AppCompatActivity {
             if (ScreenManager.getScreenManager().goBlackPage()) {
                 finish();
             } else {
-                if ((System.currentTimeMillis() - exitTime) > 2000) {
+                if ((System.currentTimeMillis() - mExitTime) > 2000) {
                     showToastMessage(getResources().getString(R.string.home_exit_hint));
-                    exitTime = System.currentTimeMillis();
+                    mExitTime = System.currentTimeMillis();
                 } else {
                     ScreenManager.getScreenManager().killAllActivity();
                     finish();
@@ -232,8 +232,8 @@ public abstract class BaseActivity extends AppCompatActivity {
      * 释放资源
      */
     private void release() {
-        if (commonHelp != null) {
-            commonHelp = null;
+        if (mCommonHelp != null) {
+            mCommonHelp = null;
         }
         if (mButterKnife != null) {
             mButterKnife.unbind();

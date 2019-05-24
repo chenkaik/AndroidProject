@@ -34,27 +34,27 @@ public class ClearEditTextVib extends android.support.v7.widget.AppCompatEditTex
     /**
      *  震动动画
      */
-    private Animation shakeAnimation;
+    private Animation mShakeAnimation;
     /**
      *  插值器
      */
-    private CycleInterpolator cycleInterpolator;
+    private CycleInterpolator mCycleInterpolator;
     /**
      *  振动器
      */
-    private Vibrator shakeVibrator;
+    private Vibrator mShakeVibrator;
 
     public ClearEditTextVib(Context context) {
         this(context, null);
         // 初始化振动器
-        shakeVibrator = (Vibrator) context.getSystemService(Service.VIBRATOR_SERVICE);
+        mShakeVibrator = (Vibrator) context.getSystemService(Service.VIBRATOR_SERVICE);
         // 初始化震动动画
-        shakeAnimation = new TranslateAnimation(0, 10, 0, 0);
+        mShakeAnimation = new TranslateAnimation(0, 10, 0, 0);
         // 设置动画持续时间
-        shakeAnimation.setDuration(1000);
+        mShakeAnimation.setDuration(1000);
         // 设置动画1秒钟晃动多少下
-        cycleInterpolator = new CycleInterpolator(4);
-        shakeAnimation.setInterpolator(cycleInterpolator);
+        mCycleInterpolator = new CycleInterpolator(4);
+        mShakeAnimation.setInterpolator(mCycleInterpolator);
     }
 
     public ClearEditTextVib(Context context, AttributeSet attrs) {
@@ -144,9 +144,9 @@ public class ClearEditTextVib extends android.support.v7.widget.AppCompatEditTex
      */
     public void shake(EditText... editTexts) {
         for (EditText editText : editTexts) {
-            editText.startAnimation(shakeAnimation);
+            editText.startAnimation(mShakeAnimation);
         }
-        shakeVibrator.vibrate(new long[] { 0, 100 }, -1);
+        mShakeVibrator.vibrate(new long[] { 0, 100 }, -1);
     }
 
 	/*

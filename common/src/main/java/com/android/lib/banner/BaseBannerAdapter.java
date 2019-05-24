@@ -1,6 +1,7 @@
 package com.android.lib.banner;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
@@ -11,16 +12,17 @@ import java.util.List;
  * desc: banner使用的baseAdapter
  */
 public abstract class BaseBannerAdapter<VH extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    protected List<Integer> urlList;
-    protected Context context;
+    protected List<Integer> mUrlList;
+    protected Context mContext;
 
     public BaseBannerAdapter(Context context, List<Integer> urlList) {
-        this.urlList = urlList;
-        this.context = context;
+        this.mUrlList = urlList;
+        this.mContext = context;
     }
 
+    @NonNull
     @Override
-    public final VH onCreateViewHolder(ViewGroup parent, int viewType) {
+    public final VH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return createCustomViewHolder(parent, viewType);
     }
 
@@ -50,7 +52,7 @@ public abstract class BaseBannerAdapter<VH extends RecyclerView.ViewHolder> exte
     @Override
     public int getItemCount() {
         // 如果只有一张图片就不进行滑动了
-        return urlList.size() < 2 ? 1 : Integer.MAX_VALUE;
+        return mUrlList.size() < 2 ? 1 : Integer.MAX_VALUE;
     }
 
 }

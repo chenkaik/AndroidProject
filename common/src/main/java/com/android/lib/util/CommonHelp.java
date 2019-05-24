@@ -11,11 +11,11 @@ import com.android.common.R;
  */
 public class CommonHelp {
 
-    private CommonProgressDialog commonProgressDialog;
-    private Activity activity;
+    private CommonProgressDialog mCommonProgressDialog;
+    private Activity mActivity;
 
     public CommonHelp(Activity activity) {
-        this.activity = activity;
+        this.mActivity = activity;
     }
 
     /**
@@ -23,19 +23,19 @@ public class CommonHelp {
      */
     public void showProgress(String msg) {
         isFinish();
-        if (commonProgressDialog == null) {
-            commonProgressDialog = new CommonProgressDialog.Builder(activity)
+        if (mCommonProgressDialog == null) {
+            mCommonProgressDialog = new CommonProgressDialog.Builder(mActivity)
                     .setTheme(R.style.commonProgressDialog)
                     .setCancelable(false)
                     .cancelTouchOutside(false)
                     .setMessage(msg)
                     .build();
-            commonProgressDialog.show();
+            mCommonProgressDialog.show();
         } else {
-            if (commonProgressDialog.isShowing()) {
-                commonProgressDialog.dismiss();
+            if (mCommonProgressDialog.isShowing()) {
+                mCommonProgressDialog.dismiss();
             } else {
-                commonProgressDialog.show();
+                mCommonProgressDialog.show();
             }
         }
     }
@@ -44,9 +44,9 @@ public class CommonHelp {
      * 取消CommonProgressDialog
      */
     public void dismissProgress() {
-        if (commonProgressDialog != null) {
-            commonProgressDialog.dismiss();
-            commonProgressDialog = null;
+        if (mCommonProgressDialog != null) {
+            mCommonProgressDialog.dismiss();
+            mCommonProgressDialog = null;
 //            if (commonProgressDialog.isShowing()) {
 //                commonProgressDialog.dismiss();
 //                commonProgressDialog = null;
@@ -66,7 +66,7 @@ public class CommonHelp {
      */
     public void showCommonAlertDialog(String title, String message, final View.OnClickListener okListener, final View.OnClickListener noListener) {
         isFinish();
-        new CommonAlertDialog.Builder(activity)
+        new CommonAlertDialog.Builder(mActivity)
                 .setTitle(title)
                 .setMessage(message)
                 .setPositiveButton(new View.OnClickListener() {
@@ -99,7 +99,7 @@ public class CommonHelp {
      */
     public void showCommonAlertDialog(String title, String message, final View.OnClickListener okListener) {
         isFinish();
-        new CommonAlertDialog.Builder(activity)
+        new CommonAlertDialog.Builder(mActivity)
                 .setTitle(title)
                 .setMessage(message)
                 .setShowOneButton(new View.OnClickListener() {
@@ -117,7 +117,7 @@ public class CommonHelp {
 
 
     private void isFinish() {
-        if (activity == null || activity.isFinishing()) {
+        if (mActivity == null || mActivity.isFinishing()) {
             return;
         }
     }

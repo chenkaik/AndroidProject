@@ -25,7 +25,7 @@ public interface CommonResponse<T extends BaseResponse> {
     /**
      * 显示dialog
      *
-     * @param msg
+     * @param msg tips
      */
     void showLoading(String msg);
 

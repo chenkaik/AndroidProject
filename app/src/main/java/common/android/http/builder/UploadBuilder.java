@@ -37,7 +37,7 @@ public class UploadBuilder extends OkHttpRequestBuilderHasParam<UploadBuilder> {
      * add upload files
      *
      * @param files files
-     * @return
+     * @return this
      */
     public UploadBuilder files(Map<String, File> files) {
         this.mFiles = files;
@@ -49,7 +49,7 @@ public class UploadBuilder extends OkHttpRequestBuilderHasParam<UploadBuilder> {
      *
      * @param key  file key
      * @param file file
-     * @return
+     * @return this
      */
     public UploadBuilder addFile(String key, File file) {
         if (this.mFiles == null) {
@@ -63,7 +63,7 @@ public class UploadBuilder extends OkHttpRequestBuilderHasParam<UploadBuilder> {
      * add upload files
      *
      * @param filePath files
-     * @return
+     * @return this
      */
     public UploadBuilder files(List<String> filePath) {
         this.filePath = filePath;
@@ -74,7 +74,7 @@ public class UploadBuilder extends OkHttpRequestBuilderHasParam<UploadBuilder> {
      * add one upload file
      *
      * @param file filePath
-     * @return
+     * @return this
      */
     public UploadBuilder addFile(String file) {
         if (this.filePath == null) {
@@ -156,7 +156,7 @@ public class UploadBuilder extends OkHttpRequestBuilderHasParam<UploadBuilder> {
      * 获取mime type  image/png&image/jpg...
      *
      * @param path 文件路径
-     * @return
+     * @return 文件类型
      */
     private String guessMimeType(String path) {
         FileNameMap fileNameMap = URLConnection.getFileNameMap();

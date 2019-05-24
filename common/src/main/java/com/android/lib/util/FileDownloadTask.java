@@ -22,19 +22,19 @@ import okhttp3.Response;
  */
 public class FileDownloadTask extends AsyncTask<String, Integer, Integer> {
 
-    public static final int SUCCESS = 0;
-    public static final int FAILED = 1;
-    private FileDownloadListener listener; // 下载监听
-    private int lastProgress;
-    private InputStream is = null;
-    private RandomAccessFile saveFile = null;
-    private File file = null;
-    private File downloadDir; // 下载文件存放的目录
-    private long contentLength; // 文件大小
+    private static final int SUCCESS = 0;
+    private static final int FAILED = 1;
+    private FileDownloadListener mListener; // 下载监听
+    private int mLastProgress;
+    private InputStream mIs = null;
+    private RandomAccessFile mSaveFile = null;
+    private File mFile = null;
+    private File mDownloadDir; // 下载文件存放的目录
+    private long mContentLength; // 文件大小
 
     public FileDownloadTask(FileDownloadListener listener, File downloadDir) {
-        this.listener = listener;
-        this.downloadDir = downloadDir;
+        this.mListener = listener;
+        this.mDownloadDir = downloadDir;
     }
 
     @Override
@@ -42,14 +42,14 @@ public class FileDownloadTask extends AsyncTask<String, Integer, Integer> {
         try {
             long downloadLength = 0; // 记录已下载文件的长度
             String downloadUrl = params[0];
-            file = new File(downloadDir.getPath() + "/version_Update.apk");
-            if (file.exists()) {
-                file.delete();
+            mFile = new File(mDownloadDir.getPath() + "/version_Update.apk");
+            if (mFile.exists()) {
+                mFile.delete();
             }
-            contentLength = getFileLength(downloadUrl); // 得到下载文件大小
-            if (contentLength == 0) { // 当下载文件的长度为0时处理
+            mContentLength = getFileLength(downloadUrl); // 得到下载文件大小
+            if (mContentLength == 0) { // 当下载文件的长度为0时处理
                 return FAILED;
-            } else if (contentLength == downloadLength) { // 已下载的字节和文件的总字节相等，说明已经下载完成
+            } else if (mContentLength == downloadLength) { // 已下载的字节和文件的总字节相等，说明已经下载完成
                 return SUCCESS;
             }
             OkHttpClient client = new OkHttpClient();
@@ -59,17 +59,17 @@ public class FileDownloadTask extends AsyncTask<String, Integer, Integer> {
                     .build();
             Response response = client.newCall(request).execute();
             if (response.body() != null) {
-                is = response.body().byteStream();
-                saveFile = new RandomAccessFile(file, "rw");
+                mIs = response.body().byteStream();
+                mSaveFile = new RandomAccessFile(mFile, "rw");
 //                saveFile.seek(downloadLength); // 跳过已下载的字节
                 byte[] b = new byte[1024];
                 int total = 0;
                 int len;
-                while ((len = is.read(b)) != -1) {
+                while ((len = mIs.read(b)) != -1) {
                     total += len;
-                    saveFile.write(b, 0, len);
-                    int progress = (int) ((total + downloadLength) * 100 / contentLength); // 计算已下载的百分比
-                    publishProgress((int) file.length(), progress); // 已下载文件的大小
+                    mSaveFile.write(b, 0, len);
+                    int progress = (int) ((total + downloadLength) * 100 / mContentLength); // 计算已下载的百分比
+                    publishProgress((int) mFile.length(), progress); // 已下载文件的大小
                 }
                 response.body().close();
                 return SUCCESS;
@@ -80,11 +80,11 @@ public class FileDownloadTask extends AsyncTask<String, Integer, Integer> {
 //            e.printStackTrace();
         } finally {
             try {
-                if (is != null) {
-                    is.close();
+                if (mIs != null) {
+                    mIs.close();
                 }
-                if (saveFile != null) {
-                    saveFile.close();
+                if (mSaveFile != null) {
+                    mSaveFile.close();
                 }
             } catch (Exception e) {
 //                e.printStackTrace();
@@ -98,11 +98,11 @@ public class FileDownloadTask extends AsyncTask<String, Integer, Integer> {
         // 后台任务中调用publishProgress(Progress...)后，此方法很快就会被回调
         int progress = values[0];
         int percentage = values[1];
-        if (progress > lastProgress && percentage > 0) {
-            if (listener != null) {
-                listener.onProgressUpdate(progress, contentLength, percentage);
+        if (progress > mLastProgress && percentage > 0) {
+            if (mListener != null) {
+                mListener.onProgressUpdate(progress, mContentLength, percentage);
             }
-            lastProgress = progress;
+            mLastProgress = progress;
         }
     }
 
@@ -110,17 +110,17 @@ public class FileDownloadTask extends AsyncTask<String, Integer, Integer> {
     protected void onPostExecute(Integer status) {
         switch (status) {
             case SUCCESS:
-                if (listener != null) {
-                    if (file != null && file.isFile()) {
-                        listener.onSuccess(file);
+                if (mListener != null) {
+                    if (mFile != null && mFile.isFile()) {
+                        mListener.onSuccess(mFile);
                     } else {
-                        listener.onFailed();
+                        mListener.onFailed();
                     }
                 }
                 break;
             case FAILED:
-                if (listener != null) {
-                    listener.onFailed();
+                if (mListener != null) {
+                    mListener.onFailed();
                 }
                 break;
             default:

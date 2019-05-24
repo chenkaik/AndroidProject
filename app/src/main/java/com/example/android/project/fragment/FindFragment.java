@@ -15,8 +15,8 @@ import com.example.android.project.activity.MyActivity;
 public class FindFragment extends BaseFragment {
 
     private static final String TAG = "FindFragment";
-    private boolean initDataSuccess; // 初始化数据是否加载成功
-    private boolean initLayoutSuccess; // 布局控件是否初始化完成
+    private boolean mInitData; // 初始化数据是否加载成功
+    private boolean mInitLayout; // 布局控件是否初始化完成
     private MyActivity activity;
 
     public static FindFragment newInstance() {
@@ -47,22 +47,22 @@ public class FindFragment extends BaseFragment {
 
     @Override
     protected void initData() {
-        initLayoutSuccess = true;
+        mInitLayout = true;
         initLoadData();
     }
 
     private void initLoadData() {
-        if (getUserVisibleHint() && initLayoutSuccess && !initDataSuccess) {
+        if (getUserVisibleHint() && mInitLayout && !mInitData) {
             loadData();
         } else {
-            if (initDataSuccess) { // 主要用于点击切换回来更新某一接口的数据
+            if (mInitData) { // 主要用于点击切换回来更新某一接口的数据
                 Logger.e(TAG, "initLoadData: 调用了");
             }
         }
     }
 
     private void loadData() {
-        initDataSuccess = true;
+        mInitData = true;
         Logger.e(TAG, "loadData: " + "加载数据");
     }
 

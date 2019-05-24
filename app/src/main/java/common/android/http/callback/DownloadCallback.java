@@ -121,7 +121,7 @@ public class DownloadCallback implements Callback {
         }
     }
 
-    //保存文件
+    // 保存文件
     private void saveFile(Response response, String filePath, Long completeBytes) throws Exception {
         InputStream is = null;
         byte[] buf = new byte[4 * 1024];           //每次读取4kb

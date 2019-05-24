@@ -18,19 +18,19 @@ public class VersionUpdateDialog extends Dialog {
     /**
      * 进度条
      */
-    private ProgressBar progressBar;
+    private ProgressBar mProgressBar;
     /**
      * 当前已下载文件的大小
      */
-    private TextView currentFileSize;
+    private TextView mCurrentFileSize;
     /**
      * 文件的大小
      */
-    private TextView fileSize;
+    private TextView mFileSize;
     /**
      * 下载的百分比
      */
-    private TextView percentage;
+    private TextView mPercentage;
 
     public VersionUpdateDialog(@NonNull Context context) {
         super(context, R.style.apk_update_dialog_style);
@@ -50,10 +50,10 @@ public class VersionUpdateDialog extends Dialog {
      * 初始化界面控件
      */
     private void initView() {
-        progressBar = (ProgressBar) findViewById(R.id.progress_bar);
-        fileSize = (TextView) findViewById(R.id.fileSize);
-        currentFileSize = (TextView) findViewById(R.id.currentFileSize);
-        percentage = (TextView) findViewById(R.id.tv_percentage);
+        mProgressBar = (ProgressBar) findViewById(R.id.progress_bar);
+        mFileSize = (TextView) findViewById(R.id.fileSize);
+        mCurrentFileSize = (TextView) findViewById(R.id.currentFileSize);
+        mPercentage = (TextView) findViewById(R.id.tv_percentage);
     }
 
     /**
@@ -66,11 +66,11 @@ public class VersionUpdateDialog extends Dialog {
      * @param percentage  下载的百分比
      */
     public void setCommon(int progress, int progressMax, String currentSize, String fileMax, int percentage) {
-        progressBar.setProgress(progress);
-        progressBar.setMax(progressMax);
-        currentFileSize.setText(currentSize);
-        fileSize.setText(fileMax);
-        this.percentage.setText(String.valueOf(percentage) + "%");
+        mProgressBar.setProgress(progress);
+        mProgressBar.setMax(progressMax);
+        mCurrentFileSize.setText(currentSize);
+        mFileSize.setText(fileMax);
+        this.mPercentage.setText(String.valueOf(percentage) + "%");
     }
 
     /**
@@ -79,7 +79,7 @@ public class VersionUpdateDialog extends Dialog {
      * @param progress 进度
      */
     public void setCurrentProgress(int progress) {
-        progressBar.setProgress(progress);
+        mProgressBar.setProgress(progress);
     }
 
     /**
@@ -88,7 +88,7 @@ public class VersionUpdateDialog extends Dialog {
      * @param progressMax 大小
      */
     public void setProgressMax(int progressMax) {
-        progressBar.setMax(progressMax);
+        mProgressBar.setMax(progressMax);
     }
 
     /**
@@ -98,8 +98,8 @@ public class VersionUpdateDialog extends Dialog {
      * @param currentSize 当前下载的文件大小
      */
     public void setCurrentFileSize(String fileMax, String currentSize) {
-        fileSize.setText(fileMax);
-        currentFileSize.setText(currentSize);
+        mFileSize.setText(fileMax);
+        mCurrentFileSize.setText(currentSize);
     }
 
 }

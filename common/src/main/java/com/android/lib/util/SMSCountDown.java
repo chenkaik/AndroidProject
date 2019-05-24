@@ -9,13 +9,13 @@ import android.widget.TextView;
  */
 public class SMSCountDown {
 
-    private TextView textView;
-    private long time;
-    private Task task;
-    private Handler handler = new Handler();
+    private TextView mTextView;
+    private long mTime;
+    private Task mTask;
+    private Handler mHandler = new Handler();
     private boolean isRunning = false;
-    private CharSequence originalTitle;
-    private long timeoutTime;
+    private CharSequence mOriginalTitle;
+    private long mTimeoutTime;
 
     private SMSCountDown(){
     }
@@ -24,11 +24,11 @@ public class SMSCountDown {
      * 短信倒计数功能（默认总时间为120s）
      */
     public SMSCountDown(TextView textView) {
-        this.textView = textView;
+        this.mTextView = textView;
         // 120秒
-        this.time = 120 * 1000;
-        task = new Task();
-        originalTitle = textView.getText();
+        this.mTime = 120 * 1000;
+        mTask = new Task();
+        mOriginalTitle = textView.getText();
     }
 
     /**
@@ -38,10 +38,10 @@ public class SMSCountDown {
      * @param time     总共时长，单位是毫秒
      */
     public SMSCountDown(TextView textView, long time) {
-        this.textView = textView;
-        this.time = time;
-        this.task = new Task();
-        originalTitle = textView.getText();
+        this.mTextView = textView;
+        this.mTime = time;
+        this.mTask = new Task();
+        mOriginalTitle = textView.getText();
     }
 
     /**
@@ -52,12 +52,12 @@ public class SMSCountDown {
             return;
         }
         isRunning = true;
-        textView.setEnabled(false);
+        mTextView.setEnabled(false);
         StringBuilder builder = new StringBuilder();
-        builder.append(originalTitle).append("(").append(time / 1000).append("s)");
-        textView.setText(builder.toString());
-        timeoutTime = System.currentTimeMillis() + time;
-        handler.postDelayed(task, 1000);
+        builder.append(mOriginalTitle).append("(").append(mTime / 1000).append("s)");
+        mTextView.setText(builder.toString());
+        mTimeoutTime = System.currentTimeMillis() + mTime;
+        mHandler.postDelayed(mTask, 1000);
     }
 
     /**
@@ -68,9 +68,9 @@ public class SMSCountDown {
             return;
         }
         isRunning = false;
-        handler.removeCallbacks(task);
-        textView.setEnabled(true);
-        textView.setText(originalTitle);
+        mHandler.removeCallbacks(mTask);
+        mTextView.setEnabled(true);
+        mTextView.setText(mOriginalTitle);
     }
 
     synchronized private boolean updateUi() {
@@ -79,14 +79,14 @@ public class SMSCountDown {
             return false;
         }
         long now = System.currentTimeMillis();
-        long displayTime = timeoutTime - now;
+        long displayTime = mTimeoutTime - now;
         if (displayTime < 1000) {
             stop();
             return false;
         }
         StringBuilder builder = new StringBuilder();
-        builder.append(originalTitle).append("(").append(displayTime / 1000).append("s)");
-        textView.setText(builder.toString());
+        builder.append(mOriginalTitle).append("(").append(displayTime / 1000).append("s)");
+        mTextView.setText(builder.toString());
         return true;
     }
 
@@ -94,7 +94,7 @@ public class SMSCountDown {
         @Override
         public void run() {
             if (updateUi()) {
-                handler.postDelayed(this, 1000);
+                mHandler.postDelayed(this, 1000);
             }
         }
     }

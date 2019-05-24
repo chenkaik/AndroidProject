@@ -23,7 +23,7 @@ public abstract class OkHttpRequestBuilderHasParam<T extends OkHttpRequestBuilde
      * set Map params
      *
      * @param params 参数
-     * @return
+     * @return T
      */
     public T params(Map<String, String> params) {
         this.mParams = params;
@@ -35,7 +35,7 @@ public abstract class OkHttpRequestBuilderHasParam<T extends OkHttpRequestBuilde
      *
      * @param key param key
      * @param val param val
-     * @return
+     * @return T
      */
     public T addParam(String key, String val) {
         if (this.mParams == null) {
@@ -50,7 +50,7 @@ public abstract class OkHttpRequestBuilderHasParam<T extends OkHttpRequestBuilde
      *
      * @param url    接口路径
      * @param params 参数
-     * @return
+     * @return 拼接后的url
      */
     public String appendParams(String url, Map<String, String> params) {
         StringBuilder sb = new StringBuilder();

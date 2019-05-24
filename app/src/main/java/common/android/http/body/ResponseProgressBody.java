@@ -21,7 +21,7 @@ public class ResponseProgressBody extends ResponseBody {
 
     private ResponseBody mResponseBody;
     private DownloadResponseHandler mDownloadResponseHandler;
-    private BufferedSource bufferedSource;
+    private BufferedSource mBufferedSource;
 
     public ResponseProgressBody(ResponseBody responseBody, DownloadResponseHandler downloadResponseHandler) {
         this.mResponseBody = responseBody;
@@ -41,10 +41,10 @@ public class ResponseProgressBody extends ResponseBody {
 
     @Override
     public BufferedSource source() {
-        if (bufferedSource == null) {
-            bufferedSource = Okio.buffer(source(mResponseBody.source()));
+        if (mBufferedSource == null) {
+            mBufferedSource = Okio.buffer(source(mResponseBody.source()));
         }
-        return bufferedSource;
+        return mBufferedSource;
     }
 
     private Source source(Source source) {

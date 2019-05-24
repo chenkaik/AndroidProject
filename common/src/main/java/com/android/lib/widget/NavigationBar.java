@@ -21,14 +21,14 @@ import com.android.lib.util.ScreenManager;
  */
 public class NavigationBar extends FrameLayout {
 
-    private LayoutInflater layoutInflater;
-    private LinearLayout leftLinearLayout;
-    private LinearLayout centerLinearLayout;
-    private LinearLayout rightLinearLayout;
-    private ImageView backButton;
-    private TextView titleTextView;
-    private LinearLayout root;
-    private TextView leftTextView;
+    private LayoutInflater mLayoutInflater;
+    private LinearLayout mLeftLinearLayout;
+    private LinearLayout mCenterLinearLayout;
+    private LinearLayout mRightLinearLayout;
+    private ImageView mBackButton;
+    private TextView mTitleTextView;
+    private LinearLayout mRoot;
+    private TextView mLeftTextView;
 
     public NavigationBar(Context context) {
         super(context);
@@ -41,21 +41,21 @@ public class NavigationBar extends FrameLayout {
     }
 
     private void initComponent() {
-        layoutInflater = LayoutInflater.from(getContext());
-        root = (LinearLayout) layoutInflater.inflate(R.layout.navigation_bar, this, false);
-        leftLinearLayout = (LinearLayout) root.findViewById(R.id.leftLinearLayout);
-        centerLinearLayout = (LinearLayout) root.findViewById(R.id.centerLinearLayout);
-        rightLinearLayout = (LinearLayout) root.findViewById(R.id.rightLinearLayout);
-        titleTextView = (TextView) root.findViewById(R.id.titleTextView);
-        leftTextView = (TextView) root.findViewById(R.id.navigation_title_bar_back_view);
-        backButton = (ImageView) root.findViewById(R.id.navigation_title_bar_back);
-        leftLinearLayout.setOnClickListener(new OnClickListener() {
+        mLayoutInflater = LayoutInflater.from(getContext());
+        mRoot = (LinearLayout) mLayoutInflater.inflate(R.layout.navigation_bar, this, false);
+        mLeftLinearLayout = (LinearLayout) mRoot.findViewById(R.id.leftLinearLayout);
+        mCenterLinearLayout = (LinearLayout) mRoot.findViewById(R.id.centerLinearLayout);
+        mRightLinearLayout = (LinearLayout) mRoot.findViewById(R.id.rightLinearLayout);
+        mTitleTextView = (TextView) mRoot.findViewById(R.id.titleTextView);
+        mLeftTextView = (TextView) mRoot.findViewById(R.id.navigation_title_bar_back_view);
+        mBackButton = (ImageView) mRoot.findViewById(R.id.navigation_title_bar_back);
+        mLeftLinearLayout.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 backButtonOnClick(v);
             }
         });
-        addView(root);
+        addView(mRoot);
     }
 
     private void backButtonOnClick(View v) {
@@ -73,51 +73,51 @@ public class NavigationBar extends FrameLayout {
     }
 
     public void setTitle(String title) {
-        titleTextView.setText(title);
+        mTitleTextView.setText(title);
     }
 
     public void addRightView(View view) {
-        rightLinearLayout.addView(view);
+        mRightLinearLayout.addView(view);
     }
 
     public void clearRightViews() {
-        rightLinearLayout.removeAllViews();
+        mRightLinearLayout.removeAllViews();
     }
 
     public void addLeftView(View view) {
-        leftLinearLayout.addView(view);
+        mLeftLinearLayout.addView(view);
     }
 
     public void clearLeftViews() {
-        leftLinearLayout.removeAllViews();
+        mLeftLinearLayout.removeAllViews();
     }
 
     public void showBackButton() {
-        backButton.setVisibility(View.VISIBLE);
+        mBackButton.setVisibility(View.VISIBLE);
     }
 
     public void hideLeftLayout() {
-        leftLinearLayout.setVisibility(View.INVISIBLE);
+        mLeftLinearLayout.setVisibility(View.INVISIBLE);
     }
 
     public void hideBackButton() {
-        backButton.setVisibility(GONE);
+        mBackButton.setVisibility(GONE);
     }
 
     public void hideBackTextView() {
-        leftTextView.setVisibility(GONE);
+        mLeftTextView.setVisibility(GONE);
     }
 
     public View getBackBackButton() {
-        return backButton;
+        return mBackButton;
     }
 
     public void setNavigationBarBackgroundColor(int color) {
-        root.setBackgroundColor(color);
+        mRoot.setBackgroundColor(color);
     }
 
     public void setBackButtonOnClickListener(View.OnClickListener onClickListener) {
-        backButton.setOnClickListener(onClickListener);
+        mBackButton.setOnClickListener(onClickListener);
     }
 
 }

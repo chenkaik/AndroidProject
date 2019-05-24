@@ -27,16 +27,16 @@ public class BannerRecyclerAdapter extends BaseBannerAdapter<BannerRecyclerAdapt
     @Override
     protected BannerRecyclerAdapter.NormalHolder createCustomViewHolder(ViewGroup parent, int viewType) {
 //        Logger.e(TAG, "createCustomViewHolder: " + viewType);
-        return new NormalHolder(new ImageView(context));
+        return new NormalHolder(new ImageView(mContext));
     }
 
     @Override
     public void bindCustomViewHolder(NormalHolder holder, final int position) {
 //        Logger.e(TAG, "bindCustomViewHolder: " + position);
-        if (urlList == null || urlList.isEmpty()) {
+        if (mUrlList == null || mUrlList.isEmpty()) {
             return;
         }
-        Integer url = urlList.get(position % urlList.size());
+        Integer url = mUrlList.get(position % mUrlList.size());
 //        ImageView imageView = (ImageView) holder.itemView;
         ImageView imageView = holder.bannerItem;
         ImageLoader.load(url, imageView);
@@ -45,7 +45,7 @@ public class BannerRecyclerAdapter extends BaseBannerAdapter<BannerRecyclerAdapt
             @Override
             public void onClick(View v) {
                 if (onBannerItemClickListener != null) {
-                    onBannerItemClickListener.onItemClick(position % urlList.size());
+                    onBannerItemClickListener.onItemClick(position % mUrlList.size());
                 }
             }
         });

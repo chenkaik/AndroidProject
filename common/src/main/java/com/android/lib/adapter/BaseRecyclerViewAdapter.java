@@ -19,16 +19,16 @@ import java.util.List;
 public abstract class BaseRecyclerViewAdapter<T> extends RecyclerView.Adapter<RecyclerViewHolder> implements View.OnClickListener, View.OnLongClickListener {
 
     //    private static final String TAG = "BaseRecyclerViewAdapter";
-    private Context context;
-    private List<T> data;
-    private int layoutId;
-    private OnItemClickListener listener;
-    private OnItemLongClickListener longListener;
+    private Context mContext;
+    private List<T> mData;
+    private int mLayoutId;
+    private OnItemClickListener mListener;
+    private OnItemLongClickListener mLongListener;
 
     public BaseRecyclerViewAdapter(Context context, List<T> data, int layoutId) {
-        this.context = context;
-        this.data = data;
-        this.layoutId = layoutId;
+        this.mContext = context;
+        this.mData = data;
+        this.mLayoutId = layoutId;
     }
 
     // @Nullable 表示定义的字段可以为空.
@@ -36,11 +36,11 @@ public abstract class BaseRecyclerViewAdapter<T> extends RecyclerView.Adapter<Re
     @NonNull
     @Override
     public RecyclerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(context).inflate(layoutId, parent, false);
-        if (listener != null) {
+        View itemView = LayoutInflater.from(mContext).inflate(mLayoutId, parent, false);
+        if (mListener != null) {
             itemView.setOnClickListener(this);
         }
-        if (longListener != null) {
+        if (mLongListener != null) {
             itemView.setOnLongClickListener(this);
         }
 //        Logger.e(TAG,"onCreateViewHolder");
@@ -51,37 +51,37 @@ public abstract class BaseRecyclerViewAdapter<T> extends RecyclerView.Adapter<Re
     public void onBindViewHolder(@NonNull RecyclerViewHolder holder, int position) {
 //        Logger.e(TAG,"onBindViewHolder " + position);
         holder.itemView.setTag(position); // 点击事件的位置
-        T bean = data.get(position);
+        T bean = mData.get(position);
         onBindData(holder, bean, position);
     }
 
     @Override
     public int getItemCount() {
-        return data.size();
+        return mData.size();
     }
 
 
     @Override
     public void onClick(View v) {
-        if (listener != null) {
-            listener.onItemClick(this, v, (Integer) v.getTag());
+        if (mListener != null) {
+            mListener.onItemClick(this, v, (Integer) v.getTag());
         }
     }
 
     @Override
     public boolean onLongClick(View v) {
-        if (longListener != null) {
-            longListener.onItemLongClick(this, v, (Integer) v.getTag());
+        if (mLongListener != null) {
+            mLongListener.onItemLongClick(this, v, (Integer) v.getTag());
         }
         return true;
     }
 
     public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
-        this.listener = onItemClickListener;
+        this.mListener = onItemClickListener;
     }
 
     public void setOnItemLongClickListener(OnItemLongClickListener onItemLongClickListener) {
-        this.longListener = onItemLongClickListener;
+        this.mLongListener = onItemLongClickListener;
     }
 
     /**
