@@ -14,7 +14,7 @@ import common.android.http.config.HttpConfig;
  */
 public class CommonApplication extends Application {
 
-    private static Context mContext;
+    private static Context sContext;
 
     @Override
     public void onCreate() {
@@ -23,10 +23,10 @@ public class CommonApplication extends Application {
     }
 
     private void init() {
-        mContext = getApplicationContext();
+        sContext = getApplicationContext();
         ApiManager.getInstance().init(HttpConfig.BASE_URL);
         // 捕获程序出现异常的信息
-        CrashHandler.getInstance().init(mContext);
+        CrashHandler.getInstance().init(sContext);
     }
 
     /**
@@ -35,7 +35,7 @@ public class CommonApplication extends Application {
      * @return 上下文
      */
     public static Context getContext() {
-        return mContext;
+        return sContext;
     }
 
 }
