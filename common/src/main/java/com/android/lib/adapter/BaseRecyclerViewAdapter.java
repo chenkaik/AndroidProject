@@ -7,6 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.android.lib.Logger;
+
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -18,16 +21,33 @@ import java.util.List;
  */
 public abstract class BaseRecyclerViewAdapter<T> extends RecyclerView.Adapter<RecyclerViewHolder> implements View.OnClickListener, View.OnLongClickListener {
 
-    //    private static final String TAG = "BaseRecyclerViewAdapter";
+    private static final String TAG = "BaseRecyclerViewAdapter";
     private Context mContext;
     private List<T> mData;
     private int mLayoutId;
     private OnItemClickListener mListener;
     private OnItemLongClickListener mLongListener;
+    protected OnViewClickListener mOnViewClickListener; // item子view点击事件
 
     public BaseRecyclerViewAdapter(Context context, List<T> data, int layoutId) {
+        init(context, data, layoutId);
+    }
+
+    public BaseRecyclerViewAdapter(Context context, List<T> data, int layoutId, OnViewClickListener onViewClickListener) {
+        init(context, data, layoutId);
+        this.mOnViewClickListener = onViewClickListener;
+    }
+
+    /**
+     * 初始化
+     *
+     * @param context  上下文
+     * @param data     数据源
+     * @param layoutId 布局id
+     */
+    private void init(Context context, List<T> data, int layoutId) {
         this.mContext = context;
-        this.mData = data;
+        this.mData = data == null ? new ArrayList<T>() : data;
         this.mLayoutId = layoutId;
     }
 
@@ -43,7 +63,7 @@ public abstract class BaseRecyclerViewAdapter<T> extends RecyclerView.Adapter<Re
         if (mLongListener != null) {
             itemView.setOnLongClickListener(this);
         }
-//        Logger.e(TAG,"onCreateViewHolder");
+        Logger.e(TAG, "onCreateViewHolder");
         return new RecyclerViewHolder(itemView);
     }
 
@@ -101,6 +121,17 @@ public abstract class BaseRecyclerViewAdapter<T> extends RecyclerView.Adapter<Re
      */
     public interface OnItemLongClickListener {
         void onItemLongClick(RecyclerView.Adapter adapter, View v, int position);
+    }
+
+    /**
+     * item中子view的点击事件（回调）
+     */
+    public interface OnViewClickListener {
+        /**
+         * @param position item position
+         * @param type     点击的view的类型，调用时根据不同的view传入不同的值加以区分
+         */
+        void onViewClick(int position, int type);
     }
 
 }
