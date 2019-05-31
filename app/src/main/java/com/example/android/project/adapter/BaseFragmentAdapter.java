@@ -43,7 +43,7 @@ public class BaseFragmentAdapter<F extends Fragment> extends FragmentPagerAdapte
     }
 
     @Override
-    public void setPrimaryItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
+    public void setPrimaryItem(@NonNull ViewGroup container, int position, @NonNull Object object) { // 当前页面的主Item
         if (getCurrentFragment() != object) {
             // 记录当前的Fragment对象
             mCurrentFragment = (F) object;
