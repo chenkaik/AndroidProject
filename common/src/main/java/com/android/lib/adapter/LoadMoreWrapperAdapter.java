@@ -1,5 +1,6 @@
 package com.android.lib.adapter;
 
+import android.support.annotation.NonNull;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -57,8 +58,9 @@ public class LoadMoreWrapperAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         }
     }
 
+    @NonNull
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         // 通过判断显示类型，来创建不同的View
         if (viewType == TYPE_HEADER && mHeaderView != null) {
             return new HeadViewHolder(mHeaderView);
@@ -72,7 +74,7 @@ public class LoadMoreWrapperAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         if (getItemViewType(position) == TYPE_HEADER) {
             return;
         } else if (holder instanceof FootViewHolder) {
