@@ -6,11 +6,14 @@
 
     <include layout="@layout/common_head_layout" />
 
-    <TextView
-        android:id="@+id/tv_home"
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/btn_to_login_page"
+        style="@style/ButtonStyle"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="首页"
-        android:textSize="20sp" />
+        android:layout_marginLeft="@dimen/space_50"
+        android:layout_marginTop="@dimen/space_60"
+        android:layout_marginRight="@dimen/space_50"
+        android:text="点我进入登录页面" />
 
 </LinearLayout>

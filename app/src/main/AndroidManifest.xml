@@ -19,9 +19,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".activity.MainActivity"
+            android:name=".activity.LoginActivity"
             android:screenOrientation="portrait" />
-        <!-- BottomNavigationView的使用 -->
+        <activity
+            android:name=".activity.MainActivity"
+            android:screenOrientation="portrait" /> <!-- BottomNavigationView的使用 -->
         <activity
             android:name=".activity.MyActivity"
             android:screenOrientation="portrait" />
@@ -34,8 +36,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <!-- 适配18:9的屏幕 -->
+        </activity> <!-- 适配18:9的屏幕 -->
         <meta-data
             android:name="android.max_aspect"
             android:value="2.2" />

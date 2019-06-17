@@ -5,15 +5,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
-import android.widget.TextView;
 
 import com.android.lib.Logger;
 import com.android.lib.util.ScreenManager;
 import com.example.android.project.R;
+import com.example.android.project.activity.LoginActivity;
 import com.example.android.project.activity.MyActivity;
-import com.example.android.project.activity.TestActivity;
 
-import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * date: 2019/3/8
@@ -25,8 +24,6 @@ public class HomeFragment extends BaseFragment {
     private boolean mInitData; // 初始化数据是否加载成功
     private boolean mInitLayout; // 布局控件是否初始化完成
     private MyActivity mActivity;
-    @BindView(R.id.tv_home)
-    TextView textView;
 
     public static HomeFragment newInstance() {
         return new HomeFragment();
@@ -51,13 +48,6 @@ public class HomeFragment extends BaseFragment {
 
     @Override
     protected void initView() {
-        textView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(mActivity, TestActivity.class);
-                ScreenManager.getScreenManager().startPage(mActivity, intent, true);
-            }
-        });
     }
 
     @Override
@@ -87,7 +77,7 @@ public class HomeFragment extends BaseFragment {
      * 界面变为可见时，调用setUserVisibleHint(true)。
      * 界面变为不可见时，调用setUserVisibleHint(false)。
      *
-     * @param isVisibleToUser
+     * @param isVisibleToUser 是否可见的
      */
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
@@ -95,6 +85,18 @@ public class HomeFragment extends BaseFragment {
         Logger.e(TAG, "setUserVisibleHint: 执行了" + isVisibleToUser + " -- " + mInitLayout);
         if (isVisibleToUser) {
             initLoadData();
+        }
+    }
+
+    @OnClick({R.id.btn_to_login_page})
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btn_to_login_page:
+                Intent intent = new Intent(getMyActivity(), LoginActivity.class);
+                ScreenManager.getScreenManager().startPage(getMyActivity(), intent, true);
+                break;
+            default:
+                break;
         }
     }
 
