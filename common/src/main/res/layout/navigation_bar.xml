@@ -39,7 +39,8 @@
                 android:layout_gravity="center"
                 android:text="返回"
                 android:textColor="@color/color_dl"
-                android:textSize="15sp" />
+                android:textSize="15sp"
+                android:visibility="invisible" />
         </LinearLayout>
 
         <LinearLayout

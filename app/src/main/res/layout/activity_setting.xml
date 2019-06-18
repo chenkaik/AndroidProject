@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.SettingActivity">
+
+    <include layout="@layout/common_head_layout" />
+
+    <com.example.android.project.widget.SettingBar
+        android:id="@+id/sb_common"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_30"
+        app:bar_leftText="左文本"
+        app:bar_rightIcon="@mipmap/ic_go_black"
+        app:bar_rightText="右文本" />
+
+    <com.example.android.project.widget.SettingBar
+        android:id="@+id/sb_setting_update"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:bar_leftText="@string/setting_update"
+        app:bar_rightIcon="@mipmap/ic_go_black" />
+
+    <com.example.android.project.widget.SettingBar
+        android:id="@+id/sb_setting_agreement"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_30"
+        app:bar_leftText="@string/setting_agreement"
+        app:bar_rightIcon="@mipmap/ic_go_black" />
+
+    <com.example.android.project.widget.SettingBar
+        android:id="@+id/sb_setting_about"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:bar_leftText="@string/setting_about"
+        app:bar_rightIcon="@mipmap/ic_go_black" />
+
+    <com.example.android.project.widget.SettingBar
+        android:id="@+id/sb_setting_cache"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_30"
+        app:bar_leftColor="@color/red"
+        app:bar_leftText="@string/setting_cache"
+        app:bar_rightIcon="@mipmap/ic_go_black" />
+
+    <Button
+        android:id="@+id/btn_setting_exit"
+        style="@style/ButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/space_50"
+        android:layout_marginTop="@dimen/space_60"
+        android:layout_marginRight="@dimen/space_50"
+        android:text="@string/setting_exit" />
+
+</LinearLayout>

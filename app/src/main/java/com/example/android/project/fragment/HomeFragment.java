@@ -12,6 +12,7 @@ import com.example.android.project.R;
 import com.example.android.project.activity.LoginActivity;
 import com.example.android.project.activity.MyActivity;
 import com.example.android.project.activity.RegisterActivity;
+import com.example.android.project.activity.SettingActivity;
 
 import butterknife.OnClick;
 
@@ -89,7 +90,7 @@ public class HomeFragment extends BaseFragment {
         }
     }
 
-    @OnClick({R.id.btn_to_login_page, R.id.btn_to_register_page})
+    @OnClick({R.id.btn_to_login_page, R.id.btn_to_register_page, R.id.btn_to_setting_page})
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_to_login_page:
@@ -99,6 +100,10 @@ public class HomeFragment extends BaseFragment {
             case R.id.btn_to_register_page:
                 Intent registerIntent = new Intent(getMyActivity(), RegisterActivity.class);
                 ScreenManager.getScreenManager().startPage(getMyActivity(), registerIntent, true);
+                break;
+            case R.id.btn_to_setting_page:
+                Intent settingIntent = new Intent(getMyActivity(), SettingActivity.class);
+                ScreenManager.getScreenManager().startPage(getMyActivity(), settingIntent, true);
                 break;
             default:
                 break;
