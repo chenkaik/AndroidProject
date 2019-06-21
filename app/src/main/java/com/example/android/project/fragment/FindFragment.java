@@ -5,8 +5,11 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.android.lib.Logger;
+import com.android.lib.widget.NavigationBar;
 import com.example.android.project.R;
 import com.example.android.project.activity.MyActivity;
+
+import butterknife.BindView;
 
 /**
  * date: 2019/4/12
@@ -15,6 +18,8 @@ import com.example.android.project.activity.MyActivity;
 public class FindFragment extends BaseFragment {
 
     private static final String TAG = "FindFragment";
+    @BindView(R.id.navigationBar)
+    NavigationBar mNavigationBar;
     private boolean mInitData; // 初始化数据是否加载成功
     private boolean mInitLayout; // 布局控件是否初始化完成
     private MyActivity mActivity;
@@ -42,7 +47,7 @@ public class FindFragment extends BaseFragment {
 
     @Override
     protected void initView() {
-
+        mNavigationBar.setTitle("发现");
     }
 
     @Override

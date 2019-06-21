@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.android.lib.adapter.BaseRecyclerViewAdapter;
+import com.android.lib.widget.NavigationBar;
 import com.example.android.project.R;
 import com.example.android.project.adapter.TestAdapter;
 import com.example.android.project.entity.Test;
@@ -17,6 +18,8 @@ import butterknife.OnClick;
 
 public class TestActivity extends BaseActivity implements BaseRecyclerViewAdapter.OnItemClickListener, BaseRecyclerViewAdapter.OnItemLongClickListener, BaseRecyclerViewAdapter.OnViewClickListener {
 
+    @BindView(R.id.navigationBar)
+    NavigationBar mNavigationBar;
     @BindView(R.id.test_RecyclerView)
     RecyclerView recyclerView;
     private List<Test> list = new ArrayList<>();
@@ -29,6 +32,7 @@ public class TestActivity extends BaseActivity implements BaseRecyclerViewAdapte
 
     @Override
     protected void initView() {
+        mNavigationBar.setTitle("测试");
         for (int i = 0; i < 100; i++) {
             list.add(new Test("测试" + i));
         }

@@ -8,12 +8,14 @@ import android.view.View;
 
 import com.android.lib.Logger;
 import com.android.lib.util.ScreenManager;
+import com.android.lib.widget.NavigationBar;
 import com.example.android.project.R;
 import com.example.android.project.activity.LoginActivity;
 import com.example.android.project.activity.MyActivity;
 import com.example.android.project.activity.RegisterActivity;
 import com.example.android.project.activity.SettingActivity;
 
+import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
@@ -23,6 +25,8 @@ import butterknife.OnClick;
 public class HomeFragment extends BaseFragment {
 
     private static final String TAG = "HomeFragment";
+    @BindView(R.id.navigationBar)
+    NavigationBar mNavigationBar;
     private boolean mInitData; // 初始化数据是否加载成功
     private boolean mInitLayout; // 布局控件是否初始化完成
     private MyActivity mActivity;
@@ -50,6 +54,7 @@ public class HomeFragment extends BaseFragment {
 
     @Override
     protected void initView() {
+        mNavigationBar.setTitle("首页");
     }
 
     @Override

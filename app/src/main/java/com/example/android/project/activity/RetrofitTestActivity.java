@@ -3,12 +3,14 @@ package com.example.android.project.activity;
 import android.view.View;
 
 import com.android.lib.Logger;
+import com.android.lib.widget.NavigationBar;
 import com.example.android.project.R;
 import com.example.android.project.entity.HomeIndexResponse;
 import com.example.android.project.entity.LoginResponse;
 import com.example.android.project.entity.request.HomeIndexRequest;
 import com.example.android.project.entity.request.LoginRequest;
 
+import butterknife.BindView;
 import butterknife.OnClick;
 import common.android.http.ApiManager;
 import common.android.http.config.UserConfig;
@@ -19,6 +21,9 @@ import common.android.http.retrofit.NetWorkRequest;
 public class RetrofitTestActivity extends BaseActivity implements CommonResponse {
 
     private static final String TAG = "RetrofitTestActivity";
+    @BindView(R.id.navigationBar)
+    NavigationBar mNavigationBar;
+
     private LoginRequest loginRequest;
     private HomeIndexRequest request;
 
@@ -29,7 +34,7 @@ public class RetrofitTestActivity extends BaseActivity implements CommonResponse
 
     @Override
     protected void initView() {
-
+        mNavigationBar.setTitle("retrofit请求");
     }
 
     @Override

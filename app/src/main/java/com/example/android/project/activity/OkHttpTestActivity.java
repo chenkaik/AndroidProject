@@ -4,6 +4,7 @@ import android.view.View;
 
 import com.android.lib.Logger;
 import com.android.lib.util.GsonUtil;
+import com.android.lib.widget.NavigationBar;
 import com.example.android.project.R;
 import com.example.android.project.entity.LoginResponse;
 import com.example.android.project.entity.TradeNumberResponse;
@@ -14,6 +15,7 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
+import butterknife.BindView;
 import butterknife.OnClick;
 import common.android.http.config.UserConfig;
 import common.android.http.okhttp.DownloadResponseHandler;
@@ -24,6 +26,9 @@ public class OkHttpTestActivity extends BaseActivity implements CommonOkHttpResp
 
     private static final String TAG = "OkHttpTestActivity";
 
+    @BindView(R.id.navigationBar)
+    NavigationBar mNavigationBar;
+
     @Override
     protected int getLayoutId() {
         return R.layout.activity_ok_http_test;
@@ -31,7 +36,7 @@ public class OkHttpTestActivity extends BaseActivity implements CommonOkHttpResp
 
     @Override
     protected void initView() {
-
+        mNavigationBar.setTitle("okHttp请求");
     }
 
     @Override

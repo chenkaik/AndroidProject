@@ -26,7 +26,7 @@
         android:layout_marginLeft="@dimen/space_50"
         android:layout_marginTop="@dimen/space_60"
         android:layout_marginRight="@dimen/space_50"
-        android:text="okhttp请求"
+        android:text="okHttp请求"
         android:textAllCaps="false" />
 
     <Button
