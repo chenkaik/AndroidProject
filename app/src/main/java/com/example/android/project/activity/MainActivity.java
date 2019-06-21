@@ -13,7 +13,7 @@ public class MainActivity extends BaseActivity {
 
     private static final String TAG = "MainActivity";
     // 记录退出按下的时间
-    private long exitTime = 0;
+//    private long exitTime = 0;
 
     @Override
     protected int getLayoutId() {
@@ -30,7 +30,8 @@ public class MainActivity extends BaseActivity {
 
     }
 
-    @OnClick({R.id.btn_retrofit, R.id.btn_okhttp, R.id.btn_other, R.id.btn_BottomNavigationView})
+    @OnClick({R.id.btn_retrofit, R.id.btn_okhttp, R.id.btn_other,
+            R.id.btn_BottomNavigationView, R.id.btn_status})
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_retrofit:
@@ -51,6 +52,10 @@ public class MainActivity extends BaseActivity {
             case R.id.btn_BottomNavigationView:
                 Intent myIntent = new Intent(this, MyActivity.class);
                 ScreenManager.getScreenManager().startPage(this, myIntent, true);
+                break;
+            case R.id.btn_status:
+                Intent statusIntent = new Intent(this, StatusActivity.class);
+                ScreenManager.getScreenManager().startPage(this, statusIntent, true);
                 break;
             default:
                 break;

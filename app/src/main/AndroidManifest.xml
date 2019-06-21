@@ -19,6 +19,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".activity.StatusActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".activity.AboutActivity"
             android:screenOrientation="portrait" />
         <activity

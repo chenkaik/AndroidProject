@@ -8,6 +8,10 @@
     <string name="two_password_input_error">两次密码输入不一致，请重新输入</string>
     <string name="phone_input_error">手机号输入不正确</string>
 
+    <string name="load_status_loading">正在加载中</string>
+    <string name="load_status_no_net">没有网络</string>
+    <string name="load_status_fail_refresh">加载失败，点击重新加载</string>
+
     <!-- 登录 -->
     <string name="login_register">注册</string>
     <string name="login_phone_hint">请输入手机号</string>

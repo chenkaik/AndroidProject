@@ -5,61 +5,59 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activity.MainActivity">
+    tools:context=".activity.StatusActivity">
+
+    <include layout="@layout/common_head_layout" />
 
     <Button
-        android:id="@+id/btn_retrofit"
+        android:id="@+id/btn_load"
         style="@style/ButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/space_50"
-        android:layout_marginTop="@dimen/space_60"
+        android:layout_marginTop="@dimen/space_20"
         android:layout_marginRight="@dimen/space_50"
-        android:text="retrofit请求"
+        android:text="加载中"
         android:textAllCaps="false" />
 
     <Button
-        android:id="@+id/btn_okhttp"
+        android:id="@+id/btn_no_net"
         style="@style/ButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/space_50"
-        android:layout_marginTop="@dimen/space_60"
+        android:layout_marginTop="@dimen/space_20"
         android:layout_marginRight="@dimen/space_50"
-        android:text="okhttp请求"
+        android:text="无网络"
         android:textAllCaps="false" />
 
     <Button
-        android:id="@+id/btn_other"
+        android:id="@+id/btn_loading_fail"
         style="@style/ButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/space_50"
-        android:layout_marginTop="@dimen/space_60"
+        android:layout_marginTop="@dimen/space_20"
         android:layout_marginRight="@dimen/space_50"
-        android:text="测试"
+        android:text="加载失败"
         android:textAllCaps="false" />
 
     <Button
-        android:id="@+id/btn_BottomNavigationView"
+        android:id="@+id/btn_loading_finish"
         style="@style/ButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/space_50"
-        android:layout_marginTop="@dimen/space_60"
+        android:layout_marginTop="@dimen/space_20"
         android:layout_marginRight="@dimen/space_50"
-        android:text="BottomNavigationView的使用"
+        android:text="加载完成"
         android:textAllCaps="false" />
 
-    <Button
-        android:id="@+id/btn_status"
-        style="@style/ButtonStyle"
+    <com.example.android.project.util.LoadStatusView
+        android:id="@+id/loadStatusView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/space_50"
-        android:layout_marginTop="@dimen/space_60"
-        android:layout_marginRight="@dimen/space_50"
-        android:text="页面的状态"
-        android:textAllCaps="false" />
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
 
 </LinearLayout>
