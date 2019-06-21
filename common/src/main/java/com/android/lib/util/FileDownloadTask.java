@@ -20,7 +20,7 @@ import okhttp3.Response;
  * date: 2019/1/30
  * desc: 文件下载
  */
-public class FileDownloadTask extends AsyncTask<String, Integer, Integer> {
+public final class FileDownloadTask extends AsyncTask<String, Integer, Integer> {
 
     private static final int SUCCESS = 0;
     private static final int FAILED = 1;

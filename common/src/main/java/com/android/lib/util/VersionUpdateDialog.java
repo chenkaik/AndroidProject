@@ -13,7 +13,7 @@ import com.android.common.R;
  * date: 2019/1/30
  * desc: 更新apk版本使用的dialog
  */
-public class VersionUpdateDialog extends Dialog {
+public final class VersionUpdateDialog extends Dialog {
 
     /**
      * 进度条

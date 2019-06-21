@@ -11,7 +11,7 @@ import com.android.lib.Logger;
  * date: 2019/1/30
  * desc: 判断是否有网络
  */
-public class NetworkUtil {
+public final class NetworkUtil {
 
     private static final String TAG = NetworkUtil.class.getSimpleName();
 

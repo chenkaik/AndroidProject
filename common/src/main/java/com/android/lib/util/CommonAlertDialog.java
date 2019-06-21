@@ -16,7 +16,7 @@ import com.android.common.R;
  * date: 2019/1/30
  * desc: 公用的弹框
  */
-public class CommonAlertDialog {
+public final class CommonAlertDialog {
     public static class Builder {
 
         private Context mContext;

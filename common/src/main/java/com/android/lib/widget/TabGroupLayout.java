@@ -9,7 +9,7 @@ import android.widget.LinearLayout;
  * date: 2019/1/30
  * desc: 底部导航
  */
-public class TabGroupLayout extends LinearLayout {
+public final class TabGroupLayout extends LinearLayout {
 
     public static final String TAG = TabGroupLayout.class.getSimpleName();
 

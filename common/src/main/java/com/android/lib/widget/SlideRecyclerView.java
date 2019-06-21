@@ -18,7 +18,7 @@ import android.widget.Scroller;
  * desc: 侧滑菜单删除的RecyclerView
  * 参考https://blog.csdn.net/dapangzao/article/details/80524774
  */
-public class SlideRecyclerView extends RecyclerView {
+public final class SlideRecyclerView extends RecyclerView {
 
     private static final String TAG = "SlideRecyclerView";
     private static final int INVALID_POSITION = -1; // 触摸到的点不在子View范围内

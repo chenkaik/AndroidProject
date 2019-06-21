@@ -4,7 +4,7 @@ package com.android.lib.util;
  * date: 2019/3/8
  * desc: 权限请求实体类
  */
-public class Permission {
+public final class Permission {
 
     private static final String REQUEST_INSTALL_PACKAGES = "android.permission.REQUEST_INSTALL_PACKAGES"; // 8.0及以上应用安装权限
 

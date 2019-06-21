@@ -6,7 +6,7 @@ import java.math.BigDecimal;
  * date: 2019/1/15
  * desc: double值加减乘除计算
  */
-public class DoubleCalculation {
+public final class DoubleCalculation {
 
     /**
      * 加法运算

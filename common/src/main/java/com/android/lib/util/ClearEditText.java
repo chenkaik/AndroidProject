@@ -24,7 +24,7 @@ import com.android.common.R;
  * desc: 带清除按钮的EditText
  */
 @SuppressLint("AppCompatCustomView")
-public class ClearEditText extends EditText
+public final class ClearEditText extends EditText
         implements View.OnTouchListener, View.OnFocusChangeListener, TextWatcher {
 
     private Drawable mClearIcon;

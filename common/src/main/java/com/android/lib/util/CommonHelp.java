@@ -9,7 +9,7 @@ import com.android.common.R;
  * date: 2019/1/30
  * desc: 弹框辅助类
  */
-public class CommonHelp {
+public final class CommonHelp {
 
     private CommonProgressDialog mCommonProgressDialog;
     private Activity mActivity;

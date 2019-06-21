@@ -11,7 +11,7 @@ import java.util.Stack;
  * date: 2019/1/30
  * desc: activity统一管理类
  */
-public class ScreenManager {
+public final class ScreenManager {
 
     private static Stack<Activity> activityStack = new Stack<>();
 

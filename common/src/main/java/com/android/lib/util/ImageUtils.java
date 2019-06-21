@@ -18,7 +18,7 @@ import java.util.Date;
  * date: 2019/1/30
  * desc: 选择系统相册图片及拍照的工具类
  */
-public class ImageUtils {
+public final class ImageUtils {
 
     public static String date = "";
 

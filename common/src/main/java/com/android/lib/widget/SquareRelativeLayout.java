@@ -10,7 +10,7 @@ import android.widget.RelativeLayout;
  * date: 2019/1/30
  * desc: 长方形的RelativeLayout
  */
-public class SquareRelativeLayout extends RelativeLayout {
+public final class SquareRelativeLayout extends RelativeLayout {
 
     public SquareRelativeLayout(Context context) {
         super(context);

@@ -10,7 +10,7 @@ import java.util.concurrent.TimeoutException;
  * date: 2019/1/30
  * desc: 处理接口调用失败
  */
-public class NetErrStringUtils {
+public final class NetErrStringUtils {
 
     private static final int ERR_404 = 404;
 

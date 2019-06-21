@@ -19,7 +19,7 @@ import com.android.lib.util.ScreenManager;
  * date: 2019/1/30
  * desc: 公用的title头部
  */
-public class NavigationBar extends FrameLayout {
+public final class NavigationBar extends FrameLayout {
 
     private LayoutInflater mLayoutInflater;
     private LinearLayout mLeftLinearLayout;

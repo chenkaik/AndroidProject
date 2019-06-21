@@ -19,7 +19,7 @@ import java.io.IOException;
  * date: 2019/1/30
  * desc: 系统版本信息相关
  */
-public class SystemInfo {
+public final class SystemInfo {
 
     /**
      * >= 4.3 18

@@ -11,7 +11,7 @@ import java.math.BigDecimal;
  * date: 2019/1/30
  * desc: 清除缓存工具类
  */
-public class DataCleanManager {
+public final class DataCleanManager {
 
     /**
      * * 清除本应用内部缓存(/data/data/com.xxx.xxx/cache) * *

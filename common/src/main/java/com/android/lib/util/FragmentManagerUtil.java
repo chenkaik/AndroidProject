@@ -15,7 +15,7 @@ import com.android.common.R;
  * date: 2019/1/30
  * desc: 管理fragment
  */
-public class FragmentManagerUtil {
+public final class FragmentManagerUtil {
 
     private static final String tag = FragmentManagerUtil.class.getSimpleName();
 

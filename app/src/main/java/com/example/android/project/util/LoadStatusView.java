@@ -19,7 +19,7 @@ import com.example.android.project.R;
  * date: 2019/6/21
  * desc: 布局的操作帮助类
  */
-public class LoadStatusView extends FrameLayout implements View.OnClickListener {
+public final class LoadStatusView extends FrameLayout implements View.OnClickListener {
 
     private static final String TAG = "LoadStatusView";
 

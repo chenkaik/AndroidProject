@@ -10,7 +10,7 @@ import android.view.MotionEvent;
  * date: 2019/3/8
  * desc: 是否禁止ViewPager左右滑动
  */
-public class NoScrollViewPager extends ViewPager {
+public final class NoScrollViewPager extends ViewPager {
 
     /**
      * 是否禁止左右滑动，true为禁止，false为不禁止

@@ -14,7 +14,7 @@ import java.util.Stack;
  * 其他功能在各个子Activity中根据需要添加
  * https://juejin.im/post/5ca1844151882543e31e27fa#heading-5
  */
-public class FinishActivityManager {
+public final class FinishActivityManager {
 
     private FinishActivityManager() {
     }

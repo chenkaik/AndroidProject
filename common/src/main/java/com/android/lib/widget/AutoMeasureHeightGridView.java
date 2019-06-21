@@ -8,7 +8,7 @@ import android.widget.GridView;
  * date: 2019/1/30
  * desc: 根据item多少，自适应高度的列表
  */
-public class AutoMeasureHeightGridView extends GridView {
+public final class AutoMeasureHeightGridView extends GridView {
 
     public AutoMeasureHeightGridView(Context context) {
         super(context);

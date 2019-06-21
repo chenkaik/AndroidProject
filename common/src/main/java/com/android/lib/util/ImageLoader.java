@@ -13,7 +13,7 @@ import com.bumptech.glide.request.RequestOptions;
  * date: 2019/1/30
  * desc: Glide加载图片
  */
-public class ImageLoader {
+public final class ImageLoader {
 
     /**
      * 加载资源图片

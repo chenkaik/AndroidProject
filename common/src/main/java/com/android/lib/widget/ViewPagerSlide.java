@@ -10,7 +10,7 @@ import android.view.MotionEvent;
  * date: 2019/1/30
  * desc: 设置ViewPager是否滑动
  */
-public class ViewPagerSlide extends ViewPager {
+public final class ViewPagerSlide extends ViewPager {
 
     /**
      * 是否禁止左右滑动，true为禁止，false为不禁止

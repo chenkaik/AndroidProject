@@ -10,7 +10,7 @@ import android.view.WindowManager;
  * date: 2019/1/30
  * desc: 修改状态栏颜色
  */
-public class StatusBarUtil {
+public final class StatusBarUtil {
 
     /**
      * 修改状态栏颜色，支持4.4以上版本

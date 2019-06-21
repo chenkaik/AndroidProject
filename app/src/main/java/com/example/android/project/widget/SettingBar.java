@@ -19,7 +19,7 @@ import com.example.android.project.R;
  * date: 2019/6/17
  * desc: 设置条自定义控件
  */
-public class SettingBar extends FrameLayout {
+public final class SettingBar extends FrameLayout {
 
     private TextView mLeftView;
     private TextView mRightView;

@@ -6,7 +6,7 @@ import android.util.Log;
  * date: 2019/1/30
  * desc: 统一管理打印日志
  */
-public class Logger {
+public final class Logger {
 
     // 设为false关闭日志
     private static final boolean LOG_ENABLE = true;

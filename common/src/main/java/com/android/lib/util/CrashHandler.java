@@ -29,7 +29,7 @@ import java.util.Map;
  * 默认会弹出系统中强制关闭对话框。我们需要实现此接口，并注册为程序中默认未捕获异常处理。
  * 这样当未捕获异常发生时，就可以做一些个性化的异常处理操作
  */
-public class CrashHandler implements Thread.UncaughtExceptionHandler {
+public final class CrashHandler implements Thread.UncaughtExceptionHandler {
 
     public static final String TAG = "CrashHandler";
 

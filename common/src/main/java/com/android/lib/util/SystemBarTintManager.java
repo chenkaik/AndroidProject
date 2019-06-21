@@ -41,7 +41,7 @@ import java.lang.reflect.Method;
  * date: 2019/1/30
  * desc: 修改状态栏颜色(android4.4版本以上使用)
  */
-public class SystemBarTintManager {
+public final class SystemBarTintManager {
 
     static {
         // Android allows a system property to override the presence of the navigation bar.

@@ -14,7 +14,7 @@ import java.util.Locale;
  * date: 2019/1/30
  * desc: 日期处理相关
  */
-public class DateUtils {
+public final class DateUtils {
 
     private static final String yyyyMMddHHmm = "yyyy-MM-dd HH:mm";
 
