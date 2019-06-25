@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.android.common.R;
 
+
 /**
  * date: 2019/1/30
  * desc: 封装上拉加载更多adapter
@@ -44,7 +45,7 @@ public class LoadMoreWrapperAdapter extends RecyclerView.Adapter<RecyclerView.Vi
 
     public void addHeaderView(View headerView) {
         this.mHeaderView = headerView;
-        notifyItemInserted(0);
+        notifyItemInserted(0); // 通知增加单条数据
     }
 
     @Override
@@ -114,7 +115,7 @@ public class LoadMoreWrapperAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     }
 
     @Override
-    public void onAttachedToRecyclerView(RecyclerView recyclerView) {
+    public void onAttachedToRecyclerView(@NonNull RecyclerView recyclerView) {
         super.onAttachedToRecyclerView(recyclerView);
         RecyclerView.LayoutManager manager = recyclerView.getLayoutManager();
         if (manager instanceof GridLayoutManager) { // 首先判断当前是否为网格布局
