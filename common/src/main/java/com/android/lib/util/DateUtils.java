@@ -26,6 +26,18 @@ public final class DateUtils {
         return sdf.format(calendar.getTime());
     }
 
+    @SuppressLint("SimpleDateFormat")
+    public static String formatDate(String dateStr) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            Date parse = simpleDateFormat.parse(dateStr);
+            return simpleDateFormat.format(parse);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return dateStr;
+    }
+
     public static String formateStringH(String dateStr, String pattren) {
         Date date = parseDate(dateStr, pattren);
         try {
