@@ -18,9 +18,10 @@ public final class DateUtils {
 
     private static final String yyyyMMddHHmm = "yyyy-MM-dd HH:mm";
 
+    @SuppressLint("SimpleDateFormat")
     public static String currentTime() {
         Date date = new Date();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");// 格式化对象
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); // 格式化对象
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
         return sdf.format(calendar.getTime());
@@ -49,6 +50,7 @@ public final class DateUtils {
         }
     }
 
+    @SuppressLint("SimpleDateFormat")
     public static Date parseDate(String dateStr, String type) {
         SimpleDateFormat df = new SimpleDateFormat(type);
         Date date = null;
@@ -61,31 +63,34 @@ public final class DateUtils {
 
     }
 
-    public static String dateToString(Date date, String pattern)
-            throws Exception {
+    @SuppressLint("SimpleDateFormat")
+    public static String dateToString(Date date, String pattern) {
         return new SimpleDateFormat(pattern).format(date);
     }
 
-    public static Date stringToDate(String dateStr, String pattern)
-            throws Exception {
+    @SuppressLint("SimpleDateFormat")
+    public static Date stringToDate(String dateStr, String pattern) throws Exception {
         return new SimpleDateFormat(pattern).parse(dateStr);
     }
 
+    @SuppressLint("SimpleDateFormat")
     public static String currentTimeDeatil(Date date) {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");// 格式化对象
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm"); // 格式化对象
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
         return sdf.format(calendar.getTime());
     }
 
+    @SuppressLint("SimpleDateFormat")
     public static String currentMonth() {
         Date date = new Date();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM");// 格式化对象
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM"); // 格式化对象
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
         return sdf.format(calendar.getTime());
     }
 
+    @SuppressLint("SimpleDateFormat")
     public static String lastMonth(String date) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM");
         Date d;
@@ -96,12 +101,12 @@ public final class DateUtils {
             calendar.add(Calendar.MONTH, -1);
             return sdf.format(calendar.getTime());
         } catch (ParseException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         return date;
     }
 
+    @SuppressLint("SimpleDateFormat")
     public static String nextMonth(String date) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM");
         Date d;
@@ -112,15 +117,14 @@ public final class DateUtils {
             calendar.add(Calendar.MONTH, +1);
             return sdf.format(calendar.getTime());
         } catch (ParseException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         return date;
-
     }
 
+    @SuppressLint("SimpleDateFormat")
     public static String lastDay() {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");// 格式化对象
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd"); // 格式化对象
         Date date = new Date(System.currentTimeMillis());
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
@@ -130,12 +134,11 @@ public final class DateUtils {
     }
 
     /**
-     * 前7天数据
-     *
-     * @return
+     * 前7天
      */
+    @SuppressLint("SimpleDateFormat")
     public static String lastSevenDay() {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");// 格式化对象
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd"); // 格式化对象
         Date date = new Date(System.currentTimeMillis());
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
@@ -145,12 +148,11 @@ public final class DateUtils {
     }
 
     /**
-     * 前14天数据
-     *
-     * @return
+     * 前14天
      */
+    @SuppressLint("SimpleDateFormat")
     public static String lastFourteenDay() {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");// 格式化对象
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd"); // 格式化对象
         Date date = new Date(System.currentTimeMillis());
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
@@ -195,11 +197,10 @@ public final class DateUtils {
 
     /**
      * 本月第一天数据
-     *
-     * @return
      */
+    @SuppressLint("SimpleDateFormat")
     public static String currentFDay() {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");// 格式化对象
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd"); // 格式化对象
         Calendar calendar = Calendar.getInstance();
         calendar.set(Calendar.DAY_OF_MONTH, calendar.getActualMinimum(Calendar.DAY_OF_MONTH));
         sdf.format(calendar.getTime());
@@ -208,31 +209,29 @@ public final class DateUtils {
 
     /**
      * 本月最后天数据
-     *
-     * @return
      */
+    @SuppressLint("SimpleDateFormat")
     public static String currentLDay() {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");// 格式化对象
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd"); // 格式化对象
         Calendar calendar = Calendar.getInstance();
         calendar.set(Calendar.DAY_OF_MONTH, calendar.getActualMaximum(Calendar.DAY_OF_MONTH));
         sdf.format(calendar.getTime());
         return sdf.format(calendar.getTime());
     }
 
+    @SuppressLint("SimpleDateFormat")
     public static String currentLDaySchedule() {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");// 格式化对象
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); // 格式化对象
         Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.DAY_OF_MONTH,
-                calendar.getActualMaximum(Calendar.DAY_OF_MONTH));
+        calendar.set(Calendar.DAY_OF_MONTH, calendar.getActualMaximum(Calendar.DAY_OF_MONTH));
         sdf.format(calendar.getTime());
         return sdf.format(calendar.getTime());
     }
 
     /**
      * 上个月第一天数据
-     *
-     * @return
      */
+    @SuppressLint("SimpleDateFormat")
     public static String currentFFday() {
         SimpleDateFormat df = new SimpleDateFormat("yyyy.MM.dd");
         GregorianCalendar gcLast = (GregorianCalendar) Calendar.getInstance();
@@ -248,32 +247,27 @@ public final class DateUtils {
 
     /**
      * 上个月最后一天数据
-     *
-     * @return
      */
+    @SuppressLint("SimpleDateFormat")
     public static String currentLLday() {
-        SimpleDateFormat df = new SimpleDateFormat("yyyy.MM.dd");// 格式化对象
+        SimpleDateFormat df = new SimpleDateFormat("yyyy.MM.dd"); // 格式化对象
         Calendar calendar = Calendar.getInstance();// 此时打印它获取的是系统当前时间
-        calendar.set(Calendar.DAY_OF_MONTH,
-                calendar.getActualMinimum(Calendar.DAY_OF_MONTH - 1));
+        calendar.set(Calendar.DAY_OF_MONTH, calendar.getActualMinimum(Calendar.DAY_OF_MONTH - 1));
         Date theDate = calendar.getTime();
         return df.format(theDate);
     }
 
     /**
      * 上个月最后一天数据
-     *
-     * @param date
-     * @return
      */
+    @SuppressLint("SimpleDateFormat")
     public static String currentLLdaySchedule(String date) {
         try {
             String aa = date.toString() + "-01";
-            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");// 格式化对象
+            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd"); // 格式化对象
             Calendar calendar = Calendar.getInstance();// 此时打印它获取的是系统当前时间
             calendar.setTime(df.parse(aa));
-            calendar.set(Calendar.DAY_OF_MONTH,
-                    calendar.getActualMaximum(Calendar.DAY_OF_MONTH));
+            calendar.set(Calendar.DAY_OF_MONTH, calendar.getActualMaximum(Calendar.DAY_OF_MONTH));
             Date theDate = calendar.getTime();
             return df.format(theDate);
         } catch (Exception e) {
@@ -284,18 +278,15 @@ public final class DateUtils {
 
     /**
      * 下一个月最后一天数据
-     *
-     * @param date
-     * @return
      */
+    @SuppressLint("SimpleDateFormat")
     public static String lastLLdaySchedule(String date) {
         try {
             String aa = date.toString() + "-01";
-            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");// 格式化对象
-            Calendar calendar = Calendar.getInstance();// 此时打印它获取的是系统当前时间
+            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd"); // 格式化对象
+            Calendar calendar = Calendar.getInstance(); // 此时打印它获取的是系统当前时间
             calendar.setTime(df.parse(aa));
-            calendar.set(Calendar.DAY_OF_MONTH,
-                    calendar.getActualMaximum(Calendar.DAY_OF_MONTH));
+            calendar.set(Calendar.DAY_OF_MONTH, calendar.getActualMaximum(Calendar.DAY_OF_MONTH));
             Date theDate = calendar.getTime();
             return df.format(theDate);
         } catch (Exception e) {
@@ -306,12 +297,11 @@ public final class DateUtils {
 
     /**
      * 获取最近三十天的数据
-     *
-     * @return
      */
+    @SuppressLint("SimpleDateFormat")
     public static String lastThrDay() {
-        SimpleDateFormat df = new SimpleDateFormat("yyyy.MM.dd");// 格式化对象
-        Calendar calendar = Calendar.getInstance();// 此时打印它获取的是系统当前时间\
+        SimpleDateFormat df = new SimpleDateFormat("yyyy.MM.dd"); // 格式化对象
+        Calendar calendar = Calendar.getInstance(); // 此时打印它获取的是系统当前时间
         // calendar.add(Calendar.MONTH, -1); //
         // if (calendar.get(calendar.DAY_OF_MONTH)==1) {
         //
@@ -428,8 +418,9 @@ public final class DateUtils {
      *
      * @param year  年份
      * @param month 月份
-     * @return
+     * @return 天数
      */
+    @SuppressLint("SimpleDateFormat")
     public static String getMonthEnd(int year, int month) {
         Calendar calendar = Calendar.getInstance();
         // 设置时间,当前时间不用设置
@@ -450,8 +441,9 @@ public final class DateUtils {
      *
      * @param year  年份
      * @param month 月份
-     * @return
+     * @return 天数
      */
+    @SuppressLint("SimpleDateFormat")
     public static String getMonthStart(int year, int month) {
         Calendar calendar = Calendar.getInstance();
         // 设置时间,当前时间不用设置
@@ -462,18 +454,17 @@ public final class DateUtils {
         calendar.set(Calendar.DATE, 1);
         // 打印
         DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        System.out.println(format.format(calendar.getTime()));
+//        System.out.println(format.format(calendar.getTime()));
         return format.format(calendar.getTime());
     }
 
     /**
      * 昨天
-     *
-     * @return
      */
+    @SuppressLint("SimpleDateFormat")
     public static String currentYesterday() {
         Date date = new Date();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");// 格式化对象
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); // 格式化对象
         Calendar calendar = Calendar.getInstance();
         calendar.add(Calendar.DATE, -1);
         calendar.setTime(date);
@@ -482,12 +473,11 @@ public final class DateUtils {
 
     /**
      * 本周的第一天
-     *
-     * @return
      */
+    @SuppressLint("SimpleDateFormat")
     public static String currentWeekone() {
         Date date = new Date();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");// 格式化对象
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); // 格式化对象
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
         if (calendar.get(Calendar.DAY_OF_WEEK) == 0) {
@@ -500,9 +490,8 @@ public final class DateUtils {
 
     /**
      * 获取当前的时分
-     *
-     * @return
      */
+    @SuppressLint("SimpleDateFormat")
     public static String currentHourMinute() {
         Date date = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm"); // 格式化对象
@@ -511,52 +500,58 @@ public final class DateUtils {
 
     /**
      * 比较两个日期的大小，日期格式为yyyy-MM-dd
+     * 返回为true第一个日期大于或等于第二个日期
      *
-     * @param str1 the first date
-     * @param str2 the second date
+     * @param startDate the first date
+     * @param endDate   the second date
      * @return true <br/>false
      */
-    public static boolean isDateOneBigger(String str1, String str2) {
+    @SuppressLint("SimpleDateFormat")
+    public static boolean isDateOneBigger(String startDate, String endDate) {
         boolean isBigger = false;
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        Date dt1 = null;
-        Date dt2 = null;
+        Date dt1;
+        Date dt2;
         try {
-            dt1 = sdf.parse(str1);
-            dt2 = sdf.parse(str2);
+            dt1 = sdf.parse(startDate);
+            dt2 = sdf.parse(endDate);
+            if (dt1.getTime() > dt2.getTime()) {
+                isBigger = true;
+            } else if (dt1.getTime() == dt2.getTime()) {
+                isBigger = true;
+            } else if (dt1.getTime() < dt2.getTime()) {
+                isBigger = false;
+            }
         } catch (ParseException e) {
             e.printStackTrace();
-        }
-        if (dt1.getTime() > dt2.getTime()) {
-            isBigger = true;
-        } else if (dt1.getTime() < dt2.getTime()) {
-            isBigger = false;
         }
         return isBigger;
     }
 
     /**
      * 比较两个日期的大小，日期格式为yyyy-MM-dd
+     * 返回为true第二个日期大于或等于第一个日期
      *
-     * @param str1 the first date
-     * @param str2 the second date
+     * @param startDate the first date
+     * @param endDate   the second date
      * @return true <br/>false
      */
-    public static boolean isDate2Bigger(String str1, String str2) {
+    @SuppressLint("SimpleDateFormat")
+    public static boolean isDateTwoBigger(String startDate, String endDate) {
         boolean isBigger = false;
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        Date dt1 = null;
-        Date dt2 = null;
+        Date dt1;
+        Date dt2;
         try {
-            dt1 = sdf.parse(str1);
-            dt2 = sdf.parse(str2);
+            dt1 = sdf.parse(startDate);
+            dt2 = sdf.parse(endDate);
+            if (dt1.getTime() > dt2.getTime()) {
+                isBigger = false;
+            } else if (dt1.getTime() <= dt2.getTime()) {
+                isBigger = true;
+            }
         } catch (ParseException e) {
             e.printStackTrace();
-        }
-        if (dt1.getTime() > dt2.getTime()) {
-            isBigger = false;
-        } else if (dt1.getTime() <= dt2.getTime()) {
-            isBigger = true;
         }
         return isBigger;
     }
@@ -564,10 +559,11 @@ public final class DateUtils {
     /**
      * 时间戳转换成字符串
      *
-     * @param milSecond
-     * @param pattern
-     * @return
+     * @param milSecond 时间戳
+     * @param pattern   日期格式
+     * @return 时间
      */
+    @SuppressLint("SimpleDateFormat")
     public static String getDateToString(long milSecond, String pattern) {
         Date date = new Date(milSecond);
         SimpleDateFormat format = new SimpleDateFormat(pattern);
@@ -577,17 +573,17 @@ public final class DateUtils {
     /**
      * 字符串转为时间戳
      *
-     * @param dateString
-     * @param pattern
-     * @return
+     * @param dateString 时间
+     * @param pattern    格式
+     * @return 时间戳
      */
+    @SuppressLint("SimpleDateFormat")
     public static long getStringToDate(String dateString, String pattern) {
         SimpleDateFormat dateFormat = new SimpleDateFormat(pattern);
         Date date = new Date();
         try {
             date = dateFormat.parse(dateString);
         } catch (ParseException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         return date.getTime();
@@ -595,9 +591,6 @@ public final class DateUtils {
 
     /**
      * 根据提供的年月日获取该月份的第一天
-     *
-     * @param date
-     * @return
      */
     public static String getSupportBeginDayofMonth(Date date) {
         date.getTime();
@@ -610,14 +603,10 @@ public final class DateUtils {
         startDate.set(Calendar.MILLISECOND, 0);
         Date firstDate = startDate.getTime();
         return (firstDate.getTime() + "").substring(0, 10);
-
     }
 
     /**
      * 根据提供的年月获取该月份的最后一天
-     *
-     * @param date
-     * @return
      */
     public static String getSupportEndDayofMonth(Date date) {
         Calendar startDate = Calendar.getInstance();
@@ -635,7 +624,7 @@ public final class DateUtils {
      * 毫秒换算成时间
      *
      * @param mss 毫秒数
-     * @return
+     * @return 时间
      */
     public static String formatDateTimes(long mss) {
         String dateTimes = "";
