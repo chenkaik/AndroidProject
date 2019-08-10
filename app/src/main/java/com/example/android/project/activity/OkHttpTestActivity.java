@@ -19,10 +19,10 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import common.android.http.config.UserConfig;
 import common.android.http.okhttp.DownloadResponseHandler;
-import common.android.http.response.CommonOkHttpResponse;
+import common.android.http.response.NetworkOkHttpResponse;
 import common.android.http.retrofit.NetWorkRequest;
 
-public class OkHttpTestActivity extends BaseActivity implements CommonOkHttpResponse {
+public class OkHttpTestActivity extends BaseActivity implements NetworkOkHttpResponse {
 
     private static final String TAG = "OkHttpTestActivity";
 

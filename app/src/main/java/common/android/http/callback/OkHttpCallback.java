@@ -9,7 +9,7 @@ import java.io.IOException;
 
 import common.android.http.config.HttpConfig;
 import common.android.http.response.BaseResponse;
-import common.android.http.response.CommonOkHttpResponse;
+import common.android.http.response.NetworkOkHttpResponse;
 import common.android.http.retrofit.NetWorkRequest;
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -24,10 +24,10 @@ public class OkHttpCallback implements Callback {
 
     private static final String TAG = "OkHttpCallback";
     private int mRequestCode;
-    private CommonOkHttpResponse mOkHttpResponse;
+    private NetworkOkHttpResponse mOkHttpResponse;
     private String mResponseBodyStr = "";
 
-    public OkHttpCallback(int requestCode, CommonOkHttpResponse okHttpResponse) {
+    public OkHttpCallback(int requestCode, NetworkOkHttpResponse okHttpResponse) {
         this.mRequestCode = requestCode;
         this.mOkHttpResponse = okHttpResponse;
     }

@@ -4,7 +4,7 @@ import com.android.lib.Logger;
 
 import common.android.http.callback.OkHttpCallback;
 import common.android.http.okhttp.OkHttpRequestBuilder;
-import common.android.http.response.CommonOkHttpResponse;
+import common.android.http.response.NetworkOkHttpResponse;
 import common.android.http.retrofit.NetWorkRequest;
 import okhttp3.MediaType;
 import okhttp3.Request;
@@ -23,7 +23,7 @@ public class PutBuilder extends OkHttpRequestBuilder<PutBuilder> {
     }
 
     @Override
-    public void enqueue(int requestCode, CommonOkHttpResponse okHttpResponse) {
+    public void enqueue(int requestCode, NetworkOkHttpResponse okHttpResponse) {
         try {
             if (mUrl == null || mUrl.length() == 0) {
                 throw new IllegalArgumentException("url can not be null !");

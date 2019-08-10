@@ -3,7 +3,7 @@ package common.android.http.okhttp;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import common.android.http.response.CommonOkHttpResponse;
+import common.android.http.response.NetworkOkHttpResponse;
 import common.android.http.retrofit.NetWorkRequest;
 import okhttp3.Headers;
 import okhttp3.Request;
@@ -29,7 +29,7 @@ public abstract class OkHttpRequestBuilder<T extends OkHttpRequestBuilder> {
      * @param requestCode    区分请求的code
      * @param okHttpResponse 自定义回调
      */
-    public abstract void enqueue(int requestCode, CommonOkHttpResponse okHttpResponse);
+    public abstract void enqueue(int requestCode, NetworkOkHttpResponse okHttpResponse);
 
 
     /**

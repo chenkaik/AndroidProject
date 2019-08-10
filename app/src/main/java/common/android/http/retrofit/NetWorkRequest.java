@@ -23,7 +23,7 @@ import common.android.http.config.HttpConfig;
 import common.android.http.okhttp.CookieManager;
 import common.android.http.okhttp.OkHttpInterceptor;
 import common.android.http.response.BaseResponse;
-import common.android.http.response.CommonResponse;
+import common.android.http.response.NetworkResponse;
 import okhttp3.Dispatcher;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -107,7 +107,7 @@ public class NetWorkRequest {
      * @param isShow           是否显示加载框
      * @param <T>              泛型类型
      */
-    public <T extends BaseResponse> void asyncNetWork(final String TAG, final int requestCode, final Call<T> requestCall, final CommonResponse<T> responseListener, final boolean isShow) {
+    public <T extends BaseResponse> void asyncNetWork(final String TAG, final int requestCode, final Call<T> requestCall, final NetworkResponse<T> responseListener, final boolean isShow) {
         if (responseListener == null) {
             return;
         }
@@ -171,7 +171,7 @@ public class NetWorkRequest {
      * @param isShow           是否显示加载框
      * @param <T>              泛型类型
      */
-    public <T extends BaseResponse> void syncNetWork(final String TAG, final int requestCode, final Call<T> requestCall, final CommonResponse<T> responseListener, boolean isShow) {
+    public <T extends BaseResponse> void syncNetWork(final String TAG, final int requestCode, final Call<T> requestCall, final NetworkResponse<T> responseListener, boolean isShow) {
         if (responseListener == null) {
             return;
         }

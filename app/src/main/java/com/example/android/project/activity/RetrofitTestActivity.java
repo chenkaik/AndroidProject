@@ -15,10 +15,10 @@ import butterknife.OnClick;
 import common.android.http.ApiManager;
 import common.android.http.config.UserConfig;
 import common.android.http.response.BaseResponse;
-import common.android.http.response.CommonResponse;
+import common.android.http.response.NetworkResponse;
 import common.android.http.retrofit.NetWorkRequest;
 
-public class RetrofitTestActivity extends BaseActivity implements CommonResponse {
+public class RetrofitTestActivity extends BaseActivity implements NetworkResponse {
 
     private static final String TAG = "RetrofitTestActivity";
     @BindView(R.id.navigationBar)
