@@ -3,6 +3,8 @@ package common.android.http.callback;
 import com.android.lib.Logger;
 import com.android.lib.util.GsonUtil;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.IOException;
 
 import common.android.http.config.HttpConfig;
@@ -31,7 +33,7 @@ public class OkHttpCallback implements Callback {
     }
 
     @Override
-    public void onFailure(Call call, IOException e) {
+    public void onFailure(@NotNull Call call, @NotNull IOException e) {
         Logger.e("onFailure: ", "警告,调用接口出错!", e);
         NetWorkRequest.mHandler.post(new Runnable() {
             @Override
@@ -42,7 +44,7 @@ public class OkHttpCallback implements Callback {
     }
 
     @Override
-    public void onResponse(Call call, Response response) {
+    public void onResponse(@NotNull Call call, @NotNull Response response) {
         Logger.e(TAG, "onResponse: 响应码" + response.code());
         if (response.isSuccessful()) { // code >= 200 && code < 300;
             ResponseBody responseBody = response.body();
