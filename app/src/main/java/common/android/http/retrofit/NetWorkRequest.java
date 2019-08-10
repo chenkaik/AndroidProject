@@ -6,6 +6,8 @@ import android.os.Looper;
 import com.android.lib.Logger;
 import com.android.lib.util.NetErrStringUtils;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.Map;
@@ -123,7 +125,7 @@ public class NetWorkRequest {
         addCall(TAG, requestCode, call);
         call.enqueue(new Callback<T>() {
             @Override
-            public void onResponse(Call<T> call, Response<T> response) {
+            public void onResponse(@NotNull Call<T> call, @NotNull Response<T> response) {
                 Logger.e(TA, "响应码:" + response.code());
                 if (isShow) {
                     responseListener.dismissLoading();
@@ -151,7 +153,7 @@ public class NetWorkRequest {
             }
 
             @Override
-            public void onFailure(Call<T> call, Throwable t) {
+            public void onFailure(@NotNull Call<T> call, @NotNull Throwable t) {
                 if (isShow) {
                     responseListener.dismissLoading();
                 }
