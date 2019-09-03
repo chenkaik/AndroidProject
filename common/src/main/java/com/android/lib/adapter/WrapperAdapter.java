@@ -1,6 +1,6 @@
 package com.android.lib.adapter;
 
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * date: 2019/1/30

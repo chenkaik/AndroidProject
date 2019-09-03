@@ -1,7 +1,7 @@
 package com.example.android.project.fragment;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import com.android.lib.Logger;
 import com.example.android.project.R;

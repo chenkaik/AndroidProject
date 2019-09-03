@@ -1,8 +1,9 @@
 package com.example.android.project.activity;
 
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.lib.adapter.BaseRecyclerViewAdapter;
 import com.android.lib.widget.NavigationBar;
@@ -54,12 +55,7 @@ public class TestActivity extends BaseActivity implements BaseRecyclerViewAdapte
             public void onClick(View v) {
                 showToastMessage("点击了确定");
             }
-        }, new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showToastMessage("点击了取消");
-            }
-        });
+        }, v -> showToastMessage("点击了取消"));
     }
 
     @Override
@@ -79,4 +75,9 @@ public class TestActivity extends BaseActivity implements BaseRecyclerViewAdapte
         }
     }
 
+    @Override
+    protected void onDestroy() {
+        testAdapter = null;
+        super.onDestroy();
+    }
 }

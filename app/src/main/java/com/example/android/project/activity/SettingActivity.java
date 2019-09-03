@@ -3,6 +3,7 @@ package com.example.android.project.activity;
 import android.content.Intent;
 import android.view.View;
 
+import com.android.lib.Logger;
 import com.android.lib.util.CacheDataManager;
 import com.android.lib.util.ImageLoader;
 import com.android.lib.util.ScreenManager;
@@ -15,6 +16,7 @@ import butterknife.OnClick;
 
 public class SettingActivity extends BaseActivity {
 
+    private static final String TAG = "SettingActivity";
     @BindView(R.id.navigationBar)
     NavigationBar mNavigationBar;
 
@@ -42,6 +44,7 @@ public class SettingActivity extends BaseActivity {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.sb_common:
+                Logger.e(TAG, "onClick: test");
                 break;
             case R.id.sb_setting_update: // 检测更新
                 break;

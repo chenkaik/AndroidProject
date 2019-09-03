@@ -1,10 +1,10 @@
 package com.example.android.project.activity;
 
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
-import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
 import android.view.MenuItem;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
 
 import com.example.android.project.R;
 import com.example.android.project.adapter.BaseFragmentAdapter;
@@ -12,6 +12,7 @@ import com.example.android.project.fragment.DataFragment;
 import com.example.android.project.fragment.FindFragment;
 import com.example.android.project.fragment.HomeFragment;
 import com.example.android.project.fragment.UserFragment;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import butterknife.BindView;
 
@@ -109,6 +110,7 @@ public class MyActivity extends BaseActivity implements ViewPager.OnPageChangeLi
         mViewPager.removeOnPageChangeListener(this);
         mViewPager.setAdapter(null);
         mBottomNavigationView.setOnNavigationItemSelectedListener(null);
+        mPagerAdapter = null;
         super.onDestroy();
     }
 

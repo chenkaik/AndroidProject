@@ -1,8 +1,11 @@
 package com.android.lib.adapter;
 
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.recyclerview.widget.RecyclerView;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
@@ -44,8 +47,9 @@ public class RecyclerWrapAdapter extends RecyclerView.Adapter implements Wrapper
         return mFootViews.size();
     }
 
+    @NotNull
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public RecyclerView.ViewHolder onCreateViewHolder(@NotNull ViewGroup parent, int viewType) {
         if (viewType == RecyclerView.INVALID_TYPE) {
             return new HeaderViewHolder(mHeaderViews.get(0));
         } else if (viewType == RecyclerView.INVALID_TYPE - 1) {
@@ -55,7 +59,7 @@ public class RecyclerWrapAdapter extends RecyclerView.Adapter implements Wrapper
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NotNull RecyclerView.ViewHolder holder, int position) {
         int numHeaders = getHeadersCount();
         if (position < numHeaders) {
             return;
@@ -87,8 +91,8 @@ public class RecyclerWrapAdapter extends RecyclerView.Adapter implements Wrapper
      * 是调用原 Adapter 的 getView 方法，还是获取 footView 的 view；
      * 目的就是添加了头部和尾部 View。
      *
-     * @param position
-     * @return
+     * @param position 当前位置
+     * @return type
      */
     @Override
     public int getItemViewType(int position) {

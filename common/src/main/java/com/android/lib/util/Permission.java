@@ -26,13 +26,18 @@ public final class Permission {
 
     private static final String READ_PHONE_STATE = "android.permission.READ_PHONE_STATE"; // 读取电话状态
     private static final String CALL_PHONE = "android.permission.CALL_PHONE"; // 拨打电话
-    private static final String READ_CALL_LOG = "android.permission.READ_CALL_LOG"; // 读取通话记录
-    private static final String WRITE_CALL_LOG = "android.permission.WRITE_CALL_LOG"; // 写入通话记录
+//    private static final String READ_CALL_LOG = "android.permission.READ_CALL_LOG"; // 读取通话记录
+//    private static final String WRITE_CALL_LOG = "android.permission.WRITE_CALL_LOG"; // 写入通话记录
     private static final String ADD_VOICEMAIL = "com.android.voicemail.permission.ADD_VOICEMAIL"; // 添加语音邮件
     private static final String USE_SIP = "android.permission.USE_SIP"; // 使用SIP视频
-    private static final String PROCESS_OUTGOING_CALLS = "android.permission.PROCESS_OUTGOING_CALLS"; // 处理拨出电话
+//    private static final String PROCESS_OUTGOING_CALLS = "android.permission.PROCESS_OUTGOING_CALLS"; // 处理拨出电话
     private static final String ANSWER_PHONE_CALLS = "android.permission.ANSWER_PHONE_CALLS"; // 8.0危险权限：允许您的应用通过编程方式接听呼入电话。要在您的应用中处理呼入电话，您可以使用 acceptRingingCall() 函数
     private static final String READ_PHONE_NUMBERS = "android.permission.READ_PHONE_NUMBERS"; // 8.0危险权限：权限允许您的应用读取设备中存储的电话号码
+
+    // Android 9 引入 CALL_LOG 权限组并将 READ_CALL_LOG、WRITE_CALL_LOG和 PROCESS_OUTGOING_CALLS权限移入该组,在之前的 Android 版本中，这些权限位于 PHONE 权限组。
+    private static final String READ_CALL_LOG = "android.permission.READ_CALL_LOG"; // 读取通话记录
+    private static final String WRITE_CALL_LOG = "android.permission.WRITE_CALL_LOG"; // 写入通话记录
+    private static final String PROCESS_OUTGOING_CALLS = "android.permission.PROCESS_OUTGOING_CALLS"; // 处理拨出电话
 
     private static final String BODY_SENSORS = "android.permission.BODY_SENSORS"; // 传感器
 

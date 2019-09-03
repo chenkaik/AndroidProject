@@ -35,12 +35,7 @@ public class OkHttpCallback implements Callback {
     @Override
     public void onFailure(@NotNull Call call, @NotNull IOException e) {
         Logger.e("onFailure: ", "警告,调用接口出错!", e);
-        NetWorkRequest.mHandler.post(new Runnable() {
-            @Override
-            public void run() {
-                mOkHttpResponse.onDataFailure(mRequestCode, 400, "系统异常(400),请联系管理员!", false);
-            }
-        });
+        NetWorkRequest.mHandler.post(() -> mOkHttpResponse.onDataFailure(mRequestCode, 400, "系统异常(400),请联系管理员!", false));
     }
 
     @Override
@@ -56,59 +51,24 @@ public class OkHttpCallback implements Callback {
                     if (baseResponse != null) {
                         if (baseResponse.getSYS_HEAD() != null && baseResponse.getSYS_HEAD().getRET() != null) {
                             if (HttpConfig.SUCCESS.equals(baseResponse.getSYS_HEAD().getRET().getRET_CODE())) {
-                                NetWorkRequest.mHandler.post(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        mOkHttpResponse.onDataSuccess(mRequestCode, null, mResponseBodyStr);
-                                    }
-                                });
+                                NetWorkRequest.mHandler.post(() -> mOkHttpResponse.onDataSuccess(mRequestCode, null, mResponseBodyStr));
                             } else if (HttpConfig.TOKENERROR.equals(baseResponse.getSYS_HEAD().getRET().getRET_CODE())) {
-                                NetWorkRequest.mHandler.post(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        mOkHttpResponse.onDataFailure(mRequestCode, 0, "登录失效!", true);
-                                    }
-                                });
+                                NetWorkRequest.mHandler.post(() -> mOkHttpResponse.onDataFailure(mRequestCode, 0, "登录失效!", true));
                             } else {
-                                NetWorkRequest.mHandler.post(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        mOkHttpResponse.onDataFailure(mRequestCode, 0, baseResponse.getSYS_HEAD().getRET().getRET_CODE() + " " + baseResponse.getSYS_HEAD().getRET().getRET_MSG(), false);
-                                    }
-                                });
+                                NetWorkRequest.mHandler.post(() -> mOkHttpResponse.onDataFailure(mRequestCode, 0, baseResponse.getSYS_HEAD().getRET().getRET_CODE() + " " + baseResponse.getSYS_HEAD().getRET().getRET_MSG(), false));
                             }
                         } else {
-                            NetWorkRequest.mHandler.post(new Runnable() {
-                                @Override
-                                public void run() {
-                                    mOkHttpResponse.onDataFailure(mRequestCode, 0, "数据解析异常!", false);
-                                }
-                            });
+                            NetWorkRequest.mHandler.post(() -> mOkHttpResponse.onDataFailure(mRequestCode, 0, "数据解析异常!", false));
                         }
                     } else {
-                        NetWorkRequest.mHandler.post(new Runnable() {
-                            @Override
-                            public void run() {
-                                mOkHttpResponse.onDataFailure(mRequestCode, 0, "数据解析异常!", false);
-                            }
-                        });
+                        NetWorkRequest.mHandler.post(() -> mOkHttpResponse.onDataFailure(mRequestCode, 0, "数据解析异常!", false));
                     }
                 } else {
-                    NetWorkRequest.mHandler.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            mOkHttpResponse.onDataFailure(mRequestCode, 0, "响应异常!", false);
-                        }
-                    });
+                    NetWorkRequest.mHandler.post(() -> mOkHttpResponse.onDataFailure(mRequestCode, 0, "响应异常!", false));
                 }
             } catch (Exception e) {
                 Logger.e("onResponse", "onResponse json fail status=" + response.code());
-                NetWorkRequest.mHandler.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        mOkHttpResponse.onDataFailure(mRequestCode, 0, "数据异常!", false);
-                    }
-                });
+                NetWorkRequest.mHandler.post(() -> mOkHttpResponse.onDataFailure(mRequestCode, 0, "数据异常!", false));
             } finally {
                 if (responseBody != null) {
                     responseBody.close();
@@ -116,12 +76,7 @@ public class OkHttpCallback implements Callback {
             }
         } else {
             Logger.e("onResponse", "onResponse fail status=" + response.code());
-            NetWorkRequest.mHandler.post(new Runnable() {
-                @Override
-                public void run() {
-                    mOkHttpResponse.onDataFailure(mRequestCode, 500, "系统异常(500),请联系管理员!", false);
-                }
-            });
+            NetWorkRequest.mHandler.post(() -> mOkHttpResponse.onDataFailure(mRequestCode, 500, "系统异常(500),请联系管理员!", false));
         }
     }
 

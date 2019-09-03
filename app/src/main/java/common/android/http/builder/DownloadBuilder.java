@@ -1,9 +1,8 @@
 package common.android.http.builder;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -13,7 +12,6 @@ import common.android.http.okhttp.DownloadResponseHandler;
 import common.android.http.retrofit.NetWorkRequest;
 import okhttp3.Call;
 import okhttp3.Headers;
-import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;
 
@@ -48,7 +46,7 @@ public class DownloadBuilder {
      * set file storage dir
      *
      * @param fileDir file directory
-     * @return
+     * @return this
      */
     public DownloadBuilder fileDir(@NonNull String fileDir) {
         this.mFileDir = fileDir;
@@ -59,7 +57,7 @@ public class DownloadBuilder {
      * set file storage name
      *
      * @param fileName file name
-     * @return
+     * @return this
      */
     public DownloadBuilder fileName(@NonNull String fileName) {
         this.mFileName = fileName;
@@ -70,7 +68,7 @@ public class DownloadBuilder {
      * set file path
      *
      * @param filePath file path
-     * @return
+     * @return this
      */
     public DownloadBuilder filePath(@NonNull String filePath) {
         this.mFilePath = filePath;
@@ -81,7 +79,7 @@ public class DownloadBuilder {
      * set tag
      *
      * @param tag tag
-     * @return
+     * @return this
      */
     public DownloadBuilder tag(@NonNull Object tag) {
         this.mTag = tag;
@@ -92,7 +90,7 @@ public class DownloadBuilder {
      * set headers
      *
      * @param headers headers
-     * @return
+     * @return this
      */
     public DownloadBuilder headers(@NonNull Map<String, String> headers) {
         this.mHeaders = headers;
@@ -104,7 +102,7 @@ public class DownloadBuilder {
      *
      * @param key header key
      * @param val header val
-     * @return
+     * @return this
      */
     public DownloadBuilder addHeader(@NonNull String key, @NonNull String val) {
         if (this.mHeaders == null) {
@@ -118,7 +116,7 @@ public class DownloadBuilder {
      * set completed bytes (BreakPoints)
      *
      * @param completeBytes 已经完成的字节数
-     * @return
+     * @return this
      */
     public DownloadBuilder setCompleteBytes(@NonNull Long completeBytes) {
         if (completeBytes > 0L) {
@@ -157,15 +155,13 @@ public class DownloadBuilder {
 
             Request downloadRequest = builder.build();
 
+            // 设置拦截器
             Call call = request.getOkHttpClient().newBuilder()
-                    .addNetworkInterceptor(new Interceptor() {      // 设置拦截器
-                        @Override
-                        public Response intercept(Chain chain) throws IOException {
-                            Response originalResponse = chain.proceed(chain.request());
-                            return originalResponse.newBuilder()
-                                    .body(new ResponseProgressBody(originalResponse.body(), downloadResponseHandler))
-                                    .build();
-                        }
+                    .addNetworkInterceptor(chain -> {
+                        Response originalResponse = chain.proceed(chain.request());
+                        return originalResponse.newBuilder()
+                                .body(new ResponseProgressBody(originalResponse.body(), downloadResponseHandler))
+                                .build();
                     })
                     .build()
                     .newCall(downloadRequest);

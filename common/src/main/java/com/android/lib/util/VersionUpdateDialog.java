@@ -3,9 +3,10 @@ package com.android.lib.util;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
 
 import com.android.common.R;
 
@@ -70,7 +71,7 @@ public final class VersionUpdateDialog extends Dialog {
         mProgressBar.setMax(progressMax);
         mCurrentFileSize.setText(currentSize);
         mFileSize.setText(fileMax);
-        this.mPercentage.setText(String.valueOf(percentage) + "%");
+        this.mPercentage.setText(percentage + "%");
     }
 
     /**

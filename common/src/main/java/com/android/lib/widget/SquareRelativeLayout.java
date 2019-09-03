@@ -2,9 +2,10 @@ package com.android.lib.widget;
 
 import android.content.Context;
 import android.os.Build;
-import android.support.annotation.RequiresApi;
 import android.util.AttributeSet;
 import android.widget.RelativeLayout;
+
+import androidx.annotation.RequiresApi;
 
 /**
  * date: 2019/1/30

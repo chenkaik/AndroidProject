@@ -1,10 +1,11 @@
 package com.android.lib.adapter;
 
-import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.SparseArray;
 import android.view.View;
 import android.widget.TextView;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * date: 2019/1/30

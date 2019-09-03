@@ -3,6 +3,8 @@ package common.android.http.okhttp;
 
 import com.android.lib.Logger;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.IOException;
 
 import common.android.http.config.UserConfig;
@@ -20,6 +22,7 @@ public class OkHttpInterceptor implements Interceptor {
 
     private static final String TAG = "OkHttpInterceptor";
 
+    @NotNull
     @Override
     public Response intercept(Chain chain) throws IOException {
 //        Request original = chain.request();

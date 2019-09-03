@@ -3,6 +3,8 @@ package common.android.http.callback;
 import android.os.Handler;
 import android.os.Looper;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -20,6 +22,7 @@ import okhttp3.ResponseBody;
  */
 public class DownloadCallback implements Callback {
 
+    private static final String TAG = "DownloadCallback";
     private DownloadResponseHandler mDownloadResponseHandler;
     private String mFilePath;
     private Long mCompleteBytes;
@@ -33,33 +36,28 @@ public class DownloadCallback implements Callback {
     }
 
     @Override
-    public void onFailure(Call call, final IOException e) {
+    public void onFailure(@NotNull Call call, final IOException e) {
         e.getMessage();
 //        LogUtils.e("onFailure", e);
 
-        mHandler.post(new Runnable() {
-            @Override
-            public void run() {
-                if (mDownloadResponseHandler != null) {
-                    mDownloadResponseHandler.onFailure(e.toString());
-                }
+        mHandler.post(() -> {
+            if (mDownloadResponseHandler != null) {
+                mDownloadResponseHandler.onFailure(e.toString());
             }
+
         });
     }
 
     @Override
-    public void onResponse(Call call, final Response response) throws IOException {
+    public void onResponse(@NotNull Call call, final Response response) throws IOException {
         ResponseBody body = response.body();
 
         try {
             if (response.isSuccessful()) {
                 //开始
-                mHandler.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        if (mDownloadResponseHandler != null) {
-                            mDownloadResponseHandler.onStart(response.body().contentLength());
-                        }
+                mHandler.post(() -> {
+                    if (mDownloadResponseHandler != null && body != null) {
+                        mDownloadResponseHandler.onStart(body.contentLength());
                     }
                 });
 
@@ -72,32 +70,23 @@ public class DownloadCallback implements Callback {
                     saveFile(response, mFilePath, mCompleteBytes);
 
                     final File file = new File(mFilePath);
-                    mHandler.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            if (mDownloadResponseHandler != null) {
-                                mDownloadResponseHandler.onFinish(file);
-                            }
+                    mHandler.post(() -> {
+                        if (mDownloadResponseHandler != null) {
+                            mDownloadResponseHandler.onFinish(file);
                         }
                     });
                 } catch (final Exception e) {
                     if (call.isCanceled()) {     //判断是主动取消还是别动出错
-                        mHandler.post(new Runnable() {
-                            @Override
-                            public void run() {
-                                if (mDownloadResponseHandler != null) {
-                                    mDownloadResponseHandler.onCancel();
-                                }
+                        mHandler.post(() -> {
+                            if (mDownloadResponseHandler != null) {
+                                mDownloadResponseHandler.onCancel();
                             }
                         });
                     } else {
 //                        LogUtils.e("onResponse saveFile fail", e);
-                        mHandler.post(new Runnable() {
-                            @Override
-                            public void run() {
-                                if (mDownloadResponseHandler != null) {
-                                    mDownloadResponseHandler.onFailure("onResponse saveFile fail." + e.toString());
-                                }
+                        mHandler.post(() -> {
+                            if (mDownloadResponseHandler != null) {
+                                mDownloadResponseHandler.onFailure("onResponse saveFile fail." + e.toString());
                             }
                         });
                     }
@@ -105,12 +94,9 @@ public class DownloadCallback implements Callback {
             } else {
 //                LogUtils.e("onResponse fail status=" + response.code());
 
-                mHandler.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        if (mDownloadResponseHandler != null) {
-                            mDownloadResponseHandler.onFailure("fail status=" + response.code());
-                        }
+                mHandler.post(() -> {
+                    if (mDownloadResponseHandler != null) {
+                        mDownloadResponseHandler.onFailure("fail status=" + response.code());
                     }
                 });
             }
@@ -144,12 +130,9 @@ public class DownloadCallback implements Callback {
 
                 //已经下载完成写入文件的进度
                 final long final_complete_len = complete_len;
-                mHandler.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        if (mDownloadResponseHandler != null) {
-                            mDownloadResponseHandler.onProgress(final_complete_len, total_len);
-                        }
+                mHandler.post(() -> {
+                    if (mDownloadResponseHandler != null) {
+                        mDownloadResponseHandler.onProgress(final_complete_len, total_len);
                     }
                 });
             }

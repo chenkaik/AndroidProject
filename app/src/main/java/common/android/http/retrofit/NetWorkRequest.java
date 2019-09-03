@@ -62,10 +62,9 @@ public class NetWorkRequest {
     /**
      * 初始化Retrofit
      *
-     * @param baseURL 主机地址
-     * @return NetWorkRequest
+     * @param baseURL 接口地址
      */
-    public NetWorkRequest init(String baseURL) {
+    public void init(String baseURL) {
         synchronized (NetWorkRequest.this) {
             mOkHttpClient = new OkHttpClient.Builder()
 //                    .cache(new Cache(new File(context.getExternalCacheDir(), "http_cache"), 1024 * 1024 * 100))
@@ -84,7 +83,6 @@ public class NetWorkRequest {
                     .client(mOkHttpClient)
                     .build();
         }
-        return this;
     }
 
     public <T> T create(Class<T> tClass) {

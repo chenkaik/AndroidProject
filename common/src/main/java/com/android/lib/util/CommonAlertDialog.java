@@ -3,12 +3,14 @@ package com.android.lib.util;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
-import android.support.v4.content.ContextCompat;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
+
+import androidx.core.content.ContextCompat;
 
 import com.android.common.R;
 
@@ -406,11 +408,16 @@ public final class CommonAlertDialog {
 
             DisplayMetrics dm = new DisplayMetrics();
             WindowManager windowManager = (WindowManager) mContext.getSystemService(Context.WINDOW_SERVICE);
-            windowManager.getDefaultDisplay().getMetrics(dm);
-            WindowManager.LayoutParams lp = mDialog.getWindow().getAttributes();
-            lp.width = (int) (dm.widthPixels * 0.8);
-            //lp.height = (int) (dm.widthPixels * 0.8);
-            mDialog.getWindow().setAttributes(lp);
+            if (windowManager != null) {
+                windowManager.getDefaultDisplay().getMetrics(dm);
+            }
+            Window window = mDialog.getWindow();
+            if (window != null) {
+                WindowManager.LayoutParams lp = window.getAttributes();
+                lp.width = (int) (dm.widthPixels * 0.8);
+                //lp.height = (int) (dm.widthPixels * 0.8);
+                window.setAttributes(lp);
+            }
         }
 
         class ViewHolder {

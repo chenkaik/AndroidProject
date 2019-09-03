@@ -22,7 +22,7 @@ import com.android.common.R;
  * Created by chenKai on 2018/4/17.
  * 登录使用的EditText
  */
-public final class ClearEditTextVib extends android.support.v7.widget.AppCompatEditText implements OnFocusChangeListener, TextWatcher {
+public final class ClearEditTextVib extends androidx.appcompat.widget.AppCompatEditText implements OnFocusChangeListener, TextWatcher {
     /**
      * 删除按钮的引用
      */

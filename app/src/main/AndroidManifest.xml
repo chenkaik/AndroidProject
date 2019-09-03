@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.android.project">
-
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.READ_LOGS" />
 
     <application
         android:name=".CommonApplication"
@@ -17,28 +12,8 @@
         android:resizeableActivity="false"
         android:roundIcon="@mipmap/ic_logo"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity
-            android:name=".activity.StatusActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".activity.AboutActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".activity.SettingActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".activity.RegisterActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".activity.LoginActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".activity.MainActivity"
-            android:screenOrientation="portrait" /> <!-- BottomNavigationView的使用 -->
-        <activity
-            android:name=".activity.MyActivity"
-            android:screenOrientation="portrait" />
+        android:theme="@style/AppTheme"
+        tools:targetApi="n">
         <activity
             android:name=".activity.FirstActivity"
             android:screenOrientation="portrait">
@@ -48,20 +23,42 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> <!-- 适配18:9的屏幕 -->
-        <meta-data
-            android:name="android.max_aspect"
-            android:value="2.2" />
+        </activity>
 
         <activity
+            android:name=".activity.StatusActivity"
+            android:screenOrientation="portrait" /> <!-- 请求数据的状态 -->
+        <activity
+            android:name=".activity.AboutActivity"
+            android:screenOrientation="portrait" /> <!-- 关于 -->
+        <activity
+            android:name=".activity.SettingActivity"
+            android:screenOrientation="portrait" /> <!-- 设置 -->
+        <activity
+            android:name=".activity.RegisterActivity"
+            android:screenOrientation="portrait" /> <!-- 注册 -->
+        <activity
+            android:name=".activity.LoginActivity"
+            android:screenOrientation="portrait" /> <!-- 登录 -->
+        <activity
+            android:name=".activity.MainActivity"
+            android:screenOrientation="portrait" /> <!-- 主页入口 -->
+        <activity
+            android:name=".activity.MyActivity"
+            android:screenOrientation="portrait" /> <!-- BottomNavigationView的使用 -->
+        <activity
             android:name=".activity.RetrofitTestActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait" /> <!-- Retrofit的使用 -->
         <activity
             android:name=".activity.OkHttpTestActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait" /> <!-- OkHttp的使用 -->
         <activity
             android:name=".activity.TestActivity"
-            android:screenOrientation="portrait" /> <!-- Android 7.0访问文件 start -->
+            android:screenOrientation="portrait" /> <!-- 测试页 -->
+
+        <meta-data
+            android:name="android.max_aspect"
+            android:value="2.2" /><!-- 适配屏幕 -->
         <!--
         android:authorities属性为一个URI authority
         （authorities可以随意填写，但是要保证使用时与authority保持一致，
@@ -74,14 +71,23 @@
         对于指定一个目录，使用元素的子元素，在XML中指定它的存储区域和路径
         -->
         <provider
-            android:name="android.support.v4.content.FileProvider"
+            android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.fileProvider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
-        </provider>
+        </provider> <!-- Android 7.0访问文件 start -->
     </application>
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
+
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
 
 </manifest>
