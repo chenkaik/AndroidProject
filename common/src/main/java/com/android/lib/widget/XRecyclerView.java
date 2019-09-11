@@ -16,9 +16,9 @@ import java.util.ArrayList;
  */
 public final class XRecyclerView extends RecyclerView {
 
-    private ArrayList<View> mHeaderViews = new ArrayList<>();
+    private static final ArrayList<View> mHeaderViews = new ArrayList<>();
 
-    private ArrayList<View> mFootViews = new ArrayList<>();
+    private static final ArrayList<View> mFootViews = new ArrayList<>();
 
     private Adapter mAdapter;
 
@@ -68,8 +68,8 @@ public final class XRecyclerView extends RecyclerView {
         mAdapter = adapter;
     }
 
-    public void notifyDataSetChanged(){
-        if (mAdapter != null){
+    public void notifyDataSetChanged() {
+        if (mAdapter != null) {
             mAdapter.notifyDataSetChanged();
         }
     }

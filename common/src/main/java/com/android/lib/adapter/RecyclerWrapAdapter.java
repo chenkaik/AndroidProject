@@ -21,7 +21,7 @@ public class RecyclerWrapAdapter extends RecyclerView.Adapter implements Wrapper
 
     private ArrayList<View> mFootViews;
 
-    static final ArrayList<View> EMPTY_INFO_LIST = new ArrayList<View>();
+    private static final ArrayList<View> EMPTY_INFO_LIST = new ArrayList<>();
 
     private int mCurrentPosition;
 
@@ -32,18 +32,18 @@ public class RecyclerWrapAdapter extends RecyclerView.Adapter implements Wrapper
         } else {
             this.mHeaderViews = mHeaderViews;
         }
-        if (mHeaderViews == null) {
+        if (mFootViews == null) {
             this.mFootViews = EMPTY_INFO_LIST;
         } else {
             this.mFootViews = mFootViews;
         }
     }
 
-    public int getHeadersCount() {
+    private int getHeadersCount() {
         return mHeaderViews.size();
     }
 
-    public int getFootersCount() {
+    private int getFootersCount() {
         return mFootViews.size();
     }
 
