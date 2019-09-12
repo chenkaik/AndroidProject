@@ -13,6 +13,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="分割处" />
+        android:text="下面分割处"
+        android:textSize="20sp" />
 
 </LinearLayout>

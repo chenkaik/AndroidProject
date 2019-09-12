@@ -135,4 +135,22 @@ public abstract class BaseRecyclerViewAdapter<T> extends RecyclerView.Adapter<Re
         void onViewClick(int position, int type);
     }
 
+    @Override
+    public void onViewAttachedToWindow(@NonNull RecyclerViewHolder holder) {
+        super.onViewAttachedToWindow(holder);
+        // 当Item进入这个页面的时候调用
+    }
+
+    @Override
+    public void onViewDetachedFromWindow(@NonNull RecyclerViewHolder holder) {
+        super.onViewDetachedFromWindow(holder);
+        // 当Item离开这个页面的时候调用
+    }
+
+    @Override
+    public void onViewRecycled(@NonNull RecyclerViewHolder holder) {
+        super.onViewRecycled(holder);
+        // 当Item被回收的时候调用
+    }
+
 }
