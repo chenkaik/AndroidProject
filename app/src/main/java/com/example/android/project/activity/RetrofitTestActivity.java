@@ -12,11 +12,11 @@ import com.example.android.project.entity.request.LoginRequest;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import common.android.http.ApiManager;
-import common.android.http.config.UserConfig;
-import common.android.http.response.BaseResponse;
-import common.android.http.response.NetworkResponse;
-import common.android.http.retrofit.NetWorkRequest;
+import common.android.https.ApiManager;
+import com.example.android.project.util.UserConfig;
+import common.android.https.response.BaseResponse;
+import common.android.https.response.NetworkResponse;
+import common.android.https.network.NetWorkRequest;
 
 public class RetrofitTestActivity extends BaseActivity implements NetworkResponse {
 

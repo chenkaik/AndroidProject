@@ -5,8 +5,8 @@ import android.content.Context;
 
 import com.android.lib.util.CrashHandler;
 
-import common.android.http.ApiManager;
-import common.android.http.config.HttpConfig;
+import common.android.https.ApiManager;
+import common.android.https.config.HttpConfig;
 
 /**
  * date: 2019/1/30

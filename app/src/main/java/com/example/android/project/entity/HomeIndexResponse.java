@@ -1,6 +1,6 @@
 package com.example.android.project.entity;
 
-import common.android.http.response.BaseResponse;
+import common.android.https.response.BaseResponse;
 
 /**
  * date: 2019/2/12

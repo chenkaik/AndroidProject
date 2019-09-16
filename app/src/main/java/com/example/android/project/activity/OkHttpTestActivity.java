@@ -8,6 +8,7 @@ import com.android.lib.widget.NavigationBar;
 import com.example.android.project.R;
 import com.example.android.project.entity.LoginResponse;
 import com.example.android.project.entity.TradeNumberResponse;
+import com.example.android.project.util.UserConfig;
 
 import org.json.JSONObject;
 
@@ -17,10 +18,9 @@ import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import common.android.http.config.UserConfig;
-import common.android.http.okhttp.DownloadResponseHandler;
-import common.android.http.response.NetworkOkHttpResponse;
-import common.android.http.retrofit.NetWorkRequest;
+import common.android.https.network.DownloadResponseHandler;
+import common.android.https.response.NetworkOkHttpResponse;
+import common.android.https.network.NetWorkRequest;
 
 public class OkHttpTestActivity extends BaseActivity implements NetworkOkHttpResponse {
 
