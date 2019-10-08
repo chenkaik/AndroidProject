@@ -19,8 +19,8 @@ import java.util.Map;
 import butterknife.BindView;
 import butterknife.OnClick;
 import common.android.https.network.DownloadResponseHandler;
-import common.android.https.response.NetworkOkHttpResponse;
 import common.android.https.network.NetWorkRequest;
+import common.android.https.response.NetworkOkHttpResponse;
 
 public class OkHttpTestActivity extends BaseActivity implements NetworkOkHttpResponse {
 

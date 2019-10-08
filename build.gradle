@@ -17,7 +17,7 @@ buildscript { // 这里是gradle脚本执行所需依赖，分别是对应的mav
     }
 }
 
-allprojects { // 这里是项目本身需要的依赖，比如项目所需的maven库
+allprojects { // 配置项目所有module引用的仓库服务器
     repositories {
         google()
         jcenter()
