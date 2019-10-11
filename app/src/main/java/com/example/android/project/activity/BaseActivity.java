@@ -16,8 +16,9 @@ import com.android.lib.listener.PermissionListener;
 import com.android.lib.util.CommonHelp;
 import com.android.lib.util.NetworkUtil;
 import com.android.lib.util.ScreenManager;
+import com.example.android.project.CommonApplication;
 import com.example.android.project.R;
-import com.example.android.project.util.ToastUtil;
+import com.android.lib.util.ToastUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +33,6 @@ import butterknife.Unbinder;
 public abstract class BaseActivity extends AppCompatActivity {
 
     private CommonHelp mCommonHelp;
-    //    private Toast mToast;
     private Unbinder mButterKnife; // View注解
     private PermissionListener mPermissionListener;
     private long mExitTime = 0; // 记录退出按下时间
@@ -61,7 +61,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     private void init() {
         mButterKnife = ButterKnife.bind(this);
         mCommonHelp = new CommonHelp(this);
-//        mToast = Toast.makeText(this, null, Toast.LENGTH_SHORT);
     }
 
     // 引入布局
@@ -79,11 +78,7 @@ public abstract class BaseActivity extends AppCompatActivity {
      * @param message 信息
      */
     public void showToastMessage(String message) {
-//        if (mToast != null) {
-//            mToast.setText(message);
-//            mToast.show();
-//        }
-        ToastUtil.showToast(message);
+        ToastUtil.showToast(CommonApplication.getContext(), message);
     }
 
     /**
@@ -176,30 +171,26 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        switch (requestCode) {
-            case 1:
-                if (grantResults.length > 0) {
-                    List<String> deniedPermissions = new ArrayList<>();
-                    for (int i = 0; i < grantResults.length; i++) {
-                        int grantResult = grantResults[i]; // 判断是否授权
-                        String permission = permissions[i]; // 请求权限的名字
-                        if (grantResult != PackageManager.PERMISSION_GRANTED) {
-                            deniedPermissions.add(permission);
-                        }
-                    }
-                    if (deniedPermissions.isEmpty()) {
-                        if (mPermissionListener != null) {
-                            mPermissionListener.onGranted();
-                        }
-                    } else {
-                        if (mPermissionListener != null) {
-                            mPermissionListener.onDenied(deniedPermissions);
-                        }
+        if (requestCode == 1) {
+            if (grantResults.length > 0) {
+                List<String> deniedPermissions = new ArrayList<>();
+                for (int i = 0; i < grantResults.length; i++) {
+                    int grantResult = grantResults[i]; // 判断是否授权
+                    String permission = permissions[i]; // 请求权限的名字
+                    if (grantResult != PackageManager.PERMISSION_GRANTED) {
+                        deniedPermissions.add(permission);
                     }
                 }
-                break;
-            default:
-                break;
+                if (deniedPermissions.isEmpty()) {
+                    if (mPermissionListener != null) {
+                        mPermissionListener.onGranted();
+                    }
+                } else {
+                    if (mPermissionListener != null) {
+                        mPermissionListener.onDenied(deniedPermissions);
+                    }
+                }
+            }
         }
     }
 

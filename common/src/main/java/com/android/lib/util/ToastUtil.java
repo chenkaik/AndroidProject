@@ -1,9 +1,8 @@
-package com.example.android.project.util;
+package com.android.lib.util;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.widget.Toast;
-
-import com.example.android.project.CommonApplication;
 
 /**
  * date: 2019/10/11
@@ -14,9 +13,9 @@ public class ToastUtil {
     private static Toast sToast;
 
     @SuppressLint("ShowToast")
-    public static void showToast(String content) {
+    public static void showToast(Context context, String content) {
         if (sToast == null) {
-            sToast = Toast.makeText(CommonApplication.getContext(), content, Toast.LENGTH_SHORT);
+            sToast = Toast.makeText(context, content, Toast.LENGTH_SHORT);
         } else {
             sToast.setText(content);
         }
