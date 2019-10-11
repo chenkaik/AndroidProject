@@ -1,5 +1,6 @@
 package com.example.android.project;
 
+import android.annotation.SuppressLint;
 import android.app.Application;
 import android.content.Context;
 
@@ -14,6 +15,7 @@ import common.android.https.config.HttpConfig;
  */
 public class CommonApplication extends Application {
 
+    @SuppressLint("StaticFieldLeak")
     private static Context sContext;
 
     @Override

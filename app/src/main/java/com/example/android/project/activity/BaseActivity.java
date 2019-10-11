@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,6 +17,7 @@ import com.android.lib.util.CommonHelp;
 import com.android.lib.util.NetworkUtil;
 import com.android.lib.util.ScreenManager;
 import com.example.android.project.R;
+import com.example.android.project.util.ToastUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +32,7 @@ import butterknife.Unbinder;
 public abstract class BaseActivity extends AppCompatActivity {
 
     private CommonHelp mCommonHelp;
-    private Toast mToast;
+    //    private Toast mToast;
     private Unbinder mButterKnife; // View注解
     private PermissionListener mPermissionListener;
     private long mExitTime = 0; // 记录退出按下时间
@@ -61,7 +61,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     private void init() {
         mButterKnife = ButterKnife.bind(this);
         mCommonHelp = new CommonHelp(this);
-        mToast = Toast.makeText(this, null, Toast.LENGTH_SHORT);
+//        mToast = Toast.makeText(this, null, Toast.LENGTH_SHORT);
     }
 
     // 引入布局
@@ -79,10 +79,11 @@ public abstract class BaseActivity extends AppCompatActivity {
      * @param message 信息
      */
     public void showToastMessage(String message) {
-        if (mToast != null) {
-            mToast.setText(message);
-            mToast.show();
-        }
+//        if (mToast != null) {
+//            mToast.setText(message);
+//            mToast.show();
+//        }
+        ToastUtil.showToast(message);
     }
 
     /**
