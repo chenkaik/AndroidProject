@@ -1,5 +1,6 @@
 package com.android.lib.util;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
@@ -66,6 +67,7 @@ public final class VersionUpdateDialog extends Dialog {
      * @param fileMax     文件大小
      * @param percentage  下载的百分比
      */
+    @SuppressLint("SetTextI18n")
     public void setCommon(int progress, int progressMax, String currentSize, String fileMax, int percentage) {
         mProgressBar.setProgress(progress);
         mProgressBar.setMax(progressMax);

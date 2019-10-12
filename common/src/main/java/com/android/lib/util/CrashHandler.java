@@ -9,6 +9,8 @@ import android.os.Environment;
 
 import com.android.lib.Logger;
 
+import org.jetbrains.annotations.Nullable;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
@@ -60,6 +62,7 @@ public final class CrashHandler implements Thread.UncaughtExceptionHandler {
     }
 
     private static class CrashHandlerHolder {
+        @SuppressLint("StaticFieldLeak")
         private static final CrashHandler INSTANCE = new CrashHandler();
     }
 
@@ -158,13 +161,15 @@ public final class CrashHandler implements Thread.UncaughtExceptionHandler {
      * @param ex Throwable
      * @return 返回文件名称, 便于将文件传送到服务器
      */
+    @Nullable
     private String saveCrashInfo2File(Throwable ex) {
 
         StringBuffer sb = new StringBuffer();
         for (Map.Entry<String, String> entry : infos.entrySet()) {
             String key = entry.getKey();
             String value = entry.getValue();
-            sb.append(key + "=" + value + "\n");
+//            sb.append(key + "=" + value + "\n");
+            sb.append(key).append("=").append(value).append("\n");
         }
 
         Writer writer = new StringWriter();

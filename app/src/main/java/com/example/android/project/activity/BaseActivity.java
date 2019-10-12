@@ -225,9 +225,7 @@ public abstract class BaseActivity extends AppCompatActivity {
      * 释放资源
      */
     private void release() {
-        if (mCommonHelp != null) {
-            mCommonHelp = null;
-        }
+        mCommonHelp = null;
         if (mButterKnife != null) {
             mButterKnife.unbind();
         }

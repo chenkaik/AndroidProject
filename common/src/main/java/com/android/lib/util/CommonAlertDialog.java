@@ -1,6 +1,6 @@
 package com.android.lib.util;
 
-import android.app.Activity;
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
 import android.util.DisplayMetrics;
@@ -28,7 +28,7 @@ public final class CommonAlertDialog {
         private View mView;
         private boolean hasPos = false, hasNeg = false;
 
-        public Builder(Activity context) {
+        public Builder(Context context) {
             mContext = context;
             initView();
         }
@@ -137,13 +137,10 @@ public final class CommonAlertDialog {
             mViewHolder.tvCenterButton.setVisibility(View.GONE);
             mViewHolder.tvPositiveButton.setVisibility(View.VISIBLE);
             hasPos = true;
-            mViewHolder.tvPositiveButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    dismiss();
-                    if (listener != null) {
-                        listener.onClick(view);
-                    }
+            mViewHolder.tvPositiveButton.setOnClickListener(view -> {
+                dismiss();
+                if (listener != null) {
+                    listener.onClick(view);
                 }
             });
             return this;
@@ -161,13 +158,10 @@ public final class CommonAlertDialog {
             mViewHolder.tvPositiveButton.setVisibility(View.VISIBLE);
             hasPos = true;
             mViewHolder.tvPositiveButton.setText(text);
-            mViewHolder.tvPositiveButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    dismiss();
-                    if (listener != null) {
-                        listener.onClick(view);
-                    }
+            mViewHolder.tvPositiveButton.setOnClickListener(view -> {
+                dismiss();
+                if (listener != null) {
+                    listener.onClick(view);
                 }
             });
             return this;
@@ -187,13 +181,10 @@ public final class CommonAlertDialog {
             hasPos = true;
             mViewHolder.tvPositiveButton.setText(text);
             mViewHolder.tvPositiveButton.setTextColor(ContextCompat.getColor(mContext, color));
-            mViewHolder.tvPositiveButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    dismiss();
-                    if (listener != null) {
-                        listener.onClick(view);
-                    }
+            mViewHolder.tvPositiveButton.setOnClickListener(view -> {
+                dismiss();
+                if (listener != null) {
+                    listener.onClick(view);
                 }
             });
             return this;
@@ -209,13 +200,10 @@ public final class CommonAlertDialog {
             mViewHolder.tvCenterButton.setVisibility(View.GONE);
             mViewHolder.tvNegativeButton.setVisibility(View.VISIBLE);
             hasNeg = true;
-            mViewHolder.tvNegativeButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    dismiss();
-                    if (listener != null) {
-                        listener.onClick(view);
-                    }
+            mViewHolder.tvNegativeButton.setOnClickListener(view -> {
+                dismiss();
+                if (listener != null) {
+                    listener.onClick(view);
                 }
             });
             return this;
@@ -233,13 +221,10 @@ public final class CommonAlertDialog {
             mViewHolder.tvNegativeButton.setVisibility(View.VISIBLE);
             hasNeg = true;
             mViewHolder.tvNegativeButton.setText(text);
-            mViewHolder.tvNegativeButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    dismiss();
-                    if (listener != null) {
-                        listener.onClick(view);
-                    }
+            mViewHolder.tvNegativeButton.setOnClickListener(view -> {
+                dismiss();
+                if (listener != null) {
+                    listener.onClick(view);
                 }
             });
             return this;
@@ -259,13 +244,10 @@ public final class CommonAlertDialog {
             hasNeg = true;
             mViewHolder.tvNegativeButton.setText(text);
             mViewHolder.tvNegativeButton.setTextColor(ContextCompat.getColor(mContext, color));
-            mViewHolder.tvNegativeButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    dismiss();
-                    if (listener != null) {
-                        listener.onClick(view);
-                    }
+            mViewHolder.tvNegativeButton.setOnClickListener(view -> {
+                dismiss();
+                if (listener != null) {
+                    listener.onClick(view);
                 }
             });
             return this;
@@ -282,13 +264,10 @@ public final class CommonAlertDialog {
             mViewHolder.tvPositiveButton.setVisibility(View.GONE);
             mViewHolder.line2.setVisibility(View.GONE);
             mViewHolder.tvCenterButton.setVisibility(View.VISIBLE);
-            mViewHolder.tvCenterButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    dismiss();
-                    if (listener != null) {
-                        listener.onClick(v);
-                    }
+            mViewHolder.tvCenterButton.setOnClickListener(v -> {
+                dismiss();
+                if (listener != null) {
+                    listener.onClick(v);
                 }
             });
             return this;
@@ -307,13 +286,10 @@ public final class CommonAlertDialog {
             mViewHolder.line2.setVisibility(View.GONE);
             mViewHolder.tvCenterButton.setVisibility(View.VISIBLE);
             mViewHolder.tvCenterButton.setText(text);
-            mViewHolder.tvCenterButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    dismiss();
-                    if (listener != null) {
-                        listener.onClick(v);
-                    }
+            mViewHolder.tvCenterButton.setOnClickListener(v -> {
+                dismiss();
+                if (listener != null) {
+                    listener.onClick(v);
                 }
             });
             return this;
@@ -334,13 +310,10 @@ public final class CommonAlertDialog {
             mViewHolder.tvCenterButton.setVisibility(View.VISIBLE);
             mViewHolder.tvCenterButton.setText(text);
             mViewHolder.tvCenterButton.setTextColor(ContextCompat.getColor(mContext, color));
-            mViewHolder.tvCenterButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    dismiss();
-                    if (listener != null) {
-                        listener.onClick(v);
-                    }
+            mViewHolder.tvCenterButton.setOnClickListener(v -> {
+                dismiss();
+                if (listener != null) {
+                    listener.onClick(v);
                 }
             });
             return this;
@@ -400,6 +373,7 @@ public final class CommonAlertDialog {
         /**
          * 初始化dialog布局及控件
          */
+        @SuppressLint("InflateParams")
         private void initView() {
             mDialog = new Dialog(mContext, R.style.common_alert_dialog_style);
             mView = LayoutInflater.from(mContext).inflate(R.layout.commo_alert_dialog_layout, null);

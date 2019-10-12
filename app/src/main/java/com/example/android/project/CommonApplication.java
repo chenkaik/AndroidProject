@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.Application;
 import android.content.Context;
 
+import com.android.lib.Logger;
 import com.android.lib.util.CrashHandler;
 
 import common.android.https.ApiManager;
@@ -25,7 +26,11 @@ public class CommonApplication extends Application {
     }
 
     private void init() {
+        // 获取全局的Context
         sContext = getApplicationContext();
+        // 是否打印输出日志
+        Logger.LOG_ENABLE = true;
+        // 初始化接口请求
         ApiManager.getInstance().init(HttpConfig.BASE_URL);
         // 捕获程序出现异常的信息
         CrashHandler.getInstance().init(sContext);

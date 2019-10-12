@@ -33,66 +33,31 @@ public class SharedPreferencesUtil {
     }
 
     public boolean put(final String key, final boolean value) {
-        return executeWithEditor(new Executable() {
-            @Override
-            public void execute(Editor editor) {
-                editor.putBoolean(key, value);
-            }
-        });
+        return executeWithEditor(editor -> editor.putBoolean(key, value));
     }
 
     public boolean put(final String key, final int value) {
-        return executeWithEditor(new Executable() {
-            @Override
-            public void execute(Editor editor) {
-                editor.putInt(key, value);
-            }
-        });
+        return executeWithEditor(editor -> editor.putInt(key, value));
     }
 
     public boolean put(final String key, final long value) {
-        return executeWithEditor(new Executable() {
-            @Override
-            public void execute(Editor editor) {
-                editor.putLong(key, value);
-            }
-        });
+        return executeWithEditor(editor -> editor.putLong(key, value));
     }
 
     public boolean put(final String key, final float value) {
-        return executeWithEditor(new Executable() {
-            @Override
-            public void execute(Editor editor) {
-                editor.putFloat(key, value);
-            }
-        });
+        return executeWithEditor(editor -> editor.putFloat(key, value));
     }
 
     public boolean put(final String key, final String value) {
-        return executeWithEditor(new Executable() {
-            @Override
-            public void execute(Editor editor) {
-                editor.putString(key, value);
-            }
-        });
+        return executeWithEditor(editor -> editor.putString(key, value));
     }
 
     public void remove(final String key) {
-        executeWithEditor(new Executable() {
-            @Override
-            public void execute(Editor editor) {
-                editor.remove(key);
-            }
-        });
+        executeWithEditor(editor -> editor.remove(key));
     }
 
     public void clear() {
-        executeWithEditor(new Executable() {
-            @Override
-            public void execute(Editor editor) {
-                editor.clear();
-            }
-        });
+        executeWithEditor(editor -> editor.clear());
     }
 
     public boolean getBoolean(String key, boolean defaultValue) {

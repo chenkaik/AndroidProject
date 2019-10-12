@@ -22,7 +22,6 @@ public final class CommonHelp {
      * 显示CommonProgressDialog
      */
     public void showProgress(String msg) {
-        isFinish();
         if (mCommonProgressDialog == null) {
             mCommonProgressDialog = new CommonProgressDialog.Builder(mActivity)
                     .setTheme(R.style.commonProgressDialog)
@@ -65,24 +64,17 @@ public final class CommonHelp {
      * @param noListener 取消按钮的监听
      */
     public void showCommonAlertDialog(String title, String message, final View.OnClickListener okListener, final View.OnClickListener noListener) {
-        isFinish();
         new CommonAlertDialog.Builder(mActivity)
                 .setTitle(title)
                 .setMessage(message)
-                .setPositiveButton(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        if (null != okListener) {
-                            okListener.onClick(v);
-                        }
+                .setPositiveButton(v -> {
+                    if (null != okListener) {
+                        okListener.onClick(v);
                     }
                 })
-                .setNegativeButton(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        if (null != noListener) {
-                            noListener.onClick(v);
-                        }
+                .setNegativeButton(v -> {
+                    if (null != noListener) {
+                        noListener.onClick(v);
                     }
                 })
                 .setCancelable(false)
@@ -98,28 +90,17 @@ public final class CommonHelp {
      * @param okListener 确定按钮的监听
      */
     public void showCommonAlertDialog(String title, String message, final View.OnClickListener okListener) {
-        isFinish();
         new CommonAlertDialog.Builder(mActivity)
                 .setTitle(title)
                 .setMessage(message)
-                .setShowOneButton(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        if (null != okListener) {
-                            okListener.onClick(v);
-                        }
+                .setShowOneButton(v -> {
+                    if (null != okListener) {
+                        okListener.onClick(v);
                     }
                 })
                 .setCancelable(false)
                 .setCanceledOnTouchOutside(false)
                 .show();
-    }
-
-
-    private void isFinish() {
-        if (mActivity == null || mActivity.isFinishing()) {
-            return;
-        }
     }
 
 }

@@ -46,7 +46,11 @@ public final class CacheDataManager {
                 }
             }
         }
-        return dir.delete();
+        if (dir != null) {
+            return dir.delete();
+        } else {
+            return false;
+        }
     }
 
     // 获取文件大小
