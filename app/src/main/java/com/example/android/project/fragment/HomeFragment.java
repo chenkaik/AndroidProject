@@ -16,6 +16,8 @@ import com.example.android.project.activity.MyActivity;
 import com.example.android.project.activity.RegisterActivity;
 import com.example.android.project.activity.SettingActivity;
 
+import org.jetbrains.annotations.NotNull;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 
@@ -37,7 +39,7 @@ public class HomeFragment extends BaseFragment {
     }
 
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NotNull Context context) {
         super.onAttach(context);
         mActivity = (MyActivity) context;
     }

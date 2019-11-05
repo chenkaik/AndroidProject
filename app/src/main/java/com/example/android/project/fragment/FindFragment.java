@@ -9,6 +9,8 @@ import com.android.lib.widget.NavigationBar;
 import com.example.android.project.R;
 import com.example.android.project.activity.MyActivity;
 
+import org.jetbrains.annotations.NotNull;
+
 import butterknife.BindView;
 
 /**
@@ -29,7 +31,7 @@ public class FindFragment extends BaseFragment {
     }
 
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NotNull Context context) {
         super.onAttach(context);
         mActivity = (MyActivity) context;
     }
