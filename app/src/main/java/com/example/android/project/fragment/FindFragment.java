@@ -51,6 +51,7 @@ public class FindFragment extends BaseFragment {
     @Override
     protected void initView() {
         mNavigationBar.setTitle("发现");
+        mNavigationBar.hideLeftLayout();
     }
 
     @Override

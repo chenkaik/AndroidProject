@@ -12,9 +12,8 @@ import com.android.lib.util.ScreenManager;
 import com.android.lib.widget.NavigationBar;
 import com.example.android.project.R;
 import com.example.android.project.activity.MainActivity;
-import com.example.android.project.activity.OkHttpTestActivity;
+import com.example.android.project.activity.NetWorkActivity;
 import com.example.android.project.activity.RegisterActivity;
-import com.example.android.project.activity.RetrofitTestActivity;
 import com.example.android.project.activity.SettingActivity;
 import com.example.android.project.activity.StatusActivity;
 import com.example.android.project.activity.TestActivity;
@@ -61,6 +60,7 @@ public class HomeFragment extends BaseFragment {
     @Override
     protected void initView() {
         mNavigationBar.setTitle("首页");
+        mNavigationBar.hideLeftLayout();
     }
 
     @Override
@@ -101,7 +101,7 @@ public class HomeFragment extends BaseFragment {
         }
     }
 
-    @OnClick({R.id.btn_to_register_page, R.id.btn_retrofit, R.id.btn_okhttp, R.id.btn_other,
+    @OnClick({R.id.btn_to_register_page, R.id.btn_network, R.id.btn_other,
             R.id.btn_status, R.id.btn_to_setting_page})
     public void onClick(View v) {
         switch (v.getId()) {
@@ -109,15 +109,9 @@ public class HomeFragment extends BaseFragment {
                 Intent registerIntent = new Intent(getMyActivity(), RegisterActivity.class);
                 ScreenManager.getScreenManager().startPage(getMyActivity(), registerIntent, true);
                 break;
-            case R.id.btn_retrofit:
-                Logger.e(TAG, "onClick: retrofit");
-                Intent intentNetWork = new Intent(getMyActivity(), RetrofitTestActivity.class);
-                ScreenManager.getScreenManager().startPage(getMyActivity(), intentNetWork, true);
-                break;
-            case R.id.btn_okhttp:
-                Intent intentOk = new Intent(getMyActivity(), OkHttpTestActivity.class);
-                ScreenManager.getScreenManager().startPage(getMyActivity(), intentOk, true);
-                Logger.e(TAG, "onClick: okhttp");
+            case R.id.btn_network:
+                Intent networkIntent = new Intent(getMyActivity(), NetWorkActivity.class);
+                ScreenManager.getScreenManager().startPage(getMyActivity(), networkIntent, true);
                 break;
             case R.id.btn_other:
                 Intent intentOt = new Intent(getMyActivity(), TestActivity.class);

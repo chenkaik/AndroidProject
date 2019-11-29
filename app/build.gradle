@@ -14,12 +14,14 @@ android {
         targetSdkVersion 28 // 目标版本
         versionCode 1 // 版本号
         versionName "1.0" // 版本名称
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner" // 表明要使用AndroidJUnitRunner进行单元测试
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        // 表明要使用AndroidJUnitRunner进行单元测试
     }
     buildTypes {
         release {
             minifyEnabled false // 是否对代码进行混淆
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro' // 指定混淆的规则文件
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            // 指定混淆的规则文件
         }
     }
 

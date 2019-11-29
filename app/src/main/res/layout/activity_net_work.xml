@@ -5,9 +5,29 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activity.OkHttpTestActivity">
+    tools:context=".activity.NetWorkActivity">
 
-    <include layout="@layout/common_head_layout"/>
+    <include layout="@layout/common_head_layout" />
+
+    <Button
+        android:id="@+id/btn_login"
+        style="@style/ButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/space_50"
+        android:layout_marginTop="@dimen/space_60"
+        android:layout_marginRight="@dimen/space_50"
+        android:text="登录请求"/>
+
+    <Button
+        android:id="@+id/btn_other"
+        style="@style/ButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/space_50"
+        android:layout_marginTop="@dimen/space_60"
+        android:layout_marginRight="@dimen/space_50"
+        android:text="其它接口请求"/>
 
     <Button
         android:id="@+id/btn_login_ok"
@@ -38,5 +58,6 @@
         android:layout_marginTop="@dimen/space_60"
         android:layout_marginRight="@dimen/space_50"
         android:text="okhttp下载" />
+
 
 </LinearLayout>

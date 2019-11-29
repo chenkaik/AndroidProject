@@ -3,17 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.android.project">
 
-    <!-- 读取网络状态 -->
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.READ_LOGS" />
-
-    <!-- 读取手机状态 -->
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-
-    <!-- 访问网络 -->
-    <uses-permission android:name="android.permission.INTERNET" />
-
     <application
         android:name=".CommonApplication"
         android:allowBackup="true"
@@ -26,6 +15,9 @@
         android:theme="@style/AppTheme"
         tools:targetApi="n">
         <activity
+            android:name=".activity.NetWorkActivity"
+            android:screenOrientation="portrait"/>
+        <activity
             android:name=".activity.FirstActivity"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -35,7 +27,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".activity.StatusActivity"
             android:screenOrientation="portrait" /> <!-- 请求数据的状态 -->
@@ -55,18 +46,11 @@
             android:name=".activity.MainActivity"
             android:screenOrientation="portrait" /> <!-- 主页入口 -->
         <activity
-            android:name=".activity.RetrofitTestActivity"
-            android:screenOrientation="portrait" /> <!-- Retrofit的使用 -->
-        <activity
-            android:name=".activity.OkHttpTestActivity"
-            android:screenOrientation="portrait" /> <!-- OkHttp的使用 -->
-        <activity
             android:name=".activity.TestActivity"
             android:screenOrientation="portrait" /> <!-- 测试页 -->
-
         <meta-data
             android:name="android.max_aspect"
-            android:value="2.2" /><!-- 适配屏幕 -->
+            android:value="2.2" /> <!-- 适配屏幕 -->
         <!--
         android:authorities属性为一个URI authority
         （authorities可以随意填写，但是要保证使用时与authority保持一致，
@@ -86,7 +70,15 @@
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
-        </provider> <!-- Android 7.0访问文件 start -->
+        </provider>
     </application>
+
+
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- 读取网络状态 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" /> <!-- 读取手机状态 -->
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- 访问网络 -->
+
 
 </manifest>
