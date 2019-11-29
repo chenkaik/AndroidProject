@@ -51,9 +51,9 @@
         <activity
             android:name=".activity.LoginActivity"
             android:screenOrientation="portrait" /> <!-- 登录 -->
-        <activity
-            android:name=".activity.MainActivity"
-            android:screenOrientation="portrait" /> <!-- 主页入口 -->
+<!--        <activity-->
+<!--            android:name=".activity.MainActivity"-->
+<!--            android:screenOrientation="portrait" /> &lt;!&ndash; 主页入口 &ndash;&gt;-->
         <activity
             android:name=".activity.MyActivity"
             android:screenOrientation="portrait" /> <!-- BottomNavigationView的使用 -->
