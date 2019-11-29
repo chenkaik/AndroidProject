@@ -1,5 +1,6 @@
 package com.example.android.project.activity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
@@ -55,12 +56,13 @@ public class FirstActivity extends BaseActivity {
 
     }
 
+    @SuppressLint("HandlerLeak")
     private class MyHandler extends Handler {
         @Override
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case 2:
-                    Intent intent = new Intent(FirstActivity.this, MainActivity.class);
+                    Intent intent = new Intent(FirstActivity.this, LoginActivity.class);
                     ScreenManager.getScreenManager().startPage(FirstActivity.this, intent, false);
                     break;
                 default:

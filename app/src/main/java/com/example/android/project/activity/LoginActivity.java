@@ -1,10 +1,12 @@
 package com.example.android.project.activity;
 
+import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
 import com.android.lib.util.InputTextHelper;
+import com.android.lib.util.ScreenManager;
 import com.android.lib.widget.NavigationBar;
 import com.example.android.project.R;
 
@@ -39,20 +41,23 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     protected void initData() {
-
+        mPhoneView.setText("123");
+        mPasswordView.setText("123");
     }
 
     @OnClick({R.id.tv_login_forget, R.id.btn_login_commit})
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.tv_login_forget:
+                showToastMessage("忘记密码");
                 break;
             case R.id.btn_login_commit:
-                if (mPhoneView.getText().toString().length() != 11) {
-                    showToastMessage("手机号输入不正确");
-                    break;
-                }
-                showToastMessage("调用登录接口");
+//                if (mPhoneView.getText().toString().length() != 11) {
+//                    showToastMessage("手机号输入不正确");
+//                    break;
+//                }
+                Intent intent = new Intent(this, MyActivity.class);
+                ScreenManager.getScreenManager().startPage(this, intent, false);
                 break;
             default:
                 break;

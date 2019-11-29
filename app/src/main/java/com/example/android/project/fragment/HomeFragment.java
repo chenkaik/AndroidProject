@@ -13,8 +13,12 @@ import com.android.lib.widget.NavigationBar;
 import com.example.android.project.R;
 import com.example.android.project.activity.LoginActivity;
 import com.example.android.project.activity.MyActivity;
+import com.example.android.project.activity.OkHttpTestActivity;
 import com.example.android.project.activity.RegisterActivity;
+import com.example.android.project.activity.RetrofitTestActivity;
 import com.example.android.project.activity.SettingActivity;
+import com.example.android.project.activity.StatusActivity;
+import com.example.android.project.activity.TestActivity;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -98,7 +102,8 @@ public class HomeFragment extends BaseFragment {
         }
     }
 
-    @OnClick({R.id.btn_to_login_page, R.id.btn_to_register_page, R.id.btn_to_setting_page})
+    @OnClick({R.id.btn_to_login_page, R.id.btn_to_register_page,R.id.btn_retrofit, R.id.btn_okhttp, R.id.btn_other,
+            R.id.btn_BottomNavigationView, R.id.btn_status, R.id.btn_to_setting_page})
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_to_login_page:
@@ -108,6 +113,29 @@ public class HomeFragment extends BaseFragment {
             case R.id.btn_to_register_page:
                 Intent registerIntent = new Intent(getMyActivity(), RegisterActivity.class);
                 ScreenManager.getScreenManager().startPage(getMyActivity(), registerIntent, true);
+                break;
+            case R.id.btn_retrofit:
+//                showToastMessage("retrofit");
+                Logger.e(TAG, "onClick: retrofit");
+                Intent intentNetWork = new Intent(getMyActivity(), RetrofitTestActivity.class);
+                ScreenManager.getScreenManager().startPage(getMyActivity(), intentNetWork, true);
+                break;
+            case R.id.btn_okhttp:
+                Intent intentOk = new Intent(getMyActivity(), OkHttpTestActivity.class);
+                ScreenManager.getScreenManager().startPage(getMyActivity(), intentOk, true);
+                Logger.e(TAG, "onClick: okhttp");
+                break;
+            case R.id.btn_other:
+                Intent intentOt = new Intent(getMyActivity(), TestActivity.class);
+                ScreenManager.getScreenManager().startPage(getMyActivity(), intentOt, true);
+                break;
+            case R.id.btn_BottomNavigationView:
+                Intent myIntent = new Intent(getMyActivity(), MyActivity.class);
+                ScreenManager.getScreenManager().startPage(getMyActivity(), myIntent, true);
+                break;
+            case R.id.btn_status:
+                Intent statusIntent = new Intent(getMyActivity(), StatusActivity.class);
+                ScreenManager.getScreenManager().startPage(getMyActivity(), statusIntent, true);
                 break;
             case R.id.btn_to_setting_page:
                 Intent settingIntent = new Intent(getMyActivity(), SettingActivity.class);

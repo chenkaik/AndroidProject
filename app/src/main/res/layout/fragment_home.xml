@@ -27,6 +27,61 @@
         android:text="点我进入注册页面" />
 
     <Button
+        android:id="@+id/btn_retrofit"
+        style="@style/ButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/space_50"
+        android:layout_marginTop="@dimen/space_60"
+        android:layout_marginRight="@dimen/space_50"
+        android:text="retrofit请求"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/btn_okhttp"
+        style="@style/ButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/space_50"
+        android:layout_marginTop="@dimen/space_60"
+        android:layout_marginRight="@dimen/space_50"
+        android:text="okHttp请求"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/btn_other"
+        style="@style/ButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/space_50"
+        android:layout_marginTop="@dimen/space_60"
+        android:layout_marginRight="@dimen/space_50"
+        android:text="测试"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/btn_BottomNavigationView"
+        style="@style/ButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/space_50"
+        android:layout_marginTop="@dimen/space_60"
+        android:layout_marginRight="@dimen/space_50"
+        android:text="BottomNavigationView的使用"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/btn_status"
+        style="@style/ButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/space_50"
+        android:layout_marginTop="@dimen/space_60"
+        android:layout_marginRight="@dimen/space_50"
+        android:text="页面的状态"
+        android:textAllCaps="false" />
+
+    <Button
         android:id="@+id/btn_to_setting_page"
         style="@style/ButtonStyle"
         android:layout_width="match_parent"

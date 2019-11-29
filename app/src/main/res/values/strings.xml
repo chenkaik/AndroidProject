@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">模板</string>
+    <string name="app_name">模板工程</string>
 
     <!-- 公用 -->
     <string name="login_Invalid_name">当前用户登录已失效!</string>
