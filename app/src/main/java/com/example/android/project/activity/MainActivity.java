@@ -16,7 +16,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import butterknife.BindView;
 
-public class MyActivity extends BaseActivity implements ViewPager.OnPageChangeListener,
+public class MainActivity extends BaseActivity implements ViewPager.OnPageChangeListener,
         BottomNavigationView.OnNavigationItemSelectedListener {
     private static final String TAG = "MyActivity";
 
@@ -29,7 +29,7 @@ public class MyActivity extends BaseActivity implements ViewPager.OnPageChangeLi
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_my;
+        return R.layout.activity_main;
     }
 
     @Override

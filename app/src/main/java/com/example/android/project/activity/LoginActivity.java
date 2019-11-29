@@ -56,7 +56,7 @@ public class LoginActivity extends BaseActivity {
 //                    showToastMessage("手机号输入不正确");
 //                    break;
 //                }
-                Intent intent = new Intent(this, MyActivity.class);
+                Intent intent = new Intent(this, MainActivity.class);
                 ScreenManager.getScreenManager().startPage(this, intent, false);
                 break;
             default:

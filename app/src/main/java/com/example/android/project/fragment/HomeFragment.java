@@ -11,8 +11,7 @@ import com.android.lib.Logger;
 import com.android.lib.util.ScreenManager;
 import com.android.lib.widget.NavigationBar;
 import com.example.android.project.R;
-import com.example.android.project.activity.LoginActivity;
-import com.example.android.project.activity.MyActivity;
+import com.example.android.project.activity.MainActivity;
 import com.example.android.project.activity.OkHttpTestActivity;
 import com.example.android.project.activity.RegisterActivity;
 import com.example.android.project.activity.RetrofitTestActivity;
@@ -36,7 +35,7 @@ public class HomeFragment extends BaseFragment {
     NavigationBar mNavigationBar;
     private boolean mInitData; // 初始化数据是否加载成功
     private boolean mInitLayout; // 布局控件是否初始化完成
-    private MyActivity mActivity;
+    private MainActivity mActivity;
 
     public static HomeFragment newInstance() {
         return new HomeFragment();
@@ -45,7 +44,7 @@ public class HomeFragment extends BaseFragment {
     @Override
     public void onAttach(@NotNull Context context) {
         super.onAttach(context);
-        mActivity = (MyActivity) context;
+        mActivity = (MainActivity) context;
     }
 
     @Override
@@ -102,20 +101,15 @@ public class HomeFragment extends BaseFragment {
         }
     }
 
-    @OnClick({R.id.btn_to_login_page, R.id.btn_to_register_page,R.id.btn_retrofit, R.id.btn_okhttp, R.id.btn_other,
-            R.id.btn_BottomNavigationView, R.id.btn_status, R.id.btn_to_setting_page})
+    @OnClick({R.id.btn_to_register_page, R.id.btn_retrofit, R.id.btn_okhttp, R.id.btn_other,
+            R.id.btn_status, R.id.btn_to_setting_page})
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.btn_to_login_page:
-                Intent intent = new Intent(getMyActivity(), LoginActivity.class);
-                ScreenManager.getScreenManager().startPage(getMyActivity(), intent, true);
-                break;
             case R.id.btn_to_register_page:
                 Intent registerIntent = new Intent(getMyActivity(), RegisterActivity.class);
                 ScreenManager.getScreenManager().startPage(getMyActivity(), registerIntent, true);
                 break;
             case R.id.btn_retrofit:
-//                showToastMessage("retrofit");
                 Logger.e(TAG, "onClick: retrofit");
                 Intent intentNetWork = new Intent(getMyActivity(), RetrofitTestActivity.class);
                 ScreenManager.getScreenManager().startPage(getMyActivity(), intentNetWork, true);
@@ -128,10 +122,6 @@ public class HomeFragment extends BaseFragment {
             case R.id.btn_other:
                 Intent intentOt = new Intent(getMyActivity(), TestActivity.class);
                 ScreenManager.getScreenManager().startPage(getMyActivity(), intentOt, true);
-                break;
-            case R.id.btn_BottomNavigationView:
-                Intent myIntent = new Intent(getMyActivity(), MyActivity.class);
-                ScreenManager.getScreenManager().startPage(getMyActivity(), myIntent, true);
                 break;
             case R.id.btn_status:
                 Intent statusIntent = new Intent(getMyActivity(), StatusActivity.class);
@@ -158,8 +148,8 @@ public class HomeFragment extends BaseFragment {
         Logger.e(TAG, "onDestroy: ");
     }
 
-    private MyActivity getMyActivity() {
-        return mActivity == null ? (MyActivity) getActivity() : mActivity;
+    private MainActivity getMyActivity() {
+        return mActivity == null ? (MainActivity) getActivity() : mActivity;
     }
 
 }

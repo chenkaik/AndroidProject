@@ -2,12 +2,13 @@ package com.example.android.project.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
+
 import androidx.annotation.Nullable;
 
 import com.android.lib.Logger;
 import com.android.lib.widget.NavigationBar;
 import com.example.android.project.R;
-import com.example.android.project.activity.MyActivity;
+import com.example.android.project.activity.MainActivity;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -24,7 +25,7 @@ public class FindFragment extends BaseFragment {
     NavigationBar mNavigationBar;
     private boolean mInitData; // 初始化数据是否加载成功
     private boolean mInitLayout; // 布局控件是否初始化完成
-    private MyActivity mActivity;
+    private MainActivity mActivity;
 
     public static FindFragment newInstance() {
         return new FindFragment();
@@ -33,7 +34,7 @@ public class FindFragment extends BaseFragment {
     @Override
     public void onAttach(@NotNull Context context) {
         super.onAttach(context);
-        mActivity = (MyActivity) context;
+        mActivity = (MainActivity) context;
     }
 
     @Override
@@ -94,8 +95,8 @@ public class FindFragment extends BaseFragment {
         Logger.e(TAG, "onDestroy: ");
     }
 
-    private MyActivity getMyActivity() {
-        return mActivity == null ? (MyActivity) getActivity() : mActivity;
+    private MainActivity getMyActivity() {
+        return mActivity == null ? (MainActivity) getActivity() : mActivity;
     }
 
 }
