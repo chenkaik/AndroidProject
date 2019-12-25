@@ -8,7 +8,7 @@ import android.widget.Toast;
  * date: 2019/10/11
  * desc: toast的封装
  */
-public class ToastUtil {
+public final class ToastUtil {
 
     private static Toast sToast;
 
