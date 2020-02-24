@@ -3,7 +3,9 @@ package com.android.lib.adapter;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 
 import org.jetbrains.annotations.NotNull;
 
@@ -49,7 +51,7 @@ public class RecyclerWrapAdapter extends RecyclerView.Adapter implements Wrapper
 
     @NotNull
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(@NotNull ViewGroup parent, int viewType) {
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
         if (viewType == RecyclerView.INVALID_TYPE) {
             return new HeaderViewHolder(mHeaderViews.get(0));
         } else if (viewType == RecyclerView.INVALID_TYPE - 1) {
