@@ -5,7 +5,9 @@ buildscript { // 这里是gradle脚本执行所需依赖，分别是对应的mav
 
     repositories { // 配置远程仓库
         google() // 从Android Studio3.0后新增了google()配置，可以引用google上的开源项目
-        jcenter() // 是一个类似于github的代码托管仓库，声明了jcenter()配置，可以轻松引用 jcenter上的开源项目
+//        jcenter() // 是一个类似于github的代码托管仓库，声明了jcenter()配置，可以轻松引用 jcenter上的开源项目
+        maven{ url'http://maven.aliyun.com/nexus/content/groups/public/' }
+        maven{ url'http://maven.aliyun.com/nexus/content/repositories/jcenter'}
         mavenCentral()
     }
     dependencies { // 配置构建工具
@@ -21,7 +23,9 @@ buildscript { // 这里是gradle脚本执行所需依赖，分别是对应的mav
 allprojects { // 配置项目所有module引用的仓库服务器
     repositories {
         google()
-        jcenter()
+//        jcenter()
+        maven{ url'http://maven.aliyun.com/nexus/content/groups/public/' }
+        maven{ url'http://maven.aliyun.com/nexus/content/repositories/jcenter'}
         mavenCentral()
     }
 }

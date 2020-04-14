@@ -91,12 +91,14 @@ public class NetWorkActivity extends BaseActivity implements NetworkResponse, Ne
                         .enqueue(2, this);
                 break;
             case R.id.btn_ok_download:
+                getExternalFilesDir("test");
                 UserConfig.getInstance().clearToken();
-                String url = "http://download.taobaocdn.com/wireless/xiami-android-spark/latest/xiami-android-spark_701287.apk";
+//                String url = "http://download.taobaocdn.com/wireless/xiami-android-spark/latest/xiami-android-spark_701287.apk";
+                String url = "https://sit.3goodsoft.net:4443/file-server/server1/dXNlcl9pZCMxNTIjc2VydmVyMS9zaC9zaGFyZS9zYW5oYW8vvajW/rmks8wvsLLIq7fAu6S8sMnoyqkvtLnWsdTLyuS7+tC1L8qpuaS3vbC4vbu11y/Kqbmkt72wuC/Kqbmkt72wuCAuZG9j.doc";
                 NetWorkRequest.getRequestManager()
                         .download()
                         .url(url)
-                        .filePath(getExternalCacheDir() + "/xiaoMi.apk")
+                        .filePath(getExternalCacheDir() + "/test.doc")
                         .tag(this)
                         .enqueue(new DownloadResponseHandler() {
                             @Override
