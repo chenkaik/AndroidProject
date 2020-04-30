@@ -94,11 +94,11 @@ public class NetWorkActivity extends BaseActivity implements NetworkResponse, Ne
                 getExternalFilesDir("test");
                 UserConfig.getInstance().clearToken();
 //                String url = "http://download.taobaocdn.com/wireless/xiami-android-spark/latest/xiami-android-spark_701287.apk";
-                String url = "https://sit.3goodsoft.net:4443/file-server/server1/dXNlcl9pZCMxNTIjc2VydmVyMS9zaC9zaGFyZS9zYW5oYW8vvajW/rmks8wvsLLIq7fAu6S8sMnoyqkvtLnWsdTLyuS7+tC1L8qpuaS3vbC4vbu11y/Kqbmkt72wuC/Kqbmkt72wuCAuZG9j.doc";
+                String url = "http://staruml-7a0.kxcdn.com/releases/StarUML%20Setup%203.2.2.exe";
                 NetWorkRequest.getRequestManager()
                         .download()
                         .url(url)
-                        .filePath(getExternalCacheDir() + "/test.doc")
+                        .filePath(getExternalCacheDir() + "/StarUML203.2.2.exe")
                         .tag(this)
                         .enqueue(new DownloadResponseHandler() {
                             @Override

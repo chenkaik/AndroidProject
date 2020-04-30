@@ -160,6 +160,7 @@ public class DownloadBuilder {
                     .addNetworkInterceptor(chain -> {
                         Response originalResponse = chain.proceed(chain.request());
                         return originalResponse.newBuilder()
+//                                .addHeader("token","eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6IjE1Njg2MjIxODEzIiwiZXhwIjoxNTg3MjcyMDM0LCJ1c2VySWQiOjEwfQ.DUjajZqGDmWnWiUaKFRWpISzf0zf0qN6hfE8uCDAXlk")
                                 .body(new ResponseProgressBody(originalResponse.body(), downloadResponseHandler))
                                 .build();
                     })

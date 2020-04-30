@@ -499,6 +499,37 @@ public final class DateUtils {
     }
 
     /**
+     * 根据提供的年月日获取该月份的第一天
+     */
+    public static String getSupportBeginDayofMonth(Date date) {
+        date.getTime();
+        Calendar startDate = Calendar.getInstance();
+        startDate.setTime(date);
+        startDate.set(Calendar.DAY_OF_MONTH, 1);
+        startDate.set(Calendar.HOUR_OF_DAY, 0);
+        startDate.set(Calendar.MINUTE, 0);
+        startDate.set(Calendar.SECOND, 0);
+        startDate.set(Calendar.MILLISECOND, 0);
+        Date firstDate = startDate.getTime();
+        return (firstDate.getTime() + "").substring(0, 10);
+    }
+
+    /**
+     * 根据提供的年月获取该月份的最后一天
+     */
+    public static String getSupportEndDayofMonth(Date date) {
+        Calendar startDate = Calendar.getInstance();
+        startDate.setTime(date);
+        startDate.set(Calendar.DAY_OF_MONTH, startDate.getActualMaximum(Calendar.DAY_OF_MONTH));
+        startDate.set(Calendar.HOUR_OF_DAY, 23);
+        startDate.set(Calendar.MINUTE, 59);
+        startDate.set(Calendar.SECOND, 59);
+        startDate.set(Calendar.MILLISECOND, 999);
+        Date firstDate = startDate.getTime();
+        return (firstDate.getTime() + "").substring(0, 10);
+    }
+
+    /**
      * 比较两个日期的大小，日期格式为yyyy-MM-dd
      * 返回为true第一个日期大于或等于第二个日期
      *
@@ -590,91 +621,101 @@ public final class DateUtils {
     }
 
     /**
-     * 根据提供的年月日获取该月份的第一天
-     */
-    public static String getSupportBeginDayofMonth(Date date) {
-        date.getTime();
-        Calendar startDate = Calendar.getInstance();
-        startDate.setTime(date);
-        startDate.set(Calendar.DAY_OF_MONTH, 1);
-        startDate.set(Calendar.HOUR_OF_DAY, 0);
-        startDate.set(Calendar.MINUTE, 0);
-        startDate.set(Calendar.SECOND, 0);
-        startDate.set(Calendar.MILLISECOND, 0);
-        Date firstDate = startDate.getTime();
-        return (firstDate.getTime() + "").substring(0, 10);
-    }
-
-    /**
-     * 根据提供的年月获取该月份的最后一天
-     */
-    public static String getSupportEndDayofMonth(Date date) {
-        Calendar startDate = Calendar.getInstance();
-        startDate.setTime(date);
-        startDate.set(Calendar.DAY_OF_MONTH, startDate.getActualMaximum(Calendar.DAY_OF_MONTH));
-        startDate.set(Calendar.HOUR_OF_DAY, 23);
-        startDate.set(Calendar.MINUTE, 59);
-        startDate.set(Calendar.SECOND, 59);
-        startDate.set(Calendar.MILLISECOND, 999);
-        Date firstDate = startDate.getTime();
-        return (firstDate.getTime() + "").substring(0, 10);
-    }
-
-    /**
      * 毫秒换算成时间
      *
      * @param mss 毫秒数
      * @return 时间
      */
     public static String formatDateTimes(long mss) {
-        String dateTimes = "";
-        long days = mss / (60 * 60 * 24);
-        long hours = (mss % (60 * 60 * 24)) / (60 * 60);
-        long minutes = (mss % (60 * 60)) / 60;
-        long seconds = mss % 60;
-        if (days > 0) {
-//            dateTimes = days + "天" + hours + "小时" + minutes + "分钟" + seconds + "秒";
-            long d = (days * 24) + hours;
-            if (minutes > 0) {
-                dateTimes = d + "h" + minutes + "min";
-            } else {
-                dateTimes = d + "h";
-            }
-        } else if (hours > 0) {
-            if (minutes > 0) {
-                dateTimes = hours + "h" + minutes + "min";
-            } else {
-                dateTimes = hours + "h";
-            }
-        } else if (minutes > 0) {
-            if (seconds >= 30) {
-                dateTimes = (minutes + 1) + "min";
-            } else {
-                dateTimes = minutes + "min";
-            }
-        } else {
-            if (seconds >= 30) {
-                dateTimes = 1 + "min";
-            } else {
-                dateTimes = "0";
-            }
-        }
-        return dateTimes;
 //        String dateTimes = "";
 //        long days = mss / (60 * 60 * 24);
 //        long hours = (mss % (60 * 60 * 24)) / (60 * 60);
 //        long minutes = (mss % (60 * 60)) / 60;
 //        long seconds = mss % 60;
 //        if (days > 0) {
-//            dateTimes = days + "天" + hours + "小时" + minutes + "分钟" + seconds + "秒";
+////            dateTimes = days + "天" + hours + "小时" + minutes + "分钟" + seconds + "秒";
+//            long d = (days * 24) + hours;
+//            if (minutes > 0) {
+//                dateTimes = d + "h" + minutes + "min";
+//            } else {
+//                dateTimes = d + "h";
+//            }
 //        } else if (hours > 0) {
-//            dateTimes = hours + "小时" + minutes + "分钟" + seconds + "秒";
+//            if (minutes > 0) {
+//                dateTimes = hours + "h" + minutes + "min";
+//            } else {
+//                dateTimes = hours + "h";
+//            }
 //        } else if (minutes > 0) {
-//            dateTimes = minutes + "分钟" + seconds + "秒";
+//            if (seconds >= 30) {
+//                dateTimes = (minutes + 1) + "min";
+//            } else {
+//                dateTimes = minutes + "min";
+//            }
 //        } else {
-//            dateTimes = seconds + "秒";
+//            if (seconds >= 30) {
+//                dateTimes = 1 + "min";
+//            } else {
+//                dateTimes = "0";
+//            }
 //        }
 //        return dateTimes;
+
+        String dateTimes = "";
+        long days = mss / (60 * 60 * 24);
+        long hours = (mss % (60 * 60 * 24)) / (60 * 60);
+        long minutes = (mss % (60 * 60)) / 60;
+        long seconds = mss % 60;
+        if (days > 0) {
+            dateTimes = days + "天" + hours + "小时" + minutes + "分钟" + seconds + "秒";
+        } else if (hours > 0) {
+            dateTimes = hours + "小时" + minutes + "分钟" + seconds + "秒";
+        } else if (minutes > 0) {
+            dateTimes = minutes + "分钟" + seconds + "秒";
+        } else {
+            dateTimes = seconds + "秒";
+        }
+        return dateTimes;
+    }
+
+    /**
+     * 根据时间戳计算时间
+     * 计算time2减去time1的差值 差值只设置 几天 几个小时 或 几分钟
+     * 根据差值返回多长之间前或多长时间后
+     *
+     * @param time1 开始时间戳
+     * @param time2 结束时间戳
+     * @return 几天 几个小时 或 几分钟
+     */
+    public static String getDistanceTime(long time1, long time2) {
+        long day = 0;
+        long hour = 0;
+        long min = 0;
+        long sec = 0;
+        long diff;
+
+        if (time1 < time2) {
+            diff = time2 - time1;
+        } else {
+            diff = time1 - time2;
+        }
+        day = diff / (24 * 60 * 60 * 1000);
+        hour = (diff / (60 * 60 * 1000) - day * 24);
+        min = ((diff / (60 * 1000)) - day * 24 * 60 - hour * 60);
+        sec = (diff / 1000 - day * 24 * 60 * 60 - hour * 60 * 60 - min * 60);
+        if (day != 0) {
+            return day + "天" + hour + "小时" + min + "分钟" + sec + "秒";
+        }
+        if (hour != 0) {
+            return hour + "小时" + min + "分钟" + sec + "秒";
+        }
+        if (min != 0) {
+            return min + "分钟" + sec + "秒";
+        }
+        if (sec != 0) {
+            return sec + "秒";
+        }
+        return "0秒";
     }
 
 }
