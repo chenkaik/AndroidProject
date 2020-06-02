@@ -10,7 +10,7 @@ android {
     compileSdkVersion 29 // 编译时用的Android版本
     defaultConfig {
         applicationId "com.example.android.project" // 包名
-        minSdkVersion 19 // 最低兼容的版本
+        minSdkVersion 21 // 最低兼容的版本
         targetSdkVersion 29 // 目标版本
         versionCode 1 // 版本号
         versionName "1.0" // 版本名称
