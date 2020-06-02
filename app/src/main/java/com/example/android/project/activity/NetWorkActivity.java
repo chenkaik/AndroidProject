@@ -57,7 +57,7 @@ public class NetWorkActivity extends BaseActivity implements NetworkResponse, Ne
         request.setMSG_BODY(new HomeIndexRequest.MSGBODYBean());
     }
 
-    @OnClick({R.id.btn_login, R.id.btn_other,R.id.btn_login_ok, R.id.btn_other_ok, R.id.btn_ok_download})
+    @OnClick({R.id.btn_login, R.id.btn_other, R.id.btn_login_ok, R.id.btn_other_ok, R.id.btn_ok_download})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_login:
@@ -74,7 +74,7 @@ public class NetWorkActivity extends BaseActivity implements NetworkResponse, Ne
                 params.put("username", "lixiangbin");
                 params.put("password", "shjacf");
                 NetWorkRequest.getRequestManager()
-                        .post()
+                        .post(false)
                         .url("https://www.shjacf.com/server/login")
                         .jsonParams(new JSONObject(params).toString())
                         .tag(this)

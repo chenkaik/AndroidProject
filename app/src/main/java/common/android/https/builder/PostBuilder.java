@@ -3,11 +3,12 @@ package common.android.https.builder;
 import com.android.lib.Logger;
 
 import common.android.https.callback.OkHttpCallback;
+import common.android.https.network.NetWorkRequest;
 import common.android.https.network.OkHttpRequestBuilderHasParam;
 import common.android.https.response.NetworkOkHttpResponse;
-import common.android.https.network.NetWorkRequest;
 import okhttp3.FormBody;
 import okhttp3.MediaType;
+import okhttp3.MultipartBody;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 
@@ -20,9 +21,11 @@ public class PostBuilder extends OkHttpRequestBuilderHasParam<PostBuilder> {
 
     private static final String TAG = "PostBuilder";
     private String mJsonParams = "";
+    private boolean mIsForm;
 
-    public PostBuilder(NetWorkRequest request) {
+    public PostBuilder(NetWorkRequest request, boolean isForm) {
         super(request);
+        mIsForm = isForm;
     }
 
     /**
@@ -48,12 +51,20 @@ public class PostBuilder extends OkHttpRequestBuilderHasParam<PostBuilder> {
                 builder.tag(mTag);
             }
             if (mJsonParams.length() > 0) { // 优先提交json格式参数
-                RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), mJsonParams);
+//                RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), mJsonParams);
+                MediaType mediaType = MediaType.Companion.parse("application/json;charset=utf-8");
+                RequestBody body = RequestBody.Companion.create(mJsonParams, mediaType);
                 builder.post(body);
-            } else { // 普通kv参数
-                FormBody.Builder encodingBuilder = new FormBody.Builder();
-                appendParams(encodingBuilder, mParams);
-                builder.post(encodingBuilder.build());
+            } else {
+                if (mIsForm) {
+                    MultipartBody.Builder multipartBuilder = new MultipartBody.Builder().setType(MultipartBody.FORM); // 表单类型
+                    appendParams(multipartBuilder, mParams); // from参数
+                    builder.post(multipartBuilder.build());
+                } else { // 普通kv参数
+                    FormBody.Builder encodingBuilder = new FormBody.Builder();
+                    appendParams(encodingBuilder, mParams);
+                    builder.post(encodingBuilder.build());
+                }
             }
             Request postRequest = builder.build();
             request.getOkHttpClient()

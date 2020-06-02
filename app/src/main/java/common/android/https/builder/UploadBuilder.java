@@ -127,7 +127,10 @@ public class UploadBuilder extends OkHttpRequestBuilderHasParam<UploadBuilder> {
                 // MediaType.parse() 里面是上传的文件类型。
 //                RequestBody body = RequestBody.create(MediaType.parse("image/*"), file);
                 if (file != null) {
-                    RequestBody body = RequestBody.create(MediaType.parse("multipart/form-data"), file);
+//                    RequestBody body = RequestBody.create(MediaType.parse("multipart/form-data"), file);
+                    // File转RequestBody
+                    MediaType mediaType = MediaType.Companion.parse("text/x-markdown; charset=utf-8");
+                    RequestBody body = RequestBody.Companion.create(file, mediaType);
                     builder.addFormDataPart(key, file.getName(), body);
                 }
             }
@@ -146,7 +149,10 @@ public class UploadBuilder extends OkHttpRequestBuilderHasParam<UploadBuilder> {
                 File file = new File(filePath.get(i));
                 // MediaType.parse() 里面是上传的文件类型。
 //                RequestBody body = RequestBody.create(MediaType.parse("image/*"), file);
-                RequestBody body = RequestBody.create(MediaType.parse("multipart/form-data"), file);
+//                RequestBody body = RequestBody.create(MediaType.parse("multipart/form-data"), file);
+                // File转RequestBody
+                MediaType mediaType = MediaType.Companion.parse("text/x-markdown; charset=utf-8");
+                RequestBody body = RequestBody.Companion.create(file, mediaType);
                 builder.addFormDataPart("file", file.getName(), body);
             }
         }

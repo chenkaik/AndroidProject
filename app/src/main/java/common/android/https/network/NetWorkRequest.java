@@ -303,8 +303,8 @@ public class NetWorkRequest {
      *
      * @return 构建post请求
      */
-    public PostBuilder post() {
-        return new PostBuilder(this);
+    public PostBuilder post(boolean isForm) {
+        return new PostBuilder(this, isForm);
     }
 
     /**
