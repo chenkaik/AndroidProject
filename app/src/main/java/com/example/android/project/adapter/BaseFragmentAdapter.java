@@ -22,7 +22,8 @@ public class BaseFragmentAdapter<F extends Fragment> extends FragmentPagerAdapte
     private F mCurrentFragment; // 当前显示的Fragment
 
     public BaseFragmentAdapter(FragmentActivity activity) {
-        this(activity.getSupportFragmentManager());
+//        this(activity.getSupportFragmentManager());
+        this(activity.getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
     }
 
     public BaseFragmentAdapter(Fragment fragment) {
@@ -31,6 +32,10 @@ public class BaseFragmentAdapter<F extends Fragment> extends FragmentPagerAdapte
 
     public BaseFragmentAdapter(FragmentManager manager) {
         super(manager);
+    }
+
+    public BaseFragmentAdapter(@NonNull FragmentManager fm, int behavior) {
+        super(fm, behavior);
     }
 
     @Override

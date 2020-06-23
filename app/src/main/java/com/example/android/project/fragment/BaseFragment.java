@@ -19,6 +19,7 @@ import butterknife.Unbinder;
 public abstract class BaseFragment extends Fragment {
 
     private Unbinder mButterKnife; // View注解
+    private boolean isFirstLoad = true; // 是否第一次加载
 
     @Nullable
     @Override
@@ -39,12 +40,30 @@ public abstract class BaseFragment extends Fragment {
     // 初始化数据
     protected abstract void initData();
 
+
     @Override
-    public void onDestroy() {
+    public void onResume() {
+        super.onResume();
+        if (isFirstLoad) {
+            isFirstLoad = false;
+        }
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        isFirstLoad = true;
         if (mButterKnife != null) {
             mButterKnife.unbind();
         }
-        super.onDestroy();
     }
+
+//    @Override
+//    public void onDestroy() {
+//        if (mButterKnife != null) {
+//            mButterKnife.unbind();
+//        }
+//        super.onDestroy();
+//    }
 
 }

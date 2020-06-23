@@ -18,7 +18,7 @@ import butterknife.BindView;
 
 public class MainActivity extends BaseActivity implements ViewPager.OnPageChangeListener,
         BottomNavigationView.OnNavigationItemSelectedListener {
-    private static final String TAG = "MyActivity";
+    private static final String TAG = "MainActivity";
 
     @BindView(R.id.vp_home_pager)
     ViewPager mViewPager;
@@ -97,6 +97,8 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
                 break;
             case 3:
                 mBottomNavigationView.setSelectedItemId(R.id.home_me);
+                break;
+            default:
                 break;
         }
     }

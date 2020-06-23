@@ -2,9 +2,10 @@ package com.android.lib.util;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import androidx.viewpager.widget.ViewPager;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
+
+import androidx.viewpager.widget.ViewPager;
 
 /**
  * date: 2019/3/8
@@ -15,7 +16,7 @@ public final class NoScrollViewPager extends ViewPager {
     /**
      * 是否禁止左右滑动，true为禁止，false为不禁止
      */
-    private boolean noScroll = true;
+    private boolean noScroll = false;
 
     public NoScrollViewPager(Context context, AttributeSet attrs) {
         super(context, attrs);

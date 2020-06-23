@@ -3,8 +3,11 @@ package com.example.android.project.fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.android.lib.Logger;
@@ -32,8 +35,8 @@ public class HomeFragment extends BaseFragment {
     private static final String TAG = "HomeFragment";
     @BindView(R.id.navigationBar)
     NavigationBar mNavigationBar;
-    private boolean mInitData; // 初始化数据是否加载成功
-    private boolean mInitLayout; // 布局控件是否初始化完成
+//    private boolean mInitData; // 初始化数据是否加载成功
+//    private boolean mInitLayout; // 布局控件是否初始化完成
     private MainActivity mActivity;
 
     public static HomeFragment newInstance() {
@@ -44,12 +47,26 @@ public class HomeFragment extends BaseFragment {
     public void onAttach(@NotNull Context context) {
         super.onAttach(context);
         mActivity = (MainActivity) context;
+        Logger.e(TAG, "onAttach: ");
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Logger.e(TAG, "onCreate: ");
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        Logger.e(TAG, "onCreateView: ");
+        return super.onCreateView(inflater, container, savedInstanceState);
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        Logger.e(TAG, "onActivityCreated: ");
     }
 
     @Override
@@ -65,24 +82,24 @@ public class HomeFragment extends BaseFragment {
 
     @Override
     protected void initData() {
-        mInitLayout = true;
-        initLoadData();
+//        mInitLayout = true;
+//        initLoadData();
     }
 
-    private void initLoadData() {
-        if (getUserVisibleHint() && mInitLayout && !mInitData) {
-            loadData();
-        } else {
-            if (mInitData) { // 主要用于点击切换回来更新某一接口的数据
-                Logger.e(TAG, "initLoadData: 调用了");
-            }
-        }
-    }
-
-    private void loadData() {
-        mInitData = true;
-        Logger.e(TAG, "loadData: " + "加载数据");
-    }
+//    private void initLoadData() {
+//        if (getUserVisibleHint() && mInitLayout && !mInitData) {
+//            loadData();
+//        } else {
+//            if (mInitData) { // 主要用于点击切换回来更新某一接口的数据
+//                Logger.e(TAG, "initLoadData: 调用了");
+//            }
+//        }
+//    }
+//
+//    private void loadData() {
+//        mInitData = true;
+//        Logger.e(TAG, "loadData: " + "加载数据");
+//    }
 
     /**
      * onAttach()之前，调用setUserVisibleHint(false)。
@@ -95,10 +112,10 @@ public class HomeFragment extends BaseFragment {
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
-        Logger.e(TAG, "setUserVisibleHint: 执行了" + isVisibleToUser + " -- " + mInitLayout);
-        if (isVisibleToUser) {
-            initLoadData();
-        }
+//        Logger.e(TAG, "setUserVisibleHint: 执行了" + isVisibleToUser + " -- " + mInitLayout);
+//        if (isVisibleToUser) {
+//            initLoadData();
+//        }
     }
 
     @OnClick({R.id.btn_to_register_page, R.id.btn_network, R.id.btn_other,
@@ -131,15 +148,51 @@ public class HomeFragment extends BaseFragment {
     }
 
     @Override
+    public void onStart() {
+        super.onStart();
+        Logger.e(TAG, "onStart: ");
+    }
+
+    @Override
     public void onResume() {
         super.onResume();
         Logger.e(TAG, "onResume: ");
     }
 
     @Override
+    public void onPause() {
+        super.onPause();
+        Logger.e(TAG, "onPause: ");
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        Logger.e(TAG, "onStop: ");
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        Logger.e(TAG, "onDestroyView: ");
+    }
+
+    @Override
     public void onDestroy() {
         super.onDestroy();
         Logger.e(TAG, "onDestroy: ");
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        Logger.e(TAG, "onDetach: ");
+    }
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        Logger.e(TAG, "onHiddenChanged= " + hidden);
     }
 
     private MainActivity getMyActivity() {
