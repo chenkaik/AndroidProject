@@ -44,6 +44,8 @@ dependencies { // 项目的依赖关系
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'com.google.android.material:material:1.1.0'
     // implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.viewpager2:viewpager2:1.0.0'
+
 }
 repositories {
     mavenCentral()

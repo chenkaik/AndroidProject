@@ -34,7 +34,7 @@ public class BaseFragmentAdapter<F extends Fragment> extends FragmentPagerAdapte
         super(manager);
     }
 
-    public BaseFragmentAdapter(@NonNull FragmentManager fm, int behavior) {
+    private BaseFragmentAdapter(@NonNull FragmentManager fm, int behavior) {
         super(fm, behavior);
     }
 
