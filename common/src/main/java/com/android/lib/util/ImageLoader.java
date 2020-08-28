@@ -90,6 +90,13 @@ public final class ImageLoader {
                 .load(path)
                 .apply(requestOptions)
                 .into(imageView);
+        /**
+         * DiskCacheStrategy.NONE： 表示不缓存任何内容。
+         * DiskCacheStrategy.DATA： 表示只缓存原始图片。
+         * DiskCacheStrategy.RESOURCE： 表示只缓存转换过后的图片。
+         * DiskCacheStrategy.ALL ： 表示既缓存原始图片，也缓存转换过后的图片。
+         * DiskCacheStrategy.AUTOMATIC： 表示让Glide根据图片资源智能地选择使用哪一种缓存策略（默认选项）。
+         */
     }
 
     /**
