@@ -20,7 +20,7 @@ public class BannerRecyclerAdapter extends BaseBannerAdapter<BannerRecyclerAdapt
 
     private RecyclerViewBannerBaseView.OnBannerItemClickListener onBannerItemClickListener;
 
-    public BannerRecyclerAdapter(Context context, List urlList, RecyclerViewBannerBaseView.OnBannerItemClickListener onBannerItemClickListener) {
+    public BannerRecyclerAdapter(Context context, List<Integer> urlList, RecyclerViewBannerBaseView.OnBannerItemClickListener onBannerItemClickListener) {
         super(context, urlList);
         this.onBannerItemClickListener = onBannerItemClickListener;
     }
