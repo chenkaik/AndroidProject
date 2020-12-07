@@ -114,14 +114,14 @@ public abstract class BaseRecyclerViewAdapter<T> extends RecyclerView.Adapter<Re
      * item点击监听器
      */
     public interface OnItemClickListener {
-        void onItemClick(RecyclerView.Adapter adapter, View v, int position);
+        void onItemClick(RecyclerView.Adapter<?> adapter, View v, int position);
     }
 
     /**
      * item长按监听器
      */
     public interface OnItemLongClickListener {
-        void onItemLongClick(RecyclerView.Adapter adapter, View v, int position);
+        void onItemLongClick(RecyclerView.Adapter<?> adapter, View v, int position);
     }
 
     /**

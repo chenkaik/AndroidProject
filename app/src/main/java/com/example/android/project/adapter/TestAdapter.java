@@ -39,7 +39,7 @@ public class TestAdapter extends BaseRecyclerViewAdapter<Test> {
     /**
      * view的点击事件
      */
-    class ViewListener implements View.OnClickListener {
+    static class ViewListener implements View.OnClickListener {
 
         OnViewClickListener onViewClickListener;
         int position;
