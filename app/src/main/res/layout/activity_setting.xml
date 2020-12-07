@@ -7,7 +7,9 @@
     android:orientation="vertical"
     tools:context=".activity.SettingActivity">
 
-    <include layout="@layout/common_head_layout" />
+    <include
+        android:id="@+id/commonHead"
+        layout="@layout/common_head_layout" />
 
     <com.example.android.project.widget.SettingBar
         android:id="@+id/sb_common"

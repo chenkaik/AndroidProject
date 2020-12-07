@@ -9,26 +9,21 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.lib.adapter.BaseRecyclerViewAdapter;
-import com.android.lib.widget.NavigationBar;
 import com.android.lib.widget.XRecyclerView;
 import com.example.android.project.R;
 import com.example.android.project.adapter.FootAdapter;
 import com.example.android.project.adapter.HeadAdapter;
 import com.example.android.project.adapter.TestAdapter;
+import com.example.android.project.databinding.ActivityOtherBinding;
 import com.example.android.project.entity.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.OnClick;
+public class TestActivity extends BaseActivity implements BaseRecyclerViewAdapter.OnItemClickListener,
+        BaseRecyclerViewAdapter.OnItemLongClickListener, BaseRecyclerViewAdapter.OnViewClickListener, View.OnClickListener {
 
-public class TestActivity extends BaseActivity implements BaseRecyclerViewAdapter.OnItemClickListener, BaseRecyclerViewAdapter.OnItemLongClickListener, BaseRecyclerViewAdapter.OnViewClickListener {
-
-    @BindView(R.id.navigationBar)
-    NavigationBar mNavigationBar;
-    @BindView(R.id.x_RecyclerView)
-    XRecyclerView mRecyclerView;
+    private XRecyclerView mRecyclerView;
     private List<Test> list = new ArrayList<>();
     private TestAdapter testAdapter;
     private RecyclerView mHeadRecyclerView;
@@ -38,14 +33,13 @@ public class TestActivity extends BaseActivity implements BaseRecyclerViewAdapte
     private HeadAdapter mHeadAdapter;
     private FootAdapter mFootAdapter;
 
-    @Override
-    protected int getLayoutId() {
-        return R.layout.activity_other;
-    }
+    private ActivityOtherBinding mActivityOtherBinding;
 
     @Override
     protected void initView() {
-        mNavigationBar.setTitle("测试");
+        mActivityOtherBinding = ActivityOtherBinding.inflate(getLayoutInflater());
+        setContentView(mActivityOtherBinding.getRoot());
+        mActivityOtherBinding.commonHead.navigationBar.setTitle("测试");
         for (int i = 0; i < 50; i++) {
             list.add(new Test("测试" + i));
         }
@@ -57,10 +51,12 @@ public class TestActivity extends BaseActivity implements BaseRecyclerViewAdapte
         for (int i = 0; i < 10; i++) {
             mFootList.add(new Test("下面" + i));
         }
+        mActivityOtherBinding.btnTest.setOnClickListener(this);
     }
 
     @Override
     protected void initData() {
+        mRecyclerView = mActivityOtherBinding.xRecyclerView;
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         testAdapter = new TestAdapter(this, list, this);
         @SuppressLint("InflateParams") View headView = LayoutInflater.from(this).inflate(R.layout.head_layout, null);
@@ -83,14 +79,14 @@ public class TestActivity extends BaseActivity implements BaseRecyclerViewAdapte
         testAdapter.setOnItemLongClickListener(this);
     }
 
-    @OnClick(R.id.btn_test)
-    void click(View view) {
+    @Override
+    public void onClick(View v) {
         showCommonAlertDialog("这是标题", "哈这是内容这是内容这是内容这是内容这是内内容这是内容这是内容这是内内容这是内容这是内容这是内内容这是内容这是内容这是内内容这是内容这是内容这是内内容这是内容这是内容这是内内容这是内容这是内容这是内内容这是内容这是内容这是内内容这是内容这是内容这是内内容这是内容这是内容这是内内容这是内容这是内容这是内内容这是内容这是内容这是内内容这是内容这是内容这是内内容这是内容这是内容这是内内容这是内容这是内容这是内内容这是内容这是内容这是内内容这是内容这是内容这是内内容这是内容这是内容这是内内容这是内容这是内容这是内内容这是内容这是内容这是内内容这是内容这是内容这是内内容这是内容这是内容这是内内容这是内容这是内容这是内内容这是内容这是内容这是内内容这是内容这是内容这是内内容这是内容这是内容这是内内容这是内容这是内容这是内内容这是内容这是内容这是内内容这是内容这是内容这是内内容这是内容这是内容这是内内容这是内容这是内容这是内内容这是内容这是内容这是内内容这是内容这是内容这是内内容这是内容这是内容这是内内容这是内容这是内容这是内内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容哈", new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 showToastMessage("点击了确定");
             }
-        }, v -> showToastMessage("点击了取消"));
+        }, view -> showToastMessage("点击了取消"));
     }
 
     @Override
@@ -123,4 +119,5 @@ public class TestActivity extends BaseActivity implements BaseRecyclerViewAdapte
         mFootAdapter = null;
         super.onDestroy();
     }
+
 }

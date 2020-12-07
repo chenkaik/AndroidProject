@@ -1,23 +1,19 @@
 package com.example.android.project.activity;
 
-import com.android.lib.widget.NavigationBar;
 import com.example.android.project.R;
-
-import butterknife.BindView;
+import com.example.android.project.databinding.ActivityAboutBinding;
+import com.example.android.project.databinding.CommonHeadLayoutBinding;
 
 public class AboutActivity extends BaseActivity {
 
-    @BindView(R.id.navigationBar)
-    NavigationBar mNavigationBar;
-
-    @Override
-    protected int getLayoutId() {
-        return R.layout.activity_about;
-    }
+    private CommonHeadLayoutBinding mCommonHeadLayoutBinding;
 
     @Override
     protected void initView() {
-        mNavigationBar.setTitle(getResources().getString(R.string.about_title));
+        ActivityAboutBinding activityAboutBinding = ActivityAboutBinding.inflate(getLayoutInflater());
+        setContentView(activityAboutBinding.getRoot());
+        mCommonHeadLayoutBinding = activityAboutBinding.commonHead;
+        mCommonHeadLayoutBinding.navigationBar.setTitle(getResources().getString(R.string.about_title));
     }
 
     @Override

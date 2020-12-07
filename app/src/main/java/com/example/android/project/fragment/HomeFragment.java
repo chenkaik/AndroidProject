@@ -12,7 +12,6 @@ import androidx.annotation.Nullable;
 
 import com.android.lib.Logger;
 import com.android.lib.util.ScreenManager;
-import com.android.lib.widget.NavigationBar;
 import com.example.android.project.R;
 import com.example.android.project.activity.MainActivity;
 import com.example.android.project.activity.NetWorkActivity;
@@ -20,24 +19,21 @@ import com.example.android.project.activity.RegisterActivity;
 import com.example.android.project.activity.SettingActivity;
 import com.example.android.project.activity.StatusActivity;
 import com.example.android.project.activity.TestActivity;
+import com.example.android.project.databinding.CommonHeadLayoutBinding;
+import com.example.android.project.databinding.FragmentHomeBinding;
 
 import org.jetbrains.annotations.NotNull;
-
-import butterknife.BindView;
-import butterknife.OnClick;
 
 /**
  * date: 2019/3/8
  * desc: 首页
  */
-public class HomeFragment extends BaseFragment {
+public class HomeFragment extends BaseFragment implements View.OnClickListener {
 
     private static final String TAG = "HomeFragment";
-    @BindView(R.id.navigationBar)
-    NavigationBar mNavigationBar;
-//    private boolean mInitData; // 初始化数据是否加载成功
-//    private boolean mInitLayout; // 布局控件是否初始化完成
     private MainActivity mActivity;
+    private FragmentHomeBinding mFragmentHomeBinding;
+    private CommonHeadLayoutBinding mCommonHeadLayoutBinding;
 
     public static HomeFragment newInstance() {
         return new HomeFragment();
@@ -70,14 +66,21 @@ public class HomeFragment extends BaseFragment {
     }
 
     @Override
-    protected int getLayoutId() {
-        return R.layout.fragment_home;
+    protected View getLayoutView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container) {
+        mFragmentHomeBinding = FragmentHomeBinding.inflate(inflater, container, false);
+        mCommonHeadLayoutBinding = mFragmentHomeBinding.commonHead;
+        return mFragmentHomeBinding.getRoot();
     }
 
     @Override
     protected void initView() {
-        mNavigationBar.setTitle("首页");
-        mNavigationBar.hideLeftLayout();
+        mCommonHeadLayoutBinding.navigationBar.setTitle("首页");
+        mCommonHeadLayoutBinding.navigationBar.hideLeftLayout();
+        mFragmentHomeBinding.btnToRegisterPage.setOnClickListener(this);
+        mFragmentHomeBinding.btnNetwork.setOnClickListener(this);
+        mFragmentHomeBinding.btnOther.setOnClickListener(this);
+        mFragmentHomeBinding.btnStatus.setOnClickListener(this);
+        mFragmentHomeBinding.btnToSettingPage.setOnClickListener(this);
     }
 
     @Override
@@ -118,32 +121,24 @@ public class HomeFragment extends BaseFragment {
 //        }
     }
 
-    @OnClick({R.id.btn_to_register_page, R.id.btn_network, R.id.btn_other,
-            R.id.btn_status, R.id.btn_to_setting_page})
+    @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.btn_to_register_page:
-                Intent registerIntent = new Intent(getMyActivity(), RegisterActivity.class);
-                ScreenManager.getScreenManager().startPage(getMyActivity(), registerIntent, true);
-                break;
-            case R.id.btn_network:
-                Intent networkIntent = new Intent(getMyActivity(), NetWorkActivity.class);
-                ScreenManager.getScreenManager().startPage(getMyActivity(), networkIntent, true);
-                break;
-            case R.id.btn_other:
-                Intent intentOt = new Intent(getMyActivity(), TestActivity.class);
-                ScreenManager.getScreenManager().startPage(getMyActivity(), intentOt, true);
-                break;
-            case R.id.btn_status:
-                Intent statusIntent = new Intent(getMyActivity(), StatusActivity.class);
-                ScreenManager.getScreenManager().startPage(getMyActivity(), statusIntent, true);
-                break;
-            case R.id.btn_to_setting_page:
-                Intent settingIntent = new Intent(getMyActivity(), SettingActivity.class);
-                ScreenManager.getScreenManager().startPage(getMyActivity(), settingIntent, true);
-                break;
-            default:
-                break;
+        int id = v.getId();
+        if (id == R.id.btn_to_register_page) {
+            Intent registerIntent = new Intent(getMyActivity(), RegisterActivity.class);
+            ScreenManager.getScreenManager().startPage(getMyActivity(), registerIntent, true);
+        } else if (id == R.id.btn_network) {
+            Intent networkIntent = new Intent(getMyActivity(), NetWorkActivity.class);
+            ScreenManager.getScreenManager().startPage(getMyActivity(), networkIntent, true);
+        } else if (id == R.id.btn_other) {
+            Intent intentOt = new Intent(getMyActivity(), TestActivity.class);
+            ScreenManager.getScreenManager().startPage(getMyActivity(), intentOt, true);
+        } else if (id == R.id.btn_status) {
+            Intent statusIntent = new Intent(getMyActivity(), StatusActivity.class);
+            ScreenManager.getScreenManager().startPage(getMyActivity(), statusIntent, true);
+        } else {
+            Intent settingIntent = new Intent(getMyActivity(), SettingActivity.class);
+            ScreenManager.getScreenManager().startPage(getMyActivity(), settingIntent, true);
         }
     }
 

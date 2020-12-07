@@ -2,65 +2,53 @@ package com.example.android.project.activity;
 
 import android.content.Intent;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 
 import com.android.lib.util.InputTextHelper;
 import com.android.lib.util.ScreenManager;
 import com.android.lib.widget.NavigationBar;
 import com.example.android.project.R;
+import com.example.android.project.databinding.ActivityLoginBinding;
+import com.example.android.project.databinding.CommonHeadLayoutBinding;
 
-import butterknife.BindView;
-import butterknife.OnClick;
-
-public class LoginActivity extends BaseActivity {
-
-    @BindView(R.id.navigationBar)
-    NavigationBar mNavigationBar;
-    @BindView(R.id.et_login_phone)
-    EditText mPhoneView;
-    @BindView(R.id.et_login_password)
-    EditText mPasswordView;
-    @BindView(R.id.btn_login_commit)
-    Button mCommitView;
+public class LoginActivity extends BaseActivity implements View.OnClickListener {
 
     private InputTextHelper mInputTextHelper;
-
-    @Override
-    protected int getLayoutId() {
-        return R.layout.activity_login;
-    }
+    private ActivityLoginBinding mActivityLoginBinding;
 
     @Override
     protected void initView() {
-        mNavigationBar.hideLeftLayout();
-        mNavigationBar.setTitle(getResources().getString(R.string.login_text));
-        mInputTextHelper = new InputTextHelper(mCommitView);
-        mInputTextHelper.addViews(mPhoneView, mPasswordView);
+        mActivityLoginBinding = ActivityLoginBinding.inflate(getLayoutInflater());
+        setContentView(mActivityLoginBinding.getRoot());
+        CommonHeadLayoutBinding commonHeadLayoutBinding = mActivityLoginBinding.commonHead;
+        NavigationBar navigationBar = commonHeadLayoutBinding.navigationBar;
+        navigationBar.hideLeftLayout();
+        navigationBar.setTitle(getResources().getString(R.string.login_text));
+
+//        mCommitView = mActivityLoginBinding.btnLoginCommit;
+        mInputTextHelper = new InputTextHelper(mActivityLoginBinding.btnLoginCommit);
+        mInputTextHelper.addViews(mActivityLoginBinding.etLoginPhone, mActivityLoginBinding.etLoginPassword);
+        mActivityLoginBinding.tvLoginForget.setOnClickListener(this);
+        mActivityLoginBinding.btnLoginCommit.setOnClickListener(this);
     }
 
     @Override
     protected void initData() {
-        mPhoneView.setText("123");
-        mPasswordView.setText("123");
+        mActivityLoginBinding.etLoginPhone.setText("123");
+        mActivityLoginBinding.etLoginPassword.setText("123");
     }
 
-    @OnClick({R.id.tv_login_forget, R.id.btn_login_commit})
+    @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.tv_login_forget:
-                showToastMessage("忘记密码");
-                break;
-            case R.id.btn_login_commit:
+        int id = v.getId();
+        if (id == R.id.tv_login_forget){
+            showToastMessage("忘记密码");
+        }else if (id == R.id.btn_login_commit){
 //                if (mPhoneView.getText().toString().length() != 11) {
 //                    showToastMessage("手机号输入不正确");
 //                    break;
 //                }
-                Intent intent = new Intent(this, MainActivity.class);
-                ScreenManager.getScreenManager().startPage(this, intent, false);
-                break;
-            default:
-                break;
+            Intent intent = new Intent(this, MainActivity.class);
+            ScreenManager.getScreenManager().startPage(this, intent, false);
         }
     }
 

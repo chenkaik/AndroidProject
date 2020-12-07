@@ -3,63 +3,47 @@ package com.example.android.project.activity;
 import android.view.View;
 import android.widget.Toast;
 
-import com.android.lib.widget.NavigationBar;
 import com.example.android.project.R;
+import com.example.android.project.databinding.ActivityStatusBinding;
 import com.example.android.project.util.LoadStatusView;
 
-import butterknife.BindView;
-import butterknife.OnClick;
+public class StatusActivity extends BaseActivity implements LoadStatusView.OnRefreshListener, View.OnClickListener {
 
-public class StatusActivity extends BaseActivity implements LoadStatusView.OnRefreshListener {
+    private LoadStatusView mLoadStatusView;
 
-    @BindView(R.id.navigationBar)
-    NavigationBar mNavigationBar;
+    private ActivityStatusBinding mActivityStatusBinding;
 
-    @BindView(R.id.loadStatusView)
-    LoadStatusView mLoadStatusView;
-
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_status);
-//    }
-
-    @Override
-    protected int getLayoutId() {
-        return R.layout.activity_status;
-    }
 
     @Override
     protected void initView() {
-        mNavigationBar.setTitle("页面状态");
+        mActivityStatusBinding = ActivityStatusBinding.inflate(getLayoutInflater());
+        setContentView(mActivityStatusBinding.getRoot());
+        mActivityStatusBinding.commonHead.navigationBar.setTitle("页面状态");
+        mLoadStatusView = mActivityStatusBinding.loadStatusView;
         mLoadStatusView.setOnRefreshListener(this);
     }
 
     @Override
     protected void initData() {
-
+        mActivityStatusBinding.btnLoad.setOnClickListener(this);
+        mActivityStatusBinding.btnNoNet.setOnClickListener(this);
+        mActivityStatusBinding.btnLoadingFail.setOnClickListener(this);
+        mActivityStatusBinding.btnLoadingFinish.setOnClickListener(this);
     }
 
-    @OnClick({R.id.btn_load, R.id.btn_no_net, R.id.btn_loading_fail,
-            R.id.btn_loading_finish, R.id.loadStatusView})
+    @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.btn_load:
-                mLoadStatusView.setLoading();
-                break;
-            case R.id.btn_no_net:
-                mLoadStatusView.setNoNet();
-                break;
-            case R.id.btn_loading_fail:
-                mLoadStatusView.setFailRefresh();
-                break;
-            case R.id.btn_loading_finish:
-                mLoadStatusView.setHide();
-                break;
-            case R.id.loadStatusView:
-                break;
-            default:
-                break;
+        int id = v.getId();
+        if (id == R.id.btn_load){
+            mLoadStatusView.setLoading();
+        }else if (id == R.id.btn_no_net){
+            mLoadStatusView.setNoNet();
+        }else if (id == R.id.btn_loading_fail){
+            mLoadStatusView.setFailRefresh();
+        }else if (id == R.id.btn_loading_finish){
+            mLoadStatusView.setHide();
+        }else {
+
         }
     }
 

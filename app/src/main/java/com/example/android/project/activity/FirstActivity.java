@@ -8,12 +8,14 @@ import android.view.WindowManager;
 
 import com.android.lib.util.ScreenManager;
 import com.android.lib.util.SystemInfo;
-import com.example.android.project.R;
+import com.example.android.project.databinding.ActivityFirstBinding;
 
 public class FirstActivity extends BaseActivity {
 
+    private MyHandler myhandler;
+
     @Override
-    protected int getLayoutId() {
+    protected void initView() {
         // 这是一种全屏显示
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -38,16 +40,12 @@ public class FirstActivity extends BaseActivity {
         } else {
             // 9.0以下适配
         }
-        return R.layout.activity_first;
-    }
-
-    @Override
-    protected void initView() {
+        setContentView(ActivityFirstBinding.inflate(getLayoutInflater()).getRoot());
         // 5.0以上的os才支持 即Api 21以上 android:fitsSystemWindows=”true”
 //        if (SystemVersionUtil.hasLollipop()) {
 //            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
 //        }
-        MyHandler myhandler = new MyHandler();
+        myhandler = new MyHandler();
         myhandler.sendEmptyMessageDelayed(2, 2000L);
     }
 
@@ -60,16 +58,17 @@ public class FirstActivity extends BaseActivity {
     private class MyHandler extends Handler {
         @Override
         public void handleMessage(Message msg) {
-            switch (msg.what) {
-                case 2:
-                    Intent intent = new Intent(FirstActivity.this, LoginActivity.class);
-                    ScreenManager.getScreenManager().startPage(FirstActivity.this, intent, false);
-                    break;
-                default:
-                    break;
+            if (msg.what == 2){
+                Intent intent = new Intent(FirstActivity.this, LoginActivity.class);
+                ScreenManager.getScreenManager().startPage(FirstActivity.this, intent, false);
             }
             super.handleMessage(msg);
         }
     }
 
+    @Override
+    protected void onDestroy() {
+        myhandler = null;
+        super.onDestroy();
+    }
 }

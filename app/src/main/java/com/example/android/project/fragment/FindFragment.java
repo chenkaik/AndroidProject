@@ -10,13 +10,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.android.lib.Logger;
-import com.android.lib.widget.NavigationBar;
-import com.example.android.project.R;
 import com.example.android.project.activity.MainActivity;
+import com.example.android.project.databinding.CommonHeadLayoutBinding;
+import com.example.android.project.databinding.FragmentFindBinding;
 
 import org.jetbrains.annotations.NotNull;
-
-import butterknife.BindView;
 
 /**
  * date: 2019/4/12
@@ -25,11 +23,12 @@ import butterknife.BindView;
 public class FindFragment extends BaseFragment {
 
     private static final String TAG = "FindFragment";
-    @BindView(R.id.navigationBar)
-    NavigationBar mNavigationBar;
+    //    @BindView(R.id.navigationBar)
+//    NavigationBar mNavigationBar;
 //    private boolean mInitData; // 初始化数据是否加载成功
 //    private boolean mInitLayout; // 布局控件是否初始化完成
     private MainActivity mActivity;
+    private CommonHeadLayoutBinding mCommonHeadLayoutBinding;
 
     public static FindFragment newInstance() {
         return new FindFragment();
@@ -39,7 +38,7 @@ public class FindFragment extends BaseFragment {
     public void onAttach(@NotNull Context context) {
         super.onAttach(context);
         mActivity = (MainActivity) context;
-        Logger.e(TAG, "onAttach: " );
+        Logger.e(TAG, "onAttach: ");
     }
 
     @Override
@@ -56,20 +55,22 @@ public class FindFragment extends BaseFragment {
     }
 
     @Override
+    protected View getLayoutView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container) {
+        FragmentFindBinding fragmentFindBinding = FragmentFindBinding.inflate(inflater, container, false);
+        mCommonHeadLayoutBinding = fragmentFindBinding.commonHead;
+        return fragmentFindBinding.getRoot();
+    }
+
+    @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         Logger.e(TAG, "onActivityCreated: ");
     }
 
     @Override
-    protected int getLayoutId() {
-        return R.layout.fragment_find;
-    }
-
-    @Override
     protected void initView() {
-        mNavigationBar.setTitle("发现");
-        mNavigationBar.hideLeftLayout();
+        mCommonHeadLayoutBinding.navigationBar.setTitle("发现");
+        mCommonHeadLayoutBinding.navigationBar.hideLeftLayout();
     }
 
     @Override

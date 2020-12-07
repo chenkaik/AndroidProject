@@ -11,6 +11,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.example.android.project.R;
 import com.example.android.project.adapter.BaseFragmentAdapter;
+import com.example.android.project.databinding.ActivityMainBinding;
 import com.example.android.project.fragment.DataFragment;
 import com.example.android.project.fragment.FindFragment;
 import com.example.android.project.fragment.HomeFragment;
@@ -19,36 +20,38 @@ import com.google.android.material.bottomnavigation.BottomNavigationItemView;
 import com.google.android.material.bottomnavigation.BottomNavigationMenuView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import butterknife.BindView;
-
 public class MainActivity extends BaseActivity implements ViewPager.OnPageChangeListener,
         BottomNavigationView.OnNavigationItemSelectedListener {
     private static final String TAG = "MainActivity";
 
-    @BindView(R.id.vp_home_pager)
-    ViewPager mViewPager;
-    @BindView(R.id.bv_home_navigation)
-    BottomNavigationView mBottomNavigationView;
+//    @BindView(R.id.vp_home_pager)
+    private ViewPager mViewPager;
+//    @BindView(R.id.bv_home_navigation)
+//    BottomNavigationView mBottomNavigationView;
 
     private BaseFragmentAdapter<Fragment> mPagerAdapter;
     private TextView mBadgeView;
+    private ActivityMainBinding mActivityMainBinding;
 
-    @Override
-    protected int getLayoutId() {
-        return R.layout.activity_main;
-    }
+    //    @Override
+//    protected int getLayoutId() {
+//        return R.layout.activity_main;
+//    }
 
     @Override
     protected void initView() {
+        mActivityMainBinding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(mActivityMainBinding.getRoot());
+        mViewPager = mActivityMainBinding.vpHomePager;
         mViewPager.addOnPageChangeListener(this);
-        mBottomNavigationView.setItemIconTintList(null); // 不使用图标默认变色
+        mActivityMainBinding.bvHomeNavigation.setItemIconTintList(null); // 不使用图标默认变色
 //        BottomNavigationViewHelper.disableShiftMode(mBottomNavigationView);
-        mBottomNavigationView.setOnNavigationItemSelectedListener(this);
+        mActivityMainBinding.bvHomeNavigation.setOnNavigationItemSelectedListener(this);
 //        mBottomNavigationView.setItemIconSize(55); // 设置菜单项图标的大小
-        mBottomNavigationView.getMenu().getItem(1).setChecked(true);
+        mActivityMainBinding.bvHomeNavigation.getMenu().getItem(1).setChecked(true);
         // 添加角标
         // 获取整个的BottomNavigationMenuView
-        BottomNavigationMenuView menuView = (BottomNavigationMenuView) mBottomNavigationView.getChildAt(0);
+        BottomNavigationMenuView menuView = (BottomNavigationMenuView) mActivityMainBinding.bvHomeNavigation.getChildAt(0);
         // 获取所添加的Tab或者叫Menu
         View tab = menuView.getChildAt(1);
         BottomNavigationItemView itemView = (BottomNavigationItemView) tab;
@@ -68,35 +71,53 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
         mPagerAdapter.addFragment(DataFragment.newInstance());
         mPagerAdapter.addFragment(FindFragment.newInstance());
         mPagerAdapter.addFragment(UserFragment.newInstance());
-        mViewPager.setAdapter(mPagerAdapter);
-        mViewPager.setOffscreenPageLimit(mPagerAdapter.getCount()); // 限制页面数量
-        mViewPager.setCurrentItem(1);
+        mActivityMainBinding.vpHomePager.setAdapter(mPagerAdapter);
+        mActivityMainBinding.vpHomePager.setOffscreenPageLimit(mPagerAdapter.getCount()); // 限制页面数量
+        mActivityMainBinding.vpHomePager.setCurrentItem(1);
     }
 
+
+    //    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-        switch (menuItem.getItemId()) {
-            case R.id.menu_home:
-//                Logger.e(TAG, "onNavigationItemSelected: 首页");
-                //mViewPager.setCurrentItem(0);
-                //mViewPager.setCurrentItem(0, false);
-                // 如果切换的是相邻之间的 Item 就显示切换动画，如果不是则不要动画
-                mViewPager.setCurrentItem(0, mViewPager.getCurrentItem() == 1);
-                return true;
-            case R.id.home_data:
-//                Logger.e(TAG, "onNavigationItemSelected: 数据");
-                mViewPager.setCurrentItem(1, mViewPager.getCurrentItem() == 0 || mViewPager.getCurrentItem() == 2);
-                return true;
-            case R.id.home_find:
-//                Logger.e(TAG, "onNavigationItemSelected: 个人中心");
-                mViewPager.setCurrentItem(2, mViewPager.getCurrentItem() == 1 || mViewPager.getCurrentItem() == 3);
-//                mViewPager.setCurrentItem(2, mViewPager.getCurrentItem() == 1);
-                return true;
-            case R.id.home_me:
-                mViewPager.setCurrentItem(3, mViewPager.getCurrentItem() == 2);
-                return true;
+//        switch (menuItem.getItemId()) {
+//            case R.id.menu_home:
+////                Logger.e(TAG, "onNavigationItemSelected: 首页");
+//                //mViewPager.setCurrentItem(0);
+//                //mViewPager.setCurrentItem(0, false);
+//                // 如果切换的是相邻之间的 Item 就显示切换动画，如果不是则不要动画
+//                mActivityMainBinding.vpHomePager.setCurrentItem(0, mActivityMainBinding.vpHomePager.getCurrentItem() == 1);
+//                return true;
+//            case R.id.home_data:
+////                Logger.e(TAG, "onNavigationItemSelected: 数据");
+//                mActivityMainBinding.vpHomePager.setCurrentItem(1, mActivityMainBinding.vpHomePager.getCurrentItem() == 0 || mActivityMainBinding.vpHomePager.getCurrentItem() == 2);
+//                return true;
+//            case R.id.home_find:
+////                Logger.e(TAG, "onNavigationItemSelected: 个人中心");
+//                mActivityMainBinding.vpHomePager.setCurrentItem(2, mActivityMainBinding.vpHomePager.getCurrentItem() == 1 || mActivityMainBinding.vpHomePager.getCurrentItem() == 3);
+////                mViewPager.setCurrentItem(2, mViewPager.getCurrentItem() == 1);
+//                return true;
+//            case R.id.home_me:
+//                mActivityMainBinding.vpHomePager.setCurrentItem(3, mActivityMainBinding.vpHomePager.getCurrentItem() == 2);
+//                return true;
+//        }
+//        return false;
+        int itemId = menuItem.getItemId();
+        if (itemId == R.id.menu_home) {
+            mActivityMainBinding.vpHomePager.setCurrentItem(0, mActivityMainBinding.vpHomePager.getCurrentItem() == 1);
+            return true;
+        } else if (itemId == R.id.home_data) {
+            mActivityMainBinding.vpHomePager.setCurrentItem(1, mActivityMainBinding.vpHomePager.getCurrentItem() == 0 || mActivityMainBinding.vpHomePager.getCurrentItem() == 2);
+            return true;
+        } else if (itemId == R.id.home_find) {
+            mActivityMainBinding.vpHomePager.setCurrentItem(2, mActivityMainBinding.vpHomePager.getCurrentItem() == 1 || mActivityMainBinding.vpHomePager.getCurrentItem() == 3);
+            return true;
+        } else if (itemId == R.id.home_me) {
+            mActivityMainBinding.vpHomePager.setCurrentItem(3, mActivityMainBinding.vpHomePager.getCurrentItem() == 2);
+            return true;
+        } else {
+            return false;
         }
-        return false;
     }
 
     @Override
@@ -108,18 +129,18 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
         switch (position) {
             case 0:
 //                Logger.e(TAG, "onPageSelected: 首页");
-                mBottomNavigationView.setSelectedItemId(R.id.menu_home);
+                mActivityMainBinding.bvHomeNavigation.setSelectedItemId(R.id.menu_home);
                 break;
             case 1:
 //                Logger.e(TAG, "onPageSelected: 数据");
-                mBottomNavigationView.setSelectedItemId(R.id.home_data);
+                mActivityMainBinding.bvHomeNavigation.setSelectedItemId(R.id.home_data);
                 break;
             case 2:
 //                Logger.e(TAG, "onPageSelected: 个人中心");
-                mBottomNavigationView.setSelectedItemId(R.id.home_find);
+                mActivityMainBinding.bvHomeNavigation.setSelectedItemId(R.id.home_find);
                 break;
             case 3:
-                mBottomNavigationView.setSelectedItemId(R.id.home_me);
+                mActivityMainBinding.bvHomeNavigation.setSelectedItemId(R.id.home_me);
                 break;
             default:
                 break;
@@ -132,9 +153,9 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
 
     @Override
     protected void onDestroy() {
-        mViewPager.removeOnPageChangeListener(this);
-        mViewPager.setAdapter(null);
-        mBottomNavigationView.setOnNavigationItemSelectedListener(null);
+        mActivityMainBinding.vpHomePager.removeOnPageChangeListener(this);
+        mActivityMainBinding.vpHomePager.setAdapter(null);
+        mActivityMainBinding.bvHomeNavigation.setOnNavigationItemSelectedListener(null);
         mPagerAdapter = null;
         super.onDestroy();
     }

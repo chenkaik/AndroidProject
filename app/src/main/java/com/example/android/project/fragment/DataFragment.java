@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.android.lib.Logger;
-import com.example.android.project.R;
+import com.example.android.project.databinding.FragmentDataBinding;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -37,7 +37,7 @@ public class DataFragment extends BaseFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Logger.e(TAG, "onCreate: " );
+        Logger.e(TAG, "onCreate: ");
     }
 
     @Nullable
@@ -48,14 +48,15 @@ public class DataFragment extends BaseFragment {
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        Logger.e(TAG, "onActivityCreated: ");
+    protected View getLayoutView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container) {
+        FragmentDataBinding fragmentDataBinding = FragmentDataBinding.inflate(inflater, container, false);
+        return fragmentDataBinding.getRoot();
     }
 
     @Override
-    protected int getLayoutId() {
-        return R.layout.fragment_data;
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        Logger.e(TAG, "onActivityCreated: ");
     }
 
     @Override

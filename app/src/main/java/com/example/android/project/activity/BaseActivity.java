@@ -16,15 +16,12 @@ import com.android.lib.listener.PermissionListener;
 import com.android.lib.util.CommonHelp;
 import com.android.lib.util.NetworkUtil;
 import com.android.lib.util.ScreenManager;
+import com.android.lib.util.ToastUtil;
 import com.example.android.project.CommonApplication;
 import com.example.android.project.R;
-import com.android.lib.util.ToastUtil;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 
 /**
  * date: 2019/2/11
@@ -33,7 +30,6 @@ import butterknife.Unbinder;
 public abstract class BaseActivity extends AppCompatActivity {
 
     private CommonHelp mCommonHelp;
-    private Unbinder mButterKnife; // View注解
     private PermissionListener mPermissionListener;
     private long mExitTime = 0; // 记录退出按下时间
 
@@ -49,22 +45,14 @@ public abstract class BaseActivity extends AppCompatActivity {
 //        }
 //        DisplayCutoutDemo displayCutoutDemo = new DisplayCutoutDemo(this);
 //        displayCutoutDemo.openFullScreenModel();
-        setContentView(getLayoutId());
-        init();
+//        setContentView(getLayoutId());
+        mCommonHelp = new CommonHelp(this);
         initView();
         initData();
     }
 
-    /**
-     * 初始化
-     */
-    private void init() {
-        mButterKnife = ButterKnife.bind(this);
-        mCommonHelp = new CommonHelp(this);
-    }
-
     // 引入布局
-    protected abstract int getLayoutId();
+//    protected abstract int getLayoutId();
 
     // 初始化控件
     protected abstract void initView();
@@ -226,9 +214,6 @@ public abstract class BaseActivity extends AppCompatActivity {
      */
     private void release() {
         mCommonHelp = null;
-        if (mButterKnife != null) {
-            mButterKnife.unbind();
-        }
     }
 
 }

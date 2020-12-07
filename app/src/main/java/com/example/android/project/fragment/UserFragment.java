@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.android.lib.Logger;
-import com.example.android.project.R;
+import com.example.android.project.databinding.FragmentUserBinding;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -48,14 +48,15 @@ public class UserFragment extends BaseFragment {
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        Logger.e(TAG, "onActivityCreated: ");
+    protected View getLayoutView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container) {
+        FragmentUserBinding fragmentUserBinding = FragmentUserBinding.inflate(inflater, container, false);
+        return fragmentUserBinding.getRoot();
     }
 
     @Override
-    protected int getLayoutId() {
-        return R.layout.fragment_user;
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        Logger.e(TAG, "onActivityCreated: ");
     }
 
     @Override
