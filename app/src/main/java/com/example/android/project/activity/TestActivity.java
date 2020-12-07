@@ -93,7 +93,7 @@ public class TestActivity extends BaseActivity implements BaseRecyclerViewAdapte
     public void onItemClick(RecyclerView.Adapter<?> adapter, View v, int position) {
         showToastMessage("点击了 " + list.get(position).getName());
     }
-    
+
     @Override
     public void onItemLongClick(RecyclerView.Adapter<?> adapter, View v, int position) {
         showToastMessage("长按了 " + list.get(position).getName());
