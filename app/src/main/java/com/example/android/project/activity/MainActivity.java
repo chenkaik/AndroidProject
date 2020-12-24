@@ -24,19 +24,10 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
         BottomNavigationView.OnNavigationItemSelectedListener {
     private static final String TAG = "MainActivity";
 
-//    @BindView(R.id.vp_home_pager)
     private ViewPager mViewPager;
-//    @BindView(R.id.bv_home_navigation)
-//    BottomNavigationView mBottomNavigationView;
-
     private BaseFragmentAdapter<Fragment> mPagerAdapter;
     private TextView mBadgeView;
     private ActivityMainBinding mActivityMainBinding;
-
-    //    @Override
-//    protected int getLayoutId() {
-//        return R.layout.activity_main;
-//    }
 
     @Override
     protected void initView() {
@@ -77,7 +68,6 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
     }
 
 
-    //    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
 //        switch (menuItem.getItemId()) {
