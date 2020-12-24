@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -55,7 +56,7 @@ public class FindFragment extends BaseFragment {
     }
 
     @Override
-    protected View getLayoutView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container) {
+    protected View getLayoutView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         FragmentFindBinding fragmentFindBinding = FragmentFindBinding.inflate(inflater, container, false);
         mCommonHeadLayoutBinding = fragmentFindBinding.commonHead;
         return fragmentFindBinding.getRoot();
@@ -77,6 +78,11 @@ public class FindFragment extends BaseFragment {
     protected void initData() {
 //        mInitLayout = true;
 //        initLoadData();
+    }
+
+    @Override
+    protected void loadData() {
+        Toast.makeText(mActivity, "发现第一次加载", Toast.LENGTH_SHORT).show();
     }
 
 //    private void initLoadData() {

@@ -5,11 +5,13 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.android.lib.Logger;
+import com.example.android.project.activity.MainActivity;
 import com.example.android.project.databinding.FragmentDataBinding;
 
 import org.jetbrains.annotations.NotNull;
@@ -21,8 +23,9 @@ import org.jetbrains.annotations.NotNull;
 public class DataFragment extends BaseFragment {
 
     private static final String TAG = "DataFragment";
-//    private boolean mInitData; // 初始化数据是否加载成功
+    //    private boolean mInitData; // 初始化数据是否加载成功
 //    private boolean mInitLayout; // 布局控件是否初始化完成
+    private MainActivity mActivity;
 
     public static DataFragment newInstance() {
         return new DataFragment();
@@ -31,6 +34,7 @@ public class DataFragment extends BaseFragment {
     @Override
     public void onAttach(@NotNull Context context) {
         super.onAttach(context);
+        mActivity = (MainActivity) context;
         Logger.e(TAG, "onAttach: ");
     }
 
@@ -48,7 +52,7 @@ public class DataFragment extends BaseFragment {
     }
 
     @Override
-    protected View getLayoutView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container) {
+    protected View getLayoutView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         FragmentDataBinding fragmentDataBinding = FragmentDataBinding.inflate(inflater, container, false);
         return fragmentDataBinding.getRoot();
     }
@@ -68,6 +72,11 @@ public class DataFragment extends BaseFragment {
     protected void initData() {
 //        mInitLayout = true;
 //        initLoadData();
+    }
+
+    @Override
+    protected void loadData() {
+        Toast.makeText(getMyActivity(), "数据页第一次加载", Toast.LENGTH_SHORT).show();
     }
 
 //    private void initLoadData() {
@@ -140,6 +149,10 @@ public class DataFragment extends BaseFragment {
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
         Logger.e(TAG, "onHiddenChanged= " + hidden);
+    }
+
+    private MainActivity getMyActivity() {
+        return mActivity == null ? (MainActivity) getActivity() : mActivity;
     }
 
 }

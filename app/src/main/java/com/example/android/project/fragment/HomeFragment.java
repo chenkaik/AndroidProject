@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -66,7 +67,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     }
 
     @Override
-    protected View getLayoutView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container) {
+    protected View getLayoutView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mFragmentHomeBinding = FragmentHomeBinding.inflate(inflater, container, false);
         mCommonHeadLayoutBinding = mFragmentHomeBinding.commonHead;
         return mFragmentHomeBinding.getRoot();
@@ -87,6 +88,11 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     protected void initData() {
 //        mInitLayout = true;
 //        initLoadData();
+    }
+
+    @Override
+    protected void loadData() {
+        Toast.makeText(mActivity, "首页第一次加载", Toast.LENGTH_SHORT).show();
     }
 
 //    private void initLoadData() {
@@ -119,6 +125,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
 //        if (isVisibleToUser) {
 //            initLoadData();
 //        }
+        Logger.e(TAG, "setUserVisibleHint: 执行了" + isVisibleToUser);
     }
 
     @Override

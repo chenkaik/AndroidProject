@@ -15,23 +15,38 @@ import androidx.fragment.app.Fragment;
  */
 public abstract class BaseFragment extends Fragment {
 
-    private boolean isFirstLoad = true; // 是否第一次加载
+    private boolean isOk = false; // 是否完成View初始化
+    private boolean isFirst = true; // 是否为第一次加载
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return getLayoutView(inflater, container);
+        return getLayoutView(inflater, container, savedInstanceState);
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
         initView();
         initData();
+        isOk = true; // 完成initView后改变view的初始化状态为完成
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        initLoadData(); // 在onResume中进行数据懒加载
+    }
+
+    private void initLoadData() {
+        if (isOk && isFirst) { // 加载数据时判断是否完成view的初始化，以及是不是第一次加载此数据
+            loadData();
+            isFirst = false; // 加载第一次数据后改变状态，后续不再重复加载
+        }
     }
 
     // 引入布局
-    protected abstract View getLayoutView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container);
+    protected abstract View getLayoutView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState);
 
     // 初始化控件
     protected abstract void initView();
@@ -39,19 +54,7 @@ public abstract class BaseFragment extends Fragment {
     // 初始化数据
     protected abstract void initData();
 
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        if (isFirstLoad) {
-            isFirstLoad = false;
-        }
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        isFirstLoad = true;
-    }
+    // 子fragment实现懒加载的方法
+    protected abstract void loadData();
 
 }
