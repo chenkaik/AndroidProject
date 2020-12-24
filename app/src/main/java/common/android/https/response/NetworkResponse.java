@@ -4,13 +4,13 @@ package common.android.https.response;
  * date: 2019/1/30
  * desc: 请求数据(返回解析好的数据直接使用,适用于retrofit请求)的回调接口
  */
-public interface NetworkResponse<T extends BaseResponse> {
+public interface NetworkResponse {
     /**
      * 服务器返回成功回调
      *
      * @param response 网络请求返信息
      */
-    void onDataReady(T response);
+    void onDataReady(BaseResponse response);
 
     /**
      * 失败回调

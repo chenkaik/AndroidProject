@@ -9,7 +9,6 @@ import com.android.lib.util.NetErrStringUtils;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
-import java.util.Iterator;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
@@ -41,7 +40,7 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 public class NetWorkRequest {
 
     private static final String TA = NetWorkRequest.class.getSimpleName();
-    private Map<String, Map<Integer, Call>> mRequestMap = new ConcurrentHashMap<>();
+    private final Map<String, Map<Integer, Call<?>>> mRequestMap = new ConcurrentHashMap<>();
     private Retrofit mRetrofit;
     private OkHttpClient mOkHttpClient;
     public static Handler mHandler = new Handler(Looper.getMainLooper());
@@ -105,7 +104,7 @@ public class NetWorkRequest {
      * @param isShow           是否显示加载框
      * @param <T>              泛型类型
      */
-    public <T extends BaseResponse> void asyncNetWork(final String TAG, final int requestCode, final Call<T> requestCall, final NetworkResponse<T> responseListener, final boolean isShow) {
+    public <T extends BaseResponse> void asyncNetWork(final String TAG, final int requestCode, final Call<T> requestCall, final NetworkResponse responseListener, final boolean isShow) {
         if (responseListener == null) {
             return;
         }
@@ -169,7 +168,7 @@ public class NetWorkRequest {
      * @param isShow           是否显示加载框
      * @param <T>              泛型类型
      */
-    public <T extends BaseResponse> void syncNetWork(final String TAG, final int requestCode, final Call<T> requestCall, final NetworkResponse<T> responseListener, boolean isShow) {
+    public <T extends BaseResponse> void syncNetWork(final String TAG, final int requestCode, final Call<T> requestCall, final NetworkResponse responseListener, boolean isShow) {
         if (responseListener == null) {
             return;
         }
@@ -214,12 +213,12 @@ public class NetWorkRequest {
      * @param TAG  tag
      * @param call call
      */
-    private void addCall(String TAG, Integer code, Call call) {
+    private void addCall(String TAG, Integer code, Call<?> call) {
         if (TAG == null) {
             return;
         }
         if (mRequestMap.get(TAG) == null) {
-            Map<Integer, Call> map = new ConcurrentHashMap<>();
+            Map<Integer, Call<?>> map = new ConcurrentHashMap<>();
             map.put(code, call);
             mRequestMap.put(TAG, map);
         } else {
@@ -246,16 +245,14 @@ public class NetWorkRequest {
         if (TAG == null) {
             return false;
         }
-        Map<Integer, Call> map = mRequestMap.get(TAG);
+        Map<Integer, Call<?>> map = mRequestMap.get(TAG);
         if (map == null) {
             return false;
         }
         if (code == null) {
             // 取消整个context请求
-            Iterator iterator = map.keySet().iterator();
-            while (iterator.hasNext()) {
-                Integer key = (Integer) iterator.next();
-                Call call = map.get(key);
+            for (Integer key : map.keySet()) {
+                Call<?> call = map.get(key);
                 if (call == null) {
                     continue;
                 }
@@ -266,7 +263,7 @@ public class NetWorkRequest {
         } else {
             // 取消一个请求
             if (map.containsKey(code)) {
-                Call call = map.get(code);
+                Call<?> call = map.get(code);
                 if (call != null) {
                     call.cancel();
                 }
