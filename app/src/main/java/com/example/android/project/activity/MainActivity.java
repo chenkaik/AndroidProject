@@ -24,17 +24,16 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
         BottomNavigationView.OnNavigationItemSelectedListener {
     private static final String TAG = "MainActivity";
 
-    private ViewPager mViewPager;
+//    private ViewPager mViewPager;
     private BaseFragmentAdapter<Fragment> mPagerAdapter;
-    private TextView mBadgeView;
+//    private TextView mBadgeView;
     private ActivityMainBinding mActivityMainBinding;
 
     @Override
     protected void initView() {
         mActivityMainBinding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(mActivityMainBinding.getRoot());
-        mViewPager = mActivityMainBinding.vpHomePager;
-        mViewPager.addOnPageChangeListener(this);
+        mActivityMainBinding.vpHomePager.addOnPageChangeListener(this);
         mActivityMainBinding.bvHomeNavigation.setItemIconTintList(null); // 不使用图标默认变色
 //        BottomNavigationViewHelper.disableShiftMode(mBottomNavigationView);
         mActivityMainBinding.bvHomeNavigation.setOnNavigationItemSelectedListener(this);
@@ -50,8 +49,8 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
         View badge = LayoutInflater.from(this).inflate(R.layout.badge_layout, menuView, false);
         // 添加到Tab上
         itemView.addView(badge);
-        mBadgeView = badge.findViewById(R.id.badge_number);
-        mBadgeView.setText("99+");
+        TextView badgeView = badge.findViewById(R.id.badge_number);
+        badgeView.setText("99+");
 //        mBadgeView.setVisibility(View.GONE);
     }
 
