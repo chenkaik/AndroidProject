@@ -9,8 +9,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 /**
- * date: 2019/1/30
- * desc: banner使用的baseAdapter
+ * @author: chen_kai
+ * @date：2019/1/30
+ * @desc：banner使用的baseAdapter
  */
 public abstract class BaseBannerAdapter<VH extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     protected List<Integer> mUrlList;
@@ -35,10 +36,10 @@ public abstract class BaseBannerAdapter<VH extends RecyclerView.ViewHolder> exte
      * @return ImgHolder
      */
     protected abstract VH createCustomViewHolder(ViewGroup parent, int viewType);
-
-
+    
+    @SuppressWarnings("unchecked")
     @Override
-    public final void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public final void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         bindCustomViewHolder((VH) holder, position);
     }
 

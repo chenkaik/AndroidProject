@@ -32,8 +32,9 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 /**
- * date: 2019/1/30
- * desc: RecyclerView实现banner
+ * @author: chen_kai
+ * @date：2019/1/30
+ * @desc：RecyclerView实现banner
  */
 public abstract class RecyclerViewBannerBaseView<L extends RecyclerView.LayoutManager, A extends BaseBannerAdapter> extends FrameLayout {
     protected int autoPlayDuration; // 刷新间隔时间
@@ -406,12 +407,40 @@ public abstract class RecyclerViewBannerBaseView<L extends RecyclerView.LayoutMa
         return false;
     }
 
+    /**
+     * Banner的滑动
+     *
+     * @param recyclerView re
+     * @param dx           x
+     * @param dy           y
+     */
     protected abstract void onBannerScrolled(RecyclerView recyclerView, int dx, int dy);
 
+    /**
+     * Banner的滑动改变监听
+     *
+     * @param recyclerView re
+     * @param newState     status
+     */
     protected abstract void onBannerScrollStateChanged(RecyclerView recyclerView, int newState);
 
+    /**
+     * layoutManager
+     *
+     * @param context     上下文
+     * @param orientation 方向
+     * @return 具体的实现类
+     */
     protected abstract L getLayoutManager(Context context, int orientation);
 
+    /**
+     * 获取adapter
+     *
+     * @param context                   上下文
+     * @param list                      数据
+     * @param onBannerItemClickListener 点击事件监听
+     * @return 具体的实现类
+     */
     protected abstract A getAdapter(Context context, List<Integer> list, OnBannerItemClickListener onBannerItemClickListener);
 
 }

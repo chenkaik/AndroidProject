@@ -7,18 +7,20 @@ import android.widget.ImageView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.lib.Logger;
 import com.android.lib.util.ImageLoader;
 
 import java.util.List;
 
 /**
- * date: 2019/1/30
- * desc: banner使用的adapter
+ * @author: chen_kai
+ * @date：2019/1/30
+ * @desc：banner使用的adapter
  */
 public class BannerRecyclerAdapter extends BaseBannerAdapter<BannerRecyclerAdapter.NormalHolder> {
     private static final String TAG = "BannerRecyclerAdapter";
 
-    private RecyclerViewBannerBaseView.OnBannerItemClickListener onBannerItemClickListener;
+    private final RecyclerViewBannerBaseView.OnBannerItemClickListener onBannerItemClickListener;
 
     public BannerRecyclerAdapter(Context context, List<Integer> urlList, RecyclerViewBannerBaseView.OnBannerItemClickListener onBannerItemClickListener) {
         super(context, urlList);
@@ -27,13 +29,13 @@ public class BannerRecyclerAdapter extends BaseBannerAdapter<BannerRecyclerAdapt
 
     @Override
     protected BannerRecyclerAdapter.NormalHolder createCustomViewHolder(ViewGroup parent, int viewType) {
-//        Logger.e(TAG, "createCustomViewHolder: " + viewType);
+        Logger.e(TAG, "createCustomViewHolder: " + viewType);
         return new NormalHolder(new ImageView(mContext));
     }
 
     @Override
     public void bindCustomViewHolder(NormalHolder holder, final int position) {
-//        Logger.e(TAG, "bindCustomViewHolder: " + position);
+        Logger.e(TAG, "bindCustomViewHolder: " + position);
         if (mUrlList == null || mUrlList.isEmpty()) {
             return;
         }
