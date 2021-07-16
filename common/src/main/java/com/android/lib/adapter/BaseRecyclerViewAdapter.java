@@ -13,12 +13,12 @@ import com.android.lib.Logger;
 import java.util.ArrayList;
 import java.util.List;
 
-
 /**
- * date: 2019/1/30
- * desc: RecyclerView adapter基类
+ * @author: chen_kai
+ * @date：2019/1/30
+ * @desc：RecyclerView adapter基类
  * 封装了数据集合以及ItemView的点击事件回调,同时暴露 {@link #onBindData(RecyclerViewHolder, Object, int)}
- * 用于数据与view绑定
+ * * 用于数据与view绑定
  */
 public abstract class BaseRecyclerViewAdapter<T> extends RecyclerView.Adapter<RecyclerViewHolder> implements View.OnClickListener, View.OnLongClickListener {
 
@@ -28,7 +28,10 @@ public abstract class BaseRecyclerViewAdapter<T> extends RecyclerView.Adapter<Re
     private int mLayoutId;
     private OnItemClickListener mListener;
     private OnItemLongClickListener mLongListener;
-    protected OnViewClickListener mOnViewClickListener; // item子view点击事件
+    /**
+     * item子view点击事件
+     */
+    protected OnViewClickListener mOnViewClickListener;
 
     public BaseRecyclerViewAdapter(Context context, List<T> data, int layoutId) {
         init(context, data, layoutId);
@@ -52,8 +55,10 @@ public abstract class BaseRecyclerViewAdapter<T> extends RecyclerView.Adapter<Re
         this.mLayoutId = layoutId;
     }
 
-    // @Nullable 表示定义的字段可以为空.
-    // @NonNull指明一个参数，字段或者方法的返回值不可以为null
+    /**
+     * @Nullable 表示定义的字段可以为空.
+     * @NonNull指明一个参数，字段或者方法的返回值不可以为null
+     */
     @NonNull
     @Override
     public RecyclerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -70,8 +75,9 @@ public abstract class BaseRecyclerViewAdapter<T> extends RecyclerView.Adapter<Re
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerViewHolder holder, int position) {
-//        Logger.e(TAG,"onBindViewHolder " + position);
-        holder.itemView.setTag(position); // 点击事件的位置
+        Logger.e(TAG, "onBindViewHolder " + position);
+        // 点击事件的位置
+        holder.itemView.setTag(position);
         T bean = mData.get(position);
         onBindData(holder, bean, position);
     }
@@ -107,28 +113,39 @@ public abstract class BaseRecyclerViewAdapter<T> extends RecyclerView.Adapter<Re
 
     /**
      * 数据绑定，由实现类实现
+     *
+     * @param holder   ViewHolder
+     * @param bean     当前的对象
+     * @param position 当前对象在集合里的位置
      */
     protected abstract void onBindData(RecyclerViewHolder holder, T bean, int position);
 
-    /**
-     * item点击监听器
-     */
     public interface OnItemClickListener {
+        /**
+         * item点击监听器
+         *
+         * @param adapter  当前的adapter
+         * @param v        view
+         * @param position item的position
+         */
         void onItemClick(RecyclerView.Adapter<?> adapter, View v, int position);
     }
 
-    /**
-     * item长按监听器
-     */
     public interface OnItemLongClickListener {
+        /**
+         * item长按监听器
+         *
+         * @param adapter  当前的adapter
+         * @param v        view
+         * @param position item的position
+         */
         void onItemLongClick(RecyclerView.Adapter<?> adapter, View v, int position);
     }
 
-    /**
-     * item中子view的点击事件（回调）
-     */
     public interface OnViewClickListener {
         /**
+         * item中子view的点击事件（回调）
+         *
          * @param position item position
          * @param type     点击的view的类型，调用时根据不同的view传入不同的值加以区分
          */

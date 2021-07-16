@@ -11,16 +11,35 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * date: 2019/1/30
- * desc: 封装的基类adapter
+ * @author: chen_kai
+ * @date：2019/1/30
+ * @desc：封装的基类adapter
  */
 public class RecyclerViewBaseAdapter<T, VH extends RecyclerViewHolder> extends RecyclerView.Adapter<VH> {
-    public Context mContext; // 上下文
-    public List<T> mData; // 数据源
+    /**
+     * 上下文
+     */
+    public Context mContext;
+    /**
+     * 数据源
+     */
+    public List<T> mData;
+    /**
+     * 布局加载
+     */
     private LayoutInflater mInflater;
-    private OnItemClickListener mOnItemClickListener; // item点击事件
-    private OnItemLongClickListener mOnItemLongClickListener; // item长按事件
-    private OnViewClickListener mOnViewClickListener; // item子view点击事件
+    /**
+     * item点击事件
+     */
+    private OnItemClickListener mOnItemClickListener;
+    /**
+     * item长按事件
+     */
+    private OnItemLongClickListener mOnItemLongClickListener;
+    /**
+     * item子view点击事件
+     */
+    private OnViewClickListener mOnViewClickListener;
 
     /**
      * 默认构造方法
@@ -97,10 +116,12 @@ public class RecyclerViewBaseAdapter<T, VH extends RecyclerViewHolder> extends R
         return mData.size();
     }
 
-    /**
-     * item点击事件
-     */
     public interface OnItemClickListener {
+        /**
+         * item点击事件
+         *
+         * @param position item的position
+         */
         void onItemClick(int position);
     }
 
@@ -113,10 +134,12 @@ public class RecyclerViewBaseAdapter<T, VH extends RecyclerViewHolder> extends R
         this.mOnItemClickListener = onItemClickListener;
     }
 
-    /**
-     * item长按事件
-     */
     public interface OnItemLongClickListener {
+        /**
+         * item长按事件
+         *
+         * @param position item的position
+         */
         void onItemLongClick(int position);
     }
 
@@ -129,11 +152,10 @@ public class RecyclerViewBaseAdapter<T, VH extends RecyclerViewHolder> extends R
         this.mOnItemLongClickListener = onItemLongClickListener;
     }
 
-    /**
-     * item中子view的点击事件（回调）
-     */
     public interface OnViewClickListener {
         /**
+         * item中子view的点击事件（回调）
+         *
          * @param position item position
          * @param type     点击的view的类型，调用时根据不同的view传入不同的值加以区分
          */

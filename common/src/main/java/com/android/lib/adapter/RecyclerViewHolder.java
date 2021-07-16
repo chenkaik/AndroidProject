@@ -8,13 +8,14 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 /**
- * date: 2019/1/30
- * desc: recyclerView公用的ViewHolder
+ * @author: chen_kai
+ * @date：2019/1/30
+ * @desc：recyclerView公用的ViewHolder
  */
 public class RecyclerViewHolder extends RecyclerView.ViewHolder {
 
-    private SparseArray<View> mViews;
-    private View mConvertView;
+    private final SparseArray<View> mViews;
+    private final View mConvertView;
 
     public RecyclerViewHolder(View itemView) {
         super(itemView);
@@ -29,6 +30,7 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder {
      * @param <K> k
      * @return 控件
      */
+    @SuppressWarnings("unchecked")
     public <K extends View> K findView(int id) {
         return (K) itemView.findViewById(id);
     }
@@ -40,6 +42,7 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder {
      * @param <T>    控件
      * @return 控件
      */
+    @SuppressWarnings("unchecked")
     public <T extends View> T getView(int viewId) {
         View view = mViews.get(viewId);
         if (view == null) {

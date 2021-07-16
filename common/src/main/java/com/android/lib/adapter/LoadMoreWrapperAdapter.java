@@ -13,31 +13,47 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.common.R;
 
-
 /**
- * date: 2019/1/30
- * desc: 封装上拉加载更多adapter
+ * @author: chen_kai
+ * @date：2019/1/30
+ * @desc：封装上拉加载更多adapter
  */
 public class LoadMoreWrapperAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private static final String TAG = "LoadMoreWrapperAdapter";
 
     private RecyclerView.Adapter adapter;
-    // HeadView
+    /**
+     * HeadView
+     */
     private View mHeaderView;
-    // 头布局
+    /**
+     * 头布局
+     */
     private final int TYPE_HEADER = 0;
-    // 普通布局
+    /**
+     * 普通布局
+     */
     private final int TYPE_ITEM = 1;
-    // 脚布局
+    /**
+     * 脚布局
+     */
     private final int TYPE_FOOTER = 2;
-    // 正在加载
+    /**
+     * 正在加载
+     */
     private final int LOADING = 1;
-    // 加载完成
+    /**
+     * 加载完成
+     */
     private final int LOADING_COMPLETE = 2;
-    // 加载到底
+    /**
+     * 加载到底
+     */
     private final int LOADING_END = 3;
-    // 当前加载状态，默认为加载完成
+    /**
+     * 当前加载状态，默认为加载完成
+     */
     private int loadState = 2;
 
     public LoadMoreWrapperAdapter(RecyclerView.Adapter adapter) {
@@ -46,16 +62,20 @@ public class LoadMoreWrapperAdapter extends RecyclerView.Adapter<RecyclerView.Vi
 
     public void addHeaderView(View headerView) {
         this.mHeaderView = headerView;
-        notifyItemInserted(0); // 通知增加单条数据
+        // 通知增加单条数据
+        notifyItemInserted(0);
     }
 
     @Override
     public int getItemViewType(int position) {
-        if (mHeaderView != null && position == 0) { // 第一个item设置为HeadView
+        if (mHeaderView != null && position == 0) {
+            // 第一个item设置为HeadView
             return TYPE_HEADER;
-        } else if (position + 1 == getItemCount()) { // 最后一个item设置为FooterView
+        } else if (position + 1 == getItemCount()) {
+            // 最后一个item设置为FooterView
             return TYPE_FOOTER;
-        } else { // 普通View
+        } else {
+            // 普通View
             return TYPE_ITEM;
         }
     }
@@ -82,21 +102,24 @@ public class LoadMoreWrapperAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         } else if (holder instanceof FootViewHolder) {
             FootViewHolder footViewHolder = (FootViewHolder) holder;
             switch (loadState) {
-                case LOADING: // 正在加载
+                // 正在加载
+                case LOADING:
                     footViewHolder.pbLoading.setVisibility(View.VISIBLE);
                     footViewHolder.tvLoading.setVisibility(View.VISIBLE);
                     footViewHolder.llEnd.setVisibility(View.GONE);
                     break;
-                case LOADING_COMPLETE: // 加载完成
+                // 加载完成
+                case LOADING_COMPLETE:
                     footViewHolder.pbLoading.setVisibility(View.INVISIBLE);
                     footViewHolder.tvLoading.setVisibility(View.INVISIBLE);
                     footViewHolder.llEnd.setVisibility(View.GONE);
                     break;
-                case LOADING_END: // 加载到底
+                // 加载到底
+                case LOADING_END:
                     footViewHolder.pbLoading.setVisibility(View.GONE);
                     footViewHolder.tvLoading.setVisibility(View.GONE);
                     footViewHolder.llEnd.setVisibility(View.VISIBLE);
-//                    footViewHolder.llEnd.setVisibility(View.GONE);
+                    // footViewHolder.llEnd.setVisibility(View.GONE);
                     break;
                 default:
                     break;
@@ -111,7 +134,7 @@ public class LoadMoreWrapperAdapter extends RecyclerView.Adapter<RecyclerView.Vi
 
     @Override
     public int getItemCount() {
-        //return adapter.getItemCount() + 1;
+        // return adapter.getItemCount() + 1;
         return mHeaderView != null ? adapter.getItemCount() + 2 : adapter.getItemCount() + 1;
     }
 
@@ -119,13 +142,14 @@ public class LoadMoreWrapperAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     public void onAttachedToRecyclerView(@NonNull RecyclerView recyclerView) {
         super.onAttachedToRecyclerView(recyclerView);
         RecyclerView.LayoutManager manager = recyclerView.getLayoutManager();
-        if (manager instanceof GridLayoutManager) { // 首先判断当前是否为网格布局
+        // 首先判断当前是否为网格布局
+        if (manager instanceof GridLayoutManager) {
             final GridLayoutManager gridManager = ((GridLayoutManager) manager);
             // GridLayoutManager设置一个SpanSizeLookup，这是一个抽象类，里面有一个抽象方法getSpanSize，这个方法的返回值决定了每个Item占据的单元格数。
             gridManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
                 @Override
                 public int getSpanSize(int position) {
-                    //return getItemViewType(position) == TYPE_FOOTER ? gridManager.getSpanCount() : 1;
+                    // return getItemViewType(position) == TYPE_FOOTER ? gridManager.getSpanCount() : 1;
                     if (getItemViewType(position) == TYPE_HEADER) {
                         // 如果当前是HeaderView则占所有列，否则只占自己列
                         return gridManager.getSpanCount();
