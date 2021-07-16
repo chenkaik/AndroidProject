@@ -265,6 +265,8 @@ public abstract class RecyclerViewBannerBaseView<L extends RecyclerView.LayoutMa
             case MotionEvent.ACTION_CANCEL:
                 setPlaying(true);
                 break;
+            default:
+                break;
         }
         // 解决recyclerView嵌套问题
         try {
@@ -276,6 +278,13 @@ public abstract class RecyclerViewBannerBaseView<L extends RecyclerView.LayoutMa
     }
 
     // 解决recyclerView嵌套问题
+
+    /**
+     * 解决recyclerView嵌套问题
+     *
+     * @param ev ev
+     * @return f
+     */
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
         try {
@@ -286,7 +295,12 @@ public abstract class RecyclerViewBannerBaseView<L extends RecyclerView.LayoutMa
         return false;
     }
 
-    // 解决recyclerView嵌套问题
+    /**
+     * 解决recyclerView嵌套问题
+     *
+     * @param ev ev
+     * @return f
+     */
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
         try {

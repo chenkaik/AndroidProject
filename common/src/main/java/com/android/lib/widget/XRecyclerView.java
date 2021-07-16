@@ -11,8 +11,9 @@ import com.android.lib.adapter.RecyclerWrapAdapter;
 import java.util.ArrayList;
 
 /**
- * date: 2019/1/30
- * desc: 可添加头部和底部的RecyclerView(注意调用适配器刷新数据要调本类的notifyDataSetChanged方法)
+ * @author: chen_kai
+ * @date：2019/1/30
+ * @desc：可添加头部和底部的RecyclerView(注意调用适配器刷新数据要调本类的notifyDataSetChanged方法)
  */
 public final class XRecyclerView extends RecyclerView {
 

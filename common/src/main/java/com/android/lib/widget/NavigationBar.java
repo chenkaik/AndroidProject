@@ -17,8 +17,9 @@ import com.android.lib.util.FragmentManagerUtil;
 import com.android.lib.util.ScreenManager;
 
 /**
- * date: 2019/1/30
- * desc: 公用的title头部
+ * @author: chen_kai
+ * @date：2019/1/30
+ * @desc：公用的title头部
  */
 public final class NavigationBar extends FrameLayout {
 
@@ -50,7 +51,7 @@ public final class NavigationBar extends FrameLayout {
         mTitleTextView = (TextView) mRoot.findViewById(R.id.titleTextView);
         mLeftTextView = (TextView) mRoot.findViewById(R.id.navigation_title_bar_back_view);
         mBackButton = (ImageView) mRoot.findViewById(R.id.navigation_title_bar_back);
-//        mLeftLinearLayout.setOnClickListener(new OnClickListener() {
+///        mLeftLinearLayout.setOnClickListener(new OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
 //                backButtonOnClick(v);

@@ -3,12 +3,15 @@ package com.android.lib;
 import android.util.Log;
 
 /**
- * date: 2019/1/30
- * desc: 统一管理打印日志
+ * @author: chen_kai
+ * @date：2019/1/30
+ * @desc：统一管理打印日志
  */
 public final class Logger {
 
-    // 设为false关闭日志
+    /**
+     * 设为false关闭日志
+     */
     public static boolean LOG_ENABLE = true;
 
     public static void i(String tag, String msg) {

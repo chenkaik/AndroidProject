@@ -6,8 +6,9 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 /**
- * date: 2019/1/30
- * desc: 底部导航
+ * @author: chen_kai
+ * @date：2019/1/30
+ * @desc：底部导航
  */
 public final class TabGroupLayout extends LinearLayout {
 
@@ -25,11 +26,7 @@ public final class TabGroupLayout extends LinearLayout {
         int count = getChildCount();
         for (int i = 0; i < count; i++) {
             View v = getChildAt(i);
-            if (i == index) {
-                v.setSelected(true);
-            } else {
-                v.setSelected(false);
-            }
+            v.setSelected(i == index);
         }
     }
 

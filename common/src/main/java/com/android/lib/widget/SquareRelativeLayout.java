@@ -8,8 +8,9 @@ import android.widget.RelativeLayout;
 import androidx.annotation.RequiresApi;
 
 /**
- * date: 2019/1/30
- * desc: 长方形的RelativeLayout
+ * @author: chen_kai
+ * @date：2019/1/30
+ * @desc：长方形的RelativeLayout
  */
 public final class SquareRelativeLayout extends RelativeLayout {
 

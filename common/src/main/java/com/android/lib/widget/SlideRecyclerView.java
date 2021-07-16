@@ -15,27 +15,62 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 /**
- * date: 2019/1/30
- * desc: 侧滑菜单删除的RecyclerView
- * 参考https://blog.csdn.net/dapangzao/article/details/80524774
+ * @author: chen_kai
+ * @date：2019/1/30
+ * @desc：侧滑菜单删除的RecyclerView 考https://blog.csdn.net/dapangzao/article/details/80524774
  */
 public final class SlideRecyclerView extends RecyclerView {
 
     private static final String TAG = "SlideRecyclerView";
-    private static final int INVALID_POSITION = -1; // 触摸到的点不在子View范围内
-    private static final int INVALID_CHILD_WIDTH = -1;  // 子ItemView不含两个子View
-    private static final int SNAP_VELOCITY = 600;   // 最小滑动速度
-
-    private VelocityTracker mVelocityTracker;   // 速度追踪器
-    private int mTouchSlop; // 认为是滑动的最小距离（一般由系统提供）
-    private Rect mTouchFrame;   // 子View所在的矩形范围
+    /**
+     * 触摸到的点不在子View范围内
+     */
+    private static final int INVALID_POSITION = -1;
+    /**
+     * 子ItemView不含两个子View
+     */
+    private static final int INVALID_CHILD_WIDTH = -1;
+    /**
+     * 最小滑动速度
+     */
+    private static final int SNAP_VELOCITY = 600;
+    /**
+     * 速度追踪器
+     */
+    private VelocityTracker mVelocityTracker;
+    /**
+     * 认为是滑动的最小距离（一般由系统提供）
+     */
+    private int mTouchSlop;
+    /**
+     * 子View所在的矩形范围
+     */
+    private Rect mTouchFrame;
     private Scroller mScroller;
-    private float mLastX;   // 滑动过程中记录上次触碰点X
-    private float mFirstX, mFirstY; // 首次触碰范围
-    private boolean mIsSlide;   // 是否滑动子View
-    private ViewGroup mFlingView;   // 触碰的子View
-    private int mPosition;  // 触碰的view的位置
-    private int mMenuViewWidth;    // 菜单按钮宽度
+    /**
+     * 滑动过程中记录上次触碰点X
+     */
+    private float mLastX;
+    /**
+     * 首次触碰范围
+     */
+    private float mFirstX, mFirstY;
+    /**
+     * 是否滑动子View
+     */
+    private boolean mIsSlide;
+    /**
+     * 触碰的子View
+     */
+    private ViewGroup mFlingView;
+    /**
+     * 触碰的view的位置
+     */
+    private int mPosition;
+    /**
+     * 菜单按钮宽度
+     */
+    private int mMenuViewWidth;
 
     public SlideRecyclerView(Context context) {
         this(context, null);
@@ -58,12 +93,14 @@ public final class SlideRecyclerView extends RecyclerView {
         obtainVelocity(e);
         switch (e.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                if (!mScroller.isFinished()) {  // 如果动画还没停止，则立即终止动画
+                if (!mScroller.isFinished()) {
+                    // 如果动画还没停止，则立即终止动画
                     mScroller.abortAnimation();
                 }
                 mFirstX = mLastX = x;
                 mFirstY = y;
-                mPosition = pointToPosition(x, y);  // 获取触碰点所在的position
+                // 获取触碰点所在的position
+                mPosition = pointToPosition(x, y);
                 if (mPosition != INVALID_POSITION) {
                     View view = mFlingView;
                     // 获取触碰点所在的view
@@ -74,7 +111,7 @@ public final class SlideRecyclerView extends RecyclerView {
                     }
                     // 这里进行了强制的要求，RecyclerView的子ViewGroup必须要有2个子view,这样菜单按钮才会有值，
                     // 需要注意的是:如果不定制RecyclerView的子View，则要求子View必须要有固定的width。
-                    // 比如使用LinearLayout作为根布局，而content部分width已经是match_parent，此时如果菜单view用的是wrap_content，menu的宽度就会为0。
+                    /// 比如使用LinearLayout作为根布局，而content部分width已经是match_parent，此时如果菜单view用的是wrap_content，menu的宽度就会为0。
                     if (mFlingView.getChildCount() == 2) {
                         mMenuViewWidth = mFlingView.getChildAt(1).getWidth();
                     } else {
@@ -99,6 +136,8 @@ public final class SlideRecyclerView extends RecyclerView {
             case MotionEvent.ACTION_UP:
                 releaseVelocity();
                 break;
+            default:
+                break;
         }
         return super.onInterceptTouchEvent(e);
     }
@@ -109,7 +148,8 @@ public final class SlideRecyclerView extends RecyclerView {
             float x = e.getX();
             obtainVelocity(e);
             switch (e.getAction()) {
-                case MotionEvent.ACTION_DOWN:   // 因为没有拦截，所以不会被调用到
+                case MotionEvent.ACTION_DOWN:
+                    // 因为没有拦截，所以不会被调用到
                     break;
                 case MotionEvent.ACTION_MOVE:
                     // 随手指滑动
@@ -130,11 +170,14 @@ public final class SlideRecyclerView extends RecyclerView {
                         // 1.菜单被拉出宽度大于菜单宽度一半；
                         // 2.横向滑动速度大于最小滑动速度；
                         // 注意：之所以要小于负值，是因为向左滑则速度为负值
-                        if (mVelocityTracker.getXVelocity() < -SNAP_VELOCITY) {    // 向左侧滑达到侧滑最低速度，则打开
+                        if (mVelocityTracker.getXVelocity() < -SNAP_VELOCITY) {
+                            // 向左侧滑达到侧滑最低速度，则打开
                             mScroller.startScroll(scrollX, 0, mMenuViewWidth - scrollX, 0, Math.abs(mMenuViewWidth - scrollX));
-                        } else if (mVelocityTracker.getXVelocity() >= SNAP_VELOCITY) {  // 向右侧滑达到侧滑最低速度，则关闭
+                        } else if (mVelocityTracker.getXVelocity() >= SNAP_VELOCITY) {
+                            // 向右侧滑达到侧滑最低速度，则关闭
                             mScroller.startScroll(scrollX, 0, -scrollX, 0, Math.abs(scrollX));
-                        } else if (scrollX >= mMenuViewWidth / 2) { // 如果超过删除按钮一半，则打开
+                        } else if (scrollX >= mMenuViewWidth / 2) {
+                            // 如果超过删除按钮一半，则打开
                             mScroller.startScroll(scrollX, 0, mMenuViewWidth - scrollX, 0, Math.abs(mMenuViewWidth - scrollX));
                         } else {    // 其他情况则关闭
                             mScroller.startScroll(scrollX, 0, -scrollX, 0, Math.abs(scrollX));
@@ -144,7 +187,10 @@ public final class SlideRecyclerView extends RecyclerView {
                     mMenuViewWidth = INVALID_CHILD_WIDTH;
                     mIsSlide = false;
                     mPosition = INVALID_POSITION;
-                    releaseVelocity();  // 这里之所以会调用，是因为如果前面拦截了，就不会执行ACTION_UP,需要在这里释放追踪
+                    // 这里之所以会调用，是因为如果前面拦截了，就不会执行ACTION_UP,需要在这里释放追踪
+                    releaseVelocity();
+                    break;
+                default:
                     break;
             }
             return true;
