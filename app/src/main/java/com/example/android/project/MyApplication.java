@@ -14,7 +14,7 @@ import common.android.https.config.HttpConfig;
  * date: 2019/1/30
  * desc: 程序入口
  */
-public class CommonApplication extends Application {
+public class MyApplication extends Application {
 
     @SuppressLint("StaticFieldLeak")
     private static Context sContext;

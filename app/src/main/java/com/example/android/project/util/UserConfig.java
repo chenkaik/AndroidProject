@@ -2,7 +2,7 @@ package com.example.android.project.util;
 
 
 import com.android.lib.util.SharedPreferencesUtil;
-import com.example.android.project.CommonApplication;
+import com.example.android.project.MyApplication;
 
 
 /**
@@ -26,7 +26,7 @@ public class UserConfig extends SharedPreferencesUtil {
 
 
     private UserConfig() {
-        super(CommonApplication.getContext(), FILE_NAME);
+        super(MyApplication.getContext(), FILE_NAME);
     }
 
     public static UserConfig getInstance() {

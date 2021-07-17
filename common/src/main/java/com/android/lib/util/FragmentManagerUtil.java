@@ -92,12 +92,12 @@ public final class FragmentManagerUtil {
         transaction.commit();
     }
 
-    public static void addNoAnimation(FragmentManager fm, int resId, Fragment fragment1, Fragment fragment2, boolean hidenSoftInput) {
+    public static void addNoAnimation(FragmentManager fm, int resId, Fragment fragment1, Fragment fragment2, boolean hideSoftInput) {
         FragmentTransaction transaction = fm.beginTransaction();
         if (null != fragment1) {
             transaction.hide(fragment1);
             transaction.addToBackStack(null);
-            if (hidenSoftInput) {
+            if (hideSoftInput) {
                 hideSoftInput(fragment1.getActivity());
             }
         }
@@ -109,6 +109,7 @@ public final class FragmentManagerUtil {
     public static void addNoAnimation(FragmentManager fm, int resId, Fragment fragment2) {
         FragmentTransaction transaction = fm.beginTransaction();
         transaction.add(resId, fragment2, fragment2.getClass().getSimpleName());
+//        transaction.addToBackStack(null);
         transaction.commit();
 
     }

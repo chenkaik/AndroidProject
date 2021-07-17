@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.view.View;
 
 import com.android.lib.util.InputTextHelper;
-import com.android.lib.util.ScreenManager;
 import com.android.lib.widget.NavigationBar;
 import com.example.android.project.R;
 import com.example.android.project.databinding.ActivityLoginBinding;
@@ -40,15 +39,16 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     @Override
     public void onClick(View v) {
         int id = v.getId();
-        if (id == R.id.tv_login_forget){
+        if (id == R.id.tv_login_forget) {
             showToastMessage("忘记密码");
-        }else if (id == R.id.btn_login_commit){
+        } else if (id == R.id.btn_login_commit) {
 //                if (mPhoneView.getText().toString().length() != 11) {
 //                    showToastMessage("手机号输入不正确");
 //                    break;
 //                }
-            Intent intent = new Intent(this, MainActivity.class);
-            ScreenManager.getScreenManager().startPage(this, intent, false);
+//            Intent intent = new Intent(this, MainActivity.class);
+//            ScreenManager.getScreenManager().startPage(this, intent, false);
+            startActivity(new Intent(this, DemoActivity.class));
         }
     }
 

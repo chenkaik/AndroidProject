@@ -17,7 +17,7 @@ import com.android.lib.util.CommonHelp;
 import com.android.lib.util.NetworkUtil;
 import com.android.lib.util.ScreenManager;
 import com.android.lib.util.ToastUtil;
-import com.example.android.project.CommonApplication;
+import com.example.android.project.MyApplication;
 import com.example.android.project.R;
 
 import java.util.ArrayList;
@@ -66,7 +66,7 @@ public abstract class BaseActivity extends AppCompatActivity {
      * @param message 信息
      */
     public void showToastMessage(String message) {
-        ToastUtil.showToast(CommonApplication.getContext(), message);
+        ToastUtil.showToast(MyApplication.getContext(), message);
     }
 
     /**

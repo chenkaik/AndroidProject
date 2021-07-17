@@ -4,7 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.example.android.project.CommonApplication;
+import com.example.android.project.MyApplication;
 
 import java.util.Collections;
 import java.util.Map;
@@ -66,11 +66,11 @@ public class SPUtils {
     }
 
     private SPUtils(final String spName) {
-        sp = CommonApplication.getContext().getSharedPreferences(spName, Context.MODE_PRIVATE);
+        sp = MyApplication.getContext().getSharedPreferences(spName, Context.MODE_PRIVATE);
     }
 
     private SPUtils(final String spName, final int mode) {
-        sp = CommonApplication.getContext().getSharedPreferences(spName, mode);
+        sp = MyApplication.getContext().getSharedPreferences(spName, mode);
     }
 
     /**
